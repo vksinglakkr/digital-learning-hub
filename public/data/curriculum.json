@@ -1,0 +1,1164 @@
+{
+  "app": "Digital Learning Hub",
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-18T15:48:28.912Z",
+  "description": "Official published curriculum dataset containing verified educational categories, topics, and multi-format learning resources.",
+  "summary": {
+    "categoryCount": 6,
+    "topicCount": 17,
+    "publishedResourceCount": 47,
+    "excludedDraftCount": 0,
+    "excludedHiddenCount": 0,
+    "videoCount": 14,
+    "clipCount": 0,
+    "infographicCount": 20,
+    "pdfCount": 7,
+    "tutorialCount": 6,
+    "otherCount": 0
+  },
+  "categories": [
+    {
+      "id": "power-bi",
+      "slug": "power-bi",
+      "title": "Power BI",
+      "description": "Transform raw datasets into interactive dashboards, data models, and business intelligence reports.",
+      "iconName": "BarChart3",
+      "resourceCount": 25,
+      "color": "teal",
+      "displayOrder": 1
+    },
+    {
+      "id": "n8n",
+      "slug": "n8n",
+      "title": "n8n Automation",
+      "description": "Build robust event-driven workflows, API orchestrations, and no-code/low-code business integrations.",
+      "iconName": "Workflow",
+      "resourceCount": 6,
+      "color": "teal",
+      "displayOrder": 2
+    },
+    {
+      "id": "excel",
+      "slug": "excel",
+      "title": "Excel",
+      "description": "Master advanced formulas, Power Query data cleaning, dynamic arrays, and analytical modeling.",
+      "iconName": "TableProperties",
+      "resourceCount": 5,
+      "color": "teal",
+      "displayOrder": 3
+    },
+    {
+      "id": "github",
+      "slug": "github",
+      "title": "GitHub",
+      "description": "Learn Git version control, collaborative team workflows, branch strategies, and CI/CD basics.",
+      "iconName": "GitBranch",
+      "resourceCount": 4,
+      "color": "teal",
+      "displayOrder": 4
+    },
+    {
+      "id": "smart-work",
+      "slug": "smart-work",
+      "title": "Smart Work",
+      "description": "Practical strategies, AI tools, keyboard mastery, and digital productivity frameworks for professionals.",
+      "iconName": "Sparkles",
+      "resourceCount": 3,
+      "color": "teal",
+      "displayOrder": 5
+    },
+    {
+      "id": "math-magic",
+      "slug": "math-magic",
+      "title": "Math Magic",
+      "description": "Mental calculation tricks, estimation skills, rapid arithmetic, and quantitative problem solving.",
+      "iconName": "Binary",
+      "resourceCount": 4,
+      "color": "teal",
+      "displayOrder": 6
+    }
+  ],
+  "topics": [
+    {
+      "id": "power-bi-drill-through",
+      "categoryId": "power-bi",
+      "slug": "drill-through",
+      "title": "Drill Through",
+      "difficulty": "Intermediate",
+      "shortDescription": "Enable report users to transition from summary visuals to dedicated deep-dive detail pages.",
+      "detailedDescription": "Drill Through is a core contextual navigation mechanism in Power BI Desktop and Service. It lets consumers right-click a data point (such as a customer, product, or sales region) and drill into a focused destination page filtered specifically for that entity. In this module, explore destination page configuration, parameter passing, back button behavior, and cross-report drill through.",
+      "relatedTopicIds": [
+        "power-bi-bookmarks",
+        "power-bi-dax-measures",
+        "power-bi-power-query"
+      ],
+      "resources": [
+        {
+          "id": "dt-res-vid-1",
+          "title": "Video 1: Foundations of Drill Through & Destination Pages",
+          "description": "Visual walkthrough of setting up target drill through fields, default back navigation, and testing interactions in Power BI Desktop.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/drill-through/video-1-foundations",
+          "displayOrder": 1,
+          "durationOrPages": "14 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-info-1",
+          "title": "Infographic 1: Drill Through vs Tooltips vs Bookmarks Comparison",
+          "description": "Architecture flowchart mapping when to use Drill Through versus Report Page Tooltips or Bookmark toggles.",
+          "type": "Infographic",
+          "url": "demo://power-bi/drill-through/infographic-1-decision-matrix",
+          "displayOrder": 2,
+          "durationOrPages": "Visual Flowchart",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-tut-1",
+          "title": "Tutorial 1: Step-by-Step Drill Through Implementation Walkthrough",
+          "description": "Comprehensive guided lab building an Executive Sales Dashboard with drill through into individual Customer Order histories.",
+          "type": "Tutorial",
+          "url": "demo://power-bi/drill-through/tutorial-1-hands-on-lab",
+          "displayOrder": 3,
+          "durationOrPages": "25 min read / lab",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-vid-2",
+          "title": "Video 2: Filter Context Inheritance & \"Keep All Filters\" Logic",
+          "description": "Deep dive into how slicers and external visual filters carry over into the destination drill through view.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/drill-through/video-2-filter-context",
+          "displayOrder": 4,
+          "durationOrPages": "18 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-info-2",
+          "title": "Infographic 2: Target Page Configuration Checklist",
+          "description": "Quick-reference visual blueprint showing the Drillthrough well, back button styling, and hidden page settings.",
+          "type": "Infographic",
+          "url": "demo://power-bi/drill-through/infographic-2-setup-checklist",
+          "displayOrder": 5,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-vid-3",
+          "title": "Video 3: Dynamic Conditional Drill Through Action Buttons",
+          "description": "How to build user-friendly buttons that dynamically enable and display tooltip hints when a valid row is selected.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/drill-through/video-3-action-buttons",
+          "displayOrder": 6,
+          "durationOrPages": "11 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-pdf-1",
+          "title": "PDF 1: Power BI Drill Through Production Best Practices",
+          "description": "Enterprise guide covering naming conventions, hidden destination tabs, and performance considerations.",
+          "type": "PDF",
+          "url": "demo://power-bi/drill-through/pdf-1-best-practices.pdf",
+          "displayOrder": 7,
+          "durationOrPages": "10-page PDF",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-info-3",
+          "title": "Infographic 3: Cross-Report Drill Through Anatomy",
+          "description": "Visual diagram illustrating workspace permissions, shared datasets, and cross-report link structures.",
+          "type": "Infographic",
+          "url": "demo://power-bi/drill-through/infographic-3-cross-report",
+          "displayOrder": 8,
+          "durationOrPages": "Architecture Diagram",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dt-res-pdf-2",
+          "title": "PDF 2: Troubleshooting Context Loss & Blank Drill Through Pages",
+          "description": "Diagnostic handbook outlining common pitfalls when many-to-many relationships or inactive joins cause drill filters to drop.",
+          "type": "PDF",
+          "url": "demo://power-bi/drill-through/pdf-2-troubleshooting.pdf",
+          "displayOrder": 9,
+          "durationOrPages": "6-page PDF",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "title": "Drill Through Learn by Lalwani",
+          "url": "https://www.youtube.com/watch?v=k-uWcjbLv0E",
+          "type": "YouTube Video",
+          "durationOrPages": "15 min video",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "creatorName": "Lalwani",
+          "isDemo": true,
+          "id": "res-mwlw11p7-3jikml",
+          "displayOrder": 10
+        },
+        {
+          "title": "Bases50 Same Distance",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "originalSourceUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "type": "Infographic",
+          "durationOrPages": "Visual Infographic",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "isDemo": true,
+          "id": "res-mwm0szw6-kpzr07",
+          "displayOrder": 11
+        },
+        {
+          "title": "Bases50 Same Distance",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "originalSourceUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "type": "Infographic",
+          "durationOrPages": "Visual Infographic",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "isDemo": true,
+          "id": "res-mwm0ufn7-c8nqjk",
+          "displayOrder": 12
+        },
+        {
+          "title": "Bases 100 or 1000 — Same Distance",
+          "type": "Infographic",
+          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
+          "directContentUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
+          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
+          "thumbnailUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
+          "creatorName": "vksinglakkr",
+          "creatorUrl": "https://github.com/vksinglakkr",
+          "status": "Published",
+          "durationOrPages": "Visual Infographic",
+          "id": "res-mwm2u18o-otyouh",
+          "displayOrder": 13,
+          "isDemo": true
+        },
+        {
+          "title": "Decimal Multiplication Math Magic",
+          "type": "Infographic",
+          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
+          "directContentUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
+          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
+          "thumbnailUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
+          "creatorName": "vksinglakkr",
+          "creatorUrl": "https://github.com/vksinglakkr",
+          "status": "Published",
+          "durationOrPages": "Visual Infographic",
+          "id": "res-mwm2u18o-dfcg27",
+          "displayOrder": 14,
+          "isDemo": true
+        },
+        {
+          "title": "Square Diff 4 — Trick",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Square/SquareDiff4_Trick.png",
+          "type": "Infographic",
+          "durationOrPages": "Visual Infographic",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "creatorName": "vksinglakkr",
+          "creatorUrl": "https://github.com/vksinglakkr",
+          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "isDemo": true,
+          "id": "res-mwm6rovv-s3h4u5",
+          "displayOrder": 15
+        },
+        {
+          "title": "Square Diff 4 — Trick",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Square/SquareDiff4_Trick.png",
+          "type": "Infographic",
+          "durationOrPages": "Visual Infographic",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "creatorName": "vksinglakkr",
+          "creatorUrl": "https://github.com/vksinglakkr",
+          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "isDemo": true,
+          "id": "res-mwm6tzih-n4mbi0",
+          "displayOrder": 16
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "dt-res-info-1",
+          "phaseTitle": "Phase 1: Conceptual Alignment",
+          "objective": "Inspect the decision matrix infographic to understand where Drill Through fits versus Tooltips & Bookmarks."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "dt-res-vid-1",
+          "phaseTitle": "Phase 2: Fundamental Setup",
+          "objective": "Watch the introductory video walkthrough to build your first target page in Power BI Desktop."
+        },
+        {
+          "stepNumber": 3,
+          "resourceId": "dt-res-tut-1",
+          "phaseTitle": "Phase 3: Hands-on Lab",
+          "objective": "Follow the written tutorial to implement drill through between Summary and Detail tables with sample data."
+        },
+        {
+          "stepNumber": 4,
+          "resourceId": "dt-res-vid-2",
+          "phaseTitle": "Phase 4: Filter Context Mastery",
+          "objective": "Master \"Keep All Filters\" logic to ensure multi-select slicers pass correctly across views."
+        },
+        {
+          "stepNumber": 5,
+          "resourceId": "dt-res-info-2",
+          "phaseTitle": "Phase 5: Production Checklist",
+          "objective": "Review the setup checklist before publishing to Power BI Service."
+        },
+        {
+          "stepNumber": 6,
+          "resourceId": "dt-res-pdf-1",
+          "phaseTitle": "Phase 6: Enterprise Hardening",
+          "objective": "Read the PDF guide for performance tuning and report accessibility standards."
+        }
+      ],
+      "displayOrder": 1
+    },
+    {
+      "id": "power-bi-bookmarks",
+      "categoryId": "power-bi",
+      "slug": "bookmarks",
+      "title": "Bookmarks",
+      "difficulty": "Intermediate",
+      "shortDescription": "Capture report page visual states, create dynamic overlays, custom toggles, and interactive stories.",
+      "detailedDescription": "Bookmarks capture the current state of a report page, including filters, slicers, visual selection, and visibility states. They power interactive slideouts, custom pop-up help menus, and multi-view dashboard toggles.",
+      "relatedTopicIds": [
+        "power-bi-drill-through",
+        "power-bi-dax-measures"
+      ],
+      "resources": [
+        {
+          "id": "bm-res-1",
+          "title": "Video: Mastering the Selection Pane & Bookmark Groups",
+          "description": "Organize visual hierarchies and control bookmark update scopes safely.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/bookmarks/video-selection-pane",
+          "displayOrder": 1,
+          "durationOrPages": "16 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "bm-res-2",
+          "title": "Infographic: Selected Visuals vs All Visuals State Architecture",
+          "description": "Visual map avoiding unintentional slicer resets when triggering bookmarks.",
+          "type": "Infographic",
+          "url": "demo://power-bi/bookmarks/infographic-state-scope",
+          "displayOrder": 2,
+          "durationOrPages": "Architecture Diagram",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "bm-res-3",
+          "title": "Tutorial: Building a Slide-Out Slicer Panel in 5 Steps",
+          "description": "Complete hands-on exercise creating responsive pop-up filters.",
+          "type": "Tutorial",
+          "url": "demo://power-bi/bookmarks/tutorial-slideout-panel",
+          "displayOrder": 3,
+          "durationOrPages": "18 min lab",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "bm-res-1",
+          "phaseTitle": "Concept & Selection",
+          "objective": "Learn how the Selection Pane controls visual visibility."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "bm-res-2",
+          "phaseTitle": "Scope Configuration",
+          "objective": "Understand why \"Selected Visuals\" prevents destructive slicer resets."
+        },
+        {
+          "stepNumber": 3,
+          "resourceId": "bm-res-3",
+          "phaseTitle": "Interactive Build",
+          "objective": "Build the practical slide-out panel."
+        }
+      ],
+      "displayOrder": 2
+    },
+    {
+      "id": "power-bi-dax-measures",
+      "categoryId": "power-bi",
+      "slug": "dax-measures",
+      "title": "DAX Measures",
+      "difficulty": "Advanced",
+      "shortDescription": "Write robust calculation logic, understand evaluation context, and unlock dynamic business metrics.",
+      "detailedDescription": "Data Analysis Expressions (DAX) is the native formula language of Power BI, Analysis Services, and Power Pivot. Master row context, filter context transition, and time intelligence functions.",
+      "relatedTopicIds": [
+        "power-bi-drill-through",
+        "power-bi-power-query"
+      ],
+      "resources": [
+        {
+          "id": "dax-res-1",
+          "title": "Infographic: The Golden Rule of CALCULATE & Context Transition",
+          "description": "Clear visual model showing how CALCULATE converts row context into equivalent filter context.",
+          "type": "Infographic",
+          "url": "demo://power-bi/dax/infographic-calculate",
+          "displayOrder": 1,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dax-res-2",
+          "title": "Video: Time Intelligence (YTD, MTD, SamePeriodLastYear) Demystified",
+          "description": "Setup standard Date tables and write robust year-over-year growth metrics.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/dax/video-time-intelligence",
+          "displayOrder": 2,
+          "durationOrPages": "22 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "dax-res-3",
+          "title": "PDF: DAX Patterns Reference Handbook",
+          "description": "Standard formula templates for ranking, dynamic segmentation, and cumulative totals.",
+          "type": "PDF",
+          "url": "demo://power-bi/dax/pdf-patterns-handbook.pdf",
+          "displayOrder": 3,
+          "durationOrPages": "15-page PDF",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "dax-res-1",
+          "phaseTitle": "Evaluation Foundation",
+          "objective": "Internalize the transition rules of CALCULATE."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "dax-res-2",
+          "phaseTitle": "Time Intelligence",
+          "objective": "Construct working calendar measures."
+        }
+      ],
+      "displayOrder": 3
+    },
+    {
+      "id": "power-bi-power-query",
+      "categoryId": "power-bi",
+      "slug": "power-query",
+      "title": "Power Query",
+      "difficulty": "Beginner",
+      "shortDescription": "Clean, reshape, combine, and automate ETL data preparation before building data models.",
+      "detailedDescription": "Power Query is the data transformation engine in Power BI and Excel. Learn to merge queries, unpivot crosstabs, handle dirty date formats, and optimize query folding.",
+      "relatedTopicIds": [
+        "power-bi-dax-measures",
+        "power-bi-drill-through"
+      ],
+      "resources": [
+        {
+          "id": "pq-res-1",
+          "title": "Infographic: Query Folding Anatomy & Optimization Rules",
+          "description": "Visual indicator guide showing when transforms push down to SQL sources.",
+          "type": "Infographic",
+          "url": "demo://power-bi/power-query/infographic-folding",
+          "displayOrder": 1,
+          "durationOrPages": "Architecture Diagram",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "pq-res-2",
+          "title": "Video: Unpivoting Messy Spreadsheet Data in 3 Clicks",
+          "description": "Transform wide monthly reporting matrices into tall relational schemas.",
+          "type": "YouTube Video",
+          "url": "demo://power-bi/power-query/video-unpivot",
+          "displayOrder": 2,
+          "durationOrPages": "10 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "pq-res-3",
+          "title": "Tutorial: Writing Custom M Functions for Multi-File Cleansing",
+          "description": "Automate folder ingestion with robust custom cleansing logic.",
+          "type": "Tutorial",
+          "url": "demo://power-bi/power-query/tutorial-custom-m",
+          "displayOrder": 3,
+          "durationOrPages": "20 min lab",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "pq-res-2",
+          "phaseTitle": "Reshaping Essentials",
+          "objective": "Convert matrix data to normalized rows."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "pq-res-1",
+          "phaseTitle": "Performance Tuning",
+          "objective": "Maintain query folding across complex transforms."
+        }
+      ],
+      "displayOrder": 4
+    },
+    {
+      "id": "n8n-webhooks",
+      "categoryId": "n8n",
+      "slug": "webhooks",
+      "title": "Webhooks & Triggers",
+      "difficulty": "Intermediate",
+      "shortDescription": "Listen for real-time external events, validate signatures, and trigger immediate workflows.",
+      "detailedDescription": "Webhooks form the event-driven backbone of n8n. Learn how to configure test versus production webhook URLs, handle incoming POST bodies, and return immediate 200 responses.",
+      "relatedTopicIds": [
+        "n8n-http-nodes",
+        "n8n-error-handling"
+      ],
+      "resources": [
+        {
+          "id": "n8n-res-1",
+          "title": "Video: Setting Up Webhook Nodes & Testing Payloads with Postman",
+          "description": "End-to-end guide on capturing JSON events and verifying payload structures.",
+          "type": "YouTube Video",
+          "url": "demo://n8n/webhooks/video-testing",
+          "displayOrder": 1,
+          "durationOrPages": "15 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "n8n-res-2",
+          "title": "Infographic: Webhook Architecture (Test Mode vs Production)",
+          "description": "Avoid common pitfalls with inactive URLs and ephemeral test sessions.",
+          "type": "Infographic",
+          "url": "demo://n8n/webhooks/infographic-test-vs-prod",
+          "displayOrder": 2,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "n8n-res-3",
+          "title": "Tutorial: Webhook Verification with HMAC SHA256 in n8n",
+          "description": "Secure your public webhooks against spoofed requests with Code nodes.",
+          "type": "Tutorial",
+          "url": "demo://n8n/webhooks/tutorial-hmac-security",
+          "displayOrder": 3,
+          "durationOrPages": "15 min read",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "n8n-res-2",
+          "phaseTitle": "Architecture Understanding",
+          "objective": "Learn differences between test webhook and production URLs."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "n8n-res-1",
+          "phaseTitle": "First Implementation",
+          "objective": "Listen for real payloads and inspect output items."
+        }
+      ],
+      "displayOrder": 5
+    },
+    {
+      "id": "n8n-http-nodes",
+      "categoryId": "n8n",
+      "slug": "http-nodes",
+      "title": "HTTP Request Node",
+      "difficulty": "Intermediate",
+      "shortDescription": "Call external REST APIs, handle OAuth2 tokens, pagination, and multi-part file uploads.",
+      "detailedDescription": "The HTTP Request node in n8n enables connection to any external service that has an API. Learn query parameters, headers, rate limiting, and automated pagination loops.",
+      "relatedTopicIds": [
+        "n8n-webhooks",
+        "n8n-error-handling"
+      ],
+      "resources": [
+        {
+          "id": "n8n-http-1",
+          "title": "Infographic: Pagination Strategies (Offset, Page, Cursor, Link Header)",
+          "description": "Visual flowchart to configure automated paging loops in n8n.",
+          "type": "Infographic",
+          "url": "demo://n8n/http/infographic-pagination",
+          "displayOrder": 1,
+          "durationOrPages": "Visual Blueprint",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "n8n-http-2",
+          "title": "Video: Calling REST APIs with Custom Headers & Bearer Tokens",
+          "description": "Connect third-party services and parse nested response arrays.",
+          "type": "YouTube Video",
+          "url": "demo://n8n/http/video-rest-calls",
+          "displayOrder": 2,
+          "durationOrPages": "18 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "n8n-http-1",
+          "phaseTitle": "Pagination Logic",
+          "objective": "Determine your target API pagination style."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "n8n-http-2",
+          "phaseTitle": "Execution",
+          "objective": "Wire credentials and execute queries."
+        }
+      ],
+      "displayOrder": 6
+    },
+    {
+      "id": "n8n-error-handling",
+      "categoryId": "n8n",
+      "slug": "error-handling",
+      "title": "Error Handling & Alerts",
+      "difficulty": "Advanced",
+      "shortDescription": "Implement Error Triggers, automated retries, fallback nodes, and instant Slack notifications.",
+      "detailedDescription": "Production automations require resilience. Learn how to bind dedicated Error Trigger workflows, inspect error metadata, and alert engineering teams without crashing pipelines.",
+      "relatedTopicIds": [
+        "n8n-webhooks",
+        "n8n-http-nodes"
+      ],
+      "resources": [
+        {
+          "id": "n8n-err-1",
+          "title": "PDF: n8n Production Reliability & Failover Architecture",
+          "description": "Design guide for dedicated error workflows, queue retry modes, and alerting.",
+          "type": "PDF",
+          "url": "demo://n8n/error/pdf-reliability-guide.pdf",
+          "displayOrder": 1,
+          "durationOrPages": "8-page PDF",
+          "difficulty": "Advanced",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "n8n-err-1",
+          "phaseTitle": "Resilience Patterns",
+          "objective": "Deploy dedicated Error Trigger workflows."
+        }
+      ],
+      "displayOrder": 7
+    },
+    {
+      "id": "excel-xlookup-dynamic-arrays",
+      "categoryId": "excel",
+      "slug": "xlookup-dynamic-arrays",
+      "title": "XLOOKUP & Dynamic Arrays",
+      "difficulty": "Beginner",
+      "shortDescription": "Replace fragile VLOOKUP with modern formulas like XLOOKUP, FILTER, SORT, and UNIQUE.",
+      "detailedDescription": "Dynamic array formulas spill results automatically across rows and columns. Learn to use XLOOKUP for bidirectional searches, and pair it with FILTER and UNIQUE for modern reporting.",
+      "relatedTopicIds": [
+        "excel-power-query-excel",
+        "excel-pivot-dashboards"
+      ],
+      "resources": [
+        {
+          "id": "ex-res-1",
+          "title": "Infographic: Modern Excel Formulas Cheat Sheet",
+          "description": "Visual comparison between VLOOKUP, INDEX/MATCH, and XLOOKUP syntax.",
+          "type": "Infographic",
+          "url": "demo://excel/formulas/infographic-modern-cheatsheet",
+          "displayOrder": 1,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "ex-res-2",
+          "title": "Video: Mastering the FILTER & UNIQUE Spilling Functions",
+          "description": "Build automated category-filtered dashboards without writing any VBA code.",
+          "type": "YouTube Video",
+          "url": "demo://excel/formulas/video-filter-unique",
+          "displayOrder": 2,
+          "durationOrPages": "14 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "ex-res-3",
+          "title": "PDF: Dynamic Array Formula Reference Manual",
+          "description": "Detailed documentation of #SPILL errors, @ implicit intersection operator, and multi-criteria lookups.",
+          "type": "PDF",
+          "url": "demo://excel/formulas/pdf-spill-reference.pdf",
+          "displayOrder": 3,
+          "durationOrPages": "12-page PDF",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "ex-res-1",
+          "phaseTitle": "Syntax Transition",
+          "objective": "Adopt XLOOKUP syntax over legacy VLOOKUP."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "ex-res-2",
+          "phaseTitle": "Dynamic Spill Arrays",
+          "objective": "Build multi-condition dynamic spill tables."
+        }
+      ],
+      "displayOrder": 8
+    },
+    {
+      "id": "excel-power-query-excel",
+      "categoryId": "excel",
+      "slug": "power-query-excel",
+      "title": "Power Query for Excel",
+      "difficulty": "Intermediate",
+      "shortDescription": "Automate repetitive workbook merging, CSV cleaning, and scheduled data consolidation.",
+      "detailedDescription": "Transform and consolidate data directly inside Excel spreadsheets without fragile copy-paste habits or complicated macros.",
+      "relatedTopicIds": [
+        "excel-xlookup-dynamic-arrays",
+        "excel-pivot-dashboards"
+      ],
+      "resources": [
+        {
+          "id": "ex-pq-1",
+          "title": "Tutorial: Automating 12 Monthly Excel File Consolidation in 10 Minutes",
+          "description": "Point Power Query to a local directory and merge evolving monthly files seamlessly.",
+          "type": "Tutorial",
+          "url": "demo://excel/pq/tutorial-folder-merge",
+          "displayOrder": 1,
+          "durationOrPages": "15 min read",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "ex-pq-1",
+          "phaseTitle": "Consolidation",
+          "objective": "Automate folder ingestion into an unified table."
+        }
+      ],
+      "displayOrder": 9
+    },
+    {
+      "id": "excel-pivot-dashboards",
+      "categoryId": "excel",
+      "slug": "pivot-dashboards",
+      "title": "Interactive Pivot Dashboards",
+      "difficulty": "Intermediate",
+      "shortDescription": "Link Pivot Tables, connected Slicers, and Timelines to produce clean executive one-pagers.",
+      "detailedDescription": "Build professional, polished dashboard reports in Excel that update with a single click of the Refresh button.",
+      "relatedTopicIds": [
+        "excel-xlookup-dynamic-arrays",
+        "excel-power-query-excel"
+      ],
+      "resources": [
+        {
+          "id": "ex-piv-1",
+          "title": "Video: Building Executive One-Pager Dashboards with Connected Slicers",
+          "description": "Format charts, hide gridlines, and sync multi-pivot slicers for an app-like feel.",
+          "type": "YouTube Video",
+          "url": "demo://excel/pivot/video-executive-dashboard",
+          "displayOrder": 1,
+          "durationOrPages": "21 min video",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "ex-piv-1",
+          "phaseTitle": "Dashboard Assembly",
+          "objective": "Structure connected slicers and dynamic summary charts."
+        }
+      ],
+      "displayOrder": 10
+    },
+    {
+      "id": "github-branching",
+      "categoryId": "github",
+      "slug": "git-branching",
+      "title": "Git Branching & Merge Conflicts",
+      "difficulty": "Beginner",
+      "shortDescription": "Understand feature branches, fast-forward merges, rebase vs merge, and conflict resolution.",
+      "detailedDescription": "Master Git branch strategies. Learn when to branch, how to keep feature branches up-to-date with main, and how to safely resolve conflict markers in VS Code.",
+      "relatedTopicIds": [
+        "github-pull-requests",
+        "github-actions-cicd"
+      ],
+      "resources": [
+        {
+          "id": "gh-res-1",
+          "title": "Infographic: Git Rebase vs Git Merge Visual Roadmap",
+          "description": "Interactive graphic illustrating commit tree linearity, rebase replay, and merge commits.",
+          "type": "Infographic",
+          "url": "demo://github/branching/infographic-merge-vs-rebase",
+          "displayOrder": 1,
+          "durationOrPages": "Visual Blueprint",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "gh-res-2",
+          "title": "Video: Resolving Your First Complex Merge Conflict Painlessly",
+          "description": "Step-by-step resolution using 3-way merge tools inside your code editor.",
+          "type": "YouTube Video",
+          "url": "demo://github/branching/video-merge-conflicts",
+          "displayOrder": 2,
+          "durationOrPages": "12 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "gh-res-1",
+          "phaseTitle": "Visual Mental Model",
+          "objective": "Understand the commit graph before running destructive commands."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "gh-res-2",
+          "phaseTitle": "Conflict Resolution",
+          "objective": "Safely resolve conflicting lines and finalize merges."
+        }
+      ],
+      "displayOrder": 11
+    },
+    {
+      "id": "github-pull-requests",
+      "categoryId": "github",
+      "slug": "pull-requests",
+      "title": "Pull Requests & Code Review",
+      "difficulty": "Intermediate",
+      "shortDescription": "Write meaningful PR descriptions, draft reviews, request changes, and suggest in-line edits.",
+      "detailedDescription": "Collaborative engineering relies on healthy code reviews. Learn to structure small, reviewable PRs, link issues, and use GitHub suggested changes.",
+      "relatedTopicIds": [
+        "github-branching",
+        "github-actions-cicd"
+      ],
+      "resources": [
+        {
+          "id": "gh-pr-1",
+          "title": "PDF: The High-Quality Pull Request Checklist & Template",
+          "description": "Standard team template with reproduction steps, screenshots, and test plans.",
+          "type": "PDF",
+          "url": "demo://github/pr/pdf-pr-checklist.pdf",
+          "displayOrder": 1,
+          "durationOrPages": "4-page PDF",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "gh-pr-1",
+          "phaseTitle": "Review Standards",
+          "objective": "Adopt reproducible description templates."
+        }
+      ],
+      "displayOrder": 12
+    },
+    {
+      "id": "github-actions-cicd",
+      "categoryId": "github",
+      "slug": "actions-cicd",
+      "title": "GitHub Actions CI/CD Basics",
+      "difficulty": "Advanced",
+      "shortDescription": "Automate build verification, test suites, and automated deployments with YAML workflow files.",
+      "detailedDescription": "Write continuous integration pipelines triggered on push or pull_request. Understand runners, steps, action versions, and environment secrets.",
+      "relatedTopicIds": [
+        "github-branching",
+        "github-pull-requests"
+      ],
+      "resources": [
+        {
+          "id": "gh-act-1",
+          "title": "Tutorial: Creating Your First Automated Lint & Build GitHub Action",
+          "description": "Complete walk-through authoring .github/workflows/ci.yml for React and Vite apps.",
+          "type": "Tutorial",
+          "url": "demo://github/actions/tutorial-first-ci-yaml",
+          "displayOrder": 1,
+          "durationOrPages": "15 min read",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "gh-act-1",
+          "phaseTitle": "YAML Authoring",
+          "objective": "Write automated continuous integration workflows."
+        }
+      ],
+      "displayOrder": 13
+    },
+    {
+      "id": "smart-work-prompting",
+      "categoryId": "smart-work",
+      "slug": "prompt-engineering",
+      "title": "AI Prompt Engineering for Knowledge Workers",
+      "difficulty": "Beginner",
+      "shortDescription": "Structure structured context, role framing, few-shot examples, and chain-of-thought prompts.",
+      "detailedDescription": "Unlock reliable, production-grade outputs from LLMs. Learn why generic questions yield hallucinations, and how few-shot prompting and system prompts transform output quality.",
+      "relatedTopicIds": [
+        "smart-work-keyboard-mastery"
+      ],
+      "resources": [
+        {
+          "id": "sw-res-1",
+          "title": "Infographic: The 5-Part Professional Prompt Framework",
+          "description": "Visual formula: Role, Context, Task, Constraints, Output Format.",
+          "type": "Infographic",
+          "url": "demo://smart-work/prompting/infographic-5-part-framework",
+          "displayOrder": 1,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "sw-res-2",
+          "title": "PDF: Prompting for Complex Data Analysis & Code Generation Handbook",
+          "description": "Tested prompt patterns for schema generation, regex creation, and error troubleshooting.",
+          "type": "PDF",
+          "url": "demo://smart-work/prompting/pdf-prompt-handbook.pdf",
+          "displayOrder": 2,
+          "durationOrPages": "14-page PDF",
+          "difficulty": "Intermediate",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "sw-res-1",
+          "phaseTitle": "Framework Adoption",
+          "objective": "Use the 5-part prompt structure."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "sw-res-2",
+          "phaseTitle": "Advanced Analysis",
+          "objective": "Execute data analysis prompts with constraint bounds."
+        }
+      ],
+      "displayOrder": 14
+    },
+    {
+      "id": "smart-work-keyboard-mastery",
+      "categoryId": "smart-work",
+      "slug": "keyboard-first-os",
+      "title": "Keyboard-First OS & Productivity",
+      "difficulty": "Beginner",
+      "shortDescription": "Eliminate mouse dependence with system window managers, terminal aliases, and launcher tools.",
+      "detailedDescription": "Fast digital work is keyboard-driven. Learn launcher utilities (Raycast, PowerToys Run), global clipboard managers, and essential window tiling.",
+      "relatedTopicIds": [
+        "smart-work-prompting"
+      ],
+      "resources": [
+        {
+          "id": "sw-key-1",
+          "title": "Video: Setting Up PowerToys & Keyboard Navigation for Maximum Flow",
+          "description": "Window snapping, global text extraction, and instant application switching setup.",
+          "type": "YouTube Video",
+          "url": "demo://smart-work/keyboard/video-powertoys-flow",
+          "displayOrder": 1,
+          "durationOrPages": "16 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "sw-key-1",
+          "phaseTitle": "OS Setup",
+          "objective": "Configure application launchers and window tiling."
+        }
+      ],
+      "displayOrder": 15
+    },
+    {
+      "id": "math-magic-vedic-multiplication",
+      "categoryId": "math-magic",
+      "slug": "vedic-multiplication",
+      "title": "Vedic Rapid Multiplication",
+      "difficulty": "Beginner",
+      "shortDescription": "Calculate 2-digit and 3-digit multiplication mentally in seconds using Vedic cross-multiplication.",
+      "detailedDescription": "Learn Urdhva Tiryagbhyam (Vertically and Crosswise) and Base multiplication methods to multiply figures without scratch paper.",
+      "relatedTopicIds": [
+        "math-magic-percentage-estimation"
+      ],
+      "resources": [
+        {
+          "id": "math-res-1",
+          "title": "Infographic: 2-Digit & 3-Digit Cross-Multiplication Diagram",
+          "description": "Visual step-by-step dot connection guide showing calculation vectors.",
+          "type": "Infographic",
+          "url": "demo://math/multiplication/infographic-vectors",
+          "displayOrder": 1,
+          "durationOrPages": "Visual Blueprint",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "id": "math-res-2",
+          "title": "Video: Base Multiplication Near 100 & 1000 in Under 5 Seconds",
+          "description": "Rapid mental trick for numbers close to powers of 10.",
+          "type": "YouTube Video",
+          "url": "demo://math/multiplication/video-base-method",
+          "displayOrder": 2,
+          "durationOrPages": "12 min video",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        },
+        {
+          "title": "Bases 100 or 1000 — Same Distance",
+          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
+          "directContentUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
+          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
+          "type": "Infographic",
+          "durationOrPages": "Visual Infographic",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "creatorName": "vksinglakkr",
+          "creatorUrl": "https://github.com/vksinglakkr",
+          "thumbnailUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
+          "isDemo": true,
+          "id": "res-mwmagzs0-vsbpxa",
+          "displayOrder": 3
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "math-res-1",
+          "phaseTitle": "Vector Memorization",
+          "objective": "Learn vertical and crosswise multiplication steps."
+        },
+        {
+          "stepNumber": 2,
+          "resourceId": "math-res-2",
+          "phaseTitle": "Base Method Speed",
+          "objective": "Compute numbers near 100 in under 5 seconds."
+        }
+      ],
+      "displayOrder": 16
+    },
+    {
+      "id": "math-magic-percentage-estimation",
+      "categoryId": "math-magic",
+      "slug": "percentage-estimation",
+      "title": "Rapid Percentage & Ratio Estimation",
+      "difficulty": "Intermediate",
+      "shortDescription": "Calculate margin percentages, discount combinations, and compound ratios mentally on the fly.",
+      "detailedDescription": "Essential for analysts and business operators: compute 1%, 5%, 10%, 25%, and split proportions without touching a calculator.",
+      "relatedTopicIds": [
+        "math-magic-vedic-multiplication"
+      ],
+      "resources": [
+        {
+          "id": "math-pct-1",
+          "title": "Infographic: The 10% & 1% Mental Splitting Method",
+          "description": "How to decompose complex numbers into additive percentage building blocks.",
+          "type": "Infographic",
+          "url": "demo://math/percentages/infographic-split-method",
+          "displayOrder": 1,
+          "durationOrPages": "Cheat Sheet Card",
+          "difficulty": "Beginner",
+          "isDemo": true,
+          "status": "Published"
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "math-pct-1",
+          "phaseTitle": "Decomposition",
+          "objective": "Break down percentages into 10% + 5% + 1% sums."
+        }
+      ],
+      "displayOrder": 17
+    }
+  ]
+}

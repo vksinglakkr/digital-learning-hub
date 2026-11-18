@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting to Digital Learning Hub...</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current URL and converts the path and query
+      // string into just a query string, then redirects the browser
+      // to the base URL with the path and query preserved in the search query.
+
+      // Path segments to keep:
+      // If deployed to a project repository subpath (e.g. https://<user>.github.io/<repo>/),
+      // we need to keep 1 path segment (<repo>).
+      // If deployed to a custom domain (e.g. https://learn.example.com/) or user page (https://<user>.github.io/),
+      // path segments to keep should be 0.
+      var pathParts = window.location.pathname.split('/').filter(Boolean);
+      var pathSegmentsToKeep = 1;
+
+      if (!window.location.hostname.endsWith('github.io') || pathParts.length === 0) {
+        pathSegmentsToKeep = 0;
+      }
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' : '') +
+        l.search.slice(1).replace(/&/g, '~and~') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to Digital Learning Hub...</p>
+  </body>
+</html>
+
