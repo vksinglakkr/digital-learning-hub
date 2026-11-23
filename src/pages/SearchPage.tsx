@@ -8,6 +8,7 @@ import { NoticeModal } from '../components/NoticeModal'
 import { usePublicCurriculum } from '../context/PublicCurriculumContext'
 import { CurriculumLoadingState } from '../components/common/CurriculumLoadingState'
 import { CurriculumErrorState } from '../components/common/CurriculumErrorState'
+import { ProminentTopicCard } from '../components/common/ProminentTopicCard'
 import { executeGlobalSearch } from '../utils/searchEngine'
 import type { AdminResourceType, TopicResource } from '../types'
 import { 
@@ -79,6 +80,13 @@ export const SearchPage: React.FC = () => {
   // Execute search using live context data
   const searchResults = executeGlobalSearch(queryParam, categories, topics)
   const { totalCount, matchingCategories, matchingTopics, matchingResources } = searchResults
+
+  // For the 'all' tab, deduplicate resources whose parent topic is already featured prominently in matchingTopics
+  // Resources belonging to other topics (e.g. cross-topic comparisons like Drill Through vs Bookmarks) are strictly preserved!
+  const matchedTopicIdSet = new Set(matchingTopics.map((m) => m.topic.id))
+  const displayedResources = activeTab === 'all'
+    ? matchingResources.filter((item) => !matchedTopicIdSet.has(item.topic.id))
+    : matchingResources
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -442,61 +450,32 @@ export const SearchPage: React.FC = () => {
                     </h2>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {matchingTopics.map(({ topic, category }) => {
-                      const catSlug = category?.slug || 'category'
-                      return (
-                        <Link
-                          key={topic.id}
-                          to={`/category/${catSlug}/topic/${topic.slug}`}
-                          className="group p-5 bg-white border border-slate-200 hover:border-teal-400 rounded-2xl shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
-                        >
-                          <div>
-                            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                              {category && (
-                                <span className="text-[10px] font-bold text-teal-800 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-100 uppercase tracking-wider">
-                                  {category.title}
-                                </span>
-                              )}
-                              <span className="text-[10px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
-                                {topic.difficulty}
-                              </span>
-                            </div>
-
-                            <h3 className="font-bold text-slate-900 text-base group-hover:text-teal-800 transition-colors mb-1.5">
-                              {topic.title}
-                            </h3>
-                            <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                              {topic.shortDescription}
-                            </p>
-                          </div>
-
-                          <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                            <span>{topic.resources.length} resources</span>
-                            <span className="font-semibold text-teal-700 group-hover:text-teal-900 inline-flex items-center gap-1">
-                              <span>Open Topic</span>
-                              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                            </span>
-                          </div>
-                        </Link>
-                      )
-                    })}
+                  <div className="space-y-4">
+                    {matchingTopics.map(({ topic, category }) => (
+                      <ProminentTopicCard
+                        key={topic.id}
+                        topic={topic}
+                        category={category}
+                      />
+                    ))}
                   </div>
                 </section>
               )}
 
               {/* 3. MATCHING RESOURCES */}
-              {(activeTab === 'all' || activeTab === 'resources') && matchingResources.length > 0 && (
+              {(activeTab === 'all' || activeTab === 'resources') && displayedResources.length > 0 && (
                 <section className="space-y-4">
                   <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
                     <Sparkles className="w-4 h-4 text-teal-700" />
                     <h2 className="text-sm font-extrabold uppercase tracking-wider text-slate-900">
-                      Learning Resources & Materials ({matchingResources.length})
+                      {activeTab === 'all' && matchingTopics.length > 0
+                        ? `Related Topic Materials & Cross-References (${displayedResources.length})`
+                        : `Learning Resources & Materials (${displayedResources.length})`}
                     </h2>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {matchingResources.map(({ resource, topic, category }) => {
+                    {displayedResources.map(({ resource, topic, category }) => {
                       const catSlug = category?.slug || 'category'
                       return (
                         <div

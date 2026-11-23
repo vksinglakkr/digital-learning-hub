@@ -427,6 +427,31 @@ export const DEMO_TOPICS: TopicItem[] = [
     ],
   },
 
+  {
+    id: 'power-bi-mwtdf445-pxb8gu',
+    categoryId: 'power-bi',
+    slug: 'slicer-basics',
+    title: 'Slicer Basics',
+    difficulty: 'Beginner',
+    shortDescription: 'Master interactive report filtering using Slicers in Power BI.',
+    detailedDescription: 'Learn essential Slicer types, styles, and configurations to build dynamic, interactive dashboards.',
+    relatedTopicIds: ['power-bi-bookmarks', 'power-bi-drill-through'],
+    resources: [
+      {
+        id: 'res-slicer-dropdown-1',
+        title: 'Dropdown Slicer — Interactive Beginner Lesson',
+        description: 'Learn how Dropdown Slicers save report canvas space while maintaining full cross-filtering power through an interactive simulator and step-by-step walkthrough.',
+        type: 'Tutorial',
+        url: 'tutorials/power-bi/slicer-basics/dropdown-slicer/index.html',
+        displayOrder: 1,
+        durationOrPages: '10 min lesson',
+        difficulty: 'Beginner',
+        status: 'Published',
+        isDemo: false,
+      },
+    ],
+  },
+
   // ===================== N8N TOPICS =====================
   {
     id: 'n8n-webhooks',

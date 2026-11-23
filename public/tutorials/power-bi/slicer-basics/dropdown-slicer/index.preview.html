@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Micro-Learning: Dropdown Slicer | Digital Learning Hub</title>
+  <style>
+    /* Reset & Theme Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --teal-700: #0f766e;
+      --teal-600: #0d9488;
+      --teal-500: #14b8a6;
+      --teal-100: #ccfbf1;
+      --teal-50: #f0fdfa;
+      --emerald-600: #059669;
+      --emerald-500: #10b981;
+      --emerald-50: #ecfdf5;
+      --rose-600: #e11d48;
+      --rose-50: #fff1f2;
+      --amber-600: #d97706;
+      --amber-500: #f59e0b;
+      --amber-50: #fffbeb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    section {
+      padding: 2.75rem 0;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* Top Navigation Header */
+    header.top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      padding: 0.75rem 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .badge-micro {
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--teal-500);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      font-size: 0.675rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+    }
+    .btn-teal {
+      background: var(--teal-600);
+      color: white;
+    }
+    .btn-teal:hover {
+      background: var(--teal-700);
+    }
+    .btn-outline-light {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.16);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--slate-900) 0%, #0c2b36 100%);
+      color: white;
+      padding: 3rem 0 2.5rem;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(20, 184, 166, 0.2);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      color: var(--teal-500);
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.725rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+    .hero-title {
+      font-size: 2.15rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 720px;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.775rem;
+    }
+    .stat-pill strong {
+      color: var(--teal-500);
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 1.75rem;
+    }
+    .section-eyebrow {
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal-700);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .section-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.35rem;
+    }
+    .section-desc {
+      font-size: 0.925rem;
+      color: var(--slate-600);
+      max-width: 680px;
+    }
+
+    /* Module 1: WOW Demonstration */
+    .wow-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      box-shadow: 0 4px 15px -2px rgba(0,0,0,0.04);
+      overflow: hidden;
+      padding: 1.5rem;
+    }
+    .mode-toggle-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      background: var(--slate-100);
+      padding: 0.35rem;
+      border-radius: 0.75rem;
+    }
+    .mode-btn {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: none;
+      background: transparent;
+      border-radius: 0.5rem;
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.15s;
+    }
+    .mode-btn.active {
+      background: white;
+      color: var(--teal-700);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .demo-canvas-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 1.5rem;
+      background: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .demo-canvas-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .slicer-sim-box {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.65rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .slicer-title-strip {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vertical-list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+    .city-check-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 0.375rem;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .city-check-btn:hover {
+      background: var(--slate-100);
+    }
+    .city-check-btn.selected {
+      background: var(--teal-50);
+      border-color: var(--teal-600);
+      color: var(--teal-800);
+      font-weight: 700;
+    }
+    .dropdown-select-control {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1.5px solid var(--teal-600);
+      border-radius: 0.45rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate-800);
+      background: white;
+      cursor: pointer;
+      outline: none;
+    }
+    .chart-preview-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .kpi-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-left: 4px solid var(--teal-600);
+      border-radius: 0.65rem;
+      padding: 0.85rem 1.15rem;
+    }
+    .kpi-lbl {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: uppercase;
+    }
+    .kpi-val {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      margin-top: 0.15rem;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 85px;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .bar-track {
+      background: var(--slate-100);
+      height: 1rem;
+      border-radius: 0.3rem;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--teal-600);
+      border-radius: 0.3rem;
+      transition: width 0.3s;
+    }
+
+    /* Educational Callout */
+    .edu-callout {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #2563eb;
+      border-radius: 0.65rem;
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+      color: #1e40af;
+      line-height: 1.5;
+    }
+
+    /* Module 3: Clean Sample Data */
+    .data-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.85rem;
+      overflow: hidden;
+    }
+    .data-table-header {
+      background: var(--slate-100);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.825rem;
+      text-align: left;
+    }
+    table.data-table th {
+      background: var(--slate-800);
+      color: white;
+      padding: 0.6rem 0.85rem;
+      font-weight: 700;
+    }
+    table.data-table td {
+      padding: 0.55rem 0.85rem;
+      border-bottom: 1px solid var(--slate-100);
+      color: var(--slate-700);
+    }
+    table.data-table tr:hover td {
+      background: var(--slate-50);
+    }
+
+    /* Module 4: 4 Practical Steps */
+    .stepper-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .step-badge {
+      display: inline-block;
+      font-size: 0.725rem;
+      font-weight: 800;
+      background: var(--teal-50);
+      color: var(--teal-700);
+      border: 1px solid var(--teal-100);
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      margin-bottom: 0.5rem;
+    }
+    .action-tag {
+      display: inline-block;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      color: var(--slate-900);
+      font-weight: 700;
+      font-size: 0.825em;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+    }
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.5rem;
+    }
+    .step-instruction {
+      font-size: 0.925rem;
+      color: var(--slate-700);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .step-img-frame {
+      background: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.65rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .step-img-frame svg {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .outcome-box {
+      background: var(--emerald-50);
+      border: 1px solid #a7f3d0;
+      border-left: 4px solid var(--emerald-600);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #065f46;
+      margin-bottom: 0.65rem;
+    }
+    .protip-box {
+      background: var(--amber-50);
+      border: 1px solid #fde68a;
+      border-left: 4px solid var(--amber-500);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #92400e;
+      margin-bottom: 1rem;
+    }
+    .step-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    /* Module 5: Practice Challenge */
+    .practice-box {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+    .challenge-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--slate-800);
+    }
+
+    /* Module 6: Quiz */
+    .quiz-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.85rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .quiz-q {
+      font-size: 0.925rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.75rem;
+    }
+    .quiz-opt-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.55rem 0.85rem;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-300);
+      border-radius: 0.45rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      margin-bottom: 0.4rem;
+      transition: all 0.15s;
+    }
+    .quiz-opt-btn:hover {
+      background: var(--slate-100);
+    }
+    .quiz-opt-btn.correct {
+      background: var(--emerald-50);
+      border-color: var(--emerald-600);
+      color: #065f46;
+      font-weight: 700;
+    }
+    .quiz-opt-btn.wrong {
+      background: var(--rose-50);
+      border-color: var(--rose-600);
+      color: #9f1239;
+    }
+    .quiz-fb {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--slate-900);
+      color: white;
+      padding: 0.65rem 1.15rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-bar">
+    <div class="container header-inner">
+      <div class="brand-title">
+        <span style="font-size:1.2rem;">⚡</span>
+        <span>Power BI Micro-Learning: Dropdown Slicer</span>
+        <span class="badge-micro">Single Feature V1</span>
+      </div>
+      <div>
+        <button class="btn btn-outline-light" onclick="resetAllDemos()">
+          <span>🔄 Reset Demo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero-banner">
+    <div class="container">
+      <div class="hero-tag">
+        <span>MICRO-LEARNING • POWER BI</span> &bull; <span>ABSOLUTE BEGINNER</span>
+      </div>
+      <h1 class="hero-title">Vertical List Ko Banayein<br>Compact Dropdown Slicer</h1>
+      <p class="hero-subtitle">
+        Filtering ka visual asar bilkul wahi rahega, lekin report canvas par 80% jagah bach jayegi! Sirf 4 saral steps mein seekhein.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-pill"><strong>1 WOW Demo:</strong> Before vs After</div>
+        <div class="stat-pill"><strong>4 Steps:</strong> Quick Micro-Steps</div>
+        <div class="stat-pill"><strong>6 Cities:</strong> Verified Dataset</div>
+        <div class="stat-pill"><strong>1 Task:</strong> Instant Practice</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 1: WOW DEMONSTRATION -->
+  <section id="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 1 • Show The Power First</span>
+        <h2 class="section-title">Before vs After: Space Ka Jaadu Dekhein</h2>
+        <p class="section-desc">
+          Niche diye gaye buttons se Vertical List aur Dropdown ke beech toggle karein aur dekhein ki canvas space par kya asar padta hai.
+        </p>
+      </div>
+
+      <div class="wow-card">
+        <div class="mode-toggle-bar">
+          <button class="mode-btn" id="btn-mode-vertical" onclick="setDemoMode('vertical')">
+            <span>❌ Before: Vertical List (Space Killer)</span>
+          </button>
+          <button class="mode-btn active" id="btn-mode-dropdown" onclick="setDemoMode('dropdown')">
+            <span>✅ After: Dropdown Slicer (Space Saver)</span>
+          </button>
+        </div>
+
+        <div class="demo-canvas-grid">
+          <!-- Slicer Side Box -->
+          <div class="slicer-sim-box">
+            <div class="slicer-title-strip">
+              <span id="slicer-mode-label">City Slicer (Dropdown)</span>
+              <button onclick="clearSelection()" style="background:none; border:none; cursor:pointer;" title="Clear filter">🧹</button>
+            </div>
+
+            <!-- Vertical List View -->
+            <div class="vertical-list-container" id="sim-vertical-view" style="display:none;">
+              <button class="city-check-btn selected" data-city="All" onclick="selectCity('All')">☑ All (6 Cities)</button>
+              <button class="city-check-btn" data-city="Delhi" onclick="selectCity('Delhi')">☐ Delhi</button>
+              <button class="city-check-btn" data-city="Mumbai" onclick="selectCity('Mumbai')">☐ Mumbai</button>
+              <button class="city-check-btn" data-city="Bengaluru" onclick="selectCity('Bengaluru')">☐ Bengaluru</button>
+              <button class="city-check-btn" data-city="Kolkata" onclick="selectCity('Kolkata')">☐ Kolkata</button>
+              <button class="city-check-btn" data-city="Chennai" onclick="selectCity('Chennai')">☐ Chennai</button>
+              <button class="city-check-btn" data-city="Hyderabad" onclick="selectCity('Hyderabad')">☐ Hyderabad</button>
+            </div>
+
+            <!-- Dropdown View -->
+            <div id="sim-dropdown-view">
+              <select class="dropdown-select-control" id="sim-city-dropdown" onchange="selectCity(this.value)">
+                <option value="All">All Cities (₹6,50,000)</option>
+                <option value="Delhi">Delhi (₹1,20,000)</option>
+                <option value="Mumbai">Mumbai (₹1,45,000)</option>
+                <option value="Bengaluru">Bengaluru (₹1,10,000)</option>
+                <option value="Kolkata">Kolkata (₹95,000)</option>
+                <option value="Chennai">Chennai (₹88,000)</option>
+                <option value="Hyderabad">Hyderabad (₹92,000)</option>
+              </select>
+            </div>
+
+            <div style="font-size:0.75rem; color:#64748b; margin-top:auto;" id="space-saved-note">
+              💡 <strong>Space Status:</strong> Dropdown mode sirf 36px uncha hai (80% space saved)!
+            </div>
+          </div>
+
+          <!-- Canvas Chart Box -->
+          <div class="chart-preview-box">
+            <div class="kpi-card">
+              <div class="kpi-lbl" id="kpi-title-label">Monthly Sales Revenue (All Cities)</div>
+              <div class="kpi-val" id="kpi-sales-amount">₹6,50,000</div>
+            </div>
+
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:0.65rem; padding:1rem;">
+              <div style="font-size:0.8rem; font-weight:800; color:#334155; margin-bottom:0.75rem;">
+                Sales Comparison Chart:
+              </div>
+              <div id="bar-chart-render">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-callout">
+          <strong>यहाँ क्या हुआ? (Key Takeaway):</strong>
+          Dropdown Slicer lagane se filter karne ka function bilkul nahi badalta! Mumbai chunne par chart Mumbai ka hi sales data (₹1,45,000) dikhayega. Lekin visual ab canvas ka adha hissa gherne ke bajaye ek patli line mein samat gaya hai.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: RELATABLE PROBLEM -->
+  <section id="problem" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 2 • Practical Problem</span>
+        <h2 class="section-title">Vertical List Se Dashboard Kyun Kharaab Hota Hai?</h2>
+        <p class="section-desc">
+          Power BI mein by default slicer ek lambi vertical checkbox list banata hai. Isse aamtaur par 3 badi samasyayein aati hain:
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1rem;">
+        <div style="background:#fffafa; border:1px solid #fecdd3; border-top:3px solid #e11d48; border-radius:0.75rem; padding:1.25rem;">
+          <h3 style="font-size:0.95rem; font-weight:800; color:#9f1239; margin-bottom:0.4rem;">1. Canvas Space Ki Barbaadi</h3>
+          <p style="font-size:0.85rem; color:#475569; line-height:1.5;">
+            Agar 10 ya 15 cities hain, toh vertical list adha screen gher leti hai aur zaroori sales charts ke liye jagah nahi bachti.
+          </p>
+        </div>
+
+        <div style="background:#fffafa; border:1px solid #fecdd3; border-top:3px solid #e11d48; border-radius:0.75rem; padding:1.25rem;">
+          <h3 style="font-size:0.95rem; font-weight:800; color:#9f1239; margin-bottom:0.4rem;">2. Bura Scrollbar Experience</h3>
+          <p style="font-size:0.85rem; color:#475569; line-height:1.5;">
+            Slicer ke andar chhota sa scrollbar ban jata hai, jisse user ko niche ke options dekhne ke liye bar-bar scroll karna padta hai.
+          </p>
+        </div>
+
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-top:3px solid #16a34a; border-radius:0.75rem; padding:1.25rem;">
+          <h3 style="font-size:0.95rem; font-weight:800; color:#14532d; margin-bottom:0.4rem;">3. Dropdown Solution</h3>
+          <p style="font-size:0.85rem; color:#475569; line-height:1.5;">
+            Dropdown chunne par sabhi options ek click par pop-up menu mein khulte hain aur normal halat mein sirf 1 line space lete hain!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: COMPACT SAMPLE DATA -->
+  <section id="data">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 3 • Sample Dataset</span>
+        <h2 class="section-title">6-Row Practice Dataset</h2>
+        <p class="section-desc">
+          Ise aap apne computer par Power BI Desktop mein Enter Data ya Excel ke zariye paste kar sakte hain. Total Sales: <strong>₹6,50,000</strong>.
+        </p>
+      </div>
+
+      <div class="data-card">
+        <div class="data-table-header">
+          <div style="font-size:0.8rem; font-weight:700; color:#334155;">
+            📍 City Sales Table (6 Records &bull; Mumbai: ₹1,45,000)
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline-light" style="background:white; color:#334155; border:1px solid #cbd5e1;" onclick="copyData()">
+              📋 Copy Table
+            </button>
+            <button class="btn btn-teal" onclick="downloadCsv()">
+              ⬇️ Download CSV
+            </button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Region</th>
+              <th>Monthly Sales (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Delhi</td><td>North</td><td style="font-weight:700;">₹1,20,000</td></tr>
+            <tr><td>Mumbai</td><td>West</td><td style="font-weight:700; color:#0d9488;">₹1,45,000</td></tr>
+            <tr><td>Bengaluru</td><td>South</td><td style="font-weight:700;">₹1,10,000</td></tr>
+            <tr><td>Kolkata</td><td>East</td><td style="font-weight:700;">₹95,000</td></tr>
+            <tr><td>Chennai</td><td>South</td><td style="font-weight:700;">₹88,000</td></tr>
+            <tr><td>Hyderabad</td><td>South</td><td style="font-weight:700;">₹92,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: 4 PRACTICAL MICRO-STEPS -->
+  <section id="steps" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 4 • Step-by-Step Practical</span>
+        <h2 class="section-title">Dropdown Slicer Kaise Banayein (4 Steps)</h2>
+        <p class="section-desc">
+          Ek samay mein sirf ek kaam! Power BI Desktop mein niche diye gaye steps ko follow karein.
+        </p>
+      </div>
+
+      <div class="stepper-card">
+        <span class="step-badge" id="step-badge-text">Step 01 / 04</span>
+        <h3 class="step-title" id="step-title-text">1. Canvas Par Slicer Visual Select Karein</h3>
+        <p class="step-instruction" id="step-instruction-text">
+          Apne report canvas par pehle se bane <span class="action-tag">City Slicer</span> visual par ek baar click karein taaki uspar selection handles nazar aane lagein.
+        </p>
+
+        <div class="step-img-frame" id="step-svg-area">
+          <!-- Populated via JS -->
+        </div>
+
+        <div class="outcome-box">
+          <strong>✅ Expected Outcome:</strong>
+          <span id="step-outcome-text">Slicer visual ke charo taraf selection border handles active ho jayenge.</span>
+        </div>
+
+        <div class="protip-box">
+          <strong>💡 Beginner Rule:</strong>
+          <span id="step-protip-text">Visual select kiye bina Format pane mein Slicer ki specific settings nahi khulti hain.</span>
+        </div>
+
+        <div class="step-nav-bar">
+          <button class="btn btn-outline-light" id="btn-prev-step" style="background:#f1f5f9; color:#334155; border:1px solid #cbd5e1;" onclick="prevStep()">
+            ◀ Previous
+          </button>
+          <button class="btn btn-teal" id="btn-next-step" onclick="nextStep()">
+            Next Step ▶
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 5: HANDS-ON PRACTICE ACTIVITY -->
+  <section id="practice">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 5 • Quick Lab</span>
+        <h2 class="section-title">अब आप खुद करके देखिए! (Practice Activity)</h2>
+        <p class="section-desc">
+          Niche diye gaye practice simulator mein Vertical Slicer ko Dropdown mein convert karein aur Bengaluru select karein.
+        </p>
+      </div>
+
+      <div class="practice-box">
+        <div class="challenge-step">
+          <input type="checkbox" id="task-chk-1" style="width:1.15rem; height:1.15rem; accent-color:#0d9488;" disabled>
+          <label><strong>Task 1:</strong> Niche diye gaye <em>"Convert to Dropdown"</em> button par click karein.</label>
+        </div>
+
+        <div class="challenge-step">
+          <input type="checkbox" id="task-chk-2" style="width:1.15rem; height:1.15rem; accent-color:#0d9488;" disabled>
+          <label><strong>Task 2:</strong> Dropdown kholkar <strong>"Bengaluru"</strong> ya <strong>"Mumbai"</strong> select karein.</label>
+        </div>
+
+        <!-- Practice Canvas Mini-Workspace -->
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:0.75rem; padding:1.25rem; margin-top:1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <button class="btn btn-teal" id="practice-convert-btn" onclick="practiceConvert()">
+              ⚡ Convert to Dropdown Style
+            </button>
+            <span id="practice-status-badge" style="font-size:0.775rem; font-weight:700; color:#64748b; background:#e2e8f0; padding:0.25rem 0.65rem; border-radius:9999px;">
+              Current: Vertical List
+            </span>
+          </div>
+
+          <div id="practice-slicer-area" style="background:white; border:1px solid #cbd5e1; border-radius:0.5rem; padding:0.85rem; max-width:280px; margin-bottom:1rem;">
+            <!-- Vertical initially -->
+            <div id="practice-vertical-list">
+              <div style="font-size:0.75rem; font-weight:700; color:#64748b; margin-bottom:0.35rem;">City List</div>
+              <div style="font-size:0.8rem; padding:0.2rem 0;">☐ Delhi</div>
+              <div style="font-size:0.8rem; padding:0.2rem 0;">☐ Mumbai</div>
+              <div style="font-size:0.8rem; padding:0.2rem 0;">☐ Bengaluru</div>
+            </div>
+            <!-- Dropdown after conversion -->
+            <div id="practice-dropdown-holder" style="display:none;">
+              <select id="practice-dropdown-select" onchange="practiceSelectCity(this.value)" style="width:100%; padding:0.4rem; font-size:0.85rem; font-weight:700; border:1.5px solid #0d9488; border-radius:4px;">
+                <option value="">-- Choose City --</option>
+                <option value="Delhi">Delhi (₹1.20L)</option>
+                <option value="Mumbai">Mumbai (₹1.45L)</option>
+                <option value="Bengaluru">Bengaluru (₹1.10L)</option>
+                <option value="Kolkata">Kolkata (₹95k)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="practice-success-alert" style="display:none; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:0.5rem; padding:0.85rem; color:#065f46; font-size:0.875rem; font-weight:700;">
+            🎉 शाबाश! आपने सफलतापूर्वक Slicer को Dropdown में बदला और डेटा भी फ़िल्टर कर लिया!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 6: OPTIONAL 2-QUESTION MINI QUIZ -->
+  <section id="quiz" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 6 • Knowledge Check (Optional)</span>
+        <h2 class="section-title">2-Minute Concept Check</h2>
+        <p class="section-desc">
+          Apne understanding ko test karein!
+        </p>
+      </div>
+
+      <div class="quiz-card" id="qc-1">
+        <div class="quiz-q">1. Vertical List ke mukable Dropdown Slicer ka sabse bada benefit kya hai?</div>
+        <button class="quiz-opt-btn" onclick="checkQ(1, 0, false, this)">Data automatically double count ho jata hai</button>
+        <button class="quiz-opt-btn" onclick="checkQ(1, 1, true, this)">Canvas par 80% space bachti hai aur clean look milta hai</button>
+        <button class="quiz-opt-btn" onclick="checkQ(1, 2, false, this)">Power BI Desktop band ho jata hai</button>
+        <div class="quiz-fb" id="qfb-1"></div>
+      </div>
+
+      <div class="quiz-card" id="qc-2">
+        <div class="quiz-q">2. Slicer ko Dropdown mein badalne ke liye kis menu mein jaana hota hai?</div>
+        <button class="quiz-opt-btn" onclick="checkQ(2, 0, false, this)">Home > New Measure</button>
+        <button class="quiz-opt-btn" onclick="checkQ(2, 1, false, this)">File > Save As</button>
+        <button class="quiz-opt-btn" onclick="checkQ(2, 2, true, this)">Format visual > Slicer settings > Style</button>
+        <div class="quiz-fb" id="qfb-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <span style="font-size:1.1rem;">🔔</span>
+    <span id="toast-text">Notification</span>
+  </div>
+
+  <script>
+    // --- 1. DATASET ---
+    const cityData = [
+      { city: 'Delhi', region: 'North', sales: 120000 },
+      { city: 'Mumbai', region: 'West', sales: 145000 },
+      { city: 'Bengaluru', region: 'South', sales: 110000 },
+      { city: 'Kolkata', region: 'East', sales: 95000 },
+      { city: 'Chennai', region: 'South', sales: 88000 },
+      { city: 'Hyderabad', region: 'South', sales: 92000 }
+    ];
+
+    let currentMode = 'dropdown'; // 'vertical' or 'dropdown'
+    let currentSelectedCity = 'All';
+
+    // --- 2. WOW DEMO INTERACTION ---
+    function setDemoMode(mode) {
+      currentMode = mode;
+      document.getElementById('btn-mode-vertical').classList.toggle('active', mode === 'vertical');
+      document.getElementById('btn-mode-dropdown').classList.toggle('active', mode === 'dropdown');
+
+      const vertView = document.getElementById('sim-vertical-view');
+      const dropView = document.getElementById('sim-dropdown-view');
+      const modeLabel = document.getElementById('slicer-mode-label');
+      const note = document.getElementById('space-saved-note');
+
+      if (mode === 'vertical') {
+        vertView.style.display = 'flex';
+        dropView.style.display = 'none';
+        modeLabel.innerText = 'City Slicer (Vertical List)';
+        note.innerHTML = '⚠️ <strong>Space Warning:</strong> 6 checkboxes 240px vertical space le rahe hain!';
+        note.style.color = '#e11d48';
+      } else {
+        vertView.style.display = 'none';
+        dropView.style.display = 'block';
+        modeLabel.innerText = 'City Slicer (Dropdown)';
+        note.innerHTML = '💡 <strong>Space Status:</strong> Dropdown mode sirf 36px uncha hai (80% space saved)!';
+        note.style.color = '#0d9488';
+      }
+      renderDemoChart();
+    }
+
+    function selectCity(city) {
+      currentSelectedCity = city;
+
+      // Update vertical buttons
+      document.querySelectorAll('.city-check-btn').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.city === city);
+      });
+
+      // Update dropdown select
+      document.getElementById('sim-city-dropdown').value = city;
+
+      renderDemoChart();
+    }
+
+    function clearSelection() {
+      selectCity('All');
+      showToast("Filter cleared! Restored all 6 cities.");
+    }
+
+    function renderDemoChart() {
+      const kpiTitle = document.getElementById('kpi-title-label');
+      const kpiVal = document.getElementById('kpi-sales-amount');
+      const chartArea = document.getElementById('bar-chart-render');
+
+      let filtered = cityData;
+      if (currentSelectedCity !== 'All') {
+        filtered = cityData.filter(c => c.city === currentSelectedCity);
+        kpiTitle.innerText = 'Sales Revenue: ' + currentSelectedCity;
+      } else {
+        kpiTitle.innerText = 'Monthly Sales Revenue (All 6 Cities)';
+      }
+
+      const total = filtered.reduce((s, c) => s + c.sales, 0);
+      kpiVal.innerText = '₹' + total.toLocaleString('en-IN');
+
+      const maxVal = 145000;
+      chartArea.innerHTML = filtered.map(c => {
+        const pct = Math.round((c.sales / maxVal) * 100);
+        return '<div class="bar-row">' +
+          '<span style="font-weight:700; color:#334155;">' + c.city + '</span>' +
+          '<div class="bar-track">' +
+            '<div class="bar-fill" style="width:' + pct + '%;"></div>' +
+          '</div>' +
+          '<span style="font-weight:700; text-align:right; color:#0d9488;">₹' + c.sales.toLocaleString('en-IN') + '</span>' +
+        '</div>';
+      }).join('');
+    }
+
+    // --- 3. PRACTICAL STEPS DATA ---
+    const steps = [
+      {
+        id: 1,
+        title: "1. Canvas Par Slicer Visual Select Karein",
+        instruction: "Apne report canvas par pehle se bane <span class='action-tag'>City Slicer</span> visual par ek baar click karein taaki uspar selection handles nazar aane lagein.",
+        outcome: "Slicer visual ke charo taraf selection border handles active ho jayenge.",
+        protip: "Visual select kiye bina Format pane mein Slicer ki specific settings nahi khulti hain.",
+        svg: '<svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="180" fill="#f8fafc" rx="8"/><rect x="30" y="25" width="130" height="135" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="4"/><text x="40" y="45" font-size="10" font-weight="bold" fill="#0f172a">City Slicer</text><text x="40" y="65" font-size="9" fill="#475569">☐ Delhi</text><text x="40" y="85" font-size="9" fill="#475569">☐ Mumbai</text><text x="40" y="105" font-size="9" fill="#475569">☐ Bengaluru</text><circle cx="150" cy="40" r="11" fill="#e11d48"/><text x="150" y="44" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text><rect x="180" y="25" width="150" height="135" fill="#ffffff" stroke="#cbd5e1" rx="4"/><text x="195" y="55" font-size="9" font-weight="bold" fill="#64748b">Report Visuals</text></svg>'
+      },
+      {
+        id: 2,
+        title: "2. Format Visual Pane Kholein",
+        instruction: "Screen ke right side par bane Visualizations panel mein paintbrush jaisa dikhne wala <span class='action-tag'>Format visual</span> icon chunein.",
+        outcome: "Visualizations panel mein 'Visual' aur 'General' formatting tabs open ho jayenge.",
+        protip: "Paintbrush icon ka upayog Power BI mein visual appearance badalne ke liye hota hai.",
+        svg: '<svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="180" fill="#f8fafc" rx="8"/><rect x="30" y="20" width="160" height="140" fill="#ffffff" stroke="#cbd5e1" rx="4"/><text x="45" y="50" font-size="10" fill="#94a3b8">Active Slicer</text><rect x="210" y="20" width="125" height="140" fill="#ffffff" stroke="#cbd5e1" rx="4"/><rect x="220" y="35" width="28" height="28" fill="#f1f5f9" stroke="#cbd5e1" rx="4"/><rect x="255" y="35" width="28" height="28" fill="#0d9488" rx="4"/><text x="269" y="53" font-size="12" fill="#ffffff" text-anchor="middle">🖌️</text><circle cx="280" cy="40" r="11" fill="#e11d48"/><text x="280" y="44" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text><text x="220" y="85" font-size="9" font-weight="bold" fill="#0f172a">Format visual</text></svg>'
+      },
+      {
+        id: 3,
+        title: "3. Slicer Settings > Options Section Kholein",
+        instruction: "Format visual tab ke andar <span class='action-tag'>Visual > Slicer settings > Options</span> accordion par click karein.",
+        outcome: "Options section expand hokar Style dropdown menu ko display karega.",
+        protip: "Yahan default Style 'Vertical list' par set hoti hai.",
+        svg: '<svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="180" fill="#f8fafc" rx="8"/><rect x="50" y="20" width="260" height="140" fill="#ffffff" stroke="#cbd5e1" rx="6"/><rect x="65" y="35" width="230" height="26" fill="#f1f5f9" rx="4"/><text x="75" y="52" font-size="10" font-weight="bold" fill="#0f172a">▼ Slicer settings</text><rect x="75" y="70" width="210" height="26" fill="#eff6ff" stroke="#93c5fd" rx="3"/><text x="85" y="87" font-size="9" font-weight="bold" fill="#1d4ed8">▼ Options</text><circle cx="280" cy="83" r="11" fill="#e11d48"/><text x="280" y="87" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text><text x="85" y="115" font-size="9" fill="#64748b">Style: Vertical list</text></svg>'
+      },
+      {
+        id: 4,
+        title: "4. Style Ko 'Dropdown' Par Set Karein",
+        instruction: "Style ke samne bane dropdown par click karein aur 'Vertical list' ki jagah <span class='action-tag'>Dropdown</span> select karein.",
+        outcome: "Canvas par Slicer visual turant collapse hokar ek compact single-line box ban jayega jisme ek dropdown arrow nazar aayega.",
+        protip: "Congratulations! Ab aapka slicer canvas space 80% bachayega bina kisi filter logic ko badle.",
+        svg: '<svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg"><rect width="360" height="180" fill="#f8fafc" rx="8"/><rect x="30" y="30" width="140" height="120" fill="#ffffff" stroke="#cbd5e1" rx="4"/><text x="40" y="50" font-size="9" font-weight="bold">Style Menu:</text><rect x="40" y="65" width="120" height="24" fill="#0d9488" rx="3"/><text x="48" y="81" font-size="9" font-weight="bold" fill="#ffffff">✓ Dropdown</text><circle cx="155" cy="77" r="11" fill="#e11d48"/><text x="155" y="81" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text><rect x="190" y="30" width="140" height="36" fill="#ffffff" stroke="#0d9488" stroke-width="2" rx="4"/><text x="200" y="53" font-size="9" font-weight="bold" fill="#0f172a">City: All ▼</text><text x="190" y="90" font-size="9" font-weight="bold" fill="#059669">✓ 80% Space Saved!</text></svg>'
+      }
+    ];
+
+    let currentStep = 0;
+    function renderStep(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= steps.length) idx = steps.length - 1;
+      currentStep = idx;
+
+      const s = steps[idx];
+      document.getElementById('step-badge-text').innerText = 'Step ' + String(s.id).padStart(2, '0') + ' / 04';
+      document.getElementById('step-title-text').innerText = s.title;
+      document.getElementById('step-instruction-text').innerHTML = s.instruction;
+      document.getElementById('step-outcome-text').innerText = s.outcome;
+      document.getElementById('step-protip-text').innerText = s.protip;
+      document.getElementById('step-svg-area').innerHTML = s.svg;
+
+      document.getElementById('btn-prev-step').disabled = idx === 0;
+      document.getElementById('btn-next-step').disabled = idx === steps.length - 1;
+    }
+
+    function prevStep() { renderStep(currentStep - 1); }
+    function nextStep() { renderStep(currentStep + 1); }
+
+    // --- 4. PRACTICE LAB ---
+    let practiceIsDropdown = false;
+    function practiceConvert() {
+      practiceIsDropdown = true;
+      document.getElementById('practice-vertical-list').style.display = 'none';
+      document.getElementById('practice-dropdown-holder').style.display = 'block';
+      document.getElementById('task-chk-1').checked = true;
+      document.getElementById('practice-status-badge').innerText = 'Current: Dropdown Style ✓';
+      document.getElementById('practice-status-badge').style.background = '#ccfbf1';
+      document.getElementById('practice-status-badge').style.color = '#0f766e';
+      showToast("Converted to Dropdown! Now pick a city in Task 2.");
+    }
+
+    function practiceSelectCity(val) {
+      if (!val) return;
+      document.getElementById('task-chk-2').checked = true;
+      document.getElementById('practice-success-alert').style.display = 'block';
+      showToast("Task 2 complete! Filtered by " + val);
+    }
+
+    // --- 5. MINI QUIZ ---
+    function checkQ(qNum, optIdx, isCorrect, btnEl) {
+      const card = document.getElementById('qc-' + qNum);
+      const fb = document.getElementById('qfb-' + qNum);
+      card.querySelectorAll('.quiz-opt-btn').forEach(b => b.disabled = true);
+
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        fb.style.color = '#059669';
+        fb.innerHTML = '<strong>✓ Sahi Jawab!</strong> Dropdown style space bachata hai aur layout ko clutter-free banata hai.';
+      } else {
+        btnEl.classList.add('wrong');
+        fb.style.color = '#e11d48';
+        fb.innerHTML = '<strong>✗ Galat Jawab.</strong> Sahi option: Canvas par space bachana aur clean layout paana.';
+      }
+      fb.style.display = 'block';
+    }
+
+    // --- 6. UTILITIES ---
+    function copyData() {
+      const text = "City\tRegion\tMonthly Sales\n" +
+        cityData.map(r => r.city + "\t" + r.region + "\t" + r.sales).join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("✓ Copied 6-row table to clipboard (TSV)!");
+      });
+    }
+
+    function downloadCsv() {
+      const text = "City,Region,Monthly Sales\n" +
+        cityData.map(r => r.city + "," + r.region + "," + r.sales).join('\n');
+      const blob = new Blob([text], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'power_bi_city_sales_6_rows.csv';
+      a.click();
+      showToast("Downloaded 'power_bi_city_sales_6_rows.csv'!");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      t.style.display = 'flex';
+      setTimeout(() => { t.style.display = 'none'; }, 3000);
+    }
+
+    function resetAllDemos() {
+      setDemoMode('dropdown');
+      selectCity('All');
+      renderStep(0);
+      showToast("Demo reset to default state!");
+    }
+
+    // Page Load Init
+    window.addEventListener('DOMContentLoaded', () => {
+      setDemoMode('dropdown');
+      selectCity('All');
+      renderStep(0);
+    });
+  </script>
+</body>
+</html>

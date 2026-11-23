@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Slicer Basics: Interactive Masterclass | Digital Learning Hub</title>
+  <style>
+
+    /* Reset & Base Variables */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --teal-700: #0f766e;
+      --teal-600: #0d9488;
+      --teal-500: #14b8a6;
+      --teal-100: #ccfbf1;
+      --teal-50: #f0fdfa;
+      --emerald-600: #059669;
+      --emerald-500: #10b981;
+      --emerald-50: #ecfdf5;
+      --rose-600: #e11d48;
+      --rose-500: #f43f5e;
+      --rose-50: #fff1f2;
+      --amber-600: #d97706;
+      --amber-500: #f59e0b;
+      --amber-50: #fffbeb;
+      --indigo-600: #4f46e5;
+      --indigo-50: #eef2ff;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    /* Top Sticky Header */
+    header.top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      padding: 0.8rem 0;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+    .badge-pilot {
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--teal-500);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+    }
+    .btn-teal {
+      background: var(--teal-600);
+      color: white;
+    }
+    .btn-teal:hover {
+      background: var(--teal-700);
+    }
+    .btn-outline-light {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.16);
+    }
+    .btn-dark {
+      background: var(--slate-900);
+      color: white;
+    }
+    .btn-dark:hover {
+      background: var(--slate-800);
+    }
+
+    /* Sticky Navigation Sub-Bar */
+    nav.sub-nav {
+      background: white;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 50px;
+      z-index: 40;
+      overflow-x: auto;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .nav-inner {
+      display: flex;
+      gap: 0.35rem;
+      padding: 0.45rem 0;
+    }
+    .nav-inner a {
+      color: var(--slate-600);
+      font-size: 0.825rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .nav-inner a:hover, .nav-inner a.active {
+      color: var(--teal-700);
+      background: var(--teal-50);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--slate-900) 0%, #0d2833 100%);
+      color: white;
+      padding: 3.5rem 0 3rem;
+      position: relative;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(20, 184, 166, 0.2);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      color: var(--teal-500);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 2.35rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: #94a3b8;
+      max-width: 780px;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      max-width: 860px;
+      margin-bottom: 1.5rem;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--teal-500);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+    }
+    .hero-sequence {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.8rem;
+    }
+    .seq-step {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .seq-arrow {
+      color: var(--teal-500);
+      font-weight: 700;
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 2rem;
+    }
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal-700);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.4rem;
+    }
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--slate-600);
+      max-width: 760px;
+    }
+
+    /* Card Shells */
+    .card-shell {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 15px -2px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    /* Module 1: WOW Demos */
+    .wow-tabs {
+      display: flex;
+      background: var(--slate-100);
+      border-bottom: 1px solid var(--slate-200);
+      padding: 0.4rem 0.5rem 0;
+      overflow-x: auto;
+      gap: 0.35rem;
+    }
+    .wow-tab-btn {
+      padding: 0.65rem 1.15rem;
+      font-size: 0.825rem;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      color: var(--slate-600);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s;
+    }
+    .wow-tab-btn.active {
+      background: white;
+      color: var(--teal-700);
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.02);
+    }
+    .wow-content {
+      padding: 1.75rem;
+    }
+    .wow-preview-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
+      background: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 840px) {
+      .wow-preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .slicer-control-panel {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .slicer-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--slate-500);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-tile-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+      gap: 0.4rem;
+    }
+    .tile-btn {
+      padding: 0.5rem 0.4rem;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-300);
+      border-radius: 0.45rem;
+      font-size: 0.775rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .tile-btn:hover {
+      background: var(--slate-100);
+      border-color: var(--slate-400);
+    }
+    .tile-btn.active {
+      background: var(--teal-600);
+      border-color: var(--teal-700);
+      color: white;
+      box-shadow: 0 2px 4px rgba(13,148,136,0.25);
+    }
+    .dropdown-select {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--slate-300);
+      border-radius: 0.45rem;
+      font-size: 0.825rem;
+      font-family: inherit;
+      background: white;
+      color: var(--slate-800);
+      outline: none;
+    }
+    .dropdown-select:focus {
+      border-color: var(--teal-600);
+      box-shadow: 0 0 0 2px rgba(13,148,136,0.15);
+    }
+    .canvas-display-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+    .kpi-box {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 0.85rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .kpi-box.highlight {
+      border-left: 4px solid var(--teal-600);
+    }
+    .kpi-box.target {
+      border-left: 4px solid var(--indigo-600);
+    }
+    .kpi-sub {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .kpi-num {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      margin-top: 0.15rem;
+    }
+    .bar-chart-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 1.15rem;
+    }
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .chart-title {
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: var(--slate-800);
+    }
+    .chart-tag {
+      font-size: 0.725rem;
+      font-weight: 600;
+      background: var(--teal-50);
+      color: var(--teal-700);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--teal-100);
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 85px;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.8rem;
+    }
+    .bar-label {
+      font-weight: 600;
+      color: var(--slate-700);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bar-track {
+      background: var(--slate-100);
+      height: 1.1rem;
+      border-radius: 0.35rem;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal-600), var(--teal-500));
+      border-radius: 0.35rem;
+      transition: width 0.35s ease-in-out;
+    }
+    .bar-val {
+      font-weight: 700;
+      color: var(--slate-800);
+      text-align: right;
+    }
+
+    /* Educational Callout */
+    .edu-callout {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 5px solid #2563eb;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .edu-callout-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+    .edu-callout-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 0.25rem;
+    }
+    .edu-callout-desc {
+      font-size: 0.85rem;
+      color: #1e40af;
+      line-height: 1.5;
+    }
+
+    /* Range Slider Styling */
+    .slider-range-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .slider-input {
+      width: 100%;
+      accent-color: var(--teal-600);
+      cursor: pointer;
+    }
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.725rem;
+      font-weight: 700;
+      color: var(--slate-500);
+    }
+
+    /* Module 2: Scenario Comparison */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .compare-card {
+      background: white;
+      border-radius: 1rem;
+      border: 1px solid var(--slate-200);
+      padding: 1.5rem;
+    }
+    .compare-card.before {
+      border-top: 4px solid var(--rose-600);
+      background: #fffafa;
+    }
+    .compare-card.after {
+      border-top: 4px solid var(--emerald-600);
+      background: #fbfdfc;
+    }
+    .compare-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .compare-tag.before { color: var(--rose-600); }
+    .compare-tag.after { color: var(--emerald-600); }
+
+    /* Module 3: Sample Data Table */
+    .data-summary-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .data-table-container {
+      max-height: 380px;
+      overflow-y: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      background: white;
+    }
+    table.sample-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      text-align: left;
+    }
+    table.sample-table th {
+      background: var(--slate-800);
+      color: white;
+      font-weight: 700;
+      padding: 0.65rem 0.85rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    table.sample-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--slate-100);
+      color: var(--slate-700);
+    }
+    table.sample-table tr:hover td {
+      background: var(--slate-50);
+    }
+
+    /* Module 4: Step-by-Step Stepper */
+    .stepper-box {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 4px 15px -2px rgba(0,0,0,0.04);
+    }
+    .stepper-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--slate-200);
+      margin-bottom: 1.5rem;
+    }
+    .phase-badge {
+      font-size: 0.725rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .phase-beginner {
+      background: var(--emerald-50);
+      color: var(--emerald-600);
+      border: 1px solid #a7f3d0;
+    }
+    .phase-intermediate {
+      background: var(--amber-50);
+      color: var(--amber-600);
+      border: 1px solid #fde68a;
+    }
+    .phase-advanced {
+      background: var(--indigo-50);
+      color: var(--indigo-600);
+      border: 1px solid #c7d2fe;
+    }
+    .action-tag {
+      display: inline-block;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      color: var(--slate-900);
+      font-weight: 700;
+      font-size: 0.825em;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+    }
+    .step-main-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.015em;
+    }
+    .step-instruction {
+      font-size: 0.975rem;
+      color: var(--slate-700);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .step-visual-frame {
+      background: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .step-svg-area {
+      max-width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+    }
+    .step-svg-area svg {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .diagram-zoom-btn {
+      position: absolute;
+      bottom: 0.85rem;
+      right: 0.85rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: white;
+      border: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+    .outcome-box {
+      background: var(--emerald-50);
+      border: 1px solid #a7f3d0;
+      border-left: 4px solid var(--emerald-600);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #065f46;
+      margin-bottom: 0.75rem;
+    }
+    .protip-box {
+      background: var(--amber-50);
+      border: 1px solid #fde68a;
+      border-left: 4px solid var(--amber-500);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+    .stepper-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--slate-200);
+    }
+
+    /* Module 5: Integrated Simulator */
+    .sim-app-window {
+      background: var(--slate-900);
+      border-radius: 1rem;
+      border: 1px solid var(--slate-700);
+      overflow: hidden;
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.25);
+    }
+    .sim-ribbon {
+      background: #1e293b;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--slate-700);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+    }
+    .sim-ribbon-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sim-ribbon-btn {
+      background: #334155;
+      color: white;
+      border: 1px solid #475569;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.725rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .sim-ribbon-btn.active {
+      background: var(--teal-600);
+      border-color: var(--teal-500);
+    }
+    .sim-main-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr 220px;
+      background: #f1f5f9;
+      min-height: 480px;
+    }
+    @media (max-width: 980px) {
+      .sim-main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .sim-slicer-sidebar {
+      background: white;
+      border-right: 1px solid var(--slate-200);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .sim-canvas {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+    .sim-panes-sidebar {
+      background: white;
+      border-left: 1px solid var(--slate-200);
+      padding: 1rem;
+      font-size: 0.75rem;
+    }
+    .sim-bottom-bar {
+      background: #1e293b;
+      padding: 0.4rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+    .page-tabs {
+      display: flex;
+      gap: 0.35rem;
+    }
+    .page-tab {
+      padding: 0.25rem 0.65rem;
+      background: #334155;
+      border: none;
+      color: #cbd5e1;
+      border-radius: 4px 4px 0 0;
+      font-size: 0.725rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .page-tab.active {
+      background: #f1f5f9;
+      color: var(--slate-900);
+    }
+
+    /* Module 6: Challenge */
+    .challenge-box {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+    }
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--slate-100);
+    }
+    .task-item:last-child {
+      border-bottom: none;
+    }
+    .task-checkbox {
+      margin-top: 0.25rem;
+      width: 1.15rem;
+      height: 1.15rem;
+      accent-color: var(--teal-600);
+      cursor: pointer;
+    }
+    .task-text {
+      font-size: 0.9rem;
+      color: var(--slate-800);
+    }
+    .progress-bar-track {
+      background: var(--slate-100);
+      border-radius: 9999px;
+      height: 0.75rem;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    .progress-bar-fill {
+      background: var(--teal-600);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    /* Module 7: Quiz */
+    .quiz-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 0.85rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .quiz-q-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.85rem;
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .quiz-opt-btn {
+      padding: 0.65rem 0.95rem;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-300);
+      border-radius: 0.5rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .quiz-opt-btn:hover {
+      background: var(--slate-100);
+      border-color: var(--slate-400);
+    }
+    .quiz-opt-btn.correct {
+      background: var(--emerald-50);
+      border-color: var(--emerald-600);
+      color: #065f46;
+      font-weight: 700;
+    }
+    .quiz-opt-btn.wrong {
+      background: var(--rose-50);
+      border-color: var(--rose-600);
+      color: #9f1239;
+    }
+    .quiz-feedback {
+      margin-top: 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: none;
+    }
+
+    /* Modals & Toast */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1.25rem;
+    }
+    .modal-card {
+      background: white;
+      border-radius: 1rem;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--slate-900);
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 200;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP STICKY HEADER -->
+  <header class="top-bar">
+    <div class="container header-inner">
+      <div class="brand-title">
+        <span style="font-size:1.35rem;">⚡</span>
+        <span>Power BI Slicer Basics: Interactive Masterclass</span>
+        <span class="badge-pilot">Pilot Preview</span>
+      </div>
+      <div class="header-actions">
+        <button class="btn btn-outline-light" onclick="openContentEditor()">
+          <span>✏️ Content Editor</span>
+        </button>
+        <button class="btn btn-teal" onclick="exportStandaloneHtml()">
+          <span>💾 Download HTML</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUB NAVIGATION -->
+  <nav class="sub-nav">
+    <div class="container nav-inner">
+      <a href="#demos">⚡ 4 WOW Demos</a>
+      <a href="#business">💼 Business Story</a>
+      <a href="#data">📊 Sample Data (24 Rows)</a>
+      <a href="#steps">🛠️ 18 Micro-Steps</a>
+      <a href="#simulator">🎮 Slicer Simulator</a>
+      <a href="#challenge">🏆 Student Challenge</a>
+      <a href="#quiz">📝 Assessment Quiz</a>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="hero-banner">
+    <div class="container">
+      <div class="hero-tag">
+        <span>MASTERCLASS TUTORIAL</span> &bull; <span>POWER BI</span>
+      </div>
+      <h1 class="hero-title">Power BI Slicer Basics:<br>Dashboard Ka Remote Control</h1>
+      <p class="hero-subtitle">
+        Static reports ko dynamic app-like dashboard mein badalna seekhein! Slicer ki full power dekhein: Tile Buttons, Dropdown Search, Date & Price Range Sliders, Edit Interactions aur Multi-Page Sync.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="stat-value">4 Live Demos</span>
+          <span class="stat-label">Breadth Across All Levels</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value">18 Micro-Steps</span>
+          <span class="stat-label">Beginner ➔ Intermediate ➔ Advanced</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value">1 Integrated Sim</span>
+          <span class="stat-label">Authentic Desktop Canvas</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-value">24 Records</span>
+          <span class="stat-label">Mathematically Verified Data</span>
+        </div>
+      </div>
+
+      <div class="hero-sequence">
+        <span class="seq-step">👁️ 1. जादू देखें (WOW Demos)</span>
+        <span class="seq-arrow">➔</span>
+        <span class="seq-step">💡 2. समस्या समझें (Business Story)</span>
+        <span class="seq-arrow">➔</span>
+        <span class="seq-step">🪜 3. स्टेप-बाय-स्टेप सीखें (18 Steps)</span>
+        <span class="seq-arrow">➔</span>
+        <span class="seq-step">🎮 4. लैब में अभ्यास करें (Simulator)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 1: 4 INTERACTIVE WOW DEMOS -->
+  <section id="demos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 1 • Show The Full Power First</span>
+        <h2 class="section-title">Slicer क्या कर सकता है? ये 4 कमाल देखें!</h2>
+        <p class="section-desc">Dry theory ke bajaye buttons aur sliders ko khud chala kar dekhein ki Power BI Slicers dashboard ko ek responsive interactive app kaise bana dete hain.</p>
+      </div>
+
+      <div class="card-shell">
+        <div class="wow-tabs">
+          <button class="wow-tab-btn active" onclick="switchWowTab(0)">
+            <span>🔘 Demo 1: Tile & Dropdown</span>
+          </button>
+          <button class="wow-tab-btn" onclick="switchWowTab(1)">
+            <span>📅 Demo 2: Timeline & Budget Sliders</span>
+          </button>
+          <button class="wow-tab-btn" onclick="switchWowTab(2)">
+            <span>🎯 Demo 3: Target Dilemma (Edit Interactions)</span>
+          </button>
+          <button class="wow-tab-btn" onclick="switchWowTab(3)">
+            <span>🔄 Demo 4: Multi-Page Sync Slicers</span>
+          </button>
+        </div>
+
+        <div class="wow-content">
+          <!-- DEMO 1 PANEL -->
+          <div class="wow-content-panel" id="wow-panel-0">
+            <div class="wow-preview-grid">
+              <div class="slicer-control-panel">
+                <div class="slicer-label">
+                  <span>Region Slicer (Horizontal Tiles)</span>
+                  <button onclick="wow1Clear()" style="background:none; border:none; cursor:pointer; font-size:0.85rem;" title="Clear Filter">🧹</button>
+                </div>
+                <div class="btn-tile-group" id="wow1-regions">
+                  <button class="tile-btn active" data-region="All" onclick="wow1SetRegion('All')">All</button>
+                  <button class="tile-btn" data-region="North" onclick="wow1SetRegion('North')">North</button>
+                  <button class="tile-btn" data-region="South" onclick="wow1SetRegion('South')">South</button>
+                  <button class="tile-btn" data-region="East" onclick="wow1SetRegion('East')">East</button>
+                  <button class="tile-btn" data-region="West" onclick="wow1SetRegion('West')">West</button>
+                </div>
+
+                <div class="slicer-label" style="margin-top:0.5rem;">
+                  <span>Category (Compact Dropdown)</span>
+                </div>
+                <select class="dropdown-select" id="wow1-category-select" onchange="wow1SetCategory(this.value)">
+                  <option value="All">All Categories (24 Items)</option>
+                  <option value="Electronics">Electronics (8 Items)</option>
+                  <option value="Apparel">Apparel (8 Items)</option>
+                  <option value="Home & Office">Home & Office (8 Items)</option>
+                </select>
+                <div style="font-size:0.75rem; color:#64748b; margin-top:0.25rem;">
+                  💡 <em>Dropdown canvas space ko 80% tak bachata hai!</em>
+                </div>
+              </div>
+
+              <div class="canvas-display-panel">
+                <div class="kpi-row">
+                  <div class="kpi-box highlight">
+                    <div class="kpi-sub">Total Sales Revenue</div>
+                    <div class="kpi-num" id="wow1-sales-kpi">₹13,06,000</div>
+                  </div>
+                  <div class="kpi-box">
+                    <div class="kpi-sub">Total Profit</div>
+                    <div class="kpi-num" style="color:#059669;" id="wow1-profit-kpi">₹2,69,550</div>
+                  </div>
+                  <div class="kpi-box">
+                    <div class="kpi-sub">Active Volume</div>
+                    <div class="kpi-num" id="wow1-orders-kpi">24 Orders</div>
+                  </div>
+                </div>
+
+                <div class="bar-chart-card">
+                  <div class="chart-header">
+                    <span class="chart-title">Category-wise Sales Breakdown</span>
+                    <span class="chart-tag" id="wow1-filter-tag">Context: All 24 Records</span>
+                  </div>
+                  <div id="wow1-bars"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEMO 2 PANEL -->
+          <div class="wow-content-panel" id="wow-panel-1" style="display:none;">
+            <div class="wow-preview-grid">
+              <div class="slicer-control-panel">
+                <div class="slicer-label">
+                  <span>Order Date Range (Between)</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                  <div>
+                    <label style="font-size:0.7rem; font-weight:700; color:#64748b;">From Month</label>
+                    <select class="dropdown-select" id="wow2-start-month" onchange="wow2UpdateMonths()">
+                      <option value="1">Jan (Month 01)</option>
+                      <option value="2">Feb (Month 02)</option>
+                      <option value="3">Mar (Month 03)</option>
+                      <option value="4">Apr (Month 04)</option>
+                      <option value="5">May (Month 05)</option>
+                      <option value="6">Jun (Month 06)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size:0.7rem; font-weight:700; color:#64748b;">To Month</label>
+                    <select class="dropdown-select" id="wow2-end-month" onchange="wow2UpdateMonths()">
+                      <option value="6">Jun (Month 06)</option>
+                      <option value="7">Jul (Month 07)</option>
+                      <option value="8">Aug (Month 08)</option>
+                      <option value="9">Sep (Month 09)</option>
+                      <option value="10">Oct (Month 10)</option>
+                      <option value="11">Nov (Month 11)</option>
+                      <option value="12" selected>Dec (Month 12)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="slicer-label" style="margin-top:0.75rem;">
+                  <span>Price Range Slider</span>
+                </div>
+                <div class="slider-range-box">
+                  <input type="range" min="2000" max="85000" step="1000" value="85000" class="slider-input" id="wow2-price-slider" oninput="wow2UpdatePrice()">
+                  <div class="slider-labels">
+                    <span>Min: ₹800</span>
+                    <span id="wow2-price-val" style="color:#0d9488;">Up to ₹85,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="canvas-display-panel">
+                <div class="kpi-row">
+                  <div class="kpi-box highlight">
+                    <div class="kpi-sub">Filtered Period Sales</div>
+                    <div class="kpi-num" id="wow2-sales-kpi">₹13,06,000</div>
+                  </div>
+                  <div class="kpi-box">
+                    <div class="kpi-sub">Average Order Value</div>
+                    <div class="kpi-num" id="wow2-avg-kpi">₹54,417</div>
+                  </div>
+                  <div class="kpi-box">
+                    <div class="kpi-sub">Matching Transactions</div>
+                    <div class="kpi-num" id="wow2-count-kpi">24 Orders</div>
+                  </div>
+                </div>
+
+                <div class="bar-chart-card">
+                  <div class="chart-header">
+                    <span class="chart-title">Regional Sales In Selected Period</span>
+                    <span class="chart-tag" id="wow2-period-tag">Jan - Dec (≤ ₹85,000)</span>
+                  </div>
+                  <div id="wow2-bars"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEMO 3 PANEL -->
+          <div class="wow-content-panel" id="wow-panel-2" style="display:none;">
+            <div class="wow-preview-grid">
+              <div class="slicer-control-panel">
+                <div class="slicer-label">
+                  <span>Region Slicer</span>
+                </div>
+                <div class="btn-tile-group" id="wow3-regions">
+                  <button class="tile-btn active" data-region="North" onclick="wow3SetRegion('North')">North</button>
+                  <button class="tile-btn" data-region="South" onclick="wow3SetRegion('South')">South</button>
+                  <button class="tile-btn" data-region="East" onclick="wow3SetRegion('East')">East</button>
+                  <button class="tile-btn" data-region="West" onclick="wow3SetRegion('West')">West</button>
+                  <button class="tile-btn" data-region="All" onclick="wow3SetRegion('All')">All</button>
+                </div>
+
+                <div class="slicer-label" style="margin-top:0.85rem;">
+                  <span>Edit Interactions Mode</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                  <button class="tile-btn active" id="wow3-btn-fixed" onclick="wow3SetMode('fixed')">
+                    🛡️ Fixed: 'None (🚫)' Applied
+                  </button>
+                  <button class="tile-btn" id="wow3-btn-broken" onclick="wow3SetMode('broken')" style="color:#b91c1c;">
+                    ⚠️ Broken: Default Filter
+                  </button>
+                </div>
+                <div style="font-size:0.75rem; color:#64748b; margin-top:0.25rem;">
+                  Dekhein kaise Target Card ko 'None' par set karne par wah Region chunne par bhi hamesha constant rehta hai!
+                </div>
+              </div>
+
+              <div class="canvas-display-panel">
+                <div class="kpi-row">
+                  <div class="kpi-box highlight">
+                    <div class="kpi-sub" id="wow3-region-name">North Region Sales</div>
+                    <div class="kpi-num" id="wow3-region-sales">₹3,00,000</div>
+                    <div style="font-size:0.7rem; color:#64748b; margin-top:0.25rem;">✓ Filters correctly per territory</div>
+                  </div>
+                  <div class="kpi-box target" id="wow3-kpi-target-box" style="border-width:2px;">
+                    <div class="kpi-sub">Company Annual Target (Benchmark)</div>
+                    <div class="kpi-num" id="wow3-target-val" style="color:#4f46e5;">₹13,06,000</div>
+                    <div style="font-size:0.7rem; margin-top:0.25rem;" id="wow3-target-status">
+                      <span style="color:#059669; font-weight:700;">✓ Edit Interaction: None (🚫) Active</span> &bull; Benchmark Steady
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bar-chart-card">
+                  <div class="chart-header">
+                    <span class="chart-title">Why Edit Interactions Matters:</span>
+                  </div>
+                  <div style="font-size:0.85rem; color:#334155; line-height:1.6;">
+                    Agar aapne 'None' icon select nahi kiya, toh Company-wide Target card bhi Region ke according filter hokar galat number dikhane lagega. <strong>Edit Interactions</strong> aapko ye complete control deta hai ki kaun sa visual filter hoga aur kaun sa bilkul constant rahega!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DEMO 4 PANEL -->
+          <div class="wow-content-panel" id="wow-panel-3" style="display:none;">
+            <div class="wow-preview-grid">
+              <div class="slicer-control-panel">
+                <div class="slicer-label">
+                  <span>Simulated Report Pages</span>
+                </div>
+                <div style="display:flex; gap:0.4rem;">
+                  <button class="tile-btn active" id="wow4-page1-tab" onclick="wow4SetPage(1)">Page 1: Summary</button>
+                  <button class="tile-btn" id="wow4-page2-tab" onclick="wow4SetPage(2)">Page 2: Deep-Dive</button>
+                </div>
+
+                <div class="slicer-label" style="margin-top:0.85rem;">
+                  <span>Primary Region Slicer</span>
+                </div>
+                <div class="btn-tile-group" id="wow4-regions">
+                  <button class="tile-btn" data-region="North" onclick="wow4SetRegion('North')">North</button>
+                  <button class="tile-btn" data-region="South" onclick="wow4SetRegion('South')">South</button>
+                  <button class="tile-btn active" data-region="East" onclick="wow4SetRegion('East')">East</button>
+                  <button class="tile-btn" data-region="West" onclick="wow4SetRegion('West')">West</button>
+                </div>
+
+                <div style="margin-top:1rem; padding:0.75rem; background:#eff6ff; border:1px solid #bfdbfe; border-radius:0.5rem;">
+                  <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.8rem; font-weight:700; color:#1e40af; cursor:pointer;">
+                    <input type="checkbox" id="wow4-sync-toggle" checked onchange="wow4ToggleSync()" style="accent-color:#2563eb; width:1.1rem; height:1.1rem;">
+                    Sync Slicers Enabled (View Pane)
+                  </label>
+                </div>
+              </div>
+
+              <div class="canvas-display-panel">
+                <div class="kpi-row">
+                  <div class="kpi-box highlight">
+                    <div class="kpi-sub" id="wow4-page-title">Page 1: Executive Summary Dashboard</div>
+                    <div class="kpi-num" id="wow4-sales-val">₹3,18,000</div>
+                    <div style="font-size:0.7rem; color:#64748b; margin-top:0.25rem;" id="wow4-page-region-tag">Active Context: East</div>
+                  </div>
+                </div>
+
+                <div class="bar-chart-card">
+                  <div class="chart-header">
+                    <span class="chart-title">Multi-Page Synchronization Status</span>
+                  </div>
+                  <div style="font-size:0.85rem; color:#334155; line-height:1.6;" id="wow4-sync-status-text">
+                    Primary Slicer configured on Page 1. Switch to Page 2 to see synchronization in action!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDUCATIONAL CALLOUT BOX -->
+          <div class="edu-callout">
+            <span class="edu-callout-icon">💡</span>
+            <div>
+              <div class="edu-callout-title" id="edu-callout-title">यहाँ क्या हुआ? (Key Learning Takeaway)</div>
+              <div class="edu-callout-desc" id="edu-callout-desc">
+                Tile Buttons aur Dropdowns canvas space ko 80% tak bachate hain aur user ko app jaisa modern touch-friendly feel dete hain. Ek click se sabhi KPIs instantly update ho jaate hain.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: BUSINESS SCENARIO -->
+  <section id="business" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 2 • Relatable Context</span>
+        <h2 class="section-title">Aura Retail Ki Samasya Aur Slicer Solution</h2>
+        <p class="section-desc">Real-world business case: management ko report dekhne mein kya bottleneck tha aur Slicers lagane ke baad dashboard kaise badal gaya.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="compare-card before">
+          <span class="compare-tag before">❌ Pehle (Before Slicers)</span>
+          <h3 style="font-size:1.15rem; font-weight:800; color:#9f1239; margin-bottom:0.65rem;">Static Cluttered 20-Column Table</h3>
+          <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin-bottom:0.75rem;">
+            Management ko har regional meeting ke liye 4 alag-alag report pages banane padte the. Agar CEO ko sirf South Region ke Electronics dekhne hote the, toh unhe poore Excel sheet mein scroll karke manually totals nikaalne padte the.
+          </p>
+          <ul style="font-size:0.825rem; color:#881337; padding-left:1.25rem; line-height:1.5;">
+            <li>Reports bahut heavy aur slow ho jaati thi</li>
+            <li>Users dashboard par click karke explore nahi kar pate the</li>
+            <li>Target compare karna mushkil tha</li>
+          </ul>
+        </div>
+
+        <div class="compare-card after">
+          <span class="compare-tag after">✅ Baad Mein (After Slicers)</span>
+          <h3 style="font-size:1.15rem; font-weight:800; color:#065f46; margin-bottom:0.65rem;">Interactive Self-Service Dashboard</h3>
+          <p style="font-size:0.875rem; color:#475569; line-height:1.6; margin-bottom:0.75rem;">
+            Ek hi single page report par top horizontal buttons, category dropdowns aur date sliders laga diye gaye. Ab CEO ek click mein North, South ya koi bhi custom date range filter kar sakte hain.
+          </p>
+          <ul style="font-size:0.825rem; color:#065f46; padding-left:1.25rem; line-height:1.5;">
+            <li>1 single report ne 4 purane pages ko replace kar diya</li>
+            <li>Edit interactions se company targets stable rahe</li>
+            <li>Zero formula recalculation lag: Instant app-like speed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: CLEAN SAMPLE DATASET (24 ROWS) -->
+  <section id="data">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 3 • Practical Data Model</span>
+        <h2 class="section-title">Clean Verified Sample Dataset (24 Records)</h2>
+        <p class="section-desc">Yeh wahi 24 verified orders hain jinpar poora tutorial, WOW demos aur simulator run ho raha hai. Total Sales: <strong>₹13,06,000</strong> aur Total Profit: <strong>₹2,69,550</strong>.</p>
+      </div>
+
+      <div class="data-summary-bar">
+        <div style="display:flex; gap:1.25rem; font-size:0.825rem; font-weight:700; color:#334155;">
+          <span>📦 24 Total Orders</span>
+          <span>🗺️ 4 Balanced Regions (6 each)</span>
+          <span>💰 Total: ₹13,06,000</span>
+          <span>📈 Profit: ₹2,69,550</span>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-outline-light" style="background:#ffffff; color:#334155; border:1px solid #cbd5e1;" onclick="copySampleTsv()">
+            📋 Copy Table (TSV)
+          </button>
+          <button class="btn btn-teal" onclick="downloadSampleCsv()">
+            ⬇️ Download CSV
+          </button>
+        </div>
+      </div>
+
+      <div class="data-table-container">
+        <table class="sample-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Order Date</th>
+              <th>Region</th>
+              <th>Category</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Units Sold</th>
+              <th>Sales Amount</th>
+              <th>Net Profit</th>
+            </tr>
+          </thead>
+          <tbody id="sample-data-tbody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: STEP-BY-STEP STEPPER (18 MICRO-STEPS) -->
+  <section id="steps" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 4 • Hands-On Step-by-Step</span>
+        <h2 class="section-title">18 माइक्रो-स्टेप्स में मास्टर करें Power BI Slicers</h2>
+        <p class="section-desc">One primary action per step! Difficulty tier ke hisab se structured: Beginner ➔ Intermediate ➔ Advanced.</p>
+      </div>
+
+      <div class="stepper-box">
+        <div class="stepper-header">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <span class="phase-badge phase-beginner" id="step-phase-badge">Beginner • Visual Setup</span>
+            <span style="font-size:0.85rem; font-weight:800; color:#64748b;" id="step-counter-badge">Step 01 / 18</span>
+          </div>
+
+          <select class="dropdown-select" id="step-select-dropdown" style="max-width:320px;" onchange="jumpToStep(parseInt(this.value))">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <h3 class="step-main-title" id="step-main-title">1. Report Canvas Par Slicer Visual Insert Karein</h3>
+        <p class="step-instruction" id="step-instruction-text">
+          Visualizations Pane mein funnel/filter jaisa dikhne wala <span class='action-tag'>Slicer</span> icon locate karein aur uspar click karein.
+        </p>
+
+        <!-- Diagram Render Area with Lightbox Zoom -->
+        <div class="step-visual-frame">
+          <div class="step-svg-area" id="step-svg-area">
+            <!-- Populated via JS -->
+          </div>
+          <button class="diagram-zoom-btn" onclick="openLightbox()">
+            🔍 Zoom Diagram
+          </button>
+        </div>
+
+        <div class="outcome-box">
+          <strong>✅ Expected Outcome (अपेक्षित परिणाम):</strong>
+          <span id="step-expected-text">Report canvas par ek naya khali Slicer container visual placeholder add ho jayega.</span>
+        </div>
+
+        <div class="protip-box">
+          <strong>💡 Important Rule / Pro-Tip:</strong>
+          <span id="step-protip-text">Canvas ke kisi khali hisse par click karne ke baad hi Slicer icon dabayein, warna pehle se select chart badal sakta hai.</span>
+        </div>
+
+        <div class="stepper-nav">
+          <button class="btn btn-outline-light" id="btn-prev-step" style="background:#f1f5f9; color:#334155; border:1px solid #cbd5e1;" onclick="prevStep()">
+            ◀ Previous Step
+          </button>
+          <button class="btn btn-teal" id="btn-next-step" onclick="nextStep()">
+            Next Step ▶
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 5: INTEGRATED SIMULATOR -->
+  <section id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 5 • Live Simulation Lab</span>
+        <h2 class="section-title">Power BI Desktop Interactive Simulator</h2>
+        <p class="section-desc">Authentic desktop interface simulator: Slicers toggle karein, ribbon se Edit Interactions test karein aur multi-page sync observe karein!</p>
+      </div>
+
+      <div class="sim-app-window">
+        <!-- SIM RIBBON -->
+        <div class="sim-ribbon">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <span style="font-weight:800; color:#38bdf8;">⚡ Power BI Desktop Simulator</span>
+            <span>&bull;</span>
+            <span style="color:#94a3b8;">Sales_Dashboard_v2.pbix</span>
+          </div>
+          <div class="sim-ribbon-actions">
+            <button class="sim-ribbon-btn active" id="sim-btn-edit-interactions" onclick="simToggleEditInteractions()">
+              🛡️ Edit Interactions
+            </button>
+            <button class="sim-ribbon-btn" onclick="simReset()">
+              🔄 Reset Canvas
+            </button>
+          </div>
+        </div>
+
+        <!-- SIM MAIN WORKSPACE -->
+        <div class="sim-main-grid">
+          <!-- LEFT SLICERS SIDEBAR -->
+          <div class="sim-slicer-sidebar">
+            <div style="font-size:0.75rem; font-weight:800; color:#64748b; text-transform:uppercase;">
+              Report Filters (Slicers)
+            </div>
+
+            <!-- Region Tile Slicer -->
+            <div>
+              <div class="slicer-label">Region (Tiles)</div>
+              <div class="btn-tile-group" id="sim-region-tiles">
+                <button class="tile-btn active" data-region="All" onclick="simSetRegion('All')">All</button>
+                <button class="tile-btn" data-region="North" onclick="simSetRegion('North')">North</button>
+                <button class="tile-btn" data-region="South" onclick="simSetRegion('South')">South</button>
+                <button class="tile-btn" data-region="East" onclick="simSetRegion('East')">East</button>
+                <button class="tile-btn" data-region="West" onclick="simSetRegion('West')">West</button>
+              </div>
+            </div>
+
+            <!-- Category Dropdown Slicer -->
+            <div>
+              <div class="slicer-label">Category (Dropdown)</div>
+              <select class="dropdown-select" id="sim-category-dropdown" onchange="simSetCategory(this.value)">
+                <option value="All">All Categories (24 items)</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Apparel">Apparel</option>
+                <option value="Home & Office">Home & Office</option>
+              </select>
+            </div>
+
+            <!-- Price Range Slicer -->
+            <div>
+              <div class="slicer-label">Max Price Filter</div>
+              <input type="range" min="3000" max="85000" step="2000" value="85000" class="slider-input" id="sim-price-slider" oninput="simUpdatePrice()">
+              <div style="display:flex; justify-content:space-between; font-size:0.7rem; color:#64748b; margin-top:0.25rem;">
+                <span>Min: ₹800</span>
+                <span id="sim-price-display" style="font-weight:700; color:#0d9488;">≤ ₹85,000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CANVAS AREA -->
+          <div class="sim-canvas">
+            <div class="kpi-row">
+              <div class="kpi-box highlight">
+                <div class="kpi-sub">Filtered Revenue</div>
+                <div class="kpi-num" id="sim-kpi-sales">₹13,06,000</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-sub">Filtered Profit</div>
+                <div class="kpi-num" style="color:#059669;" id="sim-kpi-profit">₹2,69,550</div>
+              </div>
+              <div class="kpi-box target">
+                <div class="kpi-sub">Annual Target Benchmark</div>
+                <div class="kpi-num" style="color:#4f46e5;" id="sim-target-val">₹13,06,000</div>
+                <div style="font-size:0.7rem; margin-top:0.25rem;" id="sim-target-badge">
+                  <span style="color:#059669; font-weight:700;">🚫 None</span> &bull; Immune
+                </div>
+              </div>
+            </div>
+
+            <!-- Bar Chart Card -->
+            <div class="bar-chart-card">
+              <div class="chart-header">
+                <span class="chart-title">Top Products In Filtered Context</span>
+                <span class="chart-tag" id="sim-kpi-orders">24 Orders</span>
+              </div>
+              <div id="sim-bar-chart"></div>
+            </div>
+
+            <!-- Data Table Preview -->
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:0.75rem; padding:0.85rem;">
+              <div style="font-size:0.8rem; font-weight:800; color:#334155; margin-bottom:0.5rem;">
+                Matching Transactions (Sample View)
+              </div>
+              <table style="width:100%; border-collapse:collapse; font-size:0.75rem;">
+                <thead>
+                  <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0; color:#64748b;">
+                    <th style="padding:0.4rem; text-align:left;">Order ID</th>
+                    <th style="padding:0.4rem; text-align:left;">Region</th>
+                    <th style="padding:0.4rem; text-align:left;">Product</th>
+                    <th style="padding:0.4rem; text-align:left;">Sales</th>
+                  </tr>
+                </thead>
+                <tbody id="sim-table-rows"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- RIGHT PANES SIDEBAR -->
+          <div class="sim-panes-sidebar">
+            <div style="font-weight:800; color:#334155; margin-bottom:0.75rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">
+              Sync Slicers Pane
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.6rem; color:#475569;">
+              <div>
+                <strong>Page 1: Overview</strong>
+                <div style="display:flex; gap:0.5rem; margin-top:0.25rem;">
+                  <span style="color:#059669;">☑ Sync</span>
+                  <span style="color:#2563eb;">☑ Visible</span>
+                </div>
+              </div>
+              <div style="border-top:1px solid #f1f5f9; padding-top:0.5rem;">
+                <strong>Page 2: Deep-Dive</strong>
+                <div style="display:flex; gap:0.5rem; margin-top:0.25rem;">
+                  <label style="cursor:pointer; display:flex; align-items:center; gap:0.25rem;">
+                    <input type="checkbox" id="sim-sync-chk" checked onchange="simToggleSyncCheckbox()">
+                    <span>Sync State</span>
+                  </label>
+                </div>
+                <span style="color:#94a3b8; font-size:0.7rem;">☐ Hidden Slicer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIM BOTTOM REPORT TABS -->
+        <div class="sim-bottom-bar">
+          <div class="page-tabs">
+            <button class="page-tab active" id="sim-tab-page1" onclick="simSetPage(1)">
+              📄 Page 1: Overview
+            </button>
+            <button class="page-tab" id="sim-tab-page2" onclick="simSetPage(2)">
+              📄 Page 2: Regional Details
+            </button>
+          </div>
+          <span style="font-size:0.7rem; color:#cbd5e1;">Click page tabs to test synchronized filter inheritance!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 6: STUDENT PRACTICE CHALLENGE -->
+  <section id="challenge" style="background:#ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 6 • Interactive Challenge</span>
+        <h2 class="section-title">अब आप खुद करके देखिए! (Hands-on Mission)</h2>
+        <p class="section-desc">Aura Retail Dashboard Optimization Challenge: niche diye gaye 5 tasks ko complete karein aur checklist tick karein.</p>
+      </div>
+
+      <div class="challenge-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <span style="font-size:0.875rem; font-weight:800; color:#334155;">Mission Progress</span>
+          <span style="font-size:0.825rem; font-weight:700; color:#0d9488;" id="challenge-progress-pct">0% Completed (0/5 Tasks)</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="challenge-progress-fill"></div>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" onchange="updateChallenge()">
+          <div class="task-text">
+            <strong>Task 1:</strong> Region Slicer ko standard List se badalkar <strong>Horizontal Tile (Button)</strong> layout mein set karein.
+          </div>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" onchange="updateChallenge()">
+          <div class="task-text">
+            <strong>Task 2:</strong> Format visual > Selection settings mein jakar <strong>"Show Select all"</strong> option ko enable karein.
+          </div>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" onchange="updateChallenge()">
+          <div class="task-text">
+            <strong>Task 3:</strong> Category Dropdown ke 3-dots menu se <strong>Search bar</strong> on karein aur "Electronics" type karke filter karein.
+          </div>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" onchange="updateChallenge()">
+          <div class="task-text">
+            <strong>Task 4:</strong> Format ribbon se <strong>Edit Interactions</strong> activate karein aur Annual Target Card ko <strong>'None (🚫)'</strong> par lock karein.
+          </div>
+        </div>
+
+        <div class="task-item">
+          <input type="checkbox" class="task-checkbox" onchange="updateChallenge()">
+          <div class="task-text">
+            <strong>Task 5:</strong> View ribbon se <strong>Sync Slicers</strong> pane open karein aur Page 1 ke slicer ko Page 2 ke sath sync karein.
+          </div>
+        </div>
+
+        <div id="challenge-win-msg" style="display:none; margin-top:1.25rem; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:0.75rem; padding:1rem; color:#065f46; font-size:0.9rem; font-weight:700;">
+          🎉 शाबाश! आपने Power BI Slicers के सभी 5 प्रैक्टिकल मिशन सफलतापूर्वक पूरे कर लिए हैं!
+        </div>
+
+        <div style="margin-top:1.25rem;">
+          <button class="btn btn-outline-light" style="background:#f8fafc; color:#475569; border:1px solid #cbd5e1;" onclick="toggleChallengeHint()">
+            💡 Need a Hint? Click Here
+          </button>
+          <div id="challenge-hint-box" style="display:none; margin-top:0.75rem; background:#fffbeb; border:1px solid #fde68a; border-radius:0.5rem; padding:0.85rem; font-size:0.85rem; color:#92400e; line-height:1.5;">
+            <strong>Hint:</strong> Step 8 aur Step 15 ke instructions dekhein. Edit Interactions karne se pehle Slicer ko select karna zaroori hota hai!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 7: INTERACTIVE QUIZ -->
+  <section id="quiz">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Module 7 • Self-Assessment</span>
+        <h2 class="section-title">Knowledge Check: Slicer Quiz</h2>
+        <p class="section-desc">Apne concept clear karein! Instant feedback, green/red highlights aur detailed explanations ke sath.</p>
+      </div>
+
+      <div id="quiz-items-container">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div style="margin-top:1.5rem; text-align:center;">
+        <button class="btn btn-teal" onclick="resetQuiz()">
+          🔄 Retake Quiz
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 8: CONTENT EDITOR MODAL -->
+  <div class="modal-overlay" id="editor-modal">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.75rem;">
+        <h3 style="font-size:1.15rem; font-weight:800; color:#0f172a;">Tutorial Content Studio & Editor</h3>
+        <button onclick="closeContentEditor()" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Select Step To Edit:</label>
+          <select class="dropdown-select" id="editor-step-select" onchange="loadStepIntoEditor()"></select>
+        </div>
+
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Step Title:</label>
+          <input type="text" class="dropdown-select" id="editor-title-input">
+        </div>
+
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Instruction (Hinglish):</label>
+          <textarea class="dropdown-select" id="editor-instr-input" rows="3"></textarea>
+        </div>
+
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Expected Outcome:</label>
+          <input type="text" class="dropdown-select" id="editor-outcome-input">
+        </div>
+
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Pro-Tip:</label>
+          <input type="text" class="dropdown-select" id="editor-protip-input">
+        </div>
+
+        <div>
+          <label style="font-size:0.8rem; font-weight:700; color:#334155;">Replace Diagram with Genuine Screenshot:</label>
+          <input type="file" accept="image/*" class="dropdown-select" onchange="handleScreenshotUpload(event)">
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1rem;">
+          <button class="btn btn-outline-light" style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1;" onclick="closeContentEditor()">Cancel</button>
+          <button class="btn btn-teal" onclick="saveEditedStep()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="lightbox-modal" onclick="closeLightbox()">
+    <div class="modal-card" style="max-width:850px; text-align:center;" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h4 id="lightbox-title" style="font-size:1.1rem; font-weight:800; color:#0f172a;">Diagram Zoom</h4>
+        <button onclick="closeLightbox()" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">✕</button>
+      </div>
+      <div id="lightbox-body" style="padding:1rem; background:#f8fafc; border-radius:0.75rem;"></div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <span style="font-size:1.1rem;">🔔</span>
+    <span id="toast-msg">Action completed</span>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    window.stepsData = [{"id":1,"phase":"Beginner • Visual Setup","phaseClass":"phase-beginner","title":"1. Report Canvas Par Slicer Visual Insert Karein","instruction":"Visualizations Pane mein funnel/filter jaisa dikhne wala <span class='action-tag'>Slicer</span> icon locate karein aur uspar click karein.","expected":"Report canvas par ek naya khali Slicer container visual placeholder add ho jayega.","protip":"Canvas ke kisi khali hisse par click karne ke baad hi Slicer icon dabayein, warna pehle se select chart badal sakta hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Canvas Area -->\n      <rect x=\"20\" y=\"20\" width=\"230\" height=\"180\" fill=\"#ffffff\" stroke=\"#cbd5e1\" stroke-dasharray=\"4\" rx=\"6\"/>\n      <rect x=\"40\" y=\"45\" width=\"120\" height=\"130\" fill=\"#f0fdfa\" stroke=\"#0d9488\" stroke-width=\"2\" rx=\"4\"/>\n      <text x=\"100\" y=\"115\" font-size=\"11\" font-weight=\"bold\" fill=\"#0d9488\" text-anchor=\"middle\">+ Slicer Container</text>\n      <!-- Visualizations Pane -->\n      <rect x=\"270\" y=\"20\" width=\"110\" height=\"180\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"280\" y=\"38\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\">Visualizations</text>\n      <!-- Grid of Icons -->\n      <rect x=\"280\" y=\"48\" width=\"22\" height=\"22\" fill=\"#f1f5f9\" stroke=\"#cbd5e1\" rx=\"3\"/>\n      <rect x=\"306\" y=\"48\" width=\"22\" height=\"22\" fill=\"#f1f5f9\" stroke=\"#cbd5e1\" rx=\"3\"/>\n      <rect x=\"332\" y=\"48\" width=\"22\" height=\"22\" fill=\"#0d9488\" stroke=\"#0f766e\" rx=\"3\"/>\n      <!-- Slicer Funnel Icon -->\n      <path d=\"M338 54 h10 l-4 5 v5 l-2-1 v-4 z\" fill=\"#ffffff\"/>\n      <circle cx=\"343\" cy=\"59\" r=\"11\" fill=\"#e11d48\" opacity=\"0.9\"/>\n      <text x=\"343\" y=\"63\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">1</text>\n      <text x=\"280\" y=\"95\" font-size=\"9\" fill=\"#64748b\">Click Slicer Icon</text>\n    </svg>"},{"id":2,"phase":"Beginner • Data Binding","phaseClass":"phase-beginner","title":"2. Region Field Ko Slicer Well Mein Drag Karein","instruction":"Data Pane se <span class='action-tag'>Region</span> column ko drag karke Visualizations pane ke <span class='action-tag'>Field</span> bucket mein drop karein.","expected":"Slicer box ke andar North, South, East aur West ke options checkboxes ke sath list roop mein dikhai denge.","protip":"Categorical text columns (jaise Region, City, Category) slicers ke liye sabse adarsh hote hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Canvas Slicer -->\n      <rect x=\"20\" y=\"20\" width=\"150\" height=\"180\" fill=\"#ffffff\" stroke=\"#0d9488\" stroke-width=\"2\" rx=\"6\"/>\n      <text x=\"30\" y=\"40\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\">Region Slicer</text>\n      <rect x=\"30\" y=\"52\" width=\"130\" height=\"22\" fill=\"#f8fafc\" stroke=\"#e2e8f0\" rx=\"3\"/>\n      <text x=\"40\" y=\"67\" font-size=\"9\" fill=\"#334155\">☐ North</text>\n      <rect x=\"30\" y=\"78\" width=\"130\" height=\"22\" fill=\"#f8fafc\" stroke=\"#e2e8f0\" rx=\"3\"/>\n      <text x=\"40\" y=\"93\" font-size=\"9\" fill=\"#334155\">☐ South</text>\n      <rect x=\"30\" y=\"104\" width=\"130\" height=\"22\" fill=\"#f8fafc\" stroke=\"#e2e8f0\" rx=\"3\"/>\n      <text x=\"40\" y=\"119\" font-size=\"9\" fill=\"#334155\">☐ East</text>\n      <rect x=\"30\" y=\"130\" width=\"130\" height=\"22\" fill=\"#f8fafc\" stroke=\"#e2e8f0\" rx=\"3\"/>\n      <text x=\"40\" y=\"145\" font-size=\"9\" fill=\"#334155\">☐ West</text>\n      <!-- Data Pane -->\n      <rect x=\"250\" y=\"20\" width=\"130\" height=\"180\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"262\" y=\"40\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\">Data Pane</text>\n      <rect x=\"262\" y=\"55\" width=\"106\" height=\"24\" fill=\"#eff6ff\" stroke=\"#93c5fd\" rx=\"3\"/>\n      <text x=\"272\" y=\"71\" font-size=\"9\" font-weight=\"bold\" fill=\"#1d4ed8\">⌗ Region</text>\n      <!-- Drag Arrow -->\n      <path d=\"M 262 67 Q 190 70 160 55\" fill=\"none\" stroke=\"#e11d48\" stroke-width=\"2\" stroke-dasharray=\"4\"/>\n      <polygon points=\"160,55 167,51 166,60\" fill=\"#e11d48\"/>\n      <circle cx=\"210\" cy=\"55\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"210\" y=\"59\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">2</text>\n    </svg>"},{"id":3,"phase":"Beginner • Single Selection","phaseClass":"phase-beginner","title":"3. Single Item Select Karke Filter Test Karein","instruction":"Slicer mein kisi ek option jaise <span class='action-tag'>North</span> par click karein aur canvas ke bar chart par dhyan dein.","expected":"Canvas ke connected visuals instantly filter hokar sirf North region ka aggregate sales (₹3,00,000) show karenge.","protip":"Power BI Desktop mein har naya visual default roop se slicer ke sath cross-filtering ke liye juda hota hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Slicer Box -->\n      <rect x=\"20\" y=\"25\" width=\"110\" height=\"170\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <rect x=\"28\" y=\"45\" width=\"94\" height=\"24\" fill=\"#0d9488\" rx=\"4\"/>\n      <text x=\"36\" y=\"61\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\">☑ North</text>\n      <circle cx=\"32\" cy=\"57\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"32\" y=\"61\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">3</text>\n      <text x=\"36\" y=\"88\" font-size=\"9\" fill=\"#64748b\">☐ South</text>\n      <text x=\"36\" y=\"112\" font-size=\"9\" fill=\"#64748b\">☐ East</text>\n      <!-- Connected Chart -->\n      <rect x=\"150\" y=\"25\" width=\"230\" height=\"170\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"165\" y=\"48\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Filtered Sales: North (₹3,00,000)</text>\n      <rect x=\"165\" y=\"65\" width=\"130\" height=\"18\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"175\" y=\"78\" font-size=\"8\" fill=\"#ffffff\">Laptop Pro (₹1.3L)</text>\n      <rect x=\"165\" y=\"90\" width=\"75\" height=\"18\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"175\" y=\"103\" font-size=\"8\" fill=\"#ffffff\">Ergo Chair (₹48k)</text>\n      <rect x=\"165\" y=\"115\" width=\"55\" height=\"18\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"175\" y=\"128\" font-size=\"8\" fill=\"#ffffff\">Winter Jkt (₹35k)</text>\n    </svg>"},{"id":4,"phase":"Beginner • Multi-Select","phaseClass":"phase-beginner","title":"4. Ctrl Key Ke Sath Multiple Items Chunein","instruction":"Keyboard par <span class='action-tag'>Ctrl</span> key dabaye rakhein aur <span class='action-tag'>South</span> region par bhi click karein.","expected":"Dono regions (North + South) ek sath select ho jayenge aur aggregate sales ₹6,67,000 calculate hogi.","protip":"Multi-select se aap do ya do se zyada sales territories ki performance ko aapas mein compare kar sakte hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Slicer -->\n      <rect x=\"20\" y=\"25\" width=\"120\" height=\"170\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <rect x=\"28\" y=\"45\" width=\"104\" height=\"22\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"36\" y=\"60\" font-size=\"9\" font-weight=\"bold\" fill=\"#ffffff\">☑ North</text>\n      <rect x=\"28\" y=\"72\" width=\"104\" height=\"22\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"36\" y=\"87\" font-size=\"9\" font-weight=\"bold\" fill=\"#ffffff\">☑ South</text>\n      <circle cx=\"120\" cy=\"83\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"120\" y=\"87\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">4</text>\n      <text x=\"36\" y=\"112\" font-size=\"9\" fill=\"#64748b\">☐ East</text>\n      <!-- Multi-select Output -->\n      <rect x=\"160\" y=\"25\" width=\"220\" height=\"170\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"175\" y=\"50\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Combined Sales (North + South)</text>\n      <text x=\"175\" y=\"75\" font-size=\"18\" font-weight=\"900\" fill=\"#0d9488\">₹6,67,000</text>\n      <text x=\"175\" y=\"95\" font-size=\"9\" fill=\"#64748b\">12 Orders Selected (6 North + 6 South)</text>\n      <rect x=\"175\" y=\"115\" width=\"180\" height=\"8\" fill=\"#e2e8f0\" rx=\"4\"/>\n      <rect x=\"175\" y=\"115\" width=\"92\" height=\"8\" fill=\"#0d9488\" rx=\"4\"/>\n    </svg>"},{"id":5,"phase":"Beginner • Clear Filter","phaseClass":"phase-beginner","title":"5. Eraser Icon Se Slicer Selection Clear Karein","instruction":"Slicer visual ke header mein top-right corner par bane <span class='action-tag'>Clear selections (Eraser 🧹)</span> icon par click karein.","expected":"Sabhi selected filters turant hat jayenge aur poora dashboard wapas All Data state (₹13,06,000) mein restore ho jayega.","protip":"User ke liye report reset karne ka yeh sabse tezi se kaam aane wala default tarika hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"40\" y=\"25\" width=\"320\" height=\"170\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <rect x=\"40\" y=\"25\" width=\"320\" height=\"35\" fill=\"#f1f5f9\" rx=\"6\"/>\n      <text x=\"55\" y=\"47\" font-size=\"11\" font-weight=\"bold\" fill=\"#1e293b\">Region Filter Bar</text>\n      <!-- Eraser Icon -->\n      <rect x=\"315\" y=\"32\" width=\"22\" height=\"22\" fill=\"#fee2e2\" stroke=\"#ef4444\" rx=\"4\"/>\n      <path d=\"M322 46 l8-8 l4 4 l-8 8 z\" fill=\"#ef4444\"/>\n      <circle cx=\"326\" cy=\"43\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"326\" y=\"47\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">5</text>\n      <text x=\"55\" y=\"90\" font-size=\"11\" font-weight=\"bold\" fill=\"#059669\">✓ Selections Cleared! Restored All 24 Records</text>\n      <text x=\"55\" y=\"115\" font-size=\"14\" font-weight=\"bold\" fill=\"#0f172a\">Total Sales: ₹13,06,000</text>\n    </svg>"},{"id":6,"phase":"Beginner • Layout Optimization","phaseClass":"phase-beginner","title":"6. Vertical List Ko Dropdown Menu Mein Badlein","instruction":"Visual ko select karein, <span class='action-tag'>Format visual > Slicer settings > Options > Style</span> mein jakar <span class='action-tag'>Dropdown</span> chunein.","expected":"Slicer ek compact single-line dropdown box mein badal jayega, jisse canvas space 80% tak bachegi.","protip":"Jab options ki sankhya 10 se zyada ho ya dashboard par charts ke liye jagah kam ho, toh hamesha Dropdown style chunein.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Dropdown Closed -->\n      <rect x=\"30\" y=\"30\" width=\"180\" height=\"36\" fill=\"#ffffff\" stroke=\"#0d9488\" stroke-width=\"2\" rx=\"4\"/>\n      <text x=\"42\" y=\"53\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Region: All ▼</text>\n      <!-- Dropdown Expanded -->\n      <rect x=\"30\" y=\"70\" width=\"180\" height=\"120\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"4\" filter=\"drop-shadow(0 4px 6px rgba(0,0,0,0.1))\"/>\n      <text x=\"42\" y=\"92\" font-size=\"9\" fill=\"#334155\">☐ North</text>\n      <text x=\"42\" y=\"117\" font-size=\"9\" fill=\"#334155\">☐ South</text>\n      <text x=\"42\" y=\"142\" font-size=\"9\" fill=\"#334155\">☐ East</text>\n      <text x=\"42\" y=\"167\" font-size=\"9\" fill=\"#334155\">☐ West</text>\n      <!-- Format Settings Indicator -->\n      <rect x=\"235\" y=\"30\" width=\"140\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <text x=\"245\" y=\"50\" font-size=\"9\" font-weight=\"bold\" fill=\"#334155\">Format > Style</text>\n      <rect x=\"245\" y=\"65\" width=\"120\" height=\"24\" fill=\"#f0fdfa\" stroke=\"#0d9488\" rx=\"3\"/>\n      <text x=\"255\" y=\"81\" font-size=\"9\" font-weight=\"bold\" fill=\"#0f766e\">✓ Dropdown</text>\n      <circle cx=\"210\" cy=\"48\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"210\" y=\"52\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">6</text>\n    </svg>"},{"id":7,"phase":"Beginner • Usability","phaseClass":"phase-beginner","title":"7. Slicer Mein Search Bar Enable Karein","instruction":"Slicer ke visual header mein <span class='action-tag'>... (More options)</span> par click karein aur <span class='action-tag'>Search</span> option ko enable karein.","expected":"Dropdown kholne par sabse upar ek Magnifying glass search box appear hoga jisme type karke turant search kiya ja sakta hai.","protip":"Customer names ya 100+ cities ke case mein search bar user ke liye sabse useful feature hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"40\" y=\"30\" width=\"220\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <!-- Search Input -->\n      <rect x=\"52\" y=\"45\" width=\"196\" height=\"28\" fill=\"#f1f5f9\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"62\" y=\"63\" font-size=\"10\" fill=\"#64748b\">🔍 Search \"Lap\"...</text>\n      <!-- Filtered Result -->\n      <rect x=\"52\" y=\"82\" width=\"196\" height=\"26\" fill=\"#f0fdfa\" stroke=\"#a7f3d0\" rx=\"3\"/>\n      <text x=\"62\" y=\"99\" font-size=\"9\" font-weight=\"bold\" fill=\"#065f46\">☑ Laptop Pro (Electronics)</text>\n      <circle cx=\"240\" cy=\"59\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"240\" y=\"63\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">7</text>\n      <text x=\"280\" y=\"70\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Instant Search</text>\n      <text x=\"280\" y=\"90\" font-size=\"9\" fill=\"#64748b\">Type 2 letters to</text>\n      <text x=\"280\" y=\"105\" font-size=\"9\" fill=\"#64748b\">filter 100+ items</text>\n    </svg>"},{"id":8,"phase":"Intermediate • Button Layout","phaseClass":"phase-intermediate","title":"8. Slicer Ko Horizontal Tile (Button) Style Mein Badlein","instruction":"Format visual pane mein <span class='action-tag'>Slicer settings > Style</span> ko badalkar <span class='action-tag'>Tile</span> select karein.","expected":"Checkboxes ki jagah modern clickable buttons (Tiles) ban jayenge jo app-like horizontal navigation strip dete hain.","protip":"Tile slicers touch screens aur tablet dashboards ke liye best navigation bar banate hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Tile Buttons Strip -->\n      <rect x=\"30\" y=\"40\" width=\"340\" height=\"50\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <rect x=\"40\" y=\"48\" width=\"60\" height=\"34\" fill=\"#0d9488\" rx=\"4\"/>\n      <text x=\"70\" y=\"69\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">North</text>\n      <rect x=\"108\" y=\"48\" width=\"60\" height=\"34\" fill=\"#f1f5f9\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <text x=\"138\" y=\"69\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\" text-anchor=\"middle\">South</text>\n      <rect x=\"176\" y=\"48\" width=\"60\" height=\"34\" fill=\"#f1f5f9\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <text x=\"206\" y=\"69\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\" text-anchor=\"middle\">East</text>\n      <rect x=\"244\" y=\"48\" width=\"60\" height=\"34\" fill=\"#f1f5f9\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <text x=\"274\" y=\"69\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\" text-anchor=\"middle\">West</text>\n      <circle cx=\"70\" cy=\"48\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"70\" y=\"52\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">8</text>\n      <text x=\"40\" y=\"125\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\">App-Style Horizontal Buttons</text>\n      <text x=\"40\" y=\"145\" font-size=\"9\" fill=\"#64748b\">Format visual > Slicer settings > Style = Tile</text>\n    </svg>"},{"id":9,"phase":"Intermediate • Selection Control","phaseClass":"phase-intermediate","title":"9. Single Select (Radio Button) Mode Enable Karein","instruction":"Format visual mein <span class='action-tag'>Slicer settings > Selection</span> kholein aur <span class='action-tag'>Single select</span> toggle ko ON karein.","expected":"Checkboxes circular radio buttons mein badal jayenge aur user ek samay mein sirf ek hi item select kar sakega.","protip":"Currency conversion ya benchmark selection ke liye Single Select mode zaroori hota hai taaki numbers double count na hon.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"30\" y=\"30\" width=\"180\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"45\" y=\"55\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Single Select Mode</text>\n      <!-- Radio North Selected -->\n      <circle cx=\"55\" cy=\"78\" r=\"6\" fill=\"#0d9488\"/>\n      <circle cx=\"55\" cy=\"78\" r=\"2\" fill=\"#ffffff\"/>\n      <text x=\"70\" y=\"82\" font-size=\"10\" font-weight=\"bold\" fill=\"#0d9488\">North (Active)</text>\n      <!-- Radio South Unselected -->\n      <circle cx=\"55\" cy=\"108\" r=\"6\" fill=\"none\" stroke=\"#94a3b8\" stroke-width=\"2\"/>\n      <text x=\"70\" y=\"112\" font-size=\"10\" fill=\"#475569\">South</text>\n      <!-- Settings Panel -->\n      <rect x=\"230\" y=\"30\" width=\"140\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"240\" y=\"50\" font-size=\"9\" font-weight=\"bold\" fill=\"#334155\">Selection</text>\n      <rect x=\"240\" y=\"65\" width=\"120\" height=\"26\" fill=\"#ecfdf5\" stroke=\"#10b981\" rx=\"4\"/>\n      <text x=\"248\" y=\"81\" font-size=\"8\" font-weight=\"bold\" fill=\"#065f46\">Single select: ON [●]</text>\n      <circle cx=\"225\" cy=\"78\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"225\" y=\"82\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">9</text>\n    </svg>"},{"id":10,"phase":"Intermediate • Bulk Selection","phaseClass":"phase-intermediate","title":"10. 'Select All' Option Add Karein","instruction":"Selection settings mein jakar <span class='action-tag'>Show \"Select all\" option</span> toggle ko ON karein.","expected":"List mein sabse upar ek dedicated **(Select All)** checkbox appear ho jayega jo ek click mein sabhi options ko select kar dega.","protip":"Yeh user ko bina sabhi items par alag-alag click kiye complete portfolio ek click mein dekhne deta hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"40\" y=\"30\" width=\"180\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <!-- Select All Highlighted -->\n      <rect x=\"48\" y=\"42\" width=\"164\" height=\"24\" fill=\"#eff6ff\" stroke=\"#93c5fd\" rx=\"3\"/>\n      <text x=\"58\" y=\"58\" font-size=\"9\" font-weight=\"bold\" fill=\"#1d4ed8\">☑ (Select all)</text>\n      <circle cx=\"205\" cy=\"54\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"205\" y=\"58\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">10</text>\n      <text x=\"58\" y=\"82\" font-size=\"9\" fill=\"#334155\">☑ North</text>\n      <text x=\"58\" y=\"104\" font-size=\"9\" fill=\"#334155\">☑ South</text>\n      <text x=\"58\" y=\"126\" font-size=\"9\" fill=\"#334155\">☑ East</text>\n      <text x=\"58\" y=\"148\" font-size=\"9\" fill=\"#334155\">☑ West</text>\n      <text x=\"240\" y=\"80\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\">1-Click Bulk Selection</text>\n      <text x=\"240\" y=\"100\" font-size=\"9\" fill=\"#64748b\">Enables comprehensive view</text>\n      <text x=\"240\" y=\"115\" font-size=\"9\" fill=\"#64748b\">with a single click</text>\n    </svg>"},{"id":11,"phase":"Intermediate • Date Range","phaseClass":"phase-intermediate","title":"11. Date Field Ke Sath 'Between' Slider Add Karein","instruction":"Naya slicer banakar usme <span class='action-tag'>OrderDate</span> column daalein. Style default roop se <span class='action-tag'>Between</span> slider par set hogi.","expected":"Dual-handle slider aur date picker calendar boxes canvas par render honge.","protip":"Dono ends ko drag karke custom date period filter kiya ja sakta hai bina kisi formula ke.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"30\" y=\"30\" width=\"340\" height=\"150\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"45\" y=\"55\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Order Date Range Slider</text>\n      <!-- Date Inputs -->\n      <rect x=\"45\" y=\"70\" width=\"95\" height=\"28\" fill=\"#f8fafc\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"55\" y=\"88\" font-size=\"9\" fill=\"#1e293b\">15/01/2024</text>\n      <rect x=\"260\" y=\"70\" width=\"95\" height=\"28\" fill=\"#f8fafc\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"270\" y=\"88\" font-size=\"9\" fill=\"#1e293b\">30/06/2024</text>\n      <!-- Dual Handle Track -->\n      <rect x=\"45\" y=\"125\" width=\"310\" height=\"6\" fill=\"#e2e8f0\" rx=\"3\"/>\n      <rect x=\"45\" y=\"125\" width=\"160\" height=\"6\" fill=\"#0d9488\" rx=\"3\"/>\n      <circle cx=\"45\" cy=\"128\" r=\"8\" fill=\"#0f766e\"/>\n      <circle cx=\"205\" cy=\"128\" r=\"8\" fill=\"#0f766e\"/>\n      <circle cx=\"205\" cy=\"128\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"205\" y=\"132\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">11</text>\n    </svg>"},{"id":12,"phase":"Intermediate • Time Intelligence","phaseClass":"phase-intermediate","title":"12. 'Relative Date' Filtering Set Karein","instruction":"Date slicer ke header icon par click karein aur type badalkar <span class='action-tag'>Relative Date</span> karein, phir <span class='action-tag'>Last 30 Days</span> chunein.","expected":"Dashboard automatically hamesha vartaman din se pichhle 30 dinon ka rolling data display karega bina kisi manual refresh ke.","protip":"Daily executive morning dashboards ke liye Relative Date sabse popular setting hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"30\" y=\"30\" width=\"340\" height=\"150\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"45\" y=\"55\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Relative Date Filter Setup</text>\n      <rect x=\"45\" y=\"75\" width=\"70\" height=\"32\" fill=\"#eff6ff\" stroke=\"#93c5fd\" rx=\"4\"/>\n      <text x=\"58\" y=\"95\" font-size=\"9\" font-weight=\"bold\" fill=\"#1d4ed8\">Last</text>\n      <rect x=\"125\" y=\"75\" width=\"50\" height=\"32\" fill=\"#ffffff\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"145\" y=\"95\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">30</text>\n      <rect x=\"185\" y=\"75\" width=\"75\" height=\"32\" fill=\"#eff6ff\" stroke=\"#93c5fd\" rx=\"4\"/>\n      <text x=\"198\" y=\"95\" font-size=\"9\" font-weight=\"bold\" fill=\"#1d4ed8\">Days</text>\n      <circle cx=\"250\" cy=\"75\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"250\" y=\"79\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">12</text>\n      <text x=\"45\" y=\"145\" font-size=\"9\" fill=\"#059669\">✓ Rolling 30-Day Window: Automatically updates every day!</text>\n    </svg>"},{"id":13,"phase":"Intermediate • Numeric Filter","phaseClass":"phase-intermediate","title":"13. Numeric Price Range Slider Configure Karein","instruction":"Naye slicer mein <span class='action-tag'>Price</span> numeric column drop karein aur Between range slider verify karein.","expected":"Minimum (₹500) aur Maximum (₹85,000) values ke beech slider track aur direct number input boxes appear honge.","protip":"Numeric slicers se low-margin ya premium high-ticket orders ko easily separate kiya ja sakta hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"30\" y=\"30\" width=\"340\" height=\"150\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"45\" y=\"55\" font-size=\"10\" font-weight=\"bold\" fill=\"#0f172a\">Price Range Slicer (₹500 - ₹85,000)</text>\n      <rect x=\"45\" y=\"75\" width=\"100\" height=\"26\" fill=\"#ffffff\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"55\" y=\"92\" font-size=\"9\" fill=\"#1e293b\">Min: ₹10,000</text>\n      <rect x=\"255\" y=\"75\" width=\"100\" height=\"26\" fill=\"#ffffff\" stroke=\"#94a3b8\" rx=\"4\"/>\n      <text x=\"265\" y=\"92\" font-size=\"9\" fill=\"#1e293b\">Max: ₹65,000</text>\n      <rect x=\"45\" y=\"125\" width=\"310\" height=\"6\" fill=\"#e2e8f0\" rx=\"3\"/>\n      <rect x=\"95\" y=\"125\" width=\"200\" height=\"6\" fill=\"#0d9488\" rx=\"3\"/>\n      <circle cx=\"95\" cy=\"128\" r=\"8\" fill=\"#0f766e\"/>\n      <circle cx=\"295\" cy=\"128\" r=\"8\" fill=\"#0f766e\"/>\n      <circle cx=\"295\" cy=\"128\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"295\" y=\"132\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">13</text>\n    </svg>"},{"id":14,"phase":"Intermediate • Cascading Flow","phaseClass":"phase-intermediate","title":"14. Cascading Slicers (Hierarchy Interaction) Setup Karein","instruction":"Canvas par do slicers rakhein: pehla <span class='action-tag'>Category</span> aur doosra <span class='action-tag'>Product</span>. Pehle slicer mein 'Electronics' chunein.","expected":"Doosra slicer automatic filter hokar sirf Electronics ke products (Laptop, Smartphone, etc.) hi display karega.","protip":"Cascading slicers user ko galat invalid data combinations choose karne se protect karte hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Slicer 1: Category -->\n      <rect x=\"30\" y=\"30\" width=\"150\" height=\"150\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"40\" y=\"50\" font-size=\"9\" font-weight=\"bold\" fill=\"#0f172a\">Category Slicer</text>\n      <rect x=\"40\" y=\"60\" width=\"130\" height=\"22\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"48\" y=\"75\" font-size=\"8\" font-weight=\"bold\" fill=\"#ffffff\">☑ Electronics</text>\n      <text x=\"48\" y=\"98\" font-size=\"8\" fill=\"#64748b\">☐ Apparel</text>\n      <text x=\"48\" y=\"120\" font-size=\"8\" fill=\"#64748b\">☐ Home & Office</text>\n      <!-- Flow Arrow -->\n      <path d=\"M 185 71 L 225 71\" stroke=\"#e11d48\" stroke-width=\"2\" stroke-dasharray=\"3\"/>\n      <polygon points=\"225,71 217,67 217,75\" fill=\"#e11d48\"/>\n      <circle cx=\"205\" cy=\"71\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"205\" y=\"75\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">14</text>\n      <!-- Slicer 2: Filtered Products -->\n      <rect x=\"235\" y=\"30\" width=\"140\" height=\"150\" fill=\"#ffffff\" stroke=\"#0d9488\" rx=\"6\"/>\n      <text x=\"245\" y=\"50\" font-size=\"9\" font-weight=\"bold\" fill=\"#0d9488\">Cascaded Products</text>\n      <text x=\"245\" y=\"75\" font-size=\"8\" fill=\"#1e293b\">• Laptop Pro</text>\n      <text x=\"245\" y=\"95\" font-size=\"8\" fill=\"#1e293b\">• Smartphone 5G</text>\n      <text x=\"245\" y=\"115\" font-size=\"8\" fill=\"#1e293b\">• Wireless Mouse</text>\n    </svg>"},{"id":15,"phase":"Advanced • Interaction Architecture","phaseClass":"phase-advanced","title":"15. Format Ribbon Se 'Edit Interactions' Activate Karein","instruction":"Slicer ko canvas par select karein, top ribbon par <span class='action-tag'>Format</span> tab par click karein aur <span class='action-tag'>Edit interactions</span> button ko activate karein.","expected":"Canvas ke har ek visual ke top-right corner par teen chote icons (Filter, Highlight, None) dikhai dene lagenge.","protip":"Edit Interactions se aap har ek chart ke liye slicer ke influence ko independently customize kar sakte hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Ribbon Bar -->\n      <rect x=\"20\" y=\"20\" width=\"360\" height=\"40\" fill=\"#1e293b\" rx=\"4\"/>\n      <text x=\"35\" y=\"44\" font-size=\"10\" font-weight=\"bold\" fill=\"#94a3b8\">Home  Insert  Modeling  View</text>\n      <text x=\"210\" y=\"44\" font-size=\"10\" font-weight=\"bold\" fill=\"#38bdf8\">Format</text>\n      <rect x=\"255\" y=\"26\" width=\"115\" height=\"28\" fill=\"#0d9488\" rx=\"4\"/>\n      <text x=\"265\" y=\"44\" font-size=\"9\" font-weight=\"bold\" fill=\"#ffffff\">⚡ Edit interactions</text>\n      <circle cx=\"360\" cy=\"40\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"360\" y=\"44\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">15</text>\n      <!-- Visual with Interaction Icons -->\n      <rect x=\"130\" y=\"75\" width=\"220\" height=\"120\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <rect x=\"260\" y=\"80\" width=\"80\" height=\"22\" fill=\"#eff6ff\" stroke=\"#93c5fd\" rx=\"3\"/>\n      <text x=\"270\" y=\"95\" font-size=\"9\" fill=\"#1e40af\">☵ Filter</text>\n      <text x=\"315\" y=\"95\" font-size=\"9\" fill=\"#ef4444\">🚫 None</text>\n    </svg>"},{"id":16,"phase":"Advanced • Visual Isolation","phaseClass":"phase-advanced","title":"16. Target Benchmark Visual Ko 'None (🚫)' Par Set Karein","instruction":"Company Benchmark Target Card ke upar bane <span class='action-tag'>None (🚫)</span> icon par click karein.","expected":"Region slicer par click karne par Regional Sales badlegi, lekin Annual Target Card (₹13.06 Lakh) hamesha stable rahega!","protip":"Overall budget lines, company targets aur baseline KPI cards ko hamesha slicer interaction se 'None' par lock rakhna chahiye.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <!-- Slicer -->\n      <rect x=\"20\" y=\"30\" width=\"100\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <rect x=\"26\" y=\"50\" width=\"88\" height=\"22\" fill=\"#0d9488\" rx=\"3\"/>\n      <text x=\"34\" y=\"65\" font-size=\"9\" fill=\"#fff\" font-weight=\"bold\">☑ North</text>\n      <!-- Target Card Visual (Set to NONE) -->\n      <rect x=\"140\" y=\"30\" width=\"240\" height=\"160\" fill=\"#ffffff\" stroke=\"#6366f1\" stroke-width=\"2\" rx=\"6\"/>\n      <!-- Interaction Icons on Header -->\n      <rect x=\"290\" y=\"38\" width=\"80\" height=\"22\" fill=\"#fee2e2\" stroke=\"#ef4444\" rx=\"4\"/>\n      <text x=\"305\" y=\"53\" font-size=\"10\" font-weight=\"bold\" fill=\"#b91c1c\">🚫 NONE ACTIVE</text>\n      <circle cx=\"360\" cy=\"49\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"360\" y=\"53\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">16</text>\n      <text x=\"160\" y=\"80\" font-size=\"10\" font-weight=\"bold\" fill=\"#4338ca\">Company Annual Target (Benchmark)</text>\n      <text x=\"160\" y=\"115\" font-size=\"22\" font-weight=\"900\" fill=\"#1e1b4b\">₹13,06,000</text>\n      <text x=\"160\" y=\"140\" font-size=\"9\" fill=\"#059669\">✓ Never changes even when North is filtered!</text>\n    </svg>"},{"id":17,"phase":"Advanced • Multi-Page Architecture","phaseClass":"phase-advanced","title":"17. View Ribbon Se 'Sync Slicers' Pane Kholein","instruction":"Top ribbon ke <span class='action-tag'>View</span> tab par jayein aur Show panes section mein <span class='action-tag'>Sync slicers</span> checkbox par click karein.","expected":"Canvas ke right side par ek Sync Slicers matrix pane open hoga jisme report ke sabhi pages (Page 1, Page 2) list honge.","protip":"Sync Slicers pane se aap filtering logic aur visual visibility ko do alag-alag controls se manage karte hain.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"20\" y=\"20\" width=\"360\" height=\"36\" fill=\"#1e293b\" rx=\"4\"/>\n      <text x=\"35\" y=\"42\" font-size=\"10\" font-weight=\"bold\" fill=\"#94a3b8\">Home  Insert  Modeling</text>\n      <text x=\"175\" y=\"42\" font-size=\"10\" font-weight=\"bold\" fill=\"#38bdf8\">View</text>\n      <!-- Sync Slicers Pane -->\n      <rect x=\"220\" y=\"70\" width=\"160\" height=\"130\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"4\"/>\n      <rect x=\"220\" y=\"70\" width=\"160\" height=\"26\" fill=\"#f1f5f9\" rx=\"4\"/>\n      <text x=\"230\" y=\"87\" font-size=\"10\" font-weight=\"bold\" fill=\"#334155\">Sync Slicers Pane</text>\n      <circle cx=\"360\" cy=\"83\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"360\" y=\"87\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">17</text>\n      <text x=\"230\" y=\"115\" font-size=\"9\" fill=\"#475569\">Page Name   Sync  Visible</text>\n      <text x=\"230\" y=\"135\" font-size=\"9\" fill=\"#0f172a\">Page 1        [✓]    [✓]</text>\n      <text x=\"230\" y=\"155\" font-size=\"9\" fill=\"#0f172a\">Page 2        [ ]    [ ]</text>\n    </svg>"},{"id":18,"phase":"Advanced • Multi-Page Sync","phaseClass":"phase-advanced","title":"18. Pages Ke Beech Slicer State Ko Sync & Hide Karein","instruction":"Sync Slicers matrix mein `Page 1` aur `Page 2` dono ke <span class='action-tag'>Sync (Circular Arrow)</span> checkbox par tick karein, jabki Visible checkbox sirf Page 1 par ON rakhein.","expected":"Page 1 par lagaya gaya filter Page 2 par bina slicer dikhaye background mein automatically synchronized rahega.","protip":"Executive reports mein har page par duplicate slicers lagane ki zaroorat nahi hoti, background sync clean experience deta hai.","svg":"<svg viewBox=\"0 0 400 220\" xmlns=\"http://www.w3.org/2000/svg\">\n      <rect width=\"400\" height=\"220\" fill=\"#f8fafc\" rx=\"8\"/>\n      <rect x=\"30\" y=\"30\" width=\"340\" height=\"160\" fill=\"#ffffff\" stroke=\"#cbd5e1\" rx=\"6\"/>\n      <text x=\"45\" y=\"55\" font-size=\"11\" font-weight=\"bold\" fill=\"#0f172a\">Sync Across Pages Configuration</text>\n      <!-- Matrix Table -->\n      <rect x=\"45\" y=\"70\" width=\"310\" height=\"75\" fill=\"#f8fafc\" stroke=\"#e2e8f0\" rx=\"4\"/>\n      <text x=\"55\" y=\"90\" font-size=\"9\" font-weight=\"bold\" fill=\"#64748b\">Report Page</text>\n      <text x=\"180\" y=\"90\" font-size=\"9\" font-weight=\"bold\" fill=\"#0d9488\">Sync State 🔄</text>\n      <text x=\"260\" y=\"90\" font-size=\"9\" font-weight=\"bold\" fill=\"#3b82f6\">Visible 👁️</text>\n      <text x=\"55\" y=\"112\" font-size=\"9\" fill=\"#0f172a\">Page 1: Overview</text>\n      <text x=\"195\" y=\"112\" font-size=\"9\" fill=\"#0d9488\">☑ ON</text>\n      <text x=\"275\" y=\"112\" font-size=\"9\" fill=\"#3b82f6\">☑ ON</text>\n      <text x=\"55\" y=\"132\" font-size=\"9\" fill=\"#0f172a\">Page 2: Deep-Dive</text>\n      <text x=\"195\" y=\"132\" font-size=\"9\" fill=\"#0d9488\">☑ ON</text>\n      <text x=\"275\" y=\"132\" font-size=\"9\" fill=\"#94a3b8\">☐ Hidden</text>\n      <circle cx=\"205\" cy=\"128\" r=\"11\" fill=\"#e11d48\"/>\n      <text x=\"205\" y=\"132\" font-size=\"10\" font-weight=\"bold\" fill=\"#ffffff\" text-anchor=\"middle\">18</text>\n      <text x=\"45\" y=\"170\" font-size=\"9\" fill=\"#059669\">✓ Page 2 filters automatically without showing duplicate slicers!</text>\n    </svg>"}];
+
+  // --- 1. VERIFIED 24-RECORD DATASET ---
+  const masterDataset = [
+    { id: 'ORD-101', date: '2024-01-15', region: 'North', category: 'Electronics', product: 'Laptop Pro', price: 65000, units: 2, sales: 130000, profit: 26000 },
+    { id: 'ORD-102', date: '2024-02-10', region: 'North', category: 'Apparel', product: 'Winter Jacket', price: 3500, units: 10, sales: 35000, profit: 7000 },
+    { id: 'ORD-103', date: '2024-03-05', region: 'North', category: 'Home & Office', product: 'Ergo Chair', price: 12000, units: 4, sales: 48000, profit: 9600 },
+    { id: 'ORD-104', date: '2024-04-18', region: 'North', category: 'Electronics', product: 'Wireless Mouse', price: 1500, units: 20, sales: 30000, profit: 7500 },
+    { id: 'ORD-105', date: '2024-05-22', region: 'North', category: 'Apparel', product: 'Denim Jeans', price: 2500, units: 12, sales: 30000, profit: 6000 },
+    { id: 'ORD-106', date: '2024-06-30', region: 'North', category: 'Home & Office', product: 'Desk Lamp', price: 1800, units: 15, sales: 27000, profit: 5400 },
+
+    { id: 'ORD-107', date: '2024-01-20', region: 'South', category: 'Electronics', product: 'Smartphone 5G', price: 28000, units: 5, sales: 140000, profit: 28000 },
+    { id: 'ORD-108', date: '2024-02-14', region: 'South', category: 'Apparel', product: 'Formal Shirt', price: 1800, units: 25, sales: 45000, profit: 11250 },
+    { id: 'ORD-109', date: '2024-03-22', region: 'South', category: 'Home & Office', product: 'Standing Desk', price: 24000, units: 3, sales: 72000, profit: 14400 },
+    { id: 'ORD-110', date: '2024-05-10', region: 'South', category: 'Electronics', product: 'Bluetooth Speaker', price: 4500, units: 10, sales: 45000, profit: 9000 },
+    { id: 'ORD-111', date: '2024-07-04', region: 'South', category: 'Apparel', product: 'Cotton T-Shirt', price: 800, units: 40, sales: 32000, profit: 6400 },
+    { id: 'ORD-112', date: '2024-08-19', region: 'South', category: 'Home & Office', product: 'Monitor Stand', price: 2200, units: 15, sales: 33000, profit: 6600 },
+
+    { id: 'ORD-113', date: '2024-02-28', region: 'East', category: 'Electronics', product: 'Tablet 10-inch', price: 22000, units: 4, sales: 88000, profit: 17600 },
+    { id: 'ORD-114', date: '2024-04-12', region: 'East', category: 'Apparel', product: 'Sports Shoes', price: 4000, units: 12, sales: 48000, profit: 12000 },
+    { id: 'ORD-115', date: '2024-06-15', region: 'East', category: 'Home & Office', product: 'File Cabinet', price: 8500, units: 6, sales: 51000, profit: 10200 },
+    { id: 'ORD-116', date: '2024-08-25', region: 'East', category: 'Electronics', product: 'Mechanical Keyboard', price: 3500, units: 14, sales: 49000, profit: 9800 },
+    { id: 'ORD-117', date: '2024-10-05', region: 'East', category: 'Apparel', product: 'Track Pants', price: 1200, units: 25, sales: 30000, profit: 6000 },
+    { id: 'ORD-118', date: '2024-11-12', region: 'East', category: 'Home & Office', product: 'Bookshelf Unit', price: 6500, units: 8, sales: 52000, profit: 10400 },
+
+    { id: 'ORD-119', date: '2024-03-10', region: 'West', category: 'Electronics', product: 'Noise-Cancel Headset', price: 11000, units: 8, sales: 88000, profit: 17600 },
+    { id: 'ORD-120', date: '2024-05-18', region: 'West', category: 'Apparel', product: 'Casual Blazer', price: 5500, units: 8, sales: 44000, profit: 11000 },
+    { id: 'ORD-121', date: '2024-07-22', region: 'West', category: 'Home & Office', product: 'Ergo Footrest', price: 1500, units: 20, sales: 30000, profit: 6000 },
+    { id: 'ORD-122', date: '2024-09-14', region: 'West', category: 'Electronics', product: 'Smart Watch', price: 9000, units: 10, sales: 90000, profit: 18000 },
+    { id: 'ORD-123', date: '2024-10-30', region: 'West', category: 'Apparel', product: 'Leather Belt Pack', price: 1500, units: 18, sales: 27000, profit: 5400 },
+    { id: 'ORD-124', date: '2024-12-05', region: 'West', category: 'Home & Office', product: 'Whiteboard 4x3', price: 4200, units: 10, sales: 42000, profit: 8400 }
+  ];
+
+  // --- 2. QUIZ DATA ---
+  const quizData = [
+    {
+      q: "1. Power BI mein Slicer visual ka mukhya (primary) uddeshya kya hota hai?",
+      opts: [
+        { text: "Naya data source connect karna", correct: false },
+        { text: "Canvas ke visuals ko dynamically aur interactively filter karna", correct: true },
+        { text: "DAX formulas ka syntax check karna", correct: false },
+        { text: "Report ko PowerPoint mein convert karna", correct: false }
+      ],
+      exp: "Slicer ka main use canvas ke sabhi visuals ko user ke click ke anuroop dynamically filter karna hota hai."
+    },
+    {
+      q: "2. Agar aapko report par user ko ek samay mein keval 1 hi option (jaise Benchmark Year ya Currency) chunne dena hai, toh kaun si setting on karenge?",
+      opts: [
+        { text: "Multi-select with Ctrl", correct: false },
+        { text: "Single select (Radio Button mode)", correct: true },
+        { text: "Show Select all option", correct: false },
+        { text: "Edit Interactions > None", correct: false }
+      ],
+      exp: "Format pane > Slicer settings > Selection mein 'Single select' toggle on karne se square checkboxes circular radio buttons ban jaate hain."
+    },
+    {
+      q: "3. Jab dashboard canvas par space kam ho aur 200+ cities ki list ho, toh sabse recommended Slicer format kaun sa hai?",
+      opts: [
+        { text: "Vertical List", correct: false },
+        { text: "Dropdown with Search enabled", correct: true },
+        { text: "Horizontal Tile buttons", correct: false },
+        { text: "Between Range Slider", correct: false }
+      ],
+      exp: "Dropdown style canvas space 80% tak bachata hai aur Search icon se user 2-3 akshar type karke 200+ items mein se turant chun sakta hai."
+    },
+    {
+      q: "4. Har subah report kholte hi automated 'Pichhle 30 Dino Ka Sales Data' dekhne ke liye kaun sa Slicer type best hai?",
+      opts: [
+        { text: "Between Date Slider", correct: false },
+        { text: "Relative Date Slicer ('Last 30 Days')", correct: true },
+        { text: "Numeric Range Slicer", correct: false },
+        { text: "Tile Slicer", correct: false }
+      ],
+      exp: "Relative Date slicer rolling time periods (jaise Last 30 Days ya This Month) ko system clock ke anusaar automatically update karta hai."
+    },
+    {
+      q: "5. Canvas par ek 'Company Annual Target (₹13.06 Lakh)' card hai, jise Region Slicer badalne par bilkul change NAHI hona chahiye. Iske liye kya karenge?",
+      opts: [
+        { text: "Target card ko report page se delete kar denge", correct: false },
+        { text: "Format > Edit Interactions mein jakar us Target card ke upar 'None (🚫)' icon par click karenge", correct: true },
+        { text: "Sync Slicers pane mein jakar visible checkbox hata denge", correct: false },
+        { text: "Single Select toggle band kar denge", correct: false }
+      ],
+      exp: "Format ribbon ke 'Edit interactions' feature se aap specific target cards ya baseline KPI visuals ko slicer filtering se 'None' par lock karke isolate kar sakte hain."
+    }
+  ];
+
+  // --- 3. STATE VARIABLES ---
+  let activeWowDemo = 0;
+  let wow1SelectedRegion = 'All';
+  let wow1SelectedCategory = 'All';
+
+  let wow2StartMonth = 1; // Jan
+  let wow2EndMonth = 12; // Dec
+  let wow2MaxPrice = 85000;
+
+  let wow3Region = 'North';
+  let wow3Mode = 'fixed'; // 'broken' vs 'fixed' (None applied)
+
+  let wow4Page = 1;
+  let wow4Region = 'East';
+  let wow4SyncEnabled = true;
+
+  let currentStepIdx = 0;
+
+  // Simulator State
+  let simActiveRegion = 'All';
+  let simActiveCategory = 'All';
+  let simMaxPrice = 85000;
+  let simEditInteractionNone = true;
+  let simActivePage = 1;
+  let simSyncSlicers = true;
+  let simStyle = 'tile';
+  let simSingleSelect = false;
+
+  // --- 4. WOW DEMO 1 LOGIC (Tile & Dropdown) ---
+  function wow1SetRegion(region) {
+    wow1SelectedRegion = region;
+    document.querySelectorAll('#wow1-regions .tile-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === region);
+    });
+    renderWow1Canvas();
+  }
+
+  function wow1SetCategory(category) {
+    wow1SelectedCategory = category;
+    renderWow1Canvas();
+  }
+
+  function wow1Clear() {
+    wow1SelectedRegion = 'All';
+    wow1SelectedCategory = 'All';
+    document.getElementById('wow1-category-select').value = 'All';
+    document.querySelectorAll('#wow1-regions .tile-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === 'All');
+    });
+    renderWow1Canvas();
+    showToast("WOW Demo 1: Slicer selections cleared! Restored all 24 records.");
+  }
+
+  function renderWow1Canvas() {
+    let filtered = masterDataset;
+    if (wow1SelectedRegion !== 'All') {
+      filtered = filtered.filter(item => item.region === wow1SelectedRegion);
+    }
+    if (wow1SelectedCategory !== 'All') {
+      filtered = filtered.filter(item => item.category === wow1SelectedCategory);
+    }
+
+    const totalSales = filtered.reduce((acc, curr) => acc + curr.sales, 0);
+    const totalProfit = filtered.reduce((acc, curr) => acc + curr.profit, 0);
+    const totalOrders = filtered.length;
+
+    document.getElementById('wow1-sales-kpi').innerText = '₹' + totalSales.toLocaleString('en-IN');
+    document.getElementById('wow1-profit-kpi').innerText = '₹' + totalProfit.toLocaleString('en-IN');
+    document.getElementById('wow1-orders-kpi').innerText = totalOrders + ' Orders';
+    document.getElementById('wow1-filter-tag').innerText = (wow1SelectedRegion === 'All' && wow1SelectedCategory === 'All') 
+      ? 'Context: All 24 Records' 
+      : 'Filtered: ' + wow1SelectedRegion + ' | ' + wow1SelectedCategory;
+
+    // Group sales by category
+    const catMap = { 'Electronics': 0, 'Apparel': 0, 'Home & Office': 0 };
+    filtered.forEach(i => { if (catMap[i.category] !== undefined) catMap[i.category] += i.sales; });
+    const maxVal = Math.max(...Object.values(catMap), 660000);
+
+    document.getElementById('wow1-bars').innerHTML = Object.entries(catMap).map(([cat, amt]) => {
+      const pct = maxVal > 0 ? Math.round((amt / maxVal) * 100) : 0;
+      return `
+        <div class="bar-row">
+          <span class="bar-label" title="${cat}">${cat}</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: ${pct}%;"></div>
+          </div>
+          <span class="bar-val">₹${amt.toLocaleString('en-IN')}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // --- 5. WOW DEMO 2 LOGIC (Timeline & Price Slider) ---
+  function wow2UpdateMonths() {
+    wow2StartMonth = parseInt(document.getElementById('wow2-start-month').value);
+    wow2EndMonth = parseInt(document.getElementById('wow2-end-month').value);
+    if (wow2StartMonth > wow2EndMonth) {
+      document.getElementById('wow2-end-month').value = wow2StartMonth;
+      wow2EndMonth = wow2StartMonth;
+    }
+    renderWow2Canvas();
+  }
+
+  function wow2UpdatePrice() {
+    wow2MaxPrice = parseInt(document.getElementById('wow2-price-slider').value);
+    document.getElementById('wow2-price-val').innerText = 'Up to ₹' + wow2MaxPrice.toLocaleString('en-IN');
+    renderWow2Canvas();
+  }
+
+  function renderWow2Canvas() {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let filtered = masterDataset.filter(item => {
+      const m = parseInt(item.date.split('-')[1]);
+      return m >= wow2StartMonth && m <= wow2EndMonth && item.price <= wow2MaxPrice;
+    });
+
+    const totalSales = filtered.reduce((acc, curr) => acc + curr.sales, 0);
+    const avgOrder = filtered.length > 0 ? Math.round(totalSales / filtered.length) : 0;
+
+    document.getElementById('wow2-sales-kpi').innerText = '₹' + totalSales.toLocaleString('en-IN');
+    document.getElementById('wow2-avg-kpi').innerText = '₹' + avgOrder.toLocaleString('en-IN');
+    document.getElementById('wow2-count-kpi').innerText = filtered.length + ' Orders';
+    document.getElementById('wow2-period-tag').innerText = monthNames[wow2StartMonth - 1] + ' - ' + monthNames[wow2EndMonth - 1] + ' (≤ ₹' + wow2MaxPrice.toLocaleString('en-IN') + ')';
+
+    // Group by Region
+    const regMap = { 'North': 0, 'South': 0, 'East': 0, 'West': 0 };
+    filtered.forEach(i => { if (regMap[i.region] !== undefined) regMap[i.region] += i.sales; });
+    const maxVal = Math.max(...Object.values(regMap), 367000);
+
+    document.getElementById('wow2-bars').innerHTML = Object.entries(regMap).map(([reg, amt]) => {
+      const pct = maxVal > 0 ? Math.round((amt / maxVal) * 100) : 0;
+      return `
+        <div class="bar-row">
+          <span class="bar-label">${reg} Region</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: ${pct}%;"></div>
+          </div>
+          <span class="bar-val">₹${amt.toLocaleString('en-IN')}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // --- 6. WOW DEMO 3 LOGIC (Edit Interactions) ---
+  function wow3SetRegion(region) {
+    wow3Region = region;
+    document.querySelectorAll('#wow3-regions .tile-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === region);
+    });
+    renderWow3Canvas();
+  }
+
+  function wow3SetMode(mode) {
+    wow3Mode = mode;
+    document.getElementById('wow3-btn-broken').classList.toggle('active', mode === 'broken');
+    document.getElementById('wow3-btn-fixed').classList.toggle('active', mode === 'fixed');
+    renderWow3Canvas();
+  }
+
+  function renderWow3Canvas() {
+    let filtered = masterDataset;
+    if (wow3Region !== 'All') {
+      filtered = masterDataset.filter(i => i.region === wow3Region);
+    }
+    const regionSales = filtered.reduce((s, i) => s + i.sales, 0);
+
+    // Target benchmark: Always ₹13,06,000 when mode is 'fixed' (None applied)
+    // If mode is 'broken', target card accidentally takes the filtered region sales!
+    const benchmarkTarget = wow3Mode === 'fixed' ? 1306000 : regionSales;
+
+    document.getElementById('wow3-region-name').innerText = wow3Region === 'All' ? 'All Territories' : wow3Region + ' Region';
+    document.getElementById('wow3-region-sales').innerText = '₹' + regionSales.toLocaleString('en-IN');
+    document.getElementById('wow3-target-val').innerText = '₹' + benchmarkTarget.toLocaleString('en-IN');
+
+    const badge = document.getElementById('wow3-target-status');
+    if (wow3Mode === 'fixed') {
+      badge.innerHTML = '<span style="color:#059669; font-weight:700;">✓ Edit Interaction: None (🚫) Active</span> &bull; Benchmark Steady';
+      document.getElementById('wow3-kpi-target-box').style.borderColor = '#10b981';
+    } else {
+      badge.innerHTML = '<span style="color:#e11d48; font-weight:700;">⚠ Broken Default: Slicer Filters Target Card!</span>';
+      document.getElementById('wow3-kpi-target-box').style.borderColor = '#e11d48';
+    }
+  }
+
+  // --- 7. WOW DEMO 4 LOGIC (Multi-Page Sync Slicers) ---
+  function wow4SetPage(page) {
+    wow4Page = page;
+    document.getElementById('wow4-page1-tab').classList.toggle('active', page === 1);
+    document.getElementById('wow4-page2-tab').classList.toggle('active', page === 2);
+    renderWow4Canvas();
+  }
+
+  function wow4SetRegion(region) {
+    wow4Region = region;
+    document.querySelectorAll('#wow4-regions .tile-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === region);
+    });
+    renderWow4Canvas();
+  }
+
+  function wow4ToggleSync() {
+    wow4SyncEnabled = document.getElementById('wow4-sync-toggle').checked;
+    renderWow4Canvas();
+    showToast(wow4SyncEnabled ? "Sync Slicers Activated across Page 1 & Page 2!" : "Sync Slicers Disconnected.");
+  }
+
+  function renderWow4Canvas() {
+    // If on Page 1: uses wow4Region
+    // If on Page 2: if sync enabled, uses wow4Region; else uses 'All'
+    let effectiveRegion = wow4Region;
+    if (wow4Page === 2 && !wow4SyncEnabled) {
+      effectiveRegion = 'All'; // unsynced default
+    }
+
+    let filtered = masterDataset;
+    if (effectiveRegion !== 'All') {
+      filtered = filtered.filter(i => i.region === effectiveRegion);
+    }
+    const totalSales = filtered.reduce((s, i) => s + i.sales, 0);
+
+    document.getElementById('wow4-page-title').innerText = wow4Page === 1 
+      ? "Page 1: Executive Summary Dashboard" 
+      : "Page 2: Regional Store Deep-Dive Details";
+    document.getElementById('wow4-sales-val').innerText = '₹' + totalSales.toLocaleString('en-IN');
+    document.getElementById('wow4-page-region-tag').innerText = 'Active Context: ' + effectiveRegion;
+
+    const syncStatusText = document.getElementById('wow4-sync-status-text');
+    if (wow4Page === 2) {
+      if (wow4SyncEnabled) {
+        syncStatusText.innerHTML = '<span style="color:#059669; font-weight:700;">🔄 Synced from Page 1!</span> Filter is active automatically.';
+      } else {
+        syncStatusText.innerHTML = '<span style="color:#e11d48; font-weight:700;">❌ Unsynced!</span> Page 2 has independent filter state.';
+      }
+    } else {
+      syncStatusText.innerText = 'Primary Slicer configured on Page 1. Switch to Page 2 to see synchronization.';
+    }
+  }
+
+  function switchWowTab(tabIdx) {
+    activeWowDemo = tabIdx;
+    document.querySelectorAll('.wow-tab-btn').forEach((b, i) => b.classList.toggle('active', i === tabIdx));
+    document.querySelectorAll('.wow-content-panel').forEach((p, i) => p.style.display = i === tabIdx ? 'block' : 'none');
+
+    const titleEl = document.getElementById('edu-callout-title');
+    const descEl = document.getElementById('edu-callout-desc');
+
+    if (tabIdx === 0) {
+      titleEl.innerText = "Demo 1: Modern App-Style Slicer Bar (Tile & Dropdown)";
+      descEl.innerText = "Tile Buttons aur Dropdowns canvas space ko 80% tak bachate hain aur user ko app jaisa modern touch-friendly feel dete hain. Ek click se sabhi KPIs instantly update ho jaate hain.";
+      renderWow1Canvas();
+    } else if (tabIdx === 1) {
+      titleEl.innerText = "Demo 2: Dynamic Timeline & Budget Range Sliders";
+      descEl.innerText = "Continuous numbers aur date ranges ko filter karne ke liye dual-handle slider sabse powerful visual hota hai. User bina kisi complex DAX measure ke budget brackets explore kar sakta hai.";
+      renderWow2Canvas();
+    } else if (tabIdx === 2) {
+      titleEl.innerText = "Demo 3: The Target Benchmark Dilemma (Edit Interactions)";
+      descEl.innerText = "Jab dashboard par company-wide target ya total budget card hota hai, toh Region chunne par use badalna nahi chahiye! 'Format > Edit Interactions > None (🚫)' karke use hamesha constant rakha jata hai.";
+      renderWow3Canvas();
+    } else if (tabIdx === 3) {
+      titleEl.innerText = "Demo 4: Multi-Page Synchronization (Sync Slicers Pane)";
+      descEl.innerText = "'View > Sync Slicers' pane se aap ek page par lagaye gaye filter ko report ke doosre sabhi pages par background mein bina duplicate slicer banaye sync kar sakte hain.";
+      renderWow4Canvas();
+    }
+  }
+
+  // --- 8. STEP-BY-STEP STEPPER ENGINE ---
+  function renderStep(idx) {
+    if (idx < 0) idx = 0;
+    if (idx >= window.stepsData.length) idx = window.stepsData.length - 1;
+    currentStepIdx = idx;
+
+    const step = window.stepsData[idx];
+    document.getElementById('step-counter-badge').innerText = 'Step ' + String(step.id).padStart(2, '0') + ' / 18';
+    
+    const phaseBadge = document.getElementById('step-phase-badge');
+    phaseBadge.className = 'phase-badge ' + step.phaseClass;
+    phaseBadge.innerText = step.phase;
+
+    document.getElementById('step-main-title').innerText = step.title;
+    document.getElementById('step-instruction-text').innerHTML = step.instruction;
+    document.getElementById('step-expected-text').innerText = step.expected;
+    document.getElementById('step-protip-text').innerText = step.protip;
+    document.getElementById('step-svg-area').innerHTML = step.svg;
+
+    document.getElementById('step-select-dropdown').value = idx;
+    document.getElementById('btn-prev-step').disabled = idx === 0;
+    document.getElementById('btn-next-step').disabled = idx === window.stepsData.length - 1;
+  }
+
+  function prevStep() { renderStep(currentStepIdx - 1); }
+  function nextStep() { renderStep(currentStepIdx + 1); }
+  function jumpToStep(idx) { renderStep(idx); }
+
+  // --- 9. INTEGRATED SLICER LAB SIMULATOR ENGINE ---
+  function simSetRegion(region) {
+    simActiveRegion = region;
+    document.querySelectorAll('#sim-region-tiles .tile-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.region === region);
+    });
+    renderSimCanvas();
+  }
+
+  function simSetCategory(category) {
+    simActiveCategory = category;
+    renderSimCanvas();
+  }
+
+  function simUpdatePrice() {
+    simMaxPrice = parseInt(document.getElementById('sim-price-slider').value);
+    document.getElementById('sim-price-display').innerText = '≤ ₹' + simMaxPrice.toLocaleString('en-IN');
+    renderSimCanvas();
+  }
+
+  function simToggleEditInteractions() {
+    simEditInteractionNone = !simEditInteractionNone;
+    const btn = document.getElementById('sim-btn-edit-interactions');
+    btn.classList.toggle('active', simEditInteractionNone);
+    showToast(simEditInteractionNone 
+      ? "Edit Interactions: Benchmark Target locked to 'None (🚫)'" 
+      : "Edit Interactions: Default 'Filter' restored on Target Card!");
+    renderSimCanvas();
+  }
+
+  function simSetPage(page) {
+    simActivePage = page;
+    document.getElementById('sim-tab-page1').classList.toggle('active', page === 1);
+    document.getElementById('sim-tab-page2').classList.toggle('active', page === 2);
+    renderSimCanvas();
+  }
+
+  function simToggleSyncCheckbox() {
+    simSyncSlicers = document.getElementById('sim-sync-chk').checked;
+    showToast(simSyncSlicers ? "Page 1 & 2 Slicers Synced!" : "Page 1 & 2 Slicers Unlinked.");
+    renderSimCanvas();
+  }
+
+  function simReset() {
+    simActiveRegion = 'All';
+    simActiveCategory = 'All';
+    simMaxPrice = 85000;
+    simEditInteractionNone = true;
+    simActivePage = 1;
+    simSyncSlicers = true;
+    document.getElementById('sim-category-dropdown').value = 'All';
+    document.getElementById('sim-price-slider').value = 85000;
+    document.getElementById('sim-sync-chk').checked = true;
+    simSetRegion('All');
+    simSetPage(1);
+    showToast("Simulator reset to factory state!");
+  }
+
+  function renderSimCanvas() {
+    let effectiveRegion = simActiveRegion;
+    if (simActivePage === 2 && !simSyncSlicers) {
+      effectiveRegion = 'All'; // Unsynced page 2
+    }
+
+    let filtered = masterDataset.filter(item => {
+      const matchReg = effectiveRegion === 'All' || item.region === effectiveRegion;
+      const matchCat = simActiveCategory === 'All' || item.category === simActiveCategory;
+      const matchPrice = item.price <= simMaxPrice;
+      return matchReg && matchCat && matchPrice;
+    });
+
+    const totalSales = filtered.reduce((s, i) => s + i.sales, 0);
+    const totalProfit = filtered.reduce((s, i) => s + i.profit, 0);
+    const totalOrders = filtered.length;
+
+    document.getElementById('sim-kpi-sales').innerText = '₹' + totalSales.toLocaleString('en-IN');
+    document.getElementById('sim-kpi-profit').innerText = '₹' + totalProfit.toLocaleString('en-IN');
+    document.getElementById('sim-kpi-orders').innerText = totalOrders + ' Orders';
+
+    // Target benchmark card
+    const targetVal = simEditInteractionNone ? 1306000 : totalSales;
+    document.getElementById('sim-target-val').innerText = '₹' + targetVal.toLocaleString('en-IN');
+    
+    const targetBadge = document.getElementById('sim-target-badge');
+    if (simEditInteractionNone) {
+      targetBadge.innerHTML = '<span style="color:#059669; font-weight:700;">🚫 None</span> &bull; Immune';
+    } else {
+      targetBadge.innerHTML = '<span style="color:#e11d48; font-weight:700;">☵ Filter</span> &bull; Active';
+    }
+
+    // Product breakdown bars
+    const prodMap = {};
+    filtered.forEach(i => { prodMap[i.product] = (prodMap[i.product] || 0) + i.sales; });
+    const maxVal = Math.max(...Object.values(prodMap), 140000);
+
+    const sortedProds = Object.entries(prodMap).sort((a,b) => b[1] - a[1]).slice(0, 4);
+    document.getElementById('sim-bar-chart').innerHTML = sortedProds.length > 0 ? sortedProds.map(([prod, amt]) => {
+      const pct = maxVal > 0 ? Math.round((amt / maxVal) * 100) : 0;
+      return `
+        <div class="bar-row">
+          <span class="bar-label">${prod}</span>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: ${pct}%;"></div>
+          </div>
+          <span class="bar-val">₹${amt.toLocaleString('en-IN')}</span>
+        </div>
+      `;
+    }).join('') : '<div style="color:#94a3b8; font-size:0.8rem; padding:0.5rem;">No matching products in current filter.</div>';
+
+    // Transaction rows preview (first 4)
+    document.getElementById('sim-table-rows').innerHTML = filtered.slice(0, 4).map(r => `
+      <tr>
+        <td style="font-weight:700;">${r.id}</td>
+        <td>${r.region}</td>
+        <td>${r.product}</td>
+        <td style="font-weight:700; color:#0d9488;">₹${r.sales.toLocaleString('en-IN')}</td>
+      </tr>
+    `).join('');
+  }
+
+  // --- 10. STUDENT CHALLENGE TRACKER ---
+  function updateChallenge() {
+    const chks = document.querySelectorAll('.task-checkbox');
+    const doneCount = Array.from(chks).filter(c => c.checked).length;
+    const pct = Math.round((doneCount / chks.length) * 100);
+
+    document.getElementById('challenge-progress-fill').style.width = pct + '%';
+    document.getElementById('challenge-progress-pct').innerText = pct + '% Completed (' + doneCount + '/' + chks.length + ' Tasks)';
+
+    const winMsg = document.getElementById('challenge-win-msg');
+    if (pct === 100) {
+      winMsg.style.display = 'block';
+      showToast("🏆 Congratulations! All 5 Slicer Mastery tasks completed!");
+    } else {
+      winMsg.style.display = 'none';
+    }
+  }
+
+  function toggleChallengeHint() {
+    const box = document.getElementById('challenge-hint-box');
+    box.style.display = box.style.display === 'none' ? 'block' : 'none';
+  }
+
+  // --- 11. QUIZ ENGINE ---
+  function renderQuiz() {
+    const container = document.getElementById('quiz-items-container');
+    container.innerHTML = quizData.map((item, qIdx) => `
+      <div class="quiz-card" id="quiz-card-${qIdx}">
+        <div class="quiz-q-title">${item.q}</div>
+        <div class="quiz-options">
+          ${item.opts.map((opt, oIdx) => `
+            <button class="quiz-opt-btn" onclick="submitQuizAnswer(${qIdx}, ${oIdx}, this)">
+              ${opt.text}
+            </button>
+          `).join('')}
+        </div>
+        <div class="quiz-feedback" id="quiz-fb-${qIdx}"></div>
+      </div>
+    `).join('');
+  }
+
+  function submitQuizAnswer(qIdx, oIdx, btnEl) {
+    const card = document.getElementById('quiz-card-' + qIdx);
+    const fb = document.getElementById('quiz-fb-' + qIdx);
+    const buttons = card.querySelectorAll('.quiz-opt-btn');
+    buttons.forEach(b => b.disabled = true);
+
+    const question = quizData[qIdx];
+    const isCorrect = question.opts[oIdx].correct;
+
+    if (isCorrect) {
+      btnEl.classList.add('correct');
+      fb.style.color = '#059669';
+      fb.innerHTML = '<strong>✓ Sahi Jawab!</strong> ' + question.exp;
+    } else {
+      btnEl.classList.add('wrong');
+      // highlight correct
+      question.opts.forEach((opt, idx) => {
+        if (opt.correct) buttons[idx].classList.add('correct');
+      });
+      fb.style.color = '#e11d48';
+      fb.innerHTML = '<strong>✗ Galat Jawab. Sahi uttar:</strong> ' + question.exp;
+    }
+    fb.style.display = 'block';
+  }
+
+  function resetQuiz() {
+    renderQuiz();
+    showToast("Quiz reset! Try answering all questions again.");
+  }
+
+  // --- 12. SAMPLE DATA EXPORT UTILITIES ---
+  function copySampleTsv() {
+    const header = "OrderID\tDate\tRegion\tCategory\tProduct\tPrice\tUnits\tSales\tProfit\n";
+    const body = masterDataset.map(r => `${r.id}\t${r.date}\t${r.region}\t${r.category}\t${r.product}\t${r.price}\t${r.units}\t${r.sales}\t${r.profit}`).join('\n');
+    navigator.clipboard.writeText(header + body).then(() => {
+      showToast("✓ Copied all 24 records to clipboard in TSV table format!");
+    });
+  }
+
+  function downloadSampleCsv() {
+    const header = "OrderID,Date,Region,Category,Product,Price,Units,Sales,Profit\n";
+    const body = masterDataset.map(r => `${r.id},${r.date},${r.region},${r.category},"${r.product}",${r.price},${r.units},${r.sales},${r.profit}`).join('\n');
+    const blob = new Blob([header + body], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'power_bi_slicer_sample_dataset_24_rows.csv';
+    a.click();
+    showToast("Downloaded 'power_bi_slicer_sample_dataset_24_rows.csv'!");
+  }
+
+  // --- 13. LIGHTBOX MODAL ---
+  function openLightbox(stepIdx) {
+    if (stepIdx === undefined) stepIdx = currentStepIdx;
+    const step = window.stepsData[stepIdx];
+    if (!step) return;
+    document.getElementById('lightbox-title').innerText = step.title;
+    document.getElementById('lightbox-body').innerHTML = step.svg;
+    document.getElementById('lightbox-modal').style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox-modal').style.display = 'none';
+  }
+
+  // --- 14. CONTENT EDITOR STUDIO (MODULE 8) ---
+  function openContentEditor() {
+    const sel = document.getElementById('editor-step-select');
+    sel.innerHTML = window.stepsData.map((s, idx) => `<option value="${idx}">Step ${s.id}: ${s.title}</option>`).join('');
+    loadStepIntoEditor();
+    document.getElementById('editor-modal').style.display = 'flex';
+  }
+
+  function closeContentEditor() {
+    document.getElementById('editor-modal').style.display = 'none';
+  }
+
+  function loadStepIntoEditor() {
+    const idx = parseInt(document.getElementById('editor-step-select').value);
+    const s = window.stepsData[idx];
+    if (!s) return;
+    document.getElementById('editor-title-input').value = s.title;
+    document.getElementById('editor-instr-input').value = s.instruction;
+    document.getElementById('editor-outcome-input').value = s.expected;
+    document.getElementById('editor-protip-input').value = s.protip;
+  }
+
+  function saveEditedStep() {
+    const idx = parseInt(document.getElementById('editor-step-select').value);
+    const s = window.stepsData[idx];
+    if (!s) return;
+    s.title = document.getElementById('editor-title-input').value;
+    s.instruction = document.getElementById('editor-instr-input').value;
+    s.expected = document.getElementById('editor-outcome-input').value;
+    s.protip = document.getElementById('editor-protip-input').value;
+    renderStep(idx);
+    closeContentEditor();
+    showToast("Step " + s.id + " updated successfully!");
+  }
+
+  function handleScreenshotUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const idx = parseInt(document.getElementById('editor-step-select').value);
+      const s = window.stepsData[idx];
+      if (s) {
+        s.svg = `<img src="${e.target.result}" alt="Screenshot" style="max-width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />`;
+        renderStep(idx);
+        showToast("Uploaded genuine screenshot for Step " + s.id + "!");
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function exportStandaloneHtml() {
+    const html = document.documentElement.outerHTML;
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'power-bi-slicer-basics-masterclass.html';
+    a.click();
+    showToast("Exported standalone masterclass HTML file!");
+  }
+
+  // --- 15. TOAST UTILITY ---
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-msg').innerText = msg;
+    t.style.display = 'flex';
+    setTimeout(() => { t.style.display = 'none'; }, 3500);
+  }
+
+  // --- 16. PAGE INITIALIZATION ---
+  window.addEventListener('DOMContentLoaded', () => {
+    // Populate Stepper Dropdown
+    const dropdown = document.getElementById('step-select-dropdown');
+    dropdown.innerHTML = window.stepsData.map((s, idx) => `<option value="${idx}">Step ${s.id}: ${s.title}</option>`).join('');
+
+    // Populate Sample Data Table Rows
+    const tbody = document.getElementById('sample-data-tbody');
+    tbody.innerHTML = masterDataset.map(r => `
+      <tr>
+        <td style="font-weight:700;">${r.id}</td>
+        <td>${r.date}</td>
+        <td>${r.region}</td>
+        <td>${r.category}</td>
+        <td>${r.product}</td>
+        <td>₹${r.price.toLocaleString('en-IN')}</td>
+        <td>${r.units}</td>
+        <td style="font-weight:700; color:#0d9488;">₹${r.sales.toLocaleString('en-IN')}</td>
+        <td style="color:#059669;">₹${r.profit.toLocaleString('en-IN')}</td>
+      </tr>
+    `).join('');
+
+    // Initialize all modules
+    renderWow1Canvas();
+    renderWow2Canvas();
+    renderWow3Canvas();
+    renderWow4Canvas();
+    renderStep(0);
+    renderSimCanvas();
+    renderQuiz();
+  });
+
+  </script>
+</body>
+</html>

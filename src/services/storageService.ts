@@ -54,7 +54,21 @@ export const storageService = {
     try {
       const stored = localStorage.getItem(TOPICS_STORAGE_KEY)
       if (stored) {
-        return JSON.parse(stored)
+        const parsed: TopicItem[] = JSON.parse(stored)
+        // Ensure new demo topics are merged into existing stored state
+        const initial = normalizeInitialTopics()
+        const existingIds = new Set(parsed.map((t) => t.id))
+        let hasNewTopics = false
+        for (const initTopic of initial) {
+          if (!existingIds.has(initTopic.id)) {
+            parsed.push(initTopic)
+            hasNewTopics = true
+          }
+        }
+        if (hasNewTopics) {
+          this.saveTopics(parsed)
+        }
+        return parsed
       }
     } catch {
       // fallback to initial

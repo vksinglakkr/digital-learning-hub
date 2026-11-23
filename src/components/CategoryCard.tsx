@@ -10,12 +10,17 @@ import {
   ArrowRight 
 } from 'lucide-react'
 import type { CategoryItem } from '../types'
+import { usePublicCurriculum } from '../context/PublicCurriculumContext'
+import { isTopicPublished } from '../config/topicTutorials'
 
 interface CategoryCardProps {
   category: CategoryItem
 }
 
 export const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
+  const { topics } = usePublicCurriculum()
+  const activeTopics = topics.filter((t) => t.categoryId === category.id && isTopicPublished(t))
+  const topicCount = activeTopics.length
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'BarChart3':
@@ -46,9 +51,15 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
           <div className="w-12 h-12 rounded-xl bg-teal-50 border border-teal-100 flex items-center justify-center group-hover:scale-105 group-hover:bg-teal-100/70 transition-all">
             {getIcon(category.iconName)}
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
-            {category.resourceCount} items
-          </span>
+          {topicCount > 0 ? (
+            <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+              {topicCount} {topicCount === 1 ? 'Topic / Masterclass' : 'Topics'}
+            </span>
+          ) : (
+            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 border border-slate-200">
+              Coming Soon
+            </span>
+          )}
         </div>
 
         {/* Title & Description */}

@@ -50,6 +50,11 @@ function isValidResourceUrl(urlStr: string, isDemo?: boolean): boolean {
   const trimmed = urlStr.trim()
   if (!trimmed) return false
 
+  // Step 20D / Micro-learning: Allow internal tutorial and local relative paths
+  if (trimmed.startsWith('/') || trimmed.startsWith('tutorials/') || trimmed.startsWith('./')) {
+    return true
+  }
+
   try {
     const parsed = new URL(trimmed)
     if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {

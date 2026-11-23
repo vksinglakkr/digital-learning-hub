@@ -2,10 +2,13 @@ import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useLearningHub } from '../context/LearningHubContext'
 import { AddResourceQuickForm } from '../components/admin/AddResourceQuickForm'
+import { TopicContentStudio } from '../components/admin/TopicContentStudio'
+import { PromptLibraryStudio } from '../components/admin/PromptLibraryStudio'
 import { CategoryManager } from '../components/admin/CategoryManager'
 import { TopicManager } from '../components/admin/TopicManager'
 import { ResourceManager } from '../components/admin/ResourceManager'
 import { GitHubFolderScanner } from '../components/admin/GitHubFolderScanner'
+import { TutorialBuilder } from '../components/admin/tutorialBuilder/TutorialBuilder'
 import { BackupRestoreModal } from '../components/admin/BackupRestoreModal'
 import { PublishExportModal } from '../components/admin/PublishExportModal'
 import { backupService, type LearningHubBackup } from '../services/backupService'
@@ -30,10 +33,12 @@ import {
   AlertTriangle,
   FolderGit2,
   Globe,
+  Sparkles,
+  Terminal,
   X
 } from 'lucide-react'
 
-type AdminTab = 'quick-add' | 'bulk-import' | 'resources' | 'topics' | 'categories'
+type AdminTab = 'content-studio' | 'prompt-library' | 'quick-add' | 'bulk-import' | 'resources' | 'topics' | 'categories' | 'tutorial-builder'
 
 export const AdminPage: React.FC = () => {
   const { 
@@ -45,7 +50,7 @@ export const AdminPage: React.FC = () => {
     safetySnapshot,
     restoreSafetySnapshot
   } = useLearningHub()
-  const [activeTab, setActiveTab] = useState<AdminTab>('quick-add')
+  const [activeTab, setActiveTab] = useState<AdminTab>('content-studio')
   const [showResetConfirm, setShowResetConfirm] = useState(false)
   const [resetNotice, setResetNotice] = useState(false)
 
@@ -265,15 +270,65 @@ export const AdminPage: React.FC = () => {
           {/* Navigation Tabs Bar */}
           <div className="flex items-center gap-2 -mb-px overflow-x-auto text-xs font-semibold">
             <button
-              onClick={() => setActiveTab('quick-add')}
+              onClick={() => setActiveTab('content-studio')}
               className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
-                activeTab === 'quick-add'
+                activeTab === 'content-studio'
                   ? 'border-teal-600 text-teal-800 font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
               }`}
             >
-              <PlusCircle className="w-4 h-4 text-teal-600" />
-              <span>Quick Add Resource</span>
+              <Sparkles className="w-4 h-4 text-teal-600" />
+              <span>Topic Content Studio</span>
+              <span className="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded-full">Primary</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('prompt-library')}
+              className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
+                activeTab === 'prompt-library'
+                  ? 'border-teal-600 text-teal-800 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
+              }`}
+            >
+              <Terminal className="w-4 h-4 text-teal-600" />
+              <span>Prompt Library</span>
+              <span className="text-[10px] bg-teal-50 text-teal-700 font-bold px-1.5 py-0.5 rounded-full border border-teal-200">Pilot V1</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('topics')}
+              className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
+                activeTab === 'topics'
+                  ? 'border-teal-600 text-teal-800 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
+              }`}
+            >
+              <BookOpen className="w-4 h-4 text-teal-600" />
+              <span>All Topics ({topics.length})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('resources')}
+              className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
+                activeTab === 'resources'
+                  ? 'border-teal-600 text-teal-800 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
+              }`}
+            >
+              <Database className="w-4 h-4 text-teal-600" />
+              <span>All Resources ({totalResourcesCount})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('categories')}
+              className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
+                activeTab === 'categories'
+                  ? 'border-teal-600 text-teal-800 font-bold'
+                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
+              }`}
+            >
+              <Layers className="w-4 h-4 text-teal-600" />
+              <span>Categories ({categories.length})</span>
             </button>
 
             <button
@@ -289,39 +344,28 @@ export const AdminPage: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setActiveTab('resources')}
+              onClick={() => setActiveTab('quick-add')}
               className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
-                activeTab === 'resources'
+                activeTab === 'quick-add'
                   ? 'border-teal-600 text-teal-800 font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
               }`}
             >
-              <Database className="w-4 h-4 text-teal-600" />
-              <span>Resources ({totalResourcesCount})</span>
+              <PlusCircle className="w-4 h-4 text-teal-600" />
+              <span>Quick Add Single</span>
             </button>
 
             <button
-              onClick={() => setActiveTab('topics')}
+              onClick={() => setActiveTab('tutorial-builder')}
               className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
-                activeTab === 'topics'
-                  ? 'border-teal-600 text-teal-800 font-bold'
+                activeTab === 'tutorial-builder'
+                  ? 'border-indigo-600 text-indigo-800 font-bold'
                   : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
               }`}
             >
-              <BookOpen className="w-4 h-4 text-teal-600" />
-              <span>Topics ({topics.length})</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('categories')}
-              className={`flex items-center gap-2 py-3 px-3.5 border-b-2 transition-all whitespace-nowrap ${
-                activeTab === 'categories'
-                  ? 'border-teal-600 text-teal-800 font-bold'
-                  : 'border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300'
-              }`}
-            >
-              <Layers className="w-4 h-4 text-teal-600" />
-              <span>Categories ({categories.length})</span>
+              <Sparkles className="w-4 h-4 text-indigo-500" />
+              <span>Tutorial Builder</span>
+              <span className="text-[10px] bg-indigo-50 text-indigo-700 font-bold px-1.5 py-0.5 rounded-full border border-indigo-200">Experimental</span>
             </button>
           </div>
         </div>
@@ -431,11 +475,14 @@ export const AdminPage: React.FC = () => {
         </div>
 
         {/* Active Tab Component */}
+        {activeTab === 'content-studio' && <TopicContentStudio />}
+        {activeTab === 'prompt-library' && <PromptLibraryStudio />}
         {activeTab === 'quick-add' && <AddResourceQuickForm onSaved={() => {}} />}
         {activeTab === 'bulk-import' && <GitHubFolderScanner />}
         {activeTab === 'resources' && <ResourceManager />}
         {activeTab === 'topics' && <TopicManager />}
         {activeTab === 'categories' && <CategoryManager />}
+        {activeTab === 'tutorial-builder' && <TutorialBuilder />}
 
       </main>
 

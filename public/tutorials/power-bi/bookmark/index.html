@@ -1,0 +1,3712 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Bookmark Masterclass | Digital Learning Lab</title>
+  <style>
+    /* CSS Reset & Variables */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --emerald-600: #059669;
+      --emerald-500: #10b981;
+      --emerald-50: #ecfdf5;
+      --amber-600: #d97706;
+      --amber-500: #f59e0b;
+      --amber-50: #fffbeb;
+      --rose-600: #e11d48;
+      --rose-50: #fff1f2;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--slate-50);
+      color: var(--slate-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header & Navigation */
+    header.site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--slate-900);
+    }
+    .brand-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #bfdbfe;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .nav-btn {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-600);
+      text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      transition: all 0.15s;
+    }
+    .nav-btn:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      padding: 3.5rem 0 3rem;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--emerald-50);
+      color: var(--emerald-600);
+      border: 1px solid #a7f3d0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--slate-600);
+      max-width: 680px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.7;
+    }
+    .teaching-sequence {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--slate-100);
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--slate-200);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate-700);
+    }
+    .seq-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .seq-step.active {
+      color: var(--primary);
+    }
+    .seq-arrow {
+      color: var(--slate-300);
+      font-weight: 400;
+    }
+
+    /* Section Headings */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.5rem;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--slate-600);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Card styling */
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Tabs for 5 WOW Demos */
+    .demo-tabs {
+      display: flex;
+      overflow-x: auto;
+      background: var(--slate-100);
+      border-bottom: 1px solid var(--slate-200);
+      padding: 0.5rem 0.75rem;
+      gap: 0.5rem;
+    }
+    .demo-tab-btn {
+      background: none;
+      border: none;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate-600);
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .demo-tab-btn:hover {
+      background: rgba(255,255,255,0.7);
+      color: var(--slate-900);
+    }
+    .demo-tab-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .demo-content {
+      display: none;
+      padding: 1.75rem;
+    }
+    .demo-content.active {
+      display: block;
+    }
+
+    /* Interactive Demo Workspace */
+    .demo-workspace {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      min-height: 340px;
+    }
+    .demo-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    .kpi-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .kpi-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 0.65rem 1rem;
+      min-width: 140px;
+    }
+    .kpi-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-transform: uppercase;
+    }
+    .kpi-val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    .btn-group {
+      display: inline-flex;
+      background: #ffffff;
+      padding: 3px;
+      border-radius: 10px;
+      border: 1px solid var(--slate-300);
+    }
+    .interactive-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--slate-600);
+      transition: all 0.2s;
+    }
+    .interactive-btn:hover {
+      color: var(--slate-900);
+    }
+    .interactive-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(37,99,235,0.25);
+    }
+
+    /* Chart visualization */
+    .chart-container {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 1.25rem;
+      height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 170px;
+      gap: 1rem;
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 0.5rem;
+    }
+    .bar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .bar-fill {
+      width: 48px;
+      border-radius: 6px 6px 0 0;
+      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+      position: relative;
+    }
+    .bar-fill::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      white-space: nowrap;
+    }
+    .bar-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--slate-600);
+      margin-top: 0.5rem;
+    }
+
+    /* Educational Callout box */
+    .edu-callout {
+      margin-top: 1.25rem;
+      background: var(--amber-50);
+      border-left: 4px solid var(--amber-500);
+      padding: 1rem 1.25rem;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.95rem;
+      color: var(--slate-800);
+    }
+    .edu-callout strong {
+      color: #92400e;
+    }
+
+    /* WOW Transition Banner */
+    .wow-banner {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 2.25rem;
+      text-align: center;
+      margin: 3rem 0;
+      box-shadow: 0 8px 24px rgba(37,99,235,0.25);
+    }
+    .wow-banner h3 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .wow-banner p {
+      font-size: 1.1rem;
+      color: #dbeafe;
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+
+    /* Table styling for sample data */
+    .data-table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      background: #ffffff;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    table.data-table th {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-weight: 700;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    table.data-table td {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--slate-200);
+      color: var(--slate-800);
+    }
+    table.data-table tr.total-row {
+      background: var(--slate-50);
+      font-weight: 800;
+      border-top: 2px solid var(--slate-300);
+    }
+
+    /* Button Actions bar */
+    .action-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-300);
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-secondary:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-400);
+      color: var(--slate-900);
+    }
+
+    /* Micro-learning 20 Steps Stepper */
+    .stepper-box {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+    .stepper-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    .step-badge {
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+    }
+    .step-selector {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      padding: 0.5rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--slate-300);
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .step-main-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      margin-bottom: 0.5rem;
+    }
+    .step-instruction {
+      font-size: 1.05rem;
+      color: var(--slate-700);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    .step-instruction .action-tag {
+      background: #fef08a;
+      color: #854d0e;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    /* Illustrated UI Diagram (Crisp SVG) */
+    .diagram-frame {
+      background: #ffffff;
+      border: 2px solid var(--slate-200);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .diagram-topbar {
+      background: var(--slate-100);
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--slate-200);
+      font-size: 0.75rem;
+      color: var(--slate-500);
+      font-weight: 600;
+    }
+    .diagram-badge {
+      background: #f1f5f9;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-300);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .diagram-body {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fbfcfd;
+      min-height: 380px;
+    }
+    .diagram-body svg {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+    }
+    .diagram-zoom-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background: rgba(15,23,42,0.85);
+      color: #ffffff;
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s;
+    }
+    .diagram-zoom-btn:hover {
+      background: var(--slate-900);
+    }
+
+    /* Expected outcome & Pro tip */
+    .outcome-box {
+      background: var(--emerald-50);
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+      color: #065f46;
+    }
+    .outcome-box strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 800;
+    }
+    .protip-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+      color: #1e40af;
+    }
+    .protip-box strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 800;
+    }
+
+    /* Stepper Controls */
+    .stepper-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--slate-200);
+    }
+    .btn-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 800;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .btn-step.primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-step.primary:hover {
+      background: var(--primary-dark);
+    }
+    .btn-step.secondary {
+      background: #ffffff;
+      color: var(--slate-700);
+      border-color: var(--slate-300);
+    }
+    .btn-step.secondary:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-400);
+    }
+    .btn-step:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Toast notification */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Modal / Lightbox */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-box {
+      background: #ffffff;
+      border-radius: 16px;
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--slate-100);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate-700);
+    }
+    .modal-close:hover {
+      background: var(--slate-200);
+    }
+
+    /* Genuine Screenshot Tracking Section */
+    .audit-note {
+      background: var(--slate-100);
+      border: 1px dashed var(--slate-300);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--slate-600);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--slate-200);
+      padding: 2.5rem 0;
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+
+    /* Print media query */
+    @media print {
+      header.site-header, .demo-tabs, .btn-group, .stepper-nav, .diagram-zoom-btn, .action-bar, .wow-banner {
+        display: none !important;
+      }
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      .card, .stepper-box {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Mobile Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.85rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .demo-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .kpi-row {
+        width: 100%;
+      }
+      .kpi-card {
+        flex: 1;
+      }
+      .stepper-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .stepper-nav {
+        flex-direction: column;
+      }
+      .btn-step {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  
+    /* Enhanced Demo 4 & Demo 5 Styles */
+    .teaching-triad {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .triad-item {
+      padding: 0.5rem;
+    }
+    .triad-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.35rem;
+    }
+    .triad-badge.problem { background: #fee2e2; color: #991b1b; }
+    .triad-badge.tryit { background: #fef3c7; color: #92400e; }
+    .triad-badge.learning { background: #dbeafe; color: #1e40af; }
+    .triad-text {
+      font-size: 0.85rem;
+      color: var(--slate-700);
+      line-height: 1.5;
+    }
+
+    /* Demo 4 Views */
+    .demo4-view {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    .demo4-view.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Paired Bar Chart for Product Analysis */
+    .paired-bar-group {
+      display: flex;
+      gap: 6px;
+      align-items: flex-end;
+      justify-content: center;
+      height: 100%;
+    }
+    .paired-bar {
+      width: 20px;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.3s;
+      position: relative;
+    }
+    .paired-bar::after {
+      content: attr(data-val);
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .paired-bar.sales { background: #2563eb; color: #1e40af; }
+    .paired-bar.profit { background: #059669; color: #065f46; }
+
+    /* Demo 5 Interactive Selection Pane */
+    .pbi-pane {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: var(--font-sans);
+    }
+    .pbi-pane-header {
+      background: #f1f5f9;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--slate-200);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--slate-700);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pbi-pane-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--slate-100);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-800);
+      transition: background 0.15s;
+    }
+    .pbi-pane-item:hover {
+      background: #f8fafc;
+    }
+    .eye-btn {
+      background: none;
+      border: 1px solid var(--slate-300);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: all 0.15s;
+    }
+    .eye-btn:hover {
+      background: var(--slate-100);
+      border-color: var(--slate-400);
+    }
+    .eye-btn.hidden-eye {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+
+  
+    /* MODULE 5: SIMULATOR STYLES */
+    .sim-workspace {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .sim-topbar {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.6rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    .sim-canvas {
+      padding: 1.25rem;
+      background: #f8fafc;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .sim-button-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--slate-200);
+    }
+    .sim-pbi-btn {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s;
+    }
+    .sim-pbi-btn:hover {
+      background: var(--slate-50);
+      border-color: var(--slate-400);
+    }
+    .sim-pbi-btn.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* MODULE 6: CHALLENGE STYLES */
+    .challenge-card {
+      background: #ffffff;
+      border: 2px solid #fed7aa;
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 16px rgba(234, 88, 12, 0.05);
+      margin-bottom: 2.5rem;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--slate-100);
+      font-size: 0.9rem;
+      color: var(--slate-800);
+      cursor: pointer;
+    }
+    .checklist-item:last-child {
+      border-bottom: none;
+    }
+    .checklist-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 2px solid var(--slate-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #ffffff;
+      transition: all 0.15s;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .checklist-item.done .checklist-checkbox {
+      background: var(--emerald-600);
+      border-color: var(--emerald-600);
+    }
+    .checklist-item.done span.text {
+      text-decoration: line-through;
+      color: var(--slate-400);
+    }
+
+    /* MODULE 7: QUIZ STYLES */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .quiz-question {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 1rem;
+    }
+    .quiz-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      background: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .quiz-option:hover:not(:disabled) {
+      background: var(--slate-50);
+      border-color: var(--slate-400);
+    }
+    .quiz-option.correct {
+      background: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+      font-weight: 700;
+    }
+    .quiz-option.wrong {
+      background: #fff1f2 !important;
+      border-color: #f43f5e !important;
+      color: #9f1239 !important;
+    }
+    .quiz-feedback {
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      display: none;
+    }
+    .quiz-feedback.show {
+      display: block;
+    }
+
+    /* CONTENT EDITOR MODAL & DRAWER */
+    .editor-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.8);
+      backdrop-filter: blur(4px);
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .editor-modal-overlay.open {
+      display: flex;
+    }
+    .editor-modal {
+      background: #ffffff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 980px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+    .editor-header {
+      padding: 1rem 1.5rem;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .editor-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .editor-footer {
+      padding: 1rem 1.5rem;
+      background: var(--slate-50);
+      border-top: 1px solid var(--slate-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .editor-form-group {
+      margin-bottom: 1rem;
+    }
+    .editor-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--slate-700);
+      margin-bottom: 0.35rem;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .editor-input, .editor-textarea {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--slate-300);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-sans);
+    }
+    .editor-textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .editor-step-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--slate-200);
+      flex-wrap: wrap;
+    }
+    .editor-pill-btn {
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--slate-300);
+      background: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s;
+    }
+    .editor-pill-btn:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+    .editor-pill-btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    .editor-pill-btn.danger {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
+    }
+    .draft-badge-active {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+    }
+    .draft-badge-active.visible {
+      display: inline-flex;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-group">
+        <span class="brand-badge">Power BI</span>
+        <span class="brand-title">Digital Learning Lab</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#demos" class="nav-btn">5 WOW Demos</a>
+        <a href="#story" class="nav-btn">Problem & Output</a>
+        <a href="#data" class="nav-btn">Sample Data</a>
+        <a href="#steps" class="nav-btn">20 Steps</a>
+        <a href="#simulator" class="nav-btn">Simulator</a>
+        <a href="#challenge" class="nav-btn">Challenge</a>
+        <a href="#quiz" class="nav-btn">Quiz</a>
+        <button class="nav-btn" onclick="openContentEditor()" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; font-weight: 700; cursor: pointer;">
+          ✏️ Content Editor
+        </button>
+        <span class="draft-badge-active" id="global-draft-badge">● Draft Mode Active</span>
+
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span>✨ Masterclass: Role Model Interactive Tutorial</span>
+      </div>
+      <h1 class="hero-title">
+        Power BI Bookmark Tutorial<br>
+        <span style="color: var(--primary);">एक Dashboard, कई कमाल — केवल एक Button से!</span>
+      </h1>
+      <p class="hero-subtitle">
+        अब एक ही Dashboard पर बिना Page बदले Sales और Profit के अलग-अलग Charts दिखाएं। सीखें बिल्कुल आसान हिंदी में, चित्रों और इंटरैक्टिव सिमुलेटर के साथ!
+      </p>
+      <div class="teaching-sequence">
+        <span class="seq-step active">👁️ 1. देखें (SEE)</span>
+        <span class="seq-arrow">→</span>
+        <span class="seq-step">💡 2. समझें (UNDERSTAND)</span>
+        <span class="seq-arrow">→</span>
+        <span class="seq-step">🕹️ 3. अनुभव करें (EXPERIENCE)</span>
+        <span class="seq-arrow">→</span>
+        <span class="seq-step">🛠️ 4. अभ्यास करें (PRACTICE)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 1: 5 WOW INTERACTIVE DEMOS -->
+  <section id="demos" style="padding: 3.5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 1 • First Show The Power</span>
+        <h2 class="section-title">Bookmark क्या कर सकता है? ये 5 कमाल देखें!</h2>
+        <p class="section-desc">नीचे दिए गए Buttons को खुद दबाकर देखें कि Power BI Bookmark एक क्लिक में Dashboard को कैसे बदल देता है।</p>
+      </div>
+
+      <div class="card">
+        <!-- Demo Selection Tabs -->
+        <div class="demo-tabs">
+          <button class="demo-tab-btn active" onclick="switchDemo(0)">Demo 1: Sales vs Profit</button>
+          <button class="demo-tab-btn" onclick="switchDemo(1)">Demo 2: Show/Hide Filter</button>
+          <button class="demo-tab-btn" onclick="switchDemo(2)">Demo 3: Reset Filters</button>
+          <button class="demo-tab-btn" onclick="switchDemo(3)">Demo 4: Dashboard Navigation</button>
+          <button class="demo-tab-btn" onclick="switchDemo(4)">Demo 5: Before vs After</button>
+        </div>
+
+        <!-- DEMO 1: Sales View vs Profit View -->
+        <div class="demo-content active" id="demo-0">
+          <div class="demo-workspace">
+            <div class="demo-toolbar">
+              <div class="kpi-row">
+                <div class="kpi-card">
+                  <div class="kpi-label">Total Sales</div>
+                  <div class="kpi-val" style="color: #2563eb;">₹1,20,000</div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-label">Total Profit</div>
+                  <div class="kpi-val" style="color: #059669;">₹30,000</div>
+                </div>
+              </div>
+              <div class="btn-group">
+                <button class="interactive-btn active" id="btn-sales-view" onclick="toggleDemo1View('sales')">📊 Sales View</button>
+                <button class="interactive-btn" id="btn-profit-view" onclick="toggleDemo1View('profit')">💰 Profit View</button>
+              </div>
+            </div>
+
+            <!-- Animated Bar Chart -->
+            <div class="chart-container">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span id="chart1-title" style="font-weight: 800; font-size: 0.95rem; color: var(--slate-800);">
+                  Product-wise Total Sales (₹)
+                </span>
+                <span style="font-size: 0.75rem; color: var(--slate-500); font-weight: 600;">Active Bookmark View</span>
+              </div>
+              <div class="chart-bars">
+                <div class="bar-col">
+                  <div class="bar-fill" id="bar-laptop" data-val="₹50k" style="height: 140px; background-color: #2563eb;"></div>
+                  <span class="bar-label">Laptop</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-fill" id="bar-mobile" data-val="₹35k" style="height: 100px; background-color: #2563eb;"></div>
+                  <span class="bar-label">Mobile</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-fill" id="bar-tablet" data-val="₹20k" style="height: 60px; background-color: #2563eb;"></div>
+                  <span class="bar-label">Tablet</span>
+                </div>
+                <div class="bar-col">
+                  <div class="bar-fill" id="bar-acc" data-val="₹15k" style="height: 45px; background-color: #2563eb;"></div>
+                  <span class="bar-label">Accessories</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-callout">
+              <strong>💡 दो अलग Charts, लेकिन Dashboard एक ही!</strong><br>
+              जब आप "Profit View" दबाते हैं, तो Power BI Sales Chart को Hide कर देता है और Profit Chart को Show कर देता है। यही है Bookmark का जादू!
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO 2: Show/Hide Filter Panel -->
+        <div class="demo-content" id="demo-1">
+          <div class="demo-workspace" style="overflow: hidden;">
+            <div class="demo-toolbar">
+              <span style="font-weight: 800; color: var(--slate-800);">Canvas Optimization Demo</span>
+              <button class="btn-secondary" id="btn-toggle-filter" onclick="toggleDemo2Filter()">
+                <span id="filter-btn-text">🔍 Show Filters</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 1rem; height: 230px; position: relative;">
+              <!-- Main Charts Area -->
+              <div style="flex: 1; background: #ffffff; border: 1px solid var(--slate-200); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📈</div>
+                <h4 style="font-weight: 800; color: var(--slate-900); margin-bottom: 0.25rem;">Full Width Visual Canvas</h4>
+                <p style="font-size: 0.85rem; color: var(--slate-600); max-width: 420px;">
+                  जब Filters की जरूरत न हो, उन्हें Bookmark से Hide कर दें ताकि Charts को पूरी स्क्रीन पर साफ देखा जा सके।
+                </p>
+              </div>
+
+              <!-- Sliding Filter Panel -->
+              <div id="filter-drawer" style="width: 0; opacity: 0; background: #ffffff; border: 1px solid var(--slate-200); border-radius: 12px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; display: flex; flex-direction: column; padding: 0;">
+                <div style="padding: 1rem; border-bottom: 1px solid var(--slate-200); display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">Filters Drawer</span>
+                  <button onclick="toggleDemo2Filter()" style="border: none; background: none; cursor: pointer; font-size: 1rem;">✕</button>
+                </div>
+                <div style="padding: 1rem; font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div>
+                    <label style="font-weight: 700; color: var(--slate-600); display: block; margin-bottom: 0.25rem;">Year</label>
+                    <select style="width: 100%; padding: 0.3rem; border-radius: 6px; border: 1px solid var(--slate-300);"><option>2026</option><option>2025</option></select>
+                  </div>
+                  <div>
+                    <label style="font-weight: 700; color: var(--slate-600); display: block; margin-bottom: 0.25rem;">Region</label>
+                    <select style="width: 100%; padding: 0.3rem; border-radius: 6px; border: 1px solid var(--slate-300);"><option>North India</option><option>South India</option></select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-callout">
+              <strong>💡 जगह की बचत (Space Saving):</strong><br>
+              Bookmark का उपयोग करके एक Slide-out Filter Panel बनाया जा सकता है। Button दबाते ही Panel खुलता है और बंद होता है।
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO 3: Reset Filters -->
+        <div class="demo-content" id="demo-2">
+          <div class="demo-workspace">
+            <div class="demo-toolbar">
+              <span style="font-weight: 800; color: var(--slate-800);">Filter State Management</span>
+              <button class="btn-secondary" onclick="resetDemo3Filters()" style="color: var(--rose-600); border-color: #fecdd3; background: var(--rose-50);">
+                🔄 Reset All Filters
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+              <div style="background: #ffffff; padding: 0.75rem 1rem; border-radius: 10px; border: 1px solid var(--slate-200); flex: 1;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--slate-500); display: block; margin-bottom: 0.5rem;">Product Slicer</span>
+                <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                  <button class="filter-chip active" id="chip-prod-all" onclick="applyDemo3Filter('prod', 'all')">All</button>
+                  <button class="filter-chip" id="chip-prod-laptop" onclick="applyDemo3Filter('prod', 'Laptop')">Laptop</button>
+                  <button class="filter-chip" id="chip-prod-mobile" onclick="applyDemo3Filter('prod', 'Mobile')">Mobile</button>
+                </div>
+              </div>
+
+              <div style="background: #ffffff; padding: 0.75rem 1rem; border-radius: 10px; border: 1px solid var(--slate-200); flex: 1;">
+                <span style="font-size: 0.75rem; font-weight: 700; color: var(--slate-500); display: block; margin-bottom: 0.5rem;">City Slicer</span>
+                <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                  <button class="filter-chip active" id="chip-city-all" onclick="applyDemo3Filter('city', 'all')">All</button>
+                  <button class="filter-chip" id="chip-city-delhi" onclick="applyDemo3Filter('city', 'Delhi')">Delhi</button>
+                  <button class="filter-chip" id="chip-city-mumbai" onclick="applyDemo3Filter('city', 'Mumbai')">Mumbai</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 10px; padding: 1.25rem; text-align: center;">
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--slate-500);">Filtered Output Result</span>
+              <div id="demo3-result-val" style="font-size: 1.75rem; font-weight: 900; color: var(--slate-900); margin: 0.25rem 0;">
+                ₹1,20,000 Total Revenue
+              </div>
+              <span id="demo3-filter-status" style="font-size: 0.8rem; color: var(--emerald-600); font-weight: 700;">Default Baseline (No Filters Applied)</span>
+            </div>
+
+            <div class="edu-callout">
+              <strong>💡 Bookmark Data Property का कमाल:</strong><br>
+              जब Bookmark में "Data" टिक रहता है, तो वह आपके चुने हुए Filters को याद रखता है। एक "Reset" Bookmark बनाकर यूज़र कभी भी अपनी पहली डिफ़ॉल्ट स्थिति में लौट सकता है।
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO 4: Dashboard Navigation -->
+        <div class="demo-content" id="demo-3">
+          <div class="demo-workspace">
+            <div class="demo-toolbar">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-weight: 800; color: var(--slate-800); font-size: 0.95rem;">One-Page Bookmark Navigation</span>
+                <span style="font-size: 0.7rem; background: #e0e7ff; color: #3730a3; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 700;">Same Report Page</span>
+              </div>
+              <div class="btn-group">
+                <button class="interactive-btn active" id="nav-btn-0" onclick="switchDemo4View(0)">1. Executive Overview</button>
+                <button class="interactive-btn" id="nav-btn-1" onclick="switchDemo4View(1)">2. Product Analysis</button>
+                <button class="interactive-btn" id="nav-btn-2" onclick="switchDemo4View(2)">3. City Analysis</button>
+              </div>
+            </div>
+
+            <!-- VIEW 1: Executive Overview -->
+            <div class="demo4-view active" id="demo4-view-0">
+              <!-- KPI Cards -->
+              <div class="kpi-row" style="margin-bottom: 1rem;">
+                <div class="kpi-card" style="border-left: 4px solid #2563eb;">
+                  <div class="kpi-label">Total Sales</div>
+                  <div class="kpi-val" style="color: #2563eb;">₹1,20,000</div>
+                  <span style="font-size: 0.7rem; color: #059669; font-weight: 700;">✓ 100% Target Met</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #059669;">
+                  <div class="kpi-label">Total Profit</div>
+                  <div class="kpi-val" style="color: #059669;">₹30,000</div>
+                  <span style="font-size: 0.7rem; color: #059669; font-weight: 700;">✓ Net Clean Margin</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #d97706;">
+                  <div class="kpi-label">Profit Margin</div>
+                  <div class="kpi-val" style="color: #d97706;">25.0%</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-500); font-weight: 600;">(₹30k ÷ ₹120k)</span>
+                </div>
+              </div>
+
+              <!-- Overview Chart -->
+              <div class="chart-container" style="height: 210px; margin-bottom: 0.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">Product-wise Sales Distribution (₹)</span>
+                  <span style="font-size: 0.7rem; background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700; color: #475569;">4 Core Products</span>
+                </div>
+                <div class="chart-bars" style="height: 140px;">
+                  <div class="bar-col">
+                    <div class="bar-fill" data-val="₹50k" style="height: 120px; background-color: #2563eb;"></div>
+                    <span class="bar-label">Laptop</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-fill" data-val="₹35k" style="height: 84px; background-color: #2563eb;"></div>
+                    <span class="bar-label">Mobile</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-fill" data-val="₹20k" style="height: 48px; background-color: #2563eb;"></div>
+                    <span class="bar-label">Tablet</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar-fill" data-val="₹15k" style="height: 36px; background-color: #2563eb;"></div>
+                    <span class="bar-label">Accessories</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Summary Note -->
+              <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--slate-700);">
+                📊 <strong>Executive Summary:</strong> कुल ₹1,20,000 की सेल्स और ₹30,000 का मुनाफा। चारों मुख्य प्रोडक्ट्स ने 25% का संतुलित बिजनेस मार्जिन दिया है।
+              </div>
+            </div>
+
+            <!-- VIEW 2: Product Analysis -->
+            <div class="demo4-view" id="demo4-view-1">
+              <!-- KPI Cards -->
+              <div class="kpi-row" style="margin-bottom: 1rem;">
+                <div class="kpi-card" style="border-left: 4px solid #2563eb;">
+                  <div class="kpi-label">Highest Selling Product</div>
+                  <div class="kpi-val" style="color: #2563eb; font-size: 1.15rem;">Laptop</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">₹50,000 Sales (41.7%)</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #059669;">
+                  <div class="kpi-label">Top Profit Contributor</div>
+                  <div class="kpi-val" style="color: #059669; font-size: 1.15rem;">Laptop</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">₹12,000 Net Profit</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #7c3aed;">
+                  <div class="kpi-label">Best Margin Item</div>
+                  <div class="kpi-val" style="color: #7c3aed; font-size: 1.15rem;">Accessories</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">26.7% Margin (₹4k/₹15k)</span>
+                </div>
+              </div>
+
+              <!-- Paired Sales vs Profit Comparison Chart -->
+              <div class="chart-container" style="height: 210px; margin-bottom: 0.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">Sales vs Profit Comparison by Product (₹)</span>
+                  <div style="display: flex; gap: 0.75rem; font-size: 0.7rem; font-weight: 700;">
+                    <span style="display: flex; align-items: center; gap: 0.25rem; color: #2563eb;">
+                      <span style="width: 10px; height: 10px; background: #2563eb; border-radius: 2px;"></span> Sales
+                    </span>
+                    <span style="display: flex; align-items: center; gap: 0.25rem; color: #059669;">
+                      <span style="width: 10px; height: 10px; background: #059669; border-radius: 2px;"></span> Profit
+                    </span>
+                  </div>
+                </div>
+                <div class="chart-bars" style="height: 140px;">
+                  <!-- Laptop -->
+                  <div class="bar-col">
+                    <div class="paired-bar-group">
+                      <div class="paired-bar sales" data-val="₹50k" style="height: 120px;"></div>
+                      <div class="paired-bar profit" data-val="₹12k" style="height: 38px;"></div>
+                    </div>
+                    <span class="bar-label">Laptop</span>
+                  </div>
+                  <!-- Mobile -->
+                  <div class="bar-col">
+                    <div class="paired-bar-group">
+                      <div class="paired-bar sales" data-val="₹35k" style="height: 84px;"></div>
+                      <div class="paired-bar profit" data-val="₹9k" style="height: 28px;"></div>
+                    </div>
+                    <span class="bar-label">Mobile</span>
+                  </div>
+                  <!-- Tablet -->
+                  <div class="bar-col">
+                    <div class="paired-bar-group">
+                      <div class="paired-bar sales" data-val="₹20k" style="height: 48px;"></div>
+                      <div class="paired-bar profit" data-val="₹5k" style="height: 16px;"></div>
+                    </div>
+                    <span class="bar-label">Tablet</span>
+                  </div>
+                  <!-- Accessories -->
+                  <div class="bar-col">
+                    <div class="paired-bar-group">
+                      <div class="paired-bar sales" data-val="₹15k" style="height: 36px;"></div>
+                      <div class="paired-bar profit" data-val="₹4k" style="height: 14px;"></div>
+                    </div>
+                    <span class="bar-label">Accessories</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Summary Note -->
+              <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--slate-700);">
+                💻 <strong>Product Performance:</strong> लैपटॉप सबसे बड़ा रेवेन्यू ड्राइवर (41.7%) है, जबकि एसेसरीज प्रति यूनिट सबसे उच्च 26.7% का प्रॉफिट मार्जिन प्रदान करती है।
+              </div>
+            </div>
+
+            <!-- VIEW 3: City Analysis -->
+            <div class="demo4-view" id="demo4-view-2">
+              <!-- KPI Cards -->
+              <div class="kpi-row" style="margin-bottom: 1rem;">
+                <div class="kpi-card" style="border-left: 4px solid #7c3aed;">
+                  <div class="kpi-label">Top Performing City</div>
+                  <div class="kpi-val" style="color: #7c3aed; font-size: 1.15rem;">Delhi</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">₹50,000 Sales (41.7%)</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #2563eb;">
+                  <div class="kpi-label">Commercial Hub</div>
+                  <div class="kpi-val" style="color: #2563eb; font-size: 1.15rem;">Mumbai</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">₹40,000 Sales (33.3%)</span>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #059669;">
+                  <div class="kpi-label">Tech Growth Hub</div>
+                  <div class="kpi-val" style="color: #059669; font-size: 1.15rem;">Bangalore</div>
+                  <span style="font-size: 0.7rem; color: var(--slate-600); font-weight: 700;">₹30,000 Sales (25.0%)</span>
+                </div>
+              </div>
+
+              <!-- Geographic Split Layout -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 0.75rem;">
+                <!-- City Chart -->
+                <div class="chart-container" style="height: 200px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">City Sales Breakdown</span>
+                    <span style="font-size: 0.65rem; background: #f5f3ff; color: #6d28d9; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Total: ₹1,20,000</span>
+                  </div>
+                  <div class="chart-bars" style="height: 130px;">
+                    <div class="bar-col">
+                      <div class="bar-fill" data-val="₹50k" style="height: 105px; background-color: #7c3aed;"></div>
+                      <span class="bar-label">Delhi</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar-fill" data-val="₹40k" style="height: 84px; background-color: #7c3aed;"></div>
+                      <span class="bar-label">Mumbai</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar-fill" data-val="₹30k" style="height: 63px; background-color: #7c3aed;"></div>
+                      <span class="bar-label">Bangalore</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Illustrative Map Diagram -->
+                <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 12px; padding: 0.75rem 1rem; display: flex; flex-direction: column; justify-content: space-between; height: 200px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">Geographic Node Visual</span>
+                    <span style="font-size: 0.65rem; background: #fef3c7; color: #92400e; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">Illustrative Dataset</span>
+                  </div>
+                  <svg viewBox="0 0 280 120" width="100%" height="120" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="140" y1="25" x2="80" y2="80" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3"/>
+                    <line x1="140" y1="25" x2="200" y2="95" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="3"/>
+                    <!-- Delhi Node -->
+                    <circle cx="140" cy="25" r="16" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="140" y="29" text-anchor="middle" font-size="10" font-weight="bold" fill="#7c3aed">Delhi</text>
+                    <text x="140" y="48" text-anchor="middle" font-size="8" font-weight="bold" fill="#475569">₹50k (41.7%)</text>
+                    <!-- Mumbai Node -->
+                    <circle cx="80" cy="80" r="15" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+                    <text x="80" y="84" text-anchor="middle" font-size="9" font-weight="bold" fill="#2563eb">Mumbai</text>
+                    <text x="80" y="102" text-anchor="middle" font-size="8" font-weight="bold" fill="#475569">₹40k (33.3%)</text>
+                    <!-- Bangalore Node -->
+                    <circle cx="200" cy="95" r="14" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                    <text x="200" y="99" text-anchor="middle" font-size="9" font-weight="bold" fill="#059669">Bangalore</text>
+                    <text x="200" y="116" text-anchor="middle" font-size="8" font-weight="bold" fill="#475569">₹30k (25.0%)</text>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- City Summary Note -->
+              <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.8rem; color: var(--slate-700);">
+                📍 <strong>प्रतीकात्मक शहर डेटा (Illustrative City Dataset):</strong> दिल्ली और मुंबई मिलकर कुल सेल्स का 75% योगदान करते हैं। (Total = ₹50k + ₹40k + ₹30k = ₹1,20,000)।
+              </div>
+            </div>
+
+            <!-- Structured 3-Element Teaching Box -->
+            <div class="teaching-triad">
+              <div class="triad-item">
+                <span class="triad-badge problem">⚠️ Problem (समस्या)</span>
+                <p class="triad-text">जब अलग-अलग दृष्टिकोण (Overview, Products, Cities) दिखाने हों, तो बार-बार अलग रिपोर्ट पेज खोलना धीमा और असुविधाजनक होता है।</p>
+              </div>
+              <div class="triad-item">
+                <span class="triad-badge tryit">🕹️ Try It (करके देखें)</span>
+                <p class="triad-text">ऊपर के तीनों बटन्स (1. Executive Overview, 2. Product Analysis, 3. City Analysis) को दबाकर तुरंत व्यूज बदलकर देखें।</p>
+              </div>
+              <div class="triad-item">
+                <span class="triad-badge learning">💡 Learning (सीख)</span>
+                <p class="triad-text"><strong>Bookmark Navigation</strong> उसी पेज पर विजुअल्स बदलकर अलग-अलग व्यूज दिखाता है, जबकि <strong>Page Navigation</strong> पूरा नया पेज लोड करता है।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEMO 5: Before vs After -->
+        <div class="demo-content" id="demo-4">
+          <div class="demo-workspace">
+            <div class="demo-toolbar">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-weight: 800; color: var(--slate-800); font-size: 0.95rem;">Before vs After: The Power of Bookmarks</span>
+              </div>
+              <div class="btn-group">
+                <button class="interactive-btn active" id="btn-comp-before" onclick="switchDemo5Mode(false)">❌ BEFORE: Manual Actions</button>
+                <button class="interactive-btn" id="btn-comp-after" onclick="switchDemo5Mode(true)">✅ AFTER: 1-Click Bookmark</button>
+              </div>
+            </div>
+
+            <!-- MODE 1: BEFORE (Without Bookmarks - Interactive Manual Selection Pane) -->
+            <div id="demo5-before-container" style="display: block;">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                <!-- Left: Dashboard Canvas that reflects manual selection -->
+                <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 12px; padding: 1.25rem; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: 800; font-size: 0.85rem; color: var(--slate-800);">Live Canvas Output</span>
+                    <span id="demo5-canvas-status" style="font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 4px; background: #eff6ff; color: #1e40af;">
+                      Showing: Sales Chart Only
+                    </span>
+                  </div>
+
+                  <!-- Dynamic Visual Rendering Area -->
+                  <div id="demo5-canvas-visual" style="margin: 0.75rem 0; text-align: center;">
+                    <!-- Will update dynamically based on eye toggles -->
+                  </div>
+
+                  <div style="font-size: 0.75rem; color: var(--slate-500); border-top: 1px solid var(--slate-100); padding-top: 0.5rem;">
+                    💡 दाईं ओर Selection Pane में Eye Icons को क्लिक करके देखें कि कैनवास पर क्या होता है।
+                  </div>
+                </div>
+
+                <!-- Right: Realistic Interactive Selection Pane -->
+                <div class="pbi-pane">
+                  <div class="pbi-pane-header">
+                    <span>Power BI Desktop • Selection Pane</span>
+                    <span style="font-size: 0.7rem; background: #ffffff; padding: 0.1rem 0.4rem; border-radius: 4px; border: 1px solid var(--slate-300);">Visuals List</span>
+                  </div>
+                  <div style="padding: 0.75rem;">
+                    <p style="font-size: 0.75rem; color: var(--slate-600); margin-bottom: 0.75rem;">
+                      यूज़र को हर बार यह पेन खोलकर एक-एक विजुअल की आंख (Eye) ऑन/ऑफ करनी पड़ती है:
+                    </p>
+
+                    <!-- Item 1: Sales Chart -->
+                    <div class="pbi-pane-item" id="pane-item-sales">
+                      <span style="display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="color: #2563eb;">📊</span> Chart - Sales
+                      </span>
+                      <button class="eye-btn" id="eye-btn-sales" onclick="toggleManualEye('sales')">
+                        <span id="eye-icon-sales">👁️</span> <span id="eye-text-sales" style="font-size: 0.7rem;">Visible</span>
+                      </button>
+                    </div>
+
+                    <!-- Item 2: Profit Chart -->
+                    <div class="pbi-pane-item" id="pane-item-profit" style="margin-top: 0.4rem;">
+                      <span style="display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="color: #059669;">💰</span> Chart - Profit
+                      </span>
+                      <button class="eye-btn hidden-eye" id="eye-btn-profit" onclick="toggleManualEye('profit')">
+                        <span id="eye-icon-profit">👁️‍🗨️</span> <span id="eye-text-profit" style="font-size: 0.7rem;">Hidden</span>
+                      </button>
+                    </div>
+
+                    <!-- Manual action counter badge -->
+                    <div style="margin-top: 1rem; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 0.5rem; text-align: center; font-size: 0.75rem; color: #9f1239; font-weight: 700;">
+                      ✋ Manual Clicks Needed: <span id="manual-click-count">0</span> clicks (Painful & slow!)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MODE 2: AFTER (With Bookmarks - 1-Click Smooth Experience) -->
+            <div id="demo5-after-container" style="display: none;">
+              <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--slate-100); flex-wrap: wrap; gap: 0.5rem;">
+                  <div>
+                    <span style="font-weight: 800; font-size: 0.9rem; color: var(--slate-900);">Bookmark Buttons on Canvas</span>
+                    <span style="font-size: 0.75rem; color: var(--slate-500); display: block;">No Selection Pane needed!</span>
+                  </div>
+                  <div class="btn-group">
+                    <button class="interactive-btn active" id="demo5-bm-sales" onclick="triggerBookmarkView('sales')">📊 Sales View</button>
+                    <button class="interactive-btn" id="demo5-bm-profit" onclick="triggerBookmarkView('profit')">💰 Profit View</button>
+                  </div>
+                </div>
+
+                <div id="demo5-bm-output" style="text-align: center; padding: 1rem; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <!-- Updated by JS -->
+                </div>
+
+                <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.6rem 1rem; font-size: 0.8rem; color: #065f46; font-weight: 700; text-align: center;">
+                  ⚡ Bookmark Advantage: सिर्फ 1 क्लिक में दोनों विजुअल्स की सही स्थिति तुरंत लोड हो गई!
+                </div>
+              </div>
+            </div>
+
+            <!-- Visual Comparison Banner -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; background: var(--slate-100); padding: 0.75rem; border-radius: 10px; border: 1px solid var(--slate-200); margin-bottom: 1rem;">
+              <div style="background: #ffffff; padding: 0.75rem; border-radius: 8px; border-left: 4px solid #e11d48;">
+                <div style="font-weight: 800; font-size: 0.8rem; color: #e11d48; margin-bottom: 0.25rem;">Before (Without Bookmarks)</div>
+                <div style="font-size: 0.75rem; color: var(--slate-600);">Selection Pane खोलें ➔ Eye Icons ढूंढें ➔ एक चार्ट Hide करें ➔ दूसरा चार्ट Show करें ➔ हर बार दोहराएं।</div>
+              </div>
+              <div style="background: #ffffff; padding: 0.75rem; border-radius: 8px; border-left: 4px solid #059669;">
+                <div style="font-weight: 800; font-size: 0.8rem; color: #059669; margin-bottom: 0.25rem;">After (With Bookmarks)</div>
+                <div style="font-size: 0.75rem; color: var(--slate-600);">सीधे बटन दबाएं ➔ Power BI खुद सही विजुअल स्टेट तुरंत 1 क्लिक में लोड कर देता है!</div>
+              </div>
+            </div>
+
+            <!-- Structured 3-Element Teaching Box -->
+            <div class="teaching-triad">
+              <div class="triad-item">
+                <span class="triad-badge problem">⚠️ Problem (समस्या)</span>
+                <p class="triad-text">बिना बुकमार्क के, रिपोर्ट देखने वाले को हर बार दृश्य बदलने के लिए Selection Pane में जाकर एक-एक विजुअल की आंख (Eye) बंद और चालू करनी पड़ती है।</p>
+              </div>
+              <div class="triad-item">
+                <span class="triad-badge tryit">🕹️ Try It (करके देखें)</span>
+                <p class="triad-text">1. 'Before' में जाकर खुद दोनों Eye Icons क्लिक करें।<br>2. फिर 'After' में जाकर सिर्फ एक क्लिक में बटन दबाकर देखें।</p>
+              </div>
+              <div class="triad-item">
+                <span class="triad-badge learning">💡 Learning (सीख)</span>
+                <p class="triad-text"><strong>One-Click Automation:</strong> बुकमार्क जटिल विजुअल स्थितियों को याद रखता है और यूजर को सिर्फ 1 क्लिक का आसान अनुभव देता है।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WOW Transition Banner -->
+      <div class="wow-banner">
+        <h3>अब आपने Bookmark की Power देख ली!<br>आइए, अपना पहला Bookmark बनाते हैं।</h3>
+        <p>अगले मॉड्यूल में हम एक असली दुकान के डेटा के साथ स्टेप-बाय-स्टेप अपना पहला वर्किंग बुकमार्क बनाएंगे।</p>
+        <a href="#steps" class="btn-cta">🚀 Start Step 1 Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: PROBLEM AND EXPECTED OUTPUT -->
+  <section id="story" style="padding: 2.5rem 0; background: #ffffff; border-top: 1px solid var(--slate-200); border-bottom: 1px solid var(--slate-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 2 • Practical Scenario</span>
+        <h2 class="section-title">हम क्या बनाने जा रहे हैं? (The Goal)</h2>
+        <p class="section-desc">राजेश जी की इलेक्ट्रॉनिक्स शॉप का प्रैक्टिकल उदाहरण</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        <div class="card" style="padding: 1.5rem; margin: 0;">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🏪</div>
+          <h3 style="font-weight: 800; color: var(--slate-900); font-size: 1.15rem; margin-bottom: 0.5rem;">समस्या (The Problem)</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-600); line-height: 1.6;">
+            राजेश जी एक इलेक्ट्रॉनिक्स दुकान चलाते हैं। वे अपने Power BI Dashboard पर <strong>Product-wise Sales</strong> और <strong>Product-wise Profit</strong> देखना चाहते हैं। लेकिन वे दोनों Charts को एक साथ रखकर स्क्रीन को भीड़भाड़ वाला नहीं बनाना चाहते।
+          </p>
+        </div>
+
+        <div class="card" style="padding: 1.5rem; margin: 0; border-color: #bfdbfe; background: var(--primary-light);">
+          <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎯</div>
+          <h3 style="font-weight: 800; color: var(--primary-dark); font-size: 1.15rem; margin-bottom: 0.5rem;">हमारा लक्ष्य (Expected Output)</h3>
+          <p style="font-size: 0.9rem; color: var(--slate-700); line-height: 1.6;">
+            हम एक ही जगह पर दो Buttons बनाएंगे: <strong>[Sales View]</strong> और <strong>[Profit View]</strong>। जब यूज़र "Sales View" दबाएगा तो सेल्स दिखेगी, और जब "Profit View" दबाएगा तो मुनाफा दिखेगा — उसी जगह पर!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: SAMPLE DATA -->
+  <section id="data" style="padding: 3.5rem 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 3 • Clean Dataset</span>
+        <h2 class="section-title">हमारा सैंपल डेटा (Shop Sales Data)</h2>
+        <p class="section-desc">इस छोटे और आसान डेटा को Power BI में 'Enter Data' से तुरंत लोड करें।</p>
+      </div>
+
+      <div class="card" style="padding: 1.75rem;">
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th style="text-align: right;">Sales (₹)</th>
+                <th style="text-align: right;">Profit (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Laptop</strong></td>
+                <td style="text-align: right;">50,000</td>
+                <td style="text-align: right;">12,000</td>
+              </tr>
+              <tr>
+                <td><strong>Mobile</strong></td>
+                <td style="text-align: right;">35,000</td>
+                <td style="text-align: right;">9,000</td>
+              </tr>
+              <tr>
+                <td><strong>Tablet</strong></td>
+                <td style="text-align: right;">20,000</td>
+                <td style="text-align: right;">5,000</td>
+              </tr>
+              <tr>
+                <td><strong>Accessories</strong></td>
+                <td style="text-align: right;">15,000</td>
+                <td style="text-align: right;">4,000</td>
+              </tr>
+              <tr class="total-row">
+                <td>Total</td>
+                <td style="text-align: right; color: var(--primary);">₹1,20,000</td>
+                <td style="text-align: right; color: var(--emerald-600);">₹30,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="action-bar">
+          <button class="btn-secondary" onclick="copySampleData()">
+            📋 Copy Data to Clipboard
+          </button>
+          <button class="btn-secondary" onclick="downloadSampleCsv()">
+            📥 Download Sample CSV
+          </button>
+        </div>
+
+        <div class="edu-callout" style="margin-top: 1.5rem;">
+          <strong>⚡ Quick Import Instruction:</strong><br>
+          1. "Copy Data" बटन दबाएं।<br>
+          2. Power BI Desktop खोलकर <strong>Home Tab ➔ Enter Data</strong> पर क्लिक करें।<br>
+          3. पहली सेल पर क्लिक करके <strong>Ctrl + V</strong> दबाएं, Table का नाम <strong>ShopSales</strong> रखें और <strong>Load</strong> पर क्लिक करें।
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: 20 SCREENSHOT-BASED PRACTICAL STEPS -->
+  <section id="steps" style="padding: 3.5rem 0; background: var(--slate-100); border-top: 1px solid var(--slate-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 4 • Step-by-Step Hands-on</span>
+        <h2 class="section-title">20 माइक्रो-स्टेप्स में बनाएं अपना पहला Bookmark</h2>
+        <p class="section-desc">एक समय में सिर्फ एक काम! चित्र देखें और Power BI Desktop में प्रैक्टिस करें।</p>
+      </div>
+
+      <div class="stepper-box">
+        <!-- Stepper Top Bar -->
+        <div class="stepper-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span class="step-badge" id="step-number-badge">Step 01 / 20</span>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--slate-500);" id="step-topic-badge">Data Setup</span>
+          </div>
+
+          <select class="step-selector" id="step-dropdown" onchange="jumpToStep(parseInt(this.value))">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <!-- Step Title & Instruction -->
+        <h3 class="step-main-title" id="step-title">1. Power BI Desktop खोलें</h3>
+        <p class="step-instruction" id="step-instruction">
+          अपने कंप्यूटर पर <span class="action-tag">Power BI Desktop</span> ऐप को ओपन करें और एक नया ब्लैंक रिपोर्ट (Blank Report) शुरू करें।
+        </p>
+
+        <!-- Annotated Visual Diagram -->
+        <div class="diagram-frame">
+          <div class="diagram-topbar">
+            <span>Power BI Desktop Interface View</span>
+            <span class="diagram-badge" id="diagram-type-badge">Illustrative Demo</span>
+          </div>
+          <div class="diagram-body" id="diagram-render-area">
+            <!-- Dynamic SVG injected via JS -->
+          </div>
+          <button class="diagram-zoom-btn" onclick="openDiagramZoom()">
+            🔍 Zoom Diagram
+          </button>
+        </div>
+
+        <!-- Expected Outcome Box -->
+        <div class="outcome-box">
+          <strong>✅ Expected Output (अपेक्षित परिणाम):</strong>
+          <span id="step-expected">Power BI Desktop की खाली कैनवास स्क्रीन आपके सामने खुल जाएगी।</span>
+        </div>
+
+        <!-- Pro Tip Box -->
+        <div class="protip-box">
+          <strong>💡 Important Rule / Pro Tip:</strong>
+          <span id="step-protip">हमेशा सुनिश्चित करें कि आप Power BI Desktop के नवीनतम वर्शन का उपयोग कर रहे हैं।</span>
+        </div>
+
+        <!-- Stepper Navigation Buttons -->
+        <div class="stepper-nav">
+          <button class="btn-step secondary" id="btn-prev-step" onclick="prevStep()" disabled>
+            ← Previous Step
+          </button>
+          <div style="display: flex; gap: 0.35rem;" id="step-dots-container">
+            <!-- Progress indicator dots -->
+          </div>
+          <button class="btn-step primary" id="btn-next-step" onclick="nextStep()">
+            Next Step →
+          </button>
+        </div>
+      </div>
+
+      
+  <!-- MODULE 5: INTERACTIVE BOOKMARK SIMULATOR -->
+  <section id="simulator" style="padding: 3.5rem 0; background: #ffffff; border-top: 1px solid var(--slate-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 5 • Hands-on Lab</span>
+        <h2 class="section-title">Interactive Bookmark Simulator</h2>
+        <p class="section-desc">Power BI Desktop जैसा वर्किंग सिमुलेटर: विजुअल्स को Show/Hide करें, बुकमार्क सेव करें, और टेस्ट करें!</p>
+      </div>
+
+      <div class="sim-workspace">
+        <div class="sim-topbar">
+          <span style="font-weight: 800; display: flex; align-items: center; gap: 0.4rem;">
+            <span>⚡ Power BI Desktop Simulator</span>
+            <span style="background: #1e293b; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem; color: #38bdf8;">Report View</span>
+          </span>
+          <button onclick="resetSimulator()" style="background: #334155; color: #f8fafc; border: none; padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer;">
+            🔄 Reset Simulator
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <!-- Canvas Area -->
+          <div class="sim-canvas">
+            <!-- Simulated Canvas Buttons -->
+            <div class="sim-button-bar">
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--slate-500); display: flex; align-items: center;">Canvas Buttons:</span>
+              <button class="sim-pbi-btn" id="sim-btn-sales" onclick="simApplyBookmark('Sales View')">
+                <span>📊 Sales View</span>
+              </button>
+              <button class="sim-pbi-btn" id="sim-btn-profit" onclick="simApplyBookmark('Profit View')">
+                <span>💰 Profit View</span>
+              </button>
+            </div>
+
+            <!-- Dynamic Canvas Display -->
+            <div id="sim-canvas-content" style="min-height: 180px; display: flex; align-items: center; justify-content: center; text-align: center;">
+              <!-- Managed by JS -->
+            </div>
+          </div>
+
+          <!-- Selection & Bookmarks Panes -->
+          <div style="background: #f1f5f9; border-left: 1px solid var(--slate-300); padding: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Selection Pane -->
+            <div class="pbi-pane">
+              <div class="pbi-pane-header">
+                <span>Selection Pane</span>
+                <span style="font-size: 0.65rem; color: var(--slate-500);">Click eye to toggle</span>
+              </div>
+              <div style="padding: 0.5rem;">
+                <div class="pbi-pane-item">
+                  <span style="display: flex; align-items: center; gap: 0.35rem;">
+                    <span style="color: #2563eb;">📊</span> Chart - Sales
+                  </span>
+                  <button class="eye-btn" id="sim-eye-sales" onclick="simToggleEye('sales')">
+                    <span id="sim-eye-icon-sales">👁️</span>
+                  </button>
+                </div>
+                <div class="pbi-pane-item" style="border-bottom: none;">
+                  <span style="display: flex; align-items: center; gap: 0.35rem;">
+                    <span style="color: #059669;">💰</span> Chart - Profit
+                  </span>
+                  <button class="eye-btn hidden-eye" id="sim-eye-profit" onclick="simToggleEye('profit')">
+                    <span id="sim-eye-icon-profit">👁️‍🗨️</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bookmarks Pane -->
+            <div class="pbi-pane">
+              <div class="pbi-pane-header">
+                <span>Bookmarks Pane</span>
+                <button onclick="simAddBookmark()" style="background: var(--primary); color: #ffffff; border: none; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">
+                  + Add
+                </button>
+              </div>
+              <div id="sim-bookmarks-list" style="padding: 0.5rem; max-height: 160px; overflow-y: auto;">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #eff6ff; border-top: 1px solid #bfdbfe; padding: 0.75rem 1.25rem; font-size: 0.8rem; color: #1e40af; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <span>💡 <strong>Practice Step:</strong> Selection Pane में Eye Icons बदलकर <strong>'+ Add'</strong> बटन दबाएं और नया बुकमार्क बनाएं!</span>
+          <span id="sim-action-status" style="font-weight: 700;">Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 6: STUDENT CHALLENGE -->
+  <section id="challenge" style="padding: 3.5rem 0; background: var(--slate-50); border-top: 1px solid var(--slate-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 6 • Independent Practice</span>
+        <h2 class="section-title">अब तीसरा Bookmark खुद बनाइए! (Challenge)</h2>
+        <p class="section-desc">दुकान में अब 10% डिस्काउंट स्कीम शुरू हुई है। 'Discount View' का तीसरा बुकमार्क बनाएं!</p>
+      </div>
+
+      <div class="challenge-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <span style="background: #ffedd5; color: #c2410c; padding: 0.25rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">
+              🎯 Hands-on Mission
+            </span>
+            <h3 style="font-size: 1.25rem; font-weight: 900; color: var(--slate-900); margin-top: 0.25rem;">
+              Create 'Discount View' Bookmark in Power BI Desktop
+            </h3>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 0.75rem; color: var(--slate-500); font-weight: 700;">Progress:</span>
+            <div style="font-size: 1.2rem; font-weight: 900; color: #c2410c;" id="challenge-pct">0%</div>
+          </div>
+        </div>
+
+        <!-- Sample Discount Data -->
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 10px; padding: 1rem; margin-bottom: 1.25rem;">
+          <strong style="font-size: 0.85rem; color: var(--slate-800); display: block; margin-bottom: 0.5rem;">
+            📊 Additional Discount Data to add in table:
+          </strong>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--slate-700);">
+            <span>Laptop: <strong>₹5,000</strong></span>
+            <span>Mobile: <strong>₹3,500</strong></span>
+            <span>Tablet: <strong>₹2,000</strong></span>
+            <span>Accessories: <strong>₹1,500</strong></span>
+            <span style="color: #c2410c; font-weight: 700;">(Total Discount: ₹12,000)</span>
+          </div>
+        </div>
+
+        <!-- Interactive Checklist -->
+        <div style="background: #ffffff; border: 1px solid var(--slate-200); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+          <div class="checklist-item" id="chk-0" onclick="toggleChallengeStep(0)">
+            <div class="checklist-checkbox">✓</div>
+            <span class="text"><strong>Step 1:</strong> 'ShopSales' टेबल में 'Discount' कॉलम जोड़ें।</span>
+          </div>
+          <div class="checklist-item" id="chk-1" onclick="toggleChallengeStep(1)">
+            <div class="checklist-checkbox">✓</div>
+            <span class="text"><strong>Step 2:</strong> Discount का नया Clustered Column Chart बनाएं।</span>
+          </div>
+          <div class="checklist-item" id="chk-2" onclick="toggleChallengeStep(2)">
+            <div class="checklist-checkbox">✓</div>
+            <span class="text"><strong>Step 3:</strong> Selection Pane में नए चार्ट का नाम <strong>'Chart - Discount'</strong> रखें।</span>
+          </div>
+          <div class="checklist-item" id="chk-3" onclick="toggleChallengeStep(3)">
+            <div class="checklist-checkbox">✓</div>
+            <span class="text"><strong>Step 4:</strong> Sales और Profit छुपाएं, सिर्फ Discount दिखाएं और <strong>'Discount View'</strong> बुकमार्क जोड़ें।</span>
+          </div>
+          <div class="checklist-item" id="chk-4" onclick="toggleChallengeStep(4)">
+            <div class="checklist-checkbox">✓</div>
+            <span class="text"><strong>Step 5:</strong> तीसरा बटन बनाएं और उसे 'Discount View' बुकमार्क से लिंक करके टेस्ट करें।</span>
+          </div>
+        </div>
+
+        <!-- Hint Box Toggle -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <button class="btn-secondary" onclick="toggleChallengeHint()" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
+            💡 Show Hint (मदद लें)
+          </button>
+          <button class="btn-secondary" onclick="resetChallenge()" style="font-size: 0.8rem; padding: 0.4rem 0.85rem; color: var(--slate-500);">
+            🔄 Reset Checklist
+          </button>
+        </div>
+
+        <div id="challenge-hint-box" style="display: none; margin-top: 1rem; background: #fffbeb; border: 1px solid #fef08a; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.8rem; color: #854d0e;">
+          💡 <strong>Pro Hint:</strong> जब 'Discount View' बुकमार्क बनाएं, तो तीन डॉट्स (...) पर जाकर <strong>Data</strong> को अनचेक करना न भूलें! इससे पहले से चुने हुए फिल्टर्स सुरक्षित रहेंगे।
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 7: INTERACTIVE QUIZ -->
+  <section id="quiz" style="padding: 3.5rem 0; background: #ffffff; border-top: 1px solid var(--slate-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Module 7 • Quick Revision</span>
+        <h2 class="section-title">Knowledge Check (इंटरैक्टिव क्विज)</h2>
+        <p class="section-desc">6 आसान प्रश्नों से जांचें कि आपने बुकमार्क के मुख्य नियमों को कितना समझा!</p>
+      </div>
+
+      <div style="max-width: 760px; margin: 0 auto;">
+        <div id="quiz-container">
+          <!-- Populated by JS -->
+        </div>
+
+        <div style="background: var(--slate-100); border-radius: 12px; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--slate-600);">आपका स्कोर:</span>
+            <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);" id="quiz-score-val">0 / 6</div>
+          </div>
+          <button class="btn-secondary" onclick="resetQuiz()" style="padding: 0.5rem 1rem;">
+            🔄 Retake Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <!-- Real Screenshots Audit Tracking Box -->
+      <div class="audit-note">
+        <strong>📋 Quality Assurance Note — Genuine Screenshot Replacement List:</strong><br>
+        उपरोक्त सभी 20 स्टेप्स वर्तमान में उच्च-गुणवत्ता वाले मानक SVG डायग्राम से सचित्र हैं। प्रोडक्शन डिप्लॉयमेंट के लिए वास्तविक Power BI Desktop स्क्रीनशॉट्स की सूची:
+        <em>Step 2 (Enter Data ribbon), Step 8 (Fields Well mapping), Step 11 (Selection Pane toggles), Step 14 (Bookmarks Pane menu), Step 19 (Button Action configuration).</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-weight: 700; color: var(--slate-700); margin-bottom: 0.25rem;">
+        Digital Learning Lab • Power BI Masterclass Series
+      </p>
+      <p>Role Model Interactive Tutorial • Phase 2 & 3 Complete</p>
+    </div>
+  </footer>
+
+  
+  <!-- LIGHTWEIGHT TUTORIAL CONTENT EDITOR MODAL -->
+  <div class="editor-modal-overlay" id="editor-modal" onclick="closeContentEditor(event)">
+    <div class="editor-modal" onclick="event.stopPropagation()">
+      <div class="editor-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.2rem;">✏️</span>
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 800; margin: 0;">Tutorial Content & Screenshot Editor</h3>
+            <span style="font-size: 0.7rem; color: #94a3b8;">Lightweight Authoring Facility • Standalone & LocalStorage Draft</span>
+          </div>
+        </div>
+        <button onclick="closeContentEditor()" style="background: #1e293b; color: #ffffff; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer;">✕</button>
+      </div>
+
+      <div class="editor-body">
+        <!-- Step Management Action Bar -->
+        <div class="editor-step-row">
+          <label style="font-size: 0.8rem; font-weight: 700; color: var(--slate-700);">Select Step to Edit:</label>
+          <select id="editor-step-select" onchange="loadStepIntoEditor(parseInt(this.value))" style="padding: 0.4rem 0.75rem; border-radius: 6px; border: 1px solid var(--slate-300); font-size: 0.8rem;">
+            <!-- Populated by JS -->
+          </select>
+          <button class="editor-pill-btn" onclick="editorMoveStep(-1)">⬆️ Move Up</button>
+          <button class="editor-pill-btn" onclick="editorMoveStep(1)">⬇️ Move Down</button>
+          <button class="editor-pill-btn primary" onclick="editorAddNewStep()">+ Add Step</button>
+          <button class="editor-pill-btn danger" onclick="editorDeleteStep()">🗑️ Delete</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+          <!-- Left Column: Step Text & Instructions -->
+          <div>
+            <div class="editor-form-group">
+              <label class="editor-label">Step Title</label>
+              <input type="text" id="edit-step-title" class="editor-input" />
+            </div>
+
+            <div class="editor-form-group">
+              <label class="editor-label">Topic Badge</label>
+              <input type="text" id="edit-step-topic" class="editor-input" />
+            </div>
+
+            <div class="editor-form-group">
+              <label class="editor-label">Action Instruction (Hindi + English)</label>
+              <textarea id="edit-step-instruction" class="editor-textarea"></textarea>
+            </div>
+
+            <div class="editor-form-group">
+              <label class="editor-label">Expected Output (अपेक्षित परिणाम)</label>
+              <textarea id="edit-step-expected" class="editor-textarea" style="min-height: 60px;"></textarea>
+            </div>
+
+            <div class="editor-form-group">
+              <label class="editor-label">Pro Tip / Technical Rule</label>
+              <textarea id="edit-step-protip" class="editor-textarea" style="min-height: 60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Right Column: Screenshot & Visual Replacement -->
+          <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 12px; padding: 1.25rem;">
+            <label class="editor-label">Step Screenshot / Visual Diagram</label>
+            <p style="font-size: 0.75rem; color: var(--slate-600); margin-bottom: 0.75rem;">
+              कंप्यूटर से अपना असली Power BI Desktop स्क्रीनशॉट अपलोड करें। यह तुरंत प्रीव्यू में दिखेगा।
+            </p>
+
+            <!-- Visual Preview Box -->
+            <div id="editor-visual-preview" style="background: #ffffff; border: 1px dashed var(--slate-300); border-radius: 8px; min-height: 200px; display: flex; align-items: center; justify-content: center; padding: 0.5rem; margin-bottom: 0.75rem; overflow: hidden;">
+              <!-- Current Image or SVG -->
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <input type="file" id="editor-file-input" accept="image/*" style="display: none;" onchange="handleScreenshotUpload(event)" />
+              <button class="editor-pill-btn primary" onclick="document.getElementById('editor-file-input').click()">
+                📁 Upload Genuine Screenshot
+              </button>
+              <button class="editor-pill-btn" onclick="revertStepVisualToDefault()">
+                ✕ Revert to SVG Diagram
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publishing Distinction Notice -->
+        <div style="margin-top: 1.5rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.85rem 1rem; font-size: 0.8rem; color: #1e40af;">
+          <strong>ℹ️ Saving & Publishing Boundary:</strong><br>
+          • <strong>Save Draft:</strong> आपके बदलाव केवल आपके ब्राउज़र (localStorage) में सुरक्षित रहते हैं।<br>
+          • <strong>Export Standalone HTML:</strong> अपडेटेड स्क्रीनशॉट्स और कंटेंट के साथ पूरा वर्किंग HTML फाइल डाउनलोड करता है।<br>
+          • <strong>Website Publish:</strong> डाउनलोड की गई फाइल को <code>public/tutorials/power-bi/bookmark/index.html</code> से रिप्लेस करके Git कमिट करने पर लाइव वेबसाइट अपडेट होगी।
+        </div>
+      </div>
+
+      <div class="editor-footer">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="editor-pill-btn primary" onclick="saveEditorDraft(true)">
+            💾 Save Draft Locally
+          </button>
+          <button class="editor-pill-btn" onclick="applyEditorLivePreview()">
+            👁️ Live Preview in Tutorial
+          </button>
+          <button class="editor-pill-btn danger" onclick="revertEditorFactoryDefaults()">
+            🔄 Revert to Defaults
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="editor-pill-btn" onclick="exportTutorialJson()">
+            📤 Export Content JSON
+          </button>
+          <input type="file" id="editor-json-input" accept=".json" style="display: none;" onchange="importTutorialJson(event)" />
+          <button class="editor-pill-btn" onclick="document.getElementById('editor-json-input').click()">
+            📥 Import JSON
+          </button>
+          <button class="editor-pill-btn primary" onclick="exportStandaloneHtml()" style="background: #059669; border-color: #059669;">
+            📦 Export Standalone HTML
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="zoom-modal" onclick="closeDiagramZoom(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeDiagramZoom()">✕</button>
+      <div style="margin-bottom: 1rem;">
+        <h4 style="font-weight: 800; font-size: 1.1rem; color: var(--slate-900);" id="modal-title">Enlarged Diagram</h4>
+        <span style="font-size: 0.75rem; color: var(--slate-500);">Interactive Detailed Inspection</span>
+      </div>
+      <div id="modal-content" style="display: flex; justify-content: center; align-items: center; padding: 1rem; overflow-x: auto;">
+        <!-- Injected diagram -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast">Data copied to clipboard!</div>
+
+  <script>
+    // --- 20 Micro-Learning Steps Dataset ---
+    const stepsData = [
+      {
+        id: 1,
+        topic: "Data Setup",
+        title: "1. Power BI Desktop खोलें",
+        instruction: "अपने कंप्यूटर पर <span class='action-tag'>Power BI Desktop</span> ऐप को ओपन करें और ब्लैंक रिपोर्ट शुरू करें।",
+        expected: "Power BI Desktop की खाली कैनवास स्क्रीन (Blank Canvas) आपके सामने खुलेगी।",
+        protip: "Power BI Desktop को Microsoft Store से मुफ्त में डाउनलोड किया जा सकता है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect width="600" height="40" rx="8" fill="#0f172a"/>
+          <circle cx="20" cy="20" r="6" fill="#ef4444"/>
+          <circle cx="38" cy="20" r="6" fill="#f59e0b"/>
+          <circle cx="56" cy="20" r="6" fill="#10b981"/>
+          <text x="80" y="24" fill="#ffffff" font-size="12" font-family="sans-serif" font-weight="bold">Power BI Desktop - Untitled Report</text>
+          <rect x="20" y="60" width="560" height="235" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+          <text x="300" y="170" text-anchor="middle" fill="#64748b" font-size="16" font-family="sans-serif" font-weight="bold">Ready to build: Blank Canvas</text>
+          <circle cx="300" cy="120" r="28" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="300" y="127" text-anchor="middle" fill="#2563eb" font-size="20">📊</text>
+        </svg>`
+      },
+      {
+        id: 2,
+        topic: "Data Setup",
+        title: "2. Home Tab से 'Enter Data' चुनें",
+        instruction: "शीर्ष रिबन में <span class='action-tag'>Home Tab</span> पर जाएं और <span class='action-tag'>Enter Data</span> आइकन पर क्लिक करें।",
+        expected: "'Create Table' नाम की एक डेटा ग्रिड विंडो स्क्रीन पर पॉप-अप होगी।",
+        protip: "Enter Data छोटे टेबल्स और टेस्टिंग डेटा के लिए सबसे आसान तरीका है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect width="600" height="50" fill="#f1f5f9" stroke="#cbd5e1"/>
+          <text x="30" y="30" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">Home</text>
+          <text x="85" y="30" font-family="sans-serif" font-size="13" fill="#64748b">Insert</text>
+          <text x="140" y="30" font-family="sans-serif" font-size="13" fill="#64748b">Modeling</text>
+          <text x="210" y="30" font-family="sans-serif" font-size="13" fill="#64748b">View</text>
+          <!-- Enter Data Button -->
+          <rect x="200" y="65" width="130" height="45" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="245" y="92" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2563eb">Enter Data</text>
+          <!-- Red marker -->
+          <circle cx="215" cy="87" r="14" fill="#ef4444" opacity="0.2"/>
+          <circle cx="215" cy="87" r="8" fill="#ef4444"/>
+          <text x="215" y="92" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">1</text>
+        </svg>`
+      },
+      {
+        id: 3,
+        topic: "Data Setup",
+        title: "3. सैंपल डेटा पेस्ट करें (Ctrl + V)",
+        instruction: "टेबल ग्रिड की पहली खाली सेल पर क्लिक करें और कीबोर्ड से <span class='action-tag'>Ctrl + V</span> दबाएं।",
+        expected: "Product, Sales, और Profit के सभी 4 रिकॉर्ड्स टेबल में आ जाएंगे।",
+        protip: "कॉलम हेडर (Product, Sales, Profit) पहली पंक्ति में सही स्थान पर आ जाने चाहिए।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="50" y="40" width="500" height="240" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <rect x="50" y="40" width="500" height="35" rx="8" fill="#f1f5f9"/>
+          <text x="70" y="63" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Create Table Dialog</text>
+          <!-- Grid -->
+          <rect x="70" y="90" width="140" height="28" fill="#eff6ff" stroke="#2563eb"/>
+          <text x="80" y="108" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2563eb">Product</text>
+          <rect x="210" y="90" width="140" height="28" fill="#f8fafc" stroke="#cbd5e1"/>
+          <text x="220" y="108" font-family="sans-serif" font-size="11" fill="#475569">Sales</text>
+          <rect x="350" y="90" width="140" height="28" fill="#f8fafc" stroke="#cbd5e1"/>
+          <text x="360" y="108" font-family="sans-serif" font-size="11" fill="#475569">Profit</text>
+          <text x="300" y="240" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#059669">✓ 4 Rows Pasted Successfully</text>
+        </svg>`
+      },
+      {
+        id: 4,
+        topic: "Data Setup",
+        title: "4. टेबल का नाम 'ShopSales' रखें",
+        instruction: "विंडो के नीचे 'Name:' बॉक्स में 'Table' हटाकर <span class='action-tag'>ShopSales</span> टाइप करें।",
+        expected: "टेबल का नाम 'ShopSales' सेट हो जाएगा।",
+        protip: "सार्थक नाम देने से बाद में Measures और Visuals में कॉलम ढूंढना आसान हो जाता है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="80" y="80" width="440" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="110" y="130" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">Name:</text>
+          <rect x="165" y="110" width="220" height="32" rx="4" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="175" y="131" font-family="sans-serif" font-size="13" font-weight="bold" fill="#0f172a">ShopSales</text>
+          <circle cx="395" cy="126" r="12" fill="#ef4444" opacity="0.2"/>
+          <circle cx="395" cy="126" r="7" fill="#ef4444"/>
+        </svg>`
+      },
+      {
+        id: 5,
+        topic: "Data Setup",
+        title: "5. 'Load' बटन पर क्लिक करें",
+        instruction: "डायलॉग के निचले दाएं कोने में <span class='action-tag'>Load</span> बटन पर क्लिक करें।",
+        expected: "Data View और Data Pane में 'ShopSales' टेबल लोड हो जाएगा।",
+        protip: "डेटा लोड होते ही दाईं ओर Data Pane में तीनों कॉलम्स दिखने लगेंगे।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="120" y="100" width="360" height="120" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <rect x="360" y="160" width="90" height="34" rx="6" fill="#2563eb"/>
+          <text x="390" y="182" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Load</text>
+          <circle cx="405" cy="177" r="18" fill="#ef4444" opacity="0.3"/>
+          <circle cx="405" cy="177" r="9" fill="#ef4444"/>
+        </svg>`
+      },
+      {
+        id: 6,
+        topic: "Visual Creation",
+        title: "6. Clustered Column Chart इन्सर्ट करें",
+        instruction: "दाएं हाथ के Visualizations Pane से <span class='action-tag'>Clustered Column Chart</span> आइकन पर क्लिक करें।",
+        expected: "कैनवास पर एक खाली बार चार्ट विज़ुअल बन जाएगा।",
+        protip: "यह सेल्स की तुलना के लिए सबसे लोकप्रिय विजुअल है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <!-- Visualizations Pane -->
+          <rect x="420" y="20" width="160" height="280" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="435" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Visualizations</text>
+          <rect x="435" y="60" width="36" height="36" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="445" y="83" font-size="16">📊</text>
+          <!-- Canvas Visual -->
+          <rect x="40" y="50" width="340" height="220" rx="8" fill="#ffffff" stroke="#2563eb" stroke-dasharray="4"/>
+          <text x="210" y="165" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2563eb">Clustered Column Chart Placeholder</text>
+        </svg>`
+      },
+      {
+        id: 7,
+        topic: "Visual Creation",
+        title: "7. X-axis में 'Product' कॉलम असाइन करें",
+        instruction: "Data Pane से <span class='action-tag'>Product</span> को ड्रैग करके विज़ुअल की <span class='action-tag'>X-axis</span> में छोड़ें।",
+        expected: "चार्ट के नीचे X-Axis पर Laptop, Mobile आदि के नाम आ जाएंगे।",
+        protip: "आप सीधे चेकबॉक्स टिक करके भी कॉलम जोड़ सकते हैं।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="360" y="40" width="200" height="60" rx="6" fill="#ffffff" stroke="#2563eb"/>
+          <text x="380" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#64748b">X-axis</text>
+          <rect x="380" y="72" width="160" height="22" rx="4" fill="#eff6ff"/>
+          <text x="390" y="87" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2563eb">Product</text>
+          <!-- Pointer -->
+          <path d="M 280 140 L 360 85" stroke="#ef4444" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+        </svg>`
+      },
+      {
+        id: 8,
+        topic: "Visual Creation",
+        title: "8. Y-axis में 'Sales' कॉलम असाइन करें",
+        instruction: "Data Pane से <span class='action-tag'>Sales</span> को ड्रैग करके <span class='action-tag'>Y-axis</span> में छोड़ें।",
+        expected: "कैनवास पर सेल्स का वास्तविक बार चार्ट बन जाएगा (Total: ₹1.20L)।",
+        protip: "Power BI डिफ़ॉल्ट रूप से सेल्स का Sum (जोड़) दिखाता है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <!-- Active Sales Chart -->
+          <rect x="50" y="40" width="320" height="240" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="70" y="65" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0f172a">Sum of Sales by Product</text>
+          <rect x="90" y="90" width="35" height="140" fill="#2563eb" rx="4"/>
+          <rect x="145" y="130" width="35" height="100" fill="#2563eb" rx="4"/>
+          <rect x="200" y="170" width="35" height="60" fill="#2563eb" rx="4"/>
+          <rect x="255" y="185" width="35" height="45" fill="#2563eb" rx="4"/>
+        </svg>`
+      },
+      {
+        id: 9,
+        topic: "Visual Creation",
+        title: "9. Sales Chart को कॉपी और डुप्लिकेट करें",
+        instruction: "सेल्स चार्ट पर क्लिक करें और कीबोर्ड से <span class='action-tag'>Ctrl + C</span> दबाएं, फिर <span class='action-tag'>Ctrl + V</span> दबाएं।",
+        expected: "कैनवास पर बिल्कुल वैसा ही एक दूसरा चार्ट बन जाएगा।",
+        protip: "डुप्लिकेट करने से साइज़ और फॉर्मेटिंग दोबारा सेट नहीं करनी पड़ती।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="40" y="50" width="240" height="200" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="60" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0f172a">Chart 1 (Original)</text>
+          <rect x="320" y="50" width="240" height="200" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="340" y="75" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2563eb">Chart 2 (Duplicate)</text>
+        </svg>`
+      },
+      {
+        id: 10,
+        topic: "Visual Creation",
+        title: "10. दूसरे चार्ट में Sales हटाकर Profit डालें",
+        instruction: "दूसरे चार्ट को सेलेक्ट करें, Y-axis से Sales को हटाएं और उसकी जगह <span class='action-tag'>Profit</span> जोड़ें।",
+        expected: "दूसरा चार्ट अब मुनाफे (Profit) का डेटा दिखाने लगेगा।",
+        protip: "अब आपके पास दो अलग-अलग चार्ट्स तैयार हैं।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="60" y="50" width="480" height="220" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+          <text x="80" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">Sum of Profit by Product</text>
+          <rect x="120" y="110" width="50" height="120" fill="#059669" rx="4"/>
+          <rect x="200" y="140" width="50" height="90" fill="#059669" rx="4"/>
+          <rect x="280" y="180" width="50" height="50" fill="#059669" rx="4"/>
+          <rect x="360" y="190" width="50" height="40" fill="#059669" rx="4"/>
+        </svg>`
+      },
+      {
+        id: 11,
+        topic: "Selection Pane",
+        title: "11. View Tab से Selection Pane ऑन करें",
+        instruction: "शीर्ष रिबन में <span class='action-tag'>View Tab</span> पर क्लिक करें और <span class='action-tag'>Selection</span> चेकबॉक्स टिक करें।",
+        expected: "स्क्रीन के दाईं ओर Selection Pane दिखाई देगा, जिसमें सभी विजुअल्स की लिस्ट होगी।",
+        protip: "Selection Pane बुकमार्क का दिल है — यहीं से चीजें Show और Hide होती हैं!",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect width="600" height="45" fill="#f1f5f9" stroke="#cbd5e1"/>
+          <text x="210" y="28" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2563eb">View Tab</text>
+          <!-- Selection Pane box -->
+          <rect x="380" y="60" width="200" height="240" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="400" y="85" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Selection</text>
+          <circle cx="550" cy="80" r="12" fill="#ef4444" opacity="0.3"/>
+          <circle cx="550" cy="80" r="6" fill="#ef4444"/>
+        </svg>`
+      },
+      {
+        id: 12,
+        topic: "Selection Pane",
+        title: "12. Selection Pane में विजुअल्स को नाम दें",
+        instruction: "Selection Pane में दोनों चार्ट्स पर डबल-क्लिक करके नाम बदलें: <span class='action-tag'>Chart - Sales</span> और <span class='action-tag'>Chart - Profit</span>।",
+        expected: "दोनों विजुअल्स के साफ और स्पष्ट नाम सेट हो जाएंगे।",
+        protip: "हमेशा विजुअल्स को स्पष्ट नाम दें ताकि Bookmarks बनाते समय कन्फ्यूजन न हो।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="150" y="60" width="300" height="200" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="170" y="90" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Selection Pane List</text>
+          <rect x="170" y="110" width="260" height="32" rx="4" fill="#eff6ff" stroke="#2563eb"/>
+          <text x="185" y="130" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2563eb">Chart - Sales</text>
+          <rect x="170" y="150" width="260" height="32" rx="4" fill="#ecfdf5" stroke="#059669"/>
+          <text x="185" y="170" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">Chart - Profit</text>
+        </svg>`
+      },
+      {
+        id: 13,
+        topic: "Bookmark Setup",
+        title: "13. Sales को Show रखें और Profit को Hide करें",
+        instruction: "Selection Pane में <span class='action-tag'>Chart - Profit</span> के सामने वाले Eye Icon (आंख के निशान) पर क्लिक करें।",
+        expected: "कैनवास से Profit Chart छिप जाएगा और केवल Sales Chart दिखेगा।",
+        protip: "Eye icon पर स्लैश (छोटा क्रॉस) दिखने का मतलब है कि विजुअल अब छुपा हुआ (Hidden) है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="120" y="80" width="360" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="140" y="120" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Chart - Sales</text>
+          <text x="420" y="120" font-size="16">👁️</text>
+          <text x="140" y="170" font-family="sans-serif" font-size="12" font-weight="bold" fill="#64748b">Chart - Profit</text>
+          <text x="420" y="170" font-size="16" fill="#ef4444">👁️‍🗨️</text>
+          <circle cx="428" cy="165" r="14" fill="#ef4444" opacity="0.2"/>
+        </svg>`
+      },
+      {
+        id: 14,
+        topic: "Bookmark Setup",
+        title: "14. View Tab से Bookmarks Pane खोलें",
+        instruction: "View Tab में जाकर <span class='action-tag'>Bookmarks</span> का चेकबॉक्स टिक करें और <span class='action-tag'>Add</span> पर क्लिक करें।",
+        expected: "Bookmarks Pane में 'Bookmark 1' नाम से नया बुकमार्क जुड़ जाएगा।",
+        protip: "बुकमार्क जोड़ते ही स्क्रीन की वर्तमान दृश्य स्थिति (Visual State) रिकॉर्ड हो जाती है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="360" y="40" width="220" height="240" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="380" y="70" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Bookmarks</text>
+          <rect x="380" y="85" width="80" height="28" rx="4" fill="#2563eb"/>
+          <text x="405" y="103" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">+ Add</text>
+          <circle cx="420" cy="99" r="14" fill="#ef4444" opacity="0.3"/>
+        </svg>`
+      },
+      {
+        id: 15,
+        topic: "Bookmark Setup",
+        title: "15. बुकमार्क का नाम 'Sales View' रखें",
+        instruction: "तीन बिंदुओं (...) पर क्लिक करके Rename चुनें और नाम <span class='action-tag'>Sales View</span> रखें। 'Data' को अनचेक करें।",
+        expected: "बुकमार्क का नाम 'Sales View' हो जाएगा और वह केवल विजिबिलिटी को बदलेगा।",
+        protip: "विजुअल्स शो/हाइड करने के लिए 'Data' को OFF रखना चाहिए ताकि यूज़र के चुने हुए फिल्टर्स रीसेट न हों।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="150" y="60" width="300" height="200" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="180" y="95" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2563eb">Sales View</text>
+          <line x1="180" y1="110" x2="420" y2="110" stroke="#e2e8f0"/>
+          <text x="180" y="135" font-family="sans-serif" font-size="11" fill="#64748b">☐ Data (Unchecked)</text>
+          <text x="180" y="160" font-family="sans-serif" font-size="11" font-weight="bold" fill="#059669">☑ Display (Checked)</text>
+          <text x="180" y="185" font-family="sans-serif" font-size="11" fill="#64748b">☑ Current Page</text>
+        </svg>`
+      },
+      {
+        id: 16,
+        topic: "Bookmark Setup",
+        title: "16. विजिबिलिटी उलटें: Sales Hide, Profit Show",
+        instruction: "Selection Pane में जाकर <span class='action-tag'>Chart - Sales</span> को Hide करें और <span class='action-tag'>Chart - Profit</span> को Show करें।",
+        expected: "कैनवास पर अब Sales Chart छिप जाएगा और Profit Chart दिखाई देने लगेगा।",
+        protip: "अब हम अपने दूसरे बुकमार्क की स्थिति तैयार कर रहे हैं।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="120" y="80" width="360" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="140" y="120" font-family="sans-serif" font-size="12" font-weight="bold" fill="#64748b">Chart - Sales</text>
+          <text x="420" y="120" font-size="16" fill="#ef4444">👁️‍🗨️ (Hidden)</text>
+          <text x="140" y="170" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">Chart - Profit</text>
+          <text x="420" y="170" font-size="16">👁️ (Visible)</text>
+        </svg>`
+      },
+      {
+        id: 17,
+        topic: "Bookmark Setup",
+        title: "17. दूसरा बुकमार्क 'Profit View' बनाएं",
+        instruction: "Bookmarks Pane में फिर से <span class='action-tag'>+ Add</span> दबाएं, नाम <span class='action-tag'>Profit View</span> रखें, और 'Data' अनचेक करें।",
+        expected: "Bookmarks Pane में अब दो बुकमार्क होंगे: 'Sales View' और 'Profit View'।",
+        protip: "दोनों बुकमार्क पर क्लिक करके टेस्ट करें कि चार्ट्स आपस में बदल रहे हैं या नहीं।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="180" y="80" width="240" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="200" y="110" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Bookmarks List</text>
+          <rect x="200" y="125" width="200" height="32" rx="4" fill="#eff6ff"/>
+          <text x="215" y="145" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2563eb">1. Sales View</text>
+          <rect x="200" y="165" width="200" height="32" rx="4" fill="#ecfdf5"/>
+          <text x="215" y="185" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">2. Profit View</text>
+        </svg>`
+      },
+      {
+        id: 18,
+        topic: "Button Actions",
+        title: "18. Insert Tab से दो ब्लैंक बटन जोड़ें",
+        instruction: "रिबन में <span class='action-tag'>Insert ➔ Buttons ➔ Blank</span> से दो बटन्स बनाएं और उन पर 'Sales View' और 'Profit View' लिखें।",
+        expected: "कैनवास के शीर्ष पर दो क्लिक करने योग्य बटन्स बन जाएंगे।",
+        protip: "Format Pane में Button Text ऑन करके लेबल टाइप करें।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="120" y="110" width="160" height="40" rx="8" fill="#2563eb"/>
+          <text x="160" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Sales View</text>
+          <rect x="320" y="110" width="160" height="40" rx="8" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+          <text x="360" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">Profit View</text>
+        </svg>`
+      },
+      {
+        id: 19,
+        topic: "Button Actions",
+        title: "19. Buttons में Bookmark Action असाइन करें",
+        instruction: "बटन सेलेक्ट करें ➔ Format Pane में <span class='action-tag'>Action</span> ऑन करें ➔ Type: <span class='action-tag'>Bookmark</span> ➔ Bookmark: <span class='action-tag'>Sales View</span> चुनें।",
+        expected: "बटन अब संबंधित बुकमार्क से सीधे कनेक्ट हो जाएगा।",
+        protip: "दोनों बटन्स को उनके सही बुकमार्क से कनेक्ट करें (Sales View बटन ➔ Sales View बुकमार्क)।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+          <rect x="150" y="60" width="300" height="200" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="170" y="90" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Format Pane - Action</text>
+          <text x="170" y="125" font-family="sans-serif" font-size="11" font-weight="bold" fill="#059669">Action: ON</text>
+          <text x="170" y="155" font-family="sans-serif" font-size="11" fill="#475569">Type: Bookmark</text>
+          <rect x="170" y="170" width="240" height="28" rx="4" fill="#eff6ff" stroke="#2563eb"/>
+          <text x="180" y="188" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2563eb">Bookmark: Sales View</text>
+        </svg>`
+      },
+      {
+        id: 20,
+        topic: "Testing & Finish",
+        title: "20. Ctrl + Click दबाकर टेस्ट करें!",
+        instruction: "कीबोर्ड पर <span class='action-tag'>Ctrl</span> की दबाकर रखें और बटन्स पर क्लिक करें। बधाई हो, आपका बुकमार्क तैयार है!",
+        expected: "बटन दबाते ही Sales और Profit चार्ट्स बिना पेज बदले आपस में स्मूथली बदलने लगेंगे!",
+        protip: "Power BI Desktop में बटन्स को टेस्ट करने के लिए हमेशा Ctrl + Click की आवश्यकता होती है। Power BI Service (ऑनलाइन) में सिंगल क्लिक से काम करता है।",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="320" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+          <circle cx="300" cy="110" r="36" fill="#10b981"/>
+          <text x="300" y="118" text-anchor="middle" font-size="28" fill="#ffffff">✓</text>
+          <text x="300" y="180" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="900" fill="#065f46">शानदार! आपका पहला Bookmark तैयार है!</text>
+          <text x="300" y="210" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#047857">Ctrl + Click to Toggle Views anytime on Desktop</text>
+        </svg>`
+      }
+    ];
+
+    let currentStep = 1;
+
+    function renderStep(stepNum) {
+      if (stepNum < 1 || stepNum > stepsData.length) return;
+      currentStep = stepNum;
+      const data = stepsData[stepNum - 1];
+
+      document.getElementById('step-number-badge').innerText = `Step ${String(data.id).padStart(2, '0')} / ${String(stepsData.length).padStart(2, '0')}`;
+      document.getElementById('step-topic-badge').innerText = data.topic || 'Practical Step';
+      document.getElementById('step-title').innerHTML = data.title;
+      document.getElementById('step-instruction').innerHTML = data.instruction;
+
+      const typeBadge = document.getElementById('diagram-type-badge');
+      if (data.uploadedImage) {
+        document.getElementById('diagram-render-area').innerHTML = `<img src="${data.uploadedImage}" alt="Screenshot for ${data.title}" style="max-width:100%; max-height:420px; object-fit:contain; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,0.08); transition:transform 0.2s;" />`;
+        if (typeBadge) {
+          typeBadge.innerText = 'Genuine Screenshot';
+          typeBadge.style.background = '#ecfdf5';
+          typeBadge.style.color = '#065f46';
+          typeBadge.style.borderColor = '#a7f3d0';
+        }
+      } else {
+        document.getElementById('diagram-render-area').innerHTML = data.svg;
+        if (typeBadge) {
+          typeBadge.innerText = 'Illustrative Demo';
+          typeBadge.style.background = '#f1f5f9';
+          typeBadge.style.color = '#475569';
+          typeBadge.style.borderColor = '#cbd5e1';
+        }
+      }
+      document.getElementById('step-expected').innerText = data.expected;
+      document.getElementById('step-protip').innerText = data.protip;
+
+      // Update dropdown
+      const sel = document.getElementById('step-dropdown');
+      if (sel) sel.value = stepNum;
+
+      // Update Prev / Next buttons
+      document.getElementById('btn-prev-step').disabled = (stepNum === 1);
+      document.getElementById('btn-next-step').disabled = (stepNum === stepsData.length);
+      document.getElementById('btn-next-step').innerText = (stepNum === stepsData.length) ? 'Completed ✓' : 'Next Step →';
+
+      // Update progress dots
+      const dotsContainer = document.getElementById('step-dots-container');
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        stepsData.forEach((s) => {
+          const dot = document.createElement('div');
+          dot.style.width = (s.id === stepNum) ? '18px' : '6px';
+          dot.style.height = '6px';
+          dot.style.borderRadius = '3px';
+          dot.style.backgroundColor = (s.id === stepNum) ? 'var(--primary)' : 'var(--slate-300)';
+          dot.style.transition = 'all 0.2s';
+          dotsContainer.appendChild(dot);
+        });
+      }
+    }
+
+    function nextStep() {
+      if (currentStep < 20) renderStep(currentStep + 1);
+    }
+
+    function prevStep() {
+      if (currentStep > 1) renderStep(currentStep - 1);
+    }
+
+    function jumpToStep(val) {
+      renderStep(val);
+    }
+
+    // Lightbox zoom
+    function openDiagramZoom() {
+      const data = stepsData[currentStep - 1];
+      document.getElementById('modal-title').innerText = data.title;
+      if (data.uploadedImage) {
+        document.getElementById('modal-content').innerHTML = `<img src="${data.uploadedImage}" alt="Enlarged Screenshot" style="max-width:100%; max-height:80vh; border-radius:8px;" />`;
+      } else {
+        document.getElementById('modal-content').innerHTML = data.svg;
+      }
+      document.getElementById('zoom-modal').classList.add('open');
+    }
+
+    function closeDiagramZoom(e) {
+      if (!e || e.target.id === 'zoom-modal' || e.target.classList.contains('modal-close')) {
+        document.getElementById('zoom-modal').classList.remove('open');
+      }
+    }
+
+    // --- Interactive Demos Logic ---
+    function switchDemo(idx) {
+      document.querySelectorAll('.demo-tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+      document.querySelectorAll('.demo-content').forEach((content, i) => {
+        content.classList.toggle('active', i === idx);
+      });
+    }
+
+    // Demo 1 Toggle
+    function toggleDemo1View(mode) {
+      const isSales = (mode === 'sales');
+      document.getElementById('btn-sales-view').classList.toggle('active', isSales);
+      document.getElementById('btn-profit-view').classList.toggle('active', !isSales);
+
+      document.getElementById('chart1-title').innerText = isSales 
+        ? 'Product-wise Total Sales (₹)' 
+        : 'Product-wise Total Profit (₹)';
+
+      const color = isSales ? '#2563eb' : '#059669';
+
+      const heights = isSales 
+        ? { lap: '140px', mob: '100px', tab: '60px', acc: '45px' }
+        : { lap: '90px', mob: '65px', tab: '35px', acc: '30px' };
+
+      const vals = isSales
+        ? { lap: '₹50k', mob: '₹35k', tab: '₹20k', acc: '₹15k' }
+        : { lap: '₹12k', mob: '₹9k', tab: '₹5k', acc: '₹4k' };
+
+      const barLap = document.getElementById('bar-laptop');
+      const barMob = document.getElementById('bar-mobile');
+      const barTab = document.getElementById('bar-tablet');
+      const barAcc = document.getElementById('bar-acc');
+
+      barLap.style.height = heights.lap;
+      barLap.style.backgroundColor = color;
+      barLap.setAttribute('data-val', vals.lap);
+
+      barMob.style.height = heights.mob;
+      barMob.style.backgroundColor = color;
+      barMob.setAttribute('data-val', vals.mob);
+
+      barTab.style.height = heights.tab;
+      barTab.style.backgroundColor = color;
+      barTab.setAttribute('data-val', vals.tab);
+
+      barAcc.style.height = heights.acc;
+      barAcc.style.backgroundColor = color;
+      barAcc.setAttribute('data-val', vals.acc);
+    }
+
+    // Demo 2 Toggle
+    let filterOpen = false;
+    function toggleDemo2Filter() {
+      filterOpen = !filterOpen;
+      const drawer = document.getElementById('filter-drawer');
+      const btnText = document.getElementById('filter-btn-text');
+
+      if (filterOpen) {
+        drawer.style.width = '200px';
+        drawer.style.opacity = '1';
+        btnText.innerText = '✕ Hide Filters';
+      } else {
+        drawer.style.width = '0';
+        drawer.style.opacity = '0';
+        btnText.innerText = '🔍 Show Filters';
+      }
+    }
+
+    // Demo 3 Filter Logic
+    let demo3Prod = 'all';
+    let demo3City = 'all';
+
+    function applyDemo3Filter(type, val) {
+      if (type === 'prod') {
+        demo3Prod = val;
+        document.getElementById('chip-prod-all').classList.toggle('active', val === 'all');
+        document.getElementById('chip-prod-laptop').classList.toggle('active', val === 'Laptop');
+        document.getElementById('chip-prod-mobile').classList.toggle('active', val === 'Mobile');
+      } else {
+        demo3City = val;
+        document.getElementById('chip-city-all').classList.toggle('active', val === 'all');
+        document.getElementById('chip-city-delhi').classList.toggle('active', val === 'Delhi');
+        document.getElementById('chip-city-mumbai').classList.toggle('active', val === 'Mumbai');
+      }
+
+      updateDemo3Display();
+    }
+
+    function resetDemo3Filters() {
+      demo3Prod = 'all';
+      demo3City = 'all';
+      document.getElementById('chip-prod-all').classList.add('active');
+      document.getElementById('chip-prod-laptop').classList.remove('active');
+      document.getElementById('chip-prod-mobile').classList.remove('active');
+      document.getElementById('chip-city-all').classList.add('active');
+      document.getElementById('chip-city-delhi').classList.remove('active');
+      document.getElementById('chip-city-mumbai').classList.remove('active');
+      updateDemo3Display();
+      showToast('Filters reset to default via Bookmark!');
+    }
+
+    function updateDemo3Display() {
+      const resVal = document.getElementById('demo3-result-val');
+      const statusVal = document.getElementById('demo3-filter-status');
+
+      if (demo3Prod === 'all' && demo3City === 'all') {
+        resVal.innerText = '₹1,20,000 Total Revenue';
+        statusVal.innerText = 'Default Baseline (No Filters Applied)';
+        statusVal.style.color = 'var(--emerald-600)';
+      } else {
+        let amt = '₹65,000';
+        if (demo3Prod === 'Laptop') amt = '₹50,000';
+        if (demo3Prod === 'Mobile') amt = '₹35,000';
+        resVal.innerText = amt + ' Filtered Revenue';
+        statusVal.innerText = `Active Filter: Product: ${demo3Prod}, City: ${demo3City}`;
+        statusVal.style.color = 'var(--primary)';
+      }
+    }
+
+    // Demo 4 Multi-View Navigation
+    function switchDemo4View(idx) {
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById('nav-btn-' + i);
+        const view = document.getElementById('demo4-view-' + i);
+        if (btn) btn.classList.toggle('active', i === idx);
+        if (view) view.classList.toggle('active', i === idx);
+      });
+    }
+
+    // Demo 5 Before vs After Logic
+    let manualSalesVisible = true;
+    let manualProfitVisible = false;
+    let manualClicksCount = 0;
+
+    function switchDemo5Mode(isAfter) {
+      document.getElementById('btn-comp-before').classList.toggle('active', !isAfter);
+      document.getElementById('btn-comp-after').classList.toggle('active', isAfter);
+      document.getElementById('demo5-before-container').style.display = isAfter ? 'none' : 'block';
+      document.getElementById('demo5-after-container').style.display = isAfter ? 'block' : 'none';
+
+      if (isAfter) {
+        triggerBookmarkView('sales');
+      } else {
+        renderDemo5ManualCanvas();
+      checkLocalStorageDraft();
+      renderSimulatorCanvas();
+      simRenderBookmarksList();
+      renderQuiz();
+      }
+    }
+
+    function toggleManualEye(type) {
+      manualClicksCount++;
+      document.getElementById('manual-click-count').innerText = manualClicksCount;
+
+      if (type === 'sales') {
+        manualSalesVisible = !manualSalesVisible;
+        const btn = document.getElementById('eye-btn-sales');
+        const icon = document.getElementById('eye-icon-sales');
+        const text = document.getElementById('eye-text-sales');
+        btn.classList.toggle('hidden-eye', !manualSalesVisible);
+        icon.innerText = manualSalesVisible ? '👁️' : '👁️‍🗨️';
+        text.innerText = manualSalesVisible ? 'Visible' : 'Hidden';
+      } else {
+        manualProfitVisible = !manualProfitVisible;
+        const btn = document.getElementById('eye-btn-profit');
+        const icon = document.getElementById('eye-icon-profit');
+        const text = document.getElementById('eye-text-profit');
+        btn.classList.toggle('hidden-eye', !manualProfitVisible);
+        icon.innerText = manualProfitVisible ? '👁️' : '👁️‍🗨️';
+        text.innerText = manualProfitVisible ? 'Visible' : 'Hidden';
+      }
+
+      renderDemo5ManualCanvas();
+    }
+
+    function renderDemo5ManualCanvas() {
+      const container = document.getElementById('demo5-canvas-visual');
+      const statusBadge = document.getElementById('demo5-canvas-status');
+
+      if (manualSalesVisible && manualProfitVisible) {
+        statusBadge.innerText = '⚠️ Warning: Both Charts Overlapping!';
+        statusBadge.style.background = '#fef3c7';
+        statusBadge.style.color = '#92400e';
+        container.innerHTML = `
+          <div style="background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 1.25rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">⚠️</div>
+            <strong style="color: #b45309; font-size: 0.85rem;">विजुअल ओवरलैप समस्या (Visual Clutter)</strong>
+            <p style="font-size: 0.75rem; color: #78350f; margin-top: 0.25rem;">
+              Sales और Profit दोनों चार्ट्स एक ही जगह पर एक साथ दिख रहे हैं। इससे डेटा पढ़ना असंभव हो गया है!
+            </p>
+          </div>
+        `;
+      } else if (manualSalesVisible && !manualProfitVisible) {
+        statusBadge.innerText = 'Showing: Sales Chart Only';
+        statusBadge.style.background = '#eff6ff';
+        statusBadge.style.color = '#1e40af';
+        container.innerHTML = `
+          <div style="background: #ffffff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 1rem;">
+            <div style="font-size: 0.8rem; font-weight: 800; color: #2563eb; margin-bottom: 0.5rem;">📊 Product Sales Chart (₹1,20,000)</div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 90px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 28px; height: 80px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 56px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 32px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 24px; background: #2563eb; border-radius: 3px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">Laptop | Mobile | Tablet | Accessories</div>
+          </div>
+        `;
+      } else if (!manualSalesVisible && manualProfitVisible) {
+        statusBadge.innerText = 'Showing: Profit Chart Only';
+        statusBadge.style.background = '#ecfdf5';
+        statusBadge.style.color = '#065f46';
+        container.innerHTML = `
+          <div style="background: #ffffff; border: 1px solid #a7f3d0; border-radius: 8px; padding: 1rem;">
+            <div style="font-size: 0.8rem; font-weight: 800; color: #059669; margin-bottom: 0.5rem;">💰 Product Profit Chart (₹30,000)</div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 90px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 28px; height: 60px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 45px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 25px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 20px; background: #059669; border-radius: 3px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">Laptop | Mobile | Tablet | Accessories</div>
+          </div>
+        `;
+      } else {
+        statusBadge.innerText = '⚠️ Blank Canvas: All Hidden';
+        statusBadge.style.background = '#f1f5f9';
+        statusBadge.style.color = '#64748b';
+        container.innerHTML = `
+          <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 1.25rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">📭</div>
+            <strong style="color: #64748b; font-size: 0.85rem;">खाली स्क्रीन (Blank Canvas)</strong>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">
+              दोनों चार्ट्स हाइड कर दिए गए हैं। स्क्रीन पर कुछ भी दिखाई नहीं दे रहा है।
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    // After (Bookmark Trigger)
+    function triggerBookmarkView(type) {
+      const isSales = (type === 'sales');
+      document.getElementById('demo5-bm-sales').classList.toggle('active', isSales);
+      document.getElementById('demo5-bm-profit').classList.toggle('active', !isSales);
+
+      const out = document.getElementById('demo5-bm-output');
+      if (isSales) {
+        out.innerHTML = `
+          <div style="width: 100%; max-width: 480px; background: #ffffff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 8px rgba(37,99,235,0.06);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-weight: 800; font-size: 0.85rem; color: #2563eb;">📊 Sales Bookmark View (Active)</span>
+              <span style="font-size: 0.7rem; background: #eff6ff; color: #1e40af; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">1 Click Executed</span>
+            </div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 32px; height: 90px; background: #2563eb; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 63px; background: #2563eb; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 36px; background: #2563eb; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 27px; background: #2563eb; border-radius: 4px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px; font-weight: 600;">Laptop (₹50k) | Mobile (₹35k) | Tablet (₹20k) | Accessories (₹15k)</div>
+          </div>
+        `;
+      } else {
+        out.innerHTML = `
+          <div style="width: 100%; max-width: 480px; background: #ffffff; border: 1px solid #a7f3d0; border-radius: 10px; padding: 1rem; box-shadow: 0 2px 8px rgba(5,150,105,0.06);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-weight: 800; font-size: 0.85rem; color: #059669;">💰 Profit Bookmark View (Active)</span>
+              <span style="font-size: 0.7rem; background: #ecfdf5; color: #065f46; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 700;">1 Click Executed</span>
+            </div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 100px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 32px; height: 75px; background: #059669; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 56px; background: #059669; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 31px; background: #059669; border-radius: 4px;"></div>
+              <div style="width: 32px; height: 25px; background: #059669; border-radius: 4px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 6px; font-weight: 600;">Laptop (₹12k) | Mobile (₹9k) | Tablet (₹5k) | Accessories (₹4k)</div>
+          </div>
+        `;
+      }
+    }
+
+    // Toast helper
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    // Clipboard Copy
+    function copySampleData() {
+      const text = "Product\tSales\tProfit\nLaptop\t50000\t12000\nMobile\t35000\t9000\nTablet\t20000\t5000\nAccessories\t15000\t4000";
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Data copied! Power BI में Enter Data पर Paste करें।');
+      }).catch(() => {
+        showToast('Copied to clipboard!');
+      });
+    }
+
+    // Download CSV
+    function downloadSampleCsv() {
+      const csvContent = "data:text/csv;charset=utf-8,Product,Sales,Profit\nLaptop,50000,12000\nMobile,35000,9000\nTablet,20000,5000\nAccessories,15000,4000\n";
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "powerbi_bookmark_sample_data.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Sample CSV downloaded successfully!');
+    }
+
+    
+    // ==========================================
+    // MODULE 5: SIMULATOR LOGIC
+    // ==========================================
+    let simSalesEye = true;
+    let simProfitEye = false;
+    let simBookmarks = [
+      { name: 'Sales View', salesEye: true, profitEye: false },
+      { name: 'Profit View', salesEye: false, profitEye: true }
+    ];
+
+    function renderSimulatorCanvas() {
+      const container = document.getElementById('sim-canvas-content');
+      if (!container) return;
+
+      if (simSalesEye && simProfitEye) {
+        container.innerHTML = `
+          <div style="background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 8px; padding: 1.25rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">⚠️</div>
+            <strong style="color: #b45309; font-size: 0.85rem;">Overlapping Clutter (दोनों चार्ट्स सक्रिय)</strong>
+            <p style="font-size: 0.75rem; color: #78350f; margin-top: 0.25rem;">Sales और Profit दोनों दिखाई दे रहे हैं। किसी एक को छुपाएं।</p>
+          </div>
+        `;
+      } else if (simSalesEye && !simProfitEye) {
+        container.innerHTML = `
+          <div style="width: 100%; max-width: 420px; background: #ffffff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 0.85rem;">
+            <div style="font-size: 0.8rem; font-weight: 800; color: #2563eb; margin-bottom: 0.4rem;">📊 Product Sales Chart (₹1,20,000)</div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 90px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 28px; height: 80px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 56px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 32px; background: #2563eb; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 24px; background: #2563eb; border-radius: 3px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">Laptop | Mobile | Tablet | Accessories</div>
+          </div>
+        `;
+      } else if (!simSalesEye && simProfitEye) {
+        container.innerHTML = `
+          <div style="width: 100%; max-width: 420px; background: #ffffff; border: 1px solid #a7f3d0; border-radius: 8px; padding: 0.85rem;">
+            <div style="font-size: 0.8rem; font-weight: 800; color: #059669; margin-bottom: 0.4rem;">💰 Product Profit Chart (₹30,000)</div>
+            <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 90px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px;">
+              <div style="width: 28px; height: 60px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 45px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 25px; background: #059669; border-radius: 3px;"></div>
+              <div style="width: 28px; height: 20px; background: #059669; border-radius: 3px;"></div>
+            </div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 4px;">Laptop | Mobile | Tablet | Accessories</div>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 1.25rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.25rem;">📭</div>
+            <strong style="color: #64748b; font-size: 0.85rem;">Empty Canvas (सब कुछ छुपा हुआ है)</strong>
+          </div>
+        `;
+      }
+
+      // Update Selection Pane Eye states
+      const eyeSales = document.getElementById('sim-eye-sales');
+      const iconSales = document.getElementById('sim-eye-icon-sales');
+      if (eyeSales) eyeSales.classList.toggle('hidden-eye', !simSalesEye);
+      if (iconSales) iconSales.innerText = simSalesEye ? '👁️' : '👁️‍🗨️';
+
+      const eyeProfit = document.getElementById('sim-eye-profit');
+      const iconProfit = document.getElementById('sim-eye-icon-profit');
+      if (eyeProfit) eyeProfit.classList.toggle('hidden-eye', !simProfitEye);
+      if (iconProfit) iconProfit.innerText = simProfitEye ? '👁️' : '👁️‍🗨️';
+
+      // Update Canvas buttons active state
+      const btnSales = document.getElementById('sim-btn-sales');
+      const btnProfit = document.getElementById('sim-btn-profit');
+      if (btnSales) btnSales.classList.toggle('active', simSalesEye && !simProfitEye);
+      if (btnProfit) btnProfit.classList.toggle('active', !simSalesEye && simProfitEye);
+    }
+
+    function simToggleEye(type) {
+      if (type === 'sales') simSalesEye = !simSalesEye;
+      if (type === 'profit') simProfitEye = !simProfitEye;
+      renderSimulatorCanvas();
+      document.getElementById('sim-action-status').innerText = 'Selection altered manually';
+    }
+
+    function simRenderBookmarksList() {
+      const list = document.getElementById('sim-bookmarks-list');
+      if (!list) return;
+      list.innerHTML = '';
+      simBookmarks.forEach((bm, i) => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:0.35rem 0.5rem; border-radius:6px; background:#ffffff; border:1px solid #e2e8f0; margin-bottom:0.35rem; font-size:0.75rem;';
+        row.innerHTML = `
+          <span style="font-weight:700; color:#1e293b;">${bm.name}</span>
+          <div style="display:flex; gap:0.25rem;">
+            <button onclick="simApplyBookmark('${bm.name}')" style="background:#eff6ff; color:#2563eb; border:1px solid #bfdbfe; border-radius:4px; padding:0.15rem 0.4rem; cursor:pointer; font-weight:700; font-size:0.65rem;">Apply</button>
+            <button onclick="simUpdateBookmark(${i})" style="background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; border-radius:4px; padding:0.15rem 0.4rem; cursor:pointer; font-size:0.65rem;">Update</button>
+            <button onclick="simDeleteBookmark(${i})" style="background:#fff1f2; color:#e11d48; border:1px solid #fecdd3; border-radius:4px; padding:0.15rem 0.3rem; cursor:pointer; font-size:0.65rem;">✕</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    function simApplyBookmark(name) {
+      const bm = simBookmarks.find(b => b.name === name);
+      if (bm) {
+        simSalesEye = bm.salesEye;
+        simProfitEye = bm.profitEye;
+        renderSimulatorCanvas();
+        document.getElementById('sim-action-status').innerText = `Bookmark '${name}' applied!`;
+        showToast(`Bookmark '${name}' applied successfully!`);
+      }
+    }
+
+    function simAddBookmark() {
+      const name = prompt('बुकमार्क का नाम दर्ज करें (Enter Bookmark Name):', 'Custom View');
+      if (name && name.trim()) {
+        simBookmarks.push({ name: name.trim(), salesEye: simSalesEye, profitEye: simProfitEye });
+        simRenderBookmarksList();
+        document.getElementById('sim-action-status').innerText = `Bookmark '${name.trim()}' added!`;
+        showToast(`Bookmark '${name.trim()}' added to pane!`);
+      }
+    }
+
+    function simUpdateBookmark(idx) {
+      simBookmarks[idx].salesEye = simSalesEye;
+      simBookmarks[idx].profitEye = simProfitEye;
+      document.getElementById('sim-action-status').innerText = `Bookmark '${simBookmarks[idx].name}' updated!`;
+      showToast(`Bookmark '${simBookmarks[idx].name}' updated with current state!`);
+    }
+
+    function simDeleteBookmark(idx) {
+      simBookmarks.splice(idx, 1);
+      simRenderBookmarksList();
+    }
+
+    function resetSimulator() {
+      simSalesEye = true;
+      simProfitEye = false;
+      simBookmarks = [
+        { name: 'Sales View', salesEye: true, profitEye: false },
+        { name: 'Profit View', salesEye: false, profitEye: true }
+      ];
+      renderSimulatorCanvas();
+      simRenderBookmarksList();
+      document.getElementById('sim-action-status').innerText = 'Simulator reset to default';
+    }
+
+    // ==========================================
+    // MODULE 6: CHALLENGE CHECKLIST
+    // ==========================================
+    const challengeState = [false, false, false, false, false];
+
+    function toggleChallengeStep(idx) {
+      challengeState[idx] = !challengeState[idx];
+      const item = document.getElementById('chk-' + idx);
+      if (item) item.classList.toggle('done', challengeState[idx]);
+
+      const doneCount = challengeState.filter(Boolean).length;
+      const pct = Math.round((doneCount / 5) * 100);
+      document.getElementById('challenge-pct').innerText = pct + '%';
+
+      if (pct === 100) {
+        showToast('🎉 बधाई हो! आपने स्वतंत्र चैलेंज पूरा कर लिया!');
+      }
+    }
+
+    function toggleChallengeHint() {
+      const h = document.getElementById('challenge-hint-box');
+      if (h) h.style.display = (h.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function resetChallenge() {
+      challengeState.fill(false);
+      [0,1,2,3,4].forEach(i => {
+        const item = document.getElementById('chk-' + i);
+        if (item) item.classList.remove('done');
+      });
+      document.getElementById('challenge-pct').innerText = '0%';
+    }
+
+    // ==========================================
+    // MODULE 7: INTERACTIVE QUIZ
+    // ==========================================
+    const quizData = [
+      {
+        q: "1. Power BI में Bookmark का मुख्य उद्देश्य क्या है?",
+        options: [
+          "सिर्फ डेटा को एक्सेल में एक्सपोर्ट करना",
+          "रिपोर्ट पेज की वर्तमान स्थिति (Filters, Visual Visibility) को सेव करना",
+          "कंप्यूटर को रीस्टार्ट करना",
+          "नया डेटाबेस बनाना"
+        ],
+        ans: 1,
+        exp: "बुकमार्क पेज के फिल्टर्स, स्लाइसर्स और विजुअल विजिबिलिटी की स्थिति को स्नैपशॉट की तरह सुरक्षित रखता है।"
+      },
+      {
+        q: "2. विजुअल्स को Show या Hide करने के लिए कौन सा Pane उपयोग किया जाता है?",
+        options: [
+          "Selection Pane",
+          "Format Background Pane",
+          "Filter Pane Only",
+          "Model View Pane"
+        ],
+        ans: 0,
+        exp: "Selection Pane में हर विजुअल के आगे Eye Icon होता है जिससे उसे दिखाया या छुपाया जाता है।"
+      },
+      {
+        q: "3. विजुअल्स को Show/Hide करते समय कौन सा ऑप्शन Uncheck (OFF) करना सर्वोत्तम माना जाता है?",
+        options: [
+          "Display",
+          "Data",
+          "Current Page",
+          "All Visuals"
+        ],
+        ans: 1,
+        exp: "Data को OFF रखने से यूज़र द्वारा चुने गए फिल्टर्स रीसेट नहीं होते और केवल चार्ट्स की विजिबिलिटी बदलती है।"
+      },
+      {
+        q: "4. Power BI Desktop में बुकमार्क बटन्स को टेस्ट करने के लिए कौन सी की दबाकर क्लिक किया जाता है?",
+        options: [
+          "Shift + Click",
+          "Alt + Click",
+          "Ctrl + Click",
+          "Double Click"
+        ],
+        ans: 2,
+        exp: "Power BI Desktop में एडिटिंग मोड में बटन्स को टेस्ट करने के लिए Ctrl + Click की आवश्यकता होती है।"
+      },
+      {
+        q: "5. किसी विजुअल की स्थिति बदलने के बाद पुराने बुकमार्क में नया बदलाव सेव करने के लिए क्या करना पड़ता है?",
+        options: [
+          "Delete",
+          "Update",
+          "Duplicate",
+          "Group"
+        ],
+        ans: 1,
+        exp: "Bookmarks Pane में तीन बिंदुओं (...) पर क्लिक करके 'Update' चुनने से वर्तमान स्थिति सेव हो जाती है।"
+      },
+      {
+        q: "6. 'Page Navigation' और 'Bookmark Navigation' में मुख्य अंतर क्या है?",
+        options: [
+          "कोई अंतर नहीं है",
+          "Page Navigation नया पेज लोड करता है, जबकि Bookmark Navigation उसी पेज पर विजुअल्स बदलकर अलग व्यूज दिखाता है",
+          "Bookmarks सिर्फ मोबाइल पर काम करते हैं",
+          "Page Navigation में बटन्स नहीं बनाए जा सकते"
+        ],
+        ans: 1,
+        exp: "Bookmark Navigation उसी पेज पर तुरंत अलग-अलग एनालिटिक्स दिखाता है बिना पेज बदले।"
+      }
+    ];
+
+    let quizAnswers = new Array(quizData.length).fill(null);
+
+    function renderQuiz() {
+      const container = document.getElementById('quiz-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      quizData.forEach((qItem, qIdx) => {
+        const card = document.createElement('div');
+        card.className = 'quiz-card';
+
+        let optionsHtml = '';
+        qItem.options.forEach((opt, optIdx) => {
+          optionsHtml += `
+            <button class="quiz-option" id="quiz-opt-${qIdx}-${optIdx}" onclick="handleQuizAnswer(${qIdx}, ${optIdx})">
+              ${opt}
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <div class="quiz-question">${qItem.q}</div>
+          ${optionsHtml}
+          <div class="quiz-feedback" id="quiz-fb-${qIdx}"></div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleQuizAnswer(qIdx, selectedOptIdx) {
+      if (quizAnswers[qIdx] !== null) return; // already answered
+      quizAnswers[qIdx] = selectedOptIdx;
+
+      const qItem = quizData[qIdx];
+      const isCorrect = (selectedOptIdx === qItem.ans);
+
+      // Highlight options
+      const selBtn = document.getElementById(`quiz-opt-${qIdx}-${selectedOptIdx}`);
+      if (isCorrect) {
+        selBtn.classList.add('correct');
+      } else {
+        selBtn.classList.add('wrong');
+        document.getElementById(`quiz-opt-${qIdx}-${qItem.ans}`).classList.add('correct');
+      }
+
+      // Show feedback
+      const fb = document.getElementById(`quiz-fb-${qIdx}`);
+      fb.classList.add('show');
+      fb.style.background = isCorrect ? '#ecfdf5' : '#fff1f2';
+      fb.style.color = isCorrect ? '#065f46' : '#9f1239';
+      fb.style.border = isCorrect ? '1px solid #a7f3d0' : '1px solid #fecdd3';
+      fb.innerHTML = `<strong>${isCorrect ? '✓ सही उत्तर!' : '✗ गलत उत्तर!'}</strong> ${qItem.exp}`;
+
+      // Update score
+      const score = quizAnswers.filter((a, i) => a === quizData[i].ans).length;
+      document.getElementById('quiz-score-val').innerText = `${score} / ${quizData.length}`;
+    }
+
+    function resetQuiz() {
+      quizAnswers = new Array(quizData.length).fill(null);
+      renderQuiz();
+      document.getElementById('quiz-score-val').innerText = `0 / ${quizData.length}`;
+    }
+
+    // ==========================================
+    // LIGHTWEIGHT TUTORIAL CONTENT EDITOR
+    // ==========================================
+    const DEFAULT_STEPS_STORAGE_KEY = 'dlh_pbi_bookmark_draft_steps';
+    let editorCurrentStepIndex = 0;
+
+    function openContentEditor() {
+      populateEditorStepDropdown();
+      const targetIdx = Math.min(Math.max(0, currentStep - 1), stepsData.length - 1);
+      loadStepIntoEditor(targetIdx);
+      document.getElementById('editor-modal').classList.add('open');
+    }
+
+    function closeContentEditor(e) {
+      if (!e || e.target.id === 'editor-modal' || e.target.tagName === 'BUTTON') {
+        document.getElementById('editor-modal').classList.remove('open');
+      }
+    }
+
+    function populateEditorStepDropdown() {
+      const sel = document.getElementById('editor-step-select');
+      sel.innerHTML = '';
+      stepsData.forEach((s, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.innerText = `Step ${idx + 1}: ${s.title}`;
+        sel.appendChild(opt);
+      });
+      sel.value = editorCurrentStepIndex;
+    }
+
+    function loadStepIntoEditor(idx) {
+      if (idx < 0 || idx >= stepsData.length) return;
+      editorCurrentStepIndex = idx;
+      document.getElementById('editor-step-select').value = idx;
+
+      const s = stepsData[idx];
+      document.getElementById('edit-step-title').value = s.title || '';
+      document.getElementById('edit-step-topic').value = s.topic || '';
+      document.getElementById('edit-step-instruction').value = s.instruction || '';
+      document.getElementById('edit-step-expected').value = s.expected || '';
+      document.getElementById('edit-step-protip').value = s.protip || '';
+
+      updateEditorVisualPreview(s);
+    }
+
+    function updateEditorVisualPreview(s) {
+      const preview = document.getElementById('editor-visual-preview');
+      if (s.uploadedImage) {
+        preview.innerHTML = `<img src="${s.uploadedImage}" alt="Uploaded Screenshot" style="max-width:100%; max-height:220px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.1);" />`;
+      } else if (s.svg) {
+        preview.innerHTML = s.svg;
+      } else {
+        preview.innerHTML = '<span style="color:#94a3b8; font-size:0.8rem;">No visual attached</span>';
+      }
+    }
+
+    function handleScreenshotUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        stepsData[editorCurrentStepIndex].uploadedImage = dataUrl;
+        updateEditorVisualPreview(stepsData[editorCurrentStepIndex]);
+        showToast('Genuine screenshot loaded into draft!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function revertStepVisualToDefault() {
+      delete stepsData[editorCurrentStepIndex].uploadedImage;
+      updateEditorVisualPreview(stepsData[editorCurrentStepIndex]);
+      showToast('Reverted to default SVG diagram');
+    }
+
+    function saveCurrentFormIntoStep() {
+      const s = stepsData[editorCurrentStepIndex];
+      s.title = document.getElementById('edit-step-title').value;
+      s.topic = document.getElementById('edit-step-topic').value;
+      s.instruction = document.getElementById('edit-step-instruction').value;
+      s.expected = document.getElementById('edit-step-expected').value;
+      s.protip = document.getElementById('edit-step-protip').value;
+    }
+
+    function editorAddNewStep() {
+      saveCurrentFormIntoStep();
+      const newStep = {
+        id: stepsData.length + 1,
+        topic: "Custom Step",
+        title: `${stepsData.length + 1}. नया स्टेप दर्ज करें`,
+        instruction: "यहाँ अपनी निर्देश पंक्ति टाइप करें...",
+        expected: "अपेक्षित परिणाम...",
+        protip: "Power BI महत्वपूर्ण नियम...",
+        svg: `<svg viewBox="0 0 600 320" width="100%" height="320" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="320" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><text x="300" y="160" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#64748b">New Step Placeholder Diagram</text></svg>`
+      };
+      stepsData.push(newStep);
+      editorCurrentStepIndex = stepsData.length - 1;
+      populateEditorStepDropdown();
+      loadStepIntoEditor(editorCurrentStepIndex);
+      showToast('New step added to draft!');
+    }
+
+    function editorDeleteStep() {
+      if (stepsData.length <= 1) {
+        alert('कम से कम 1 स्टेप होना आवश्यक है।');
+        return;
+      }
+      if (confirm(`क्या आप वास्तव में Step ${editorCurrentStepIndex + 1} को हटाना चाहते हैं?`)) {
+        stepsData.splice(editorCurrentStepIndex, 1);
+        // Re-index
+        stepsData.forEach((s, i) => s.id = i + 1);
+        editorCurrentStepIndex = Math.max(0, editorCurrentStepIndex - 1);
+        populateEditorStepDropdown();
+        loadStepIntoEditor(editorCurrentStepIndex);
+        showToast('Step deleted from draft');
+      }
+    }
+
+    function editorMoveStep(direction) {
+      saveCurrentFormIntoStep();
+      const newIdx = editorCurrentStepIndex + direction;
+      if (newIdx < 0 || newIdx >= stepsData.length) return;
+
+      const temp = stepsData[editorCurrentStepIndex];
+      stepsData[editorCurrentStepIndex] = stepsData[newIdx];
+      stepsData[newIdx] = temp;
+
+      // Re-index IDs
+      stepsData.forEach((s, i) => s.id = i + 1);
+
+      editorCurrentStepIndex = newIdx;
+      populateEditorStepDropdown();
+      loadStepIntoEditor(newIdx);
+    }
+
+    function saveEditorDraft(notify = true) {
+      saveCurrentFormIntoStep();
+      try {
+        localStorage.setItem(DEFAULT_STEPS_STORAGE_KEY, JSON.stringify(stepsData));
+        document.getElementById('global-draft-badge').classList.add('visible');
+        if (notify) showToast('Draft saved to browser localStorage!');
+      } catch (err) {
+        alert('LocalStorage quota exceeded (large image size). Consider Exporting as HTML or JSON!');
+      }
+    }
+
+    function applyEditorLivePreview() {
+      // 1. Apply unsaved form inputs to current step object in memory
+      saveCurrentFormIntoStep();
+
+      // 2. Set active tutorial step to the one being edited
+      currentStep = editorCurrentStepIndex + 1;
+
+      // 3. Refresh stepper controls and render the exact step
+      refreshTutorialStepperControls();
+      renderStep(currentStep);
+
+      // 4. Close the Content Editor modal
+      const modal = document.getElementById('editor-modal');
+      if (modal) modal.classList.remove('open');
+
+      // 5. Try saving to localStorage (non-blocking if quota exceeded)
+      saveEditorDraft(false);
+
+      // 6. Smoothly scroll to the Practical Steps section
+      const stepsSection = document.getElementById('steps');
+      if (stepsSection) {
+        stepsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // 7. Show clear confirmation
+      showToast(`✓ Live Preview Active: Viewing Step ${currentStep} with updated screenshot!`);
+    }
+
+    function refreshTutorialStepperControls() {
+      const sel = document.getElementById('step-dropdown');
+      if (sel) {
+        sel.innerHTML = '';
+        stepsData.forEach((s) => {
+          const opt = document.createElement('option');
+          opt.value = s.id;
+          opt.innerText = s.title;
+          sel.appendChild(opt);
+        });
+        sel.value = currentStep;
+      }
+    }
+
+    function saveEditorDraft(notify = true) {
+      saveCurrentFormIntoStep();
+      try {
+        localStorage.setItem(DEFAULT_STEPS_STORAGE_KEY, JSON.stringify(stepsData));
+        const badge = document.getElementById('global-draft-badge');
+        if (badge) badge.classList.add('visible');
+        if (notify) showToast('Draft saved to browser localStorage!');
+        return true;
+      } catch (err) {
+        console.warn('LocalStorage quota limit reached for images:', err);
+        const badge = document.getElementById('global-draft-badge');
+        if (badge) badge.classList.add('visible');
+        if (notify) {
+          showToast('In-memory draft active! (Use Export Standalone HTML to save permanently)');
+        }
+        return false;
+      }
+    }
+
+    function revertEditorFactoryDefaults() {
+      if (confirm('क्या आप सभी ड्राफ्ट बदलाव हटाकर ओरिजिनल 20 स्टेप्स रीस्टोर करना चाहते हैं?')) {
+        localStorage.removeItem(DEFAULT_STEPS_STORAGE_KEY);
+        const badge = document.getElementById('global-draft-badge');
+        if (badge) badge.classList.remove('visible');
+        location.reload();
+      }
+    }
+
+    function exportTutorialJson() {
+      saveCurrentFormIntoStep();
+      const jsonStr = JSON.stringify(stepsData, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'powerbi_bookmark_tutorial_content.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Tutorial content exported as JSON!');
+    }
+
+    function importTutorialJson(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported) && imported.length > 0) {
+            stepsData = imported;
+            populateEditorStepDropdown();
+            loadStepIntoEditor(0);
+            saveEditorDraft(false);
+            applyEditorLivePreview();
+            showToast('Tutorial content successfully imported!');
+          }
+        } catch (err) {
+          alert('अमान्य JSON फ़ाइल प्रारूप (Invalid JSON file)');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function exportStandaloneHtml() {
+      saveCurrentFormIntoStep();
+      // Serialize full document HTML with stepsData injected directly into script
+      let docHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const regex = /const stepsData = \[\s*\{[\s\S]*?\n\s*\];/;
+      const serialized = 'const stepsData = ' + JSON.stringify(stepsData, null, 2) + ';';
+      docHtml = docHtml.replace(regex, serialized);
+
+      const blob = new Blob([docHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'powerbi-bookmark-master-tutorial.html';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Standalone HTML exported with all screenshots embedded! Replace index.html to deploy.');
+    }
+
+    // Load LocalStorage draft if exists on startup
+    function checkLocalStorageDraft() {
+      try {
+        const saved = localStorage.getItem(DEFAULT_STEPS_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            stepsData = parsed;
+            document.getElementById('global-draft-badge').classList.add('visible');
+          }
+        }
+      } catch (e) {}
+    }
+
+
+    // Init Stepper on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      // populate dropdown
+      const sel = document.getElementById('step-dropdown');
+      stepsData.forEach((s) => {
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        opt.innerText = s.title;
+        sel.appendChild(opt);
+      });
+      renderStep(1);
+      renderDemo5ManualCanvas();
+    });
+  </script>
+</body>
+</html>

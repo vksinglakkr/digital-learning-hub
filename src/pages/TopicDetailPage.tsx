@@ -8,7 +8,7 @@ import { NoticeModal } from '../components/NoticeModal'
 import { usePublicCurriculum } from '../context/PublicCurriculumContext'
 import { CurriculumLoadingState } from '../components/common/CurriculumLoadingState'
 import { CurriculumErrorState } from '../components/common/CurriculumErrorState'
-import type { AdminResourceType, TopicResource } from '../types'
+import type { AdminResourceType, TopicResource, TopicPresentationStyle } from '../types'
 import { 
   ArrowLeft, 
   ArrowRight,
@@ -25,12 +25,27 @@ import {
   ExternalLink,
   Milestone,
   User,
-  Scissors
+  Scissors,
+  Gamepad2,
+  CheckCircle2,
+  Award,
+  ListOrdered,
+  Briefcase,
+  LayoutGrid
 } from 'lucide-react'
+import { getTopicTutorial, buildTutorialUrl } from '../config/topicTutorials'
 import { formatSecondsToTime, formatClipDuration } from '../utils/timeFormat'
 import { extractYouTubeVideoId } from '../utils/youtubeEmbed'
 
 type ResourceTabKey = 'All' | 'Infographics' | 'Videos' | 'PDFs' | 'Tutorials' | 'External Links'
+
+const PRESENTATION_CONFIG: Record<TopicPresentationStyle, { title: string; badge: string; icon: any }> = {
+  'gallery': { title: 'Resource Gallery', badge: 'Gallery View', icon: LayoutGrid },
+  'guided-sequence': { title: 'Guided Learning Sequence', badge: 'Step-by-Step', icon: ListOrdered },
+  'situation-based': { title: 'Situation-Based Tutorial', badge: 'Problem & Solution', icon: Briefcase },
+  'masterclass': { title: 'Interactive Masterclass', badge: 'Masterclass', icon: Sparkles },
+  'custom-mixed': { title: 'Custom / Mixed Layout', badge: 'Hybrid View', icon: Layers },
+}
 
 export const TopicDetailPage: React.FC = () => {
   const { categorySlug, topicSlug } = useParams<{ categorySlug: string; topicSlug: string }>()
@@ -110,7 +125,16 @@ export const TopicDetailPage: React.FC = () => {
   }
 
   // Filter public visible resources: ONLY 'Published' resources (Draft and Hidden are strictly excluded)
-  const visibleResources = topic.resources.filter((r) => r.status === 'Published')
+  const visibleResources = topic.resources
+    .filter((r) => r.status === 'Published')
+    .sort((a, b) => a.displayOrder - b.displayOrder)
+
+  // Check if topic has a registered dedicated interactive tutorial (e.g. Power BI Bookmarks)
+  const tutorial = getTopicTutorial(topic.id)
+
+  // Determine active presentation style (default to masterclass if tutorial registered, otherwise gallery)
+  const presentationStyle: TopicPresentationStyle =
+    topic.presentationStyle || (tutorial ? 'masterclass' : 'gallery')
 
   // Count resources by format
   const videoCount = visibleResources.filter((r) => r.type === 'YouTube Video' || r.type === 'Facebook Video' || (r.type as any) === 'Video').length
@@ -184,6 +208,152 @@ export const TopicDetailPage: React.FC = () => {
     }
   }
 
+  const renderResourceCard = (resource: TopicResource) => (
+    <div
+      key={resource.id}
+      className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-teal-300 hover:shadow-lg hover:shadow-slate-200/50 transition-all flex flex-col justify-between"
+    >
+      <div>
+        {/* Top Badges */}
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${getTypeBadgeStyle(resource.type)}`}>
+            {getTypeIcon(resource.type)}
+            <span>{resource.type}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${
+              resource.url.startsWith('demo://') 
+                ? 'bg-amber-50 text-amber-800 border-amber-200' 
+                : 'bg-emerald-50 text-emerald-800 border-emerald-200'
+            }`}>
+              {resource.url.startsWith('demo://') ? 'DEMO' : 'VERIFIED'}
+            </span>
+            <span className="text-[11px] font-mono text-slate-600 font-semibold">
+              #{resource.displayOrder}
+            </span>
+          </div>
+        </div>
+
+        {/* Video or Image Thumbnail if present */}
+        {(resource.thumbnailUrl || (resource.type === 'Infographic' && (resource.directContentUrl || resource.url))) && (
+          <div 
+            onClick={() => setSelectedDemoResource(resource)}
+            className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden mb-3 border border-slate-200 bg-slate-950 group"
+          >
+            <img
+              src={resource.thumbnailUrl || resource.directContentUrl || resource.url}
+              alt={resource.title}
+              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none'
+              }}
+            />
+            <div className="absolute inset-0 bg-slate-900/25 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
+              <div className="p-2 rounded-full bg-slate-900/80 text-white shadow-md group-hover:scale-110 transition-transform">
+                {getTypeIcon(resource.type)}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Resource Title */}
+        <h3 className="text-base font-bold text-slate-900 leading-snug mb-1.5">
+          {resource.title}
+        </h3>
+
+        {/* Creator attribution if video */}
+        {resource.creatorName && (
+          <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-2 font-medium">
+            <User className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+            <span>By {resource.creatorName}</span>
+          </div>
+        )}
+
+        {/* Clip indicator if start/end times exist */}
+        {((resource.startSeconds != null && resource.startSeconds > 0) || (resource.endSeconds != null && resource.endSeconds > 0)) && (
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200 mb-2">
+            <Scissors className="w-3 h-3 text-rose-600 shrink-0" />
+            <span>
+              Clip: {resource.startTime || formatSecondsToTime(resource.startSeconds)} – {resource.endTime || (resource.endSeconds ? formatSecondsToTime(resource.endSeconds) : 'End')}
+              {formatClipDuration(resource.startSeconds, resource.endSeconds) && ` (${formatClipDuration(resource.startSeconds, resource.endSeconds)})`}
+            </span>
+          </div>
+        )}
+
+        {/* Description */}
+        <p className="text-xs text-slate-600 leading-relaxed mb-4">
+          {resource.description || 'Comprehensive learning material tailored for this topic.'}
+        </p>
+      </div>
+
+      {/* Metadata & Open Action */}
+      <div className="pt-3 border-t border-slate-100 space-y-2.5">
+        <div className="flex items-center justify-between text-xs text-slate-500">
+          <div className="flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5 text-slate-400" />
+            <span>{resource.durationOrPages || 'Guide'}</span>
+          </div>
+          <span className="text-[11px] font-medium text-slate-600">
+            {resource.difficulty || 'All Levels'}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setSelectedDemoResource(resource)}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors"
+          >
+            <span>Open Resource</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </button>
+
+          {(resource.type === 'YouTube Video' || resource.type === 'Facebook Video' || (resource.type as string) === 'Video') && (
+            <a
+              href={
+                resource.url.startsWith('demo://')
+                  ? '#'
+                  : (extractYouTubeVideoId(resource.url) && resource.startSeconds && resource.startSeconds > 0)
+                    ? `https://www.youtube.com/watch?v=${extractYouTubeVideoId(resource.url)}&t=${Math.floor(resource.startSeconds)}s`
+                    : resource.url
+              }
+              target={resource.url.startsWith('demo://') ? '_self' : '_blank'}
+              rel="noreferrer"
+              onClick={(e) => {
+                if (resource.url.startsWith('demo://')) {
+                  e.preventDefault()
+                  setSelectedDemoResource(resource)
+                }
+              }}
+              className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors flex items-center justify-center"
+              title="Watch on Original Platform"
+              aria-label="Watch on Original Platform"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
+          {resource.type === 'Tutorial' && (
+            <a
+              href={resource.url.startsWith('http') || resource.url.startsWith('demo://') ? resource.url : buildTutorialUrl(resource.url)}
+              target={resource.url.startsWith('demo://') ? '_self' : '_blank'}
+              rel="noreferrer"
+              onClick={(e) => {
+                if (resource.url.startsWith('demo://')) {
+                  e.preventDefault()
+                  setSelectedDemoResource(resource)
+                }
+              }}
+              className="p-2 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 text-xs font-semibold transition-colors flex items-center justify-center border border-teal-200"
+              title="Launch Tutorial in New Tab"
+              aria-label="Launch Tutorial in New Tab"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+
   return (
     <div className="min-h-screen bg-slate-50/50 text-slate-900 flex flex-col justify-between font-sans">
       <div>
@@ -219,8 +389,9 @@ export const TopicDetailPage: React.FC = () => {
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
                     Level: {topic.difficulty}
                   </span>
-                  <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
-                    Demo Dataset
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1">
+                    {React.createElement(PRESENTATION_CONFIG[presentationStyle].icon, { className: 'w-3 h-3 text-teal-600' })}
+                    <span>{PRESENTATION_CONFIG[presentationStyle].badge}</span>
                   </span>
                 </div>
 
@@ -280,6 +451,10 @@ export const TopicDetailPage: React.FC = () => {
                     <span>Total Resources</span>
                     <span>{visibleResources.length}</span>
                   </div>
+                  <div className="pt-1.5 flex items-center justify-between text-[11px] text-slate-500 font-medium">
+                    <span>Layout Style</span>
+                    <span className="text-teal-800 font-semibold">{PRESENTATION_CONFIG[presentationStyle].title}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -289,241 +464,602 @@ export const TopicDetailPage: React.FC = () => {
         {/* Main Content Area */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
           
-          {/* Section: Recommended Learning Sequence */}
-          {topic.recommendedSequence && topic.recommendedSequence.length > 0 && (
-            <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
-                <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-100">
-                    <Milestone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h2 className="text-xl font-bold text-slate-900 tracking-tight">
-                      Recommended Learning Sequence
-                    </h2>
-                    <p className="text-xs sm:text-sm text-slate-500">
-                      A structured multi-format progression combining visual infographics, video walkthroughs, hands-on tutorials, and reference documentation.
-                    </p>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-50 text-teal-800 border border-teal-200 self-start sm:self-auto shrink-0">
-                  {topic.recommendedSequence.length} Ordered Steps
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {topic.recommendedSequence.map((step) => {
-                  const linkedResource = topic.resources.find((r) => r.id === step.resourceId)
-
-                  return (
-                    <div
-                      key={step.stepNumber}
-                      onClick={() => linkedResource && setSelectedDemoResource(linkedResource)}
-                      className="group cursor-pointer bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-teal-300 rounded-xl p-4 transition-all duration-150 flex flex-col justify-between"
-                    >
+          {visibleResources.length === 0 ? (
+            <section className="bg-white border border-slate-200 rounded-3xl p-12 text-center text-slate-500">
+              <Layers className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+              <h3 className="font-bold text-slate-800 text-lg mb-1">No Published Resources Yet</h3>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6">
+                Teaching materials for this topic are currently being prepared or saved in draft review.
+              </p>
+              <button
+                onClick={() => navigate(`/category/${category.slug}`)}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Return to {category.title}</span>
+              </button>
+            </section>
+          ) : (
+            <>
+              {/* ARCHETYPE 1: Guided Learning Sequence */}
+              {presentationStyle === 'guided-sequence' && (
+                <section className="space-y-6">
+                  <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-start sm:items-center gap-3.5">
+                      <div className="p-3 rounded-2xl bg-teal-50 text-teal-700 border border-teal-100">
+                        <ListOrdered className="w-6 h-6" />
+                      </div>
                       <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="w-6 h-6 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center justify-center">
-                            {step.stepNumber}
+                        <div className="flex items-center gap-2">
+                          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Guided Learning Sequence</h2>
+                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+                            {visibleResources.length} Steps
                           </span>
-                          {linkedResource && (
-                            <span className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border ${getTypeBadgeStyle(linkedResource.type)}`}>
-                              {getTypeIcon(linkedResource.type)}
-                              <span>{linkedResource.type}</span>
-                            </span>
-                          )}
                         </div>
-
-                        <h4 className="font-bold text-slate-900 text-sm mb-1 group-hover:text-teal-800 transition-colors">
-                          {step.phaseTitle}
-                        </h4>
-                        <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                          {step.objective}
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                          Follow this structured sequence in order. Each step builds logically from foundations to real-world execution.
                         </p>
                       </div>
-
-                      {linkedResource && (
-                        <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-teal-700 font-semibold">
-                          <span className="line-clamp-1">{linkedResource.title}</span>
-                          <ArrowRight className="w-3.5 h-3.5 shrink-0 ml-1 group-hover:translate-x-0.5 transition-transform" />
-                        </div>
-                      )}
                     </div>
-                  )
-                })}
-              </div>
-            </section>
-          )}
+                  </div>
 
-          {/* Section: All Topic Resources organized by Tabs */}
-          <section className="space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-                  Learning Resource Library
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                  Explore and filter all {visibleResources.length} available resources dedicated to {topic.title}.
-                </p>
-              </div>
-
-              {/* Resource Format Tabs */}
-              <div className="flex items-center gap-1.5 p-1 bg-white border border-slate-200 rounded-xl overflow-x-auto">
-                {tabs.map((tab) => {
-                  const isActive = activeTab === tab.key
-                  return (
-                    <button
-                      key={tab.key}
-                      onClick={() => setActiveTab(tab.key)}
-                      className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all shrink-0 flex items-center gap-1.5 ${
-                        isActive
-                          ? 'bg-slate-900 text-white shadow-xs'
-                          : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                      }`}
-                    >
-                      <span>{tab.label}</span>
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                        isActive ? 'bg-slate-800 text-teal-300' : 'bg-slate-100 text-slate-500'
-                      }`}>
-                        {tab.count}
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Resources Grid */}
-            {filteredResources.length === 0 ? (
-              <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500">
-                <Layers className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-                <p className="font-semibold text-slate-700">No resources found in this category tab</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredResources.map((resource) => (
-                  <div
-                    key={resource.id}
-                    className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-teal-300 hover:shadow-lg hover:shadow-slate-200/50 transition-all flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Top Badges */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <div className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${getTypeBadgeStyle(resource.type)}`}>
-                          {getTypeIcon(resource.type)}
-                          <span>{resource.type}</span>
+                  {tutorial && (
+                    <div className="bg-gradient-to-r from-slate-900 to-teal-950 text-white rounded-2xl p-5 border border-teal-500/30 flex items-center justify-between gap-4 shadow-md">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2.5 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30">
+                          <Sparkles className="w-5 h-5" />
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
-                            DEMO
-                          </span>
-                          <span className="text-[11px] font-mono text-slate-600 font-semibold">
-                            #{resource.displayOrder}
-                          </span>
+                        <div>
+                          <span className="text-[10px] font-bold text-teal-400 uppercase tracking-wider block">Interactive Lab Companion</span>
+                          <h4 className="font-bold text-base text-white">{tutorial.title}</h4>
                         </div>
                       </div>
+                      <a
+                        href={buildTutorialUrl(tutorial.tutorialPath)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold text-xs rounded-xl transition-colors shrink-0"
+                      >
+                        <span>Start Lab</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  )}
 
-                      {/* Video Thumbnail if present */}
-                      {resource.thumbnailUrl && (
-                        <div 
-                          onClick={() => setSelectedDemoResource(resource)}
-                          className="cursor-pointer relative aspect-video w-full rounded-xl overflow-hidden mb-3 border border-slate-200 bg-slate-950 group"
-                        >
-                          <img
-                            src={resource.thumbnailUrl}
-                            alt={resource.title}
-                            className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-200"
-                          />
-                          <div className="absolute inset-0 bg-slate-900/25 group-hover:bg-slate-900/10 transition-colors flex items-center justify-center">
-                            <div className="p-2 rounded-full bg-rose-600/90 text-white shadow-md group-hover:scale-110 transition-transform">
-                              <PlayCircle className="w-5 h-5" />
+                  <div className="space-y-4">
+                    {visibleResources.map((resource, idx) => (
+                      <div
+                        key={resource.id}
+                        className="bg-white border border-slate-200 hover:border-teal-300 rounded-2xl p-5 sm:p-6 transition-all hover:shadow-md flex flex-col md:flex-row md:items-center justify-between gap-5"
+                      >
+                        <div className="flex items-start gap-4 flex-1">
+                          <div className="w-11 h-11 rounded-2xl bg-teal-600 text-white font-extrabold text-base flex items-center justify-center shrink-0 shadow-xs">
+                            {idx + 1}
+                          </div>
+                          <div className="space-y-1.5 flex-1">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${getTypeBadgeStyle(resource.type)}`}>
+                                {getTypeIcon(resource.type)}
+                                <span>{resource.type}</span>
+                              </span>
+                              <span className="text-xs text-slate-500 font-medium">Step {idx + 1} of {visibleResources.length}</span>
+                              <span className="text-xs text-slate-400">•</span>
+                              <span className="text-xs text-slate-600 flex items-center gap-1">
+                                <Clock className="w-3 h-3 text-slate-400" />
+                                <span>{resource.durationOrPages || 'Guide'}</span>
+                              </span>
+                              {resource.creatorName && (
+                                <>
+                                  <span className="text-xs text-slate-400">•</span>
+                                  <span className="text-xs text-slate-500 font-medium">By {resource.creatorName}</span>
+                                </>
+                              )}
+                            </div>
+                            <h3 className="text-base sm:text-lg font-bold text-slate-900">{resource.title}</h3>
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+                              {resource.description || 'Step-by-step learning resource for this topic.'}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 self-stretch md:self-auto shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100">
+                          <button
+                            onClick={() => setSelectedDemoResource(resource)}
+                            className="flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-colors shadow-xs"
+                          >
+                            <span>Open Step</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </button>
+                          {(resource.type === 'YouTube Video' || resource.type === 'Facebook Video') && (
+                            <a
+                              href={resource.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                              title="Watch on Platform"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          {resource.type === 'Tutorial' && (
+                            <a
+                              href={resource.url.startsWith('http') || resource.url.startsWith('demo://') ? resource.url : buildTutorialUrl(resource.url)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="p-2.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 transition-colors border border-teal-200"
+                              title="Launch Tutorial"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* ARCHETYPE 2: Situation-Based Tutorial */}
+              {presentationStyle === 'situation-based' && (
+                <section className="space-y-8">
+                  <div className="bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white rounded-3xl p-7 sm:p-9 shadow-lg border border-slate-800">
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30 w-fit mb-3">
+                      <Briefcase className="w-3.5 h-3.5" />
+                      <span>Business Challenge & Practical Context</span>
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+                      Scenario & Objective: {topic.title}
+                    </h2>
+                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 max-w-3xl">
+                      {topic.detailedDescription}
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10 text-xs">
+                      <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                        <span className="font-bold text-teal-300 block mb-0.5">Phase 1: Architecture</span>
+                        <span className="text-slate-400">Conceptual foundation & diagrams</span>
+                      </div>
+                      <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                        <span className="font-bold text-teal-300 block mb-0.5">Phase 2: Walkthrough</span>
+                        <span className="text-slate-400">Implementation demonstrations</span>
+                      </div>
+                      <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                        <span className="font-bold text-teal-300 block mb-0.5">Phase 3: Execution</span>
+                        <span className="text-slate-400">Reference guides & practice</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between gap-4 mb-6">
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Solution Toolkit & Resources</h3>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-0.5">Curated resources positioned to solve this real-world business challenge.</p>
+                      </div>
+                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                        {visibleResources.length} Solution Items
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {visibleResources.map(renderResourceCard)}
+                    </div>
+                  </div>
+                </section>
+              )}
+
+              {/* ARCHETYPE 3: Custom / Mixed Layout */}
+              {presentationStyle === 'custom-mixed' && (
+                <section className="space-y-10">
+                  {visibleResources[0] && (
+                    <div className="bg-white border-2 border-teal-500/30 rounded-3xl p-6 sm:p-8 shadow-sm">
+                      <div className="flex items-center gap-2 text-teal-700 text-xs font-bold tracking-wider uppercase mb-3">
+                        <Sparkles className="w-4 h-4 text-teal-600" />
+                        <span>Featured Primary Learning Material</span>
+                      </div>
+                      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                        <div className="space-y-3 max-w-2xl">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${getTypeBadgeStyle(visibleResources[0].type)}`}>
+                              {getTypeIcon(visibleResources[0].type)}
+                              <span>{visibleResources[0].type}</span>
+                            </span>
+                            <span className="text-xs text-slate-500 flex items-center gap-1">
+                              <Clock className="w-3.5 h-3.5 text-slate-400" />
+                              <span>{visibleResources[0].durationOrPages || 'Guide'}</span>
+                            </span>
+                            {visibleResources[0].creatorName && (
+                              <span className="text-xs text-slate-500">By {visibleResources[0].creatorName}</span>
+                            )}
+                          </div>
+                          <h3 className="text-2xl font-extrabold text-slate-900">{visibleResources[0].title}</h3>
+                          <p className="text-sm text-slate-600 leading-relaxed">{visibleResources[0].description}</p>
+                        </div>
+                        <div className="shrink-0 flex items-center gap-3 w-full lg:w-auto">
+                          <button
+                            onClick={() => setSelectedDemoResource(visibleResources[0])}
+                            className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-bold transition-colors shadow-xs"
+                          >
+                            <span>Launch Featured Resource</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {visibleResources.length > 1 && (
+                    <div>
+                      <div className="flex items-center justify-between gap-4 mb-6">
+                        <div>
+                          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">Supporting Resources</h3>
+                          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">Additional infographics, walkthroughs, and reference materials.</p>
+                        </div>
+                        <span className="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
+                          {visibleResources.length - 1} Supporting Items
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {visibleResources.slice(1).map(renderResourceCard)}
+                      </div>
+                    </div>
+                  )}
+                </section>
+              )}
+
+              {/* ARCHETYPE 4: Interactive Masterclass (Bookmark layout) */}
+              {presentationStyle === 'masterclass' && (
+                <>
+                  {/* STAGE A — START LEARNING HERO CARD */}
+                  {tutorial && (
+                    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 text-white rounded-3xl p-7 sm:p-10 shadow-xl border border-teal-500/30">
+                      <div className="absolute -right-20 -top-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+                      <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                        <div className="space-y-4 max-w-3xl">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30">
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Stage A • Interactive Masterclass</span>
+                          </div>
+
+                          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-tight">
+                            {tutorial.title}
+                          </h2>
+
+                          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            {tutorial.subtitle}
+                          </p>
+
+                          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                            <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                              <span className="block text-lg font-black text-teal-400">5 WOW</span>
+                              <span className="text-[11px] text-slate-300">Live Demonstrations</span>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                              <span className="block text-lg font-black text-teal-400">20 Steps</span>
+                              <span className="text-[11px] text-slate-300">Illustrated Micro-Steps</span>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                              <span className="block text-lg font-black text-teal-400">Simulator</span>
+                              <span className="text-[11px] text-slate-300">Hands-on Practice</span>
+                            </div>
+                            <div className="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                              <span className="block text-lg font-black text-teal-400">Interactive</span>
+                              <span className="text-[11px] text-slate-300">Self-Assessment Quiz</span>
                             </div>
                           </div>
                         </div>
-                      )}
 
-                      {/* Resource Title */}
-                      <h3 className="text-base font-bold text-slate-900 leading-snug mb-1.5">
-                        {resource.title}
-                      </h3>
+                        <div className="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-3">
+                          <a
+                            href={buildTutorialUrl(tutorial.tutorialPath)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-teal-400 hover:bg-teal-300 text-slate-950 font-black text-base rounded-2xl shadow-lg hover:shadow-teal-500/25 transition-all transform hover:-translate-y-0.5"
+                          >
+                            <span>Start Learning</span>
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
 
-                      {/* Creator attribution if video */}
-                      {resource.creatorName && (
-                        <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-2 font-medium">
-                          <User className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                          <span>By {resource.creatorName}</span>
+                          <a
+                            href="#resources"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs rounded-xl border border-white/15 transition-colors"
+                          >
+                            <span>Browse {visibleResources.length} Resources Below</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </a>
                         </div>
-                      )}
+                      </div>
+                    </section>
+                  )}
 
-                      {/* Clip indicator if start/end times exist */}
-                      {((resource.startSeconds != null && resource.startSeconds > 0) || (resource.endSeconds != null && resource.endSeconds > 0)) && (
-                        <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200 mb-2">
-                          <Scissors className="w-3 h-3 text-rose-600 shrink-0" />
-                          <span>
-                            Clip: {resource.startTime || formatSecondsToTime(resource.startSeconds)} – {resource.endTime || (resource.endSeconds ? formatSecondsToTime(resource.endSeconds) : 'End')}
-                            {formatClipDuration(resource.startSeconds, resource.endSeconds) && ` (${formatClipDuration(resource.startSeconds, resource.endSeconds)})`}
-                          </span>
+                  {/* Section: Recommended Learning Sequence */}
+                  {topic.recommendedSequence && topic.recommendedSequence.length > 0 && (
+                    <section className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
+                        <div className="flex items-center gap-2.5">
+                          <div className="p-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-100">
+                            <Milestone className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h2 className="text-xl font-bold text-slate-900 tracking-tight">
+                              Recommended Learning Sequence
+                            </h2>
+                            <p className="text-xs sm:text-sm text-slate-500">
+                              A structured multi-format progression combining visual infographics, video walkthroughs, hands-on tutorials, and reference documentation.
+                            </p>
+                          </div>
                         </div>
-                      )}
-
-                      {/* Description */}
-                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                        {resource.description || 'Comprehensive learning material tailored for this topic.'}
-                      </p>
-                    </div>
-
-                    {/* Metadata & Open Action */}
-                    <div className="pt-3 border-t border-slate-100 space-y-2.5">
-                      <div className="flex items-center justify-between text-xs text-slate-500">
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-slate-400" />
-                          <span>{resource.durationOrPages || 'Guide'}</span>
-                        </div>
-                        <span className="text-[11px] font-medium text-slate-600">
-                          {resource.difficulty || 'All Levels'}
+                        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-50 text-teal-800 border border-teal-200 self-start sm:self-auto shrink-0">
+                          {topic.recommendedSequence.length} Ordered Steps
                         </span>
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setSelectedDemoResource(resource)}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors"
-                        >
-                          <span>Open Resource</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </button>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {topic.recommendedSequence.map((step) => {
+                          const linkedResource = topic.resources.find((r) => r.id === step.resourceId)
 
-                        {(resource.type === 'YouTube Video' || resource.type === 'Facebook Video' || (resource.type as string) === 'Video') && (
-                          <a
-                            href={
-                              resource.url.startsWith('demo://')
-                                ? '#'
-                                : (extractYouTubeVideoId(resource.url) && resource.startSeconds && resource.startSeconds > 0)
-                                  ? `https://www.youtube.com/watch?v=${extractYouTubeVideoId(resource.url)}&t=${Math.floor(resource.startSeconds)}s`
-                                  : resource.url
-                            }
-                            target={resource.url.startsWith('demo://') ? '_self' : '_blank'}
-                            rel="noreferrer"
-                            onClick={(e) => {
-                              if (resource.url.startsWith('demo://')) {
-                                e.preventDefault()
-                                setSelectedDemoResource(resource)
-                              }
-                            }}
-                            className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors flex items-center justify-center"
-                            title="Watch on Original Platform"
-                            aria-label="Watch on Original Platform"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                          </a>
+                          return (
+                            <div
+                              key={step.stepNumber}
+                              onClick={() => linkedResource && setSelectedDemoResource(linkedResource)}
+                              className="group cursor-pointer bg-slate-50/70 hover:bg-white border border-slate-200 hover:border-teal-300 rounded-xl p-4 transition-all duration-150 flex flex-col justify-between"
+                            >
+                              <div>
+                                <div className="flex items-center justify-between mb-2">
+                                  <span className="w-6 h-6 rounded-full bg-slate-900 text-white font-bold text-xs flex items-center justify-center">
+                                    {step.stepNumber}
+                                  </span>
+                                  {linkedResource && (
+                                    <span className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-full border ${getTypeBadgeStyle(linkedResource.type)}`}>
+                                      {getTypeIcon(linkedResource.type)}
+                                      <span>{linkedResource.type}</span>
+                                    </span>
+                                  )}
+                                </div>
+
+                                <h4 className="font-bold text-slate-900 text-sm mb-1 group-hover:text-teal-800 transition-colors">
+                                  {step.phaseTitle}
+                                </h4>
+                                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                                  {step.objective}
+                                </p>
+                              </div>
+
+                              {linkedResource && (
+                                <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-teal-700 font-semibold">
+                                  <span className="line-clamp-1">{linkedResource.title}</span>
+                                  <ArrowRight className="w-3.5 h-3.5 shrink-0 ml-1 group-hover:translate-x-0.5 transition-transform" />
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </section>
+                  )}
+
+                  {/* Section: All Topic Resources organized by Tabs (STAGE B) */}
+                  <section id="resources" className="space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                      <div>
+                        {tutorial && (
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 mb-1.5">
+                            <Layers className="w-3.5 h-3.5 text-teal-600" />
+                            <span>Stage B • Reference & Learning Materials</span>
+                          </div>
                         )}
+                        <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+                          Learning Resource Library
+                        </h2>
+                        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                          Explore and filter all {visibleResources.length} available resources dedicated to {topic.title}.
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 p-1 bg-white border border-slate-200 rounded-xl overflow-x-auto">
+                        {tabs.map((tab) => {
+                          const isActive = activeTab === tab.key
+                          return (
+                            <button
+                              key={tab.key}
+                              onClick={() => setActiveTab(tab.key)}
+                              className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all shrink-0 flex items-center gap-1.5 ${
+                                isActive
+                                  ? 'bg-slate-900 text-white shadow-xs'
+                                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                              }`}
+                            >
+                              <span>{tab.label}</span>
+                              <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                                isActive ? 'bg-slate-800 text-teal-300' : 'bg-slate-100 text-slate-500'
+                              }`}>
+                                {tab.count}
+                              </span>
+                            </button>
+                          )
+                        })}
                       </div>
                     </div>
+
+                    {filteredResources.length === 0 ? (
+                      <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500">
+                        <Layers className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                        <p className="font-semibold text-slate-700">No resources found in this category tab</p>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredResources.map(renderResourceCard)}
+                      </div>
+                    )}
+                  </section>
+
+                  {/* STAGE C — PRACTICE & ASSESSMENT */}
+                  {tutorial && (
+                    <section className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200">
+                        <div>
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200 mb-2">
+                            <Award className="w-3.5 h-3.5" />
+                            <span>Stage C • Practice & Assessment</span>
+                          </div>
+                          <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+                            Hands-on Practice & Self-Assessment
+                          </h2>
+                          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                            Reinforce your understanding through simulated exercises, guided challenges, and quick quizzes.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-teal-400 hover:shadow-md transition-all flex flex-col justify-between">
+                          <div>
+                            <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 border border-teal-100 flex items-center justify-center mb-3">
+                              <Gamepad2 className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-slate-900 text-base mb-1">
+                              Bookmark Simulator
+                            </h3>
+                            <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                              Practice capturing visual states, updating display vs data toggles, and binding buttons in a simulated Power BI Desktop environment.
+                            </p>
+                          </div>
+                          <a
+                            href={buildTutorialUrl(tutorial.tutorialPath, '#simulator')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
+                          >
+                            <span>Launch Simulator</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-teal-400 hover:shadow-md transition-all flex flex-col justify-between">
+                          <div>
+                            <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 border border-indigo-100 flex items-center justify-center mb-3">
+                              <Sparkles className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-slate-900 text-base mb-1">
+                              Practice Challenge
+                            </h3>
+                            <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                              Test your skills with a hands-on multi-view dashboard navigation challenge. Can you configure 3 toggles in under 3 minutes?
+                            </p>
+                          </div>
+                          <a
+                            href={buildTutorialUrl(tutorial.tutorialPath, '#challenge')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
+                          >
+                            <span>Try Challenge</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+
+                        <div className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-teal-400 hover:shadow-md transition-all flex flex-col justify-between">
+                          <div>
+                            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center mb-3">
+                              <CheckCircle2 className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-slate-900 text-base mb-1">
+                              Knowledge Check Quiz
+                            </h3>
+                            <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                              Check your understanding of Data, Display, Current Page, and Selected Visuals with 5 instant-scored questions.
+                            </p>
+                          </div>
+                          <a
+                            href={buildTutorialUrl(tutorial.tutorialPath, '#quiz')}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
+                          >
+                            <span>Take Quiz</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </section>
+                  )}
+                </>
+              )}
+
+              {/* ARCHETYPE 5: Resource Gallery (Default Tabbed View) */}
+              {presentationStyle === 'gallery' && (
+                <section id="resources" className="space-y-6">
+                  {tutorial && (
+                    <div className="bg-gradient-to-r from-slate-900 to-teal-950 text-white rounded-3xl p-6 sm:p-8 border border-teal-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-md mb-8">
+                      <div className="space-y-2 max-w-2xl">
+                        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>Interactive Tutorial Available</span>
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white">{tutorial.title}</h3>
+                        <p className="text-xs sm:text-sm text-slate-300">{tutorial.subtitle}</p>
+                      </div>
+                      <a
+                        href={buildTutorialUrl(tutorial.tutorialPath)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-teal-400 hover:bg-teal-300 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition-colors shrink-0"
+                      >
+                        <span>Start Interactive Lab</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
+                        Learning Resource Library
+                      </h2>
+                      <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                        Explore and filter all {visibleResources.length} available resources dedicated to {topic.title}.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 p-1 bg-white border border-slate-200 rounded-xl overflow-x-auto">
+                      {tabs.map((tab) => {
+                        const isActive = activeTab === tab.key
+                        return (
+                          <button
+                            key={tab.key}
+                            onClick={() => setActiveTab(tab.key)}
+                            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all shrink-0 flex items-center gap-1.5 ${
+                              isActive
+                                ? 'bg-slate-900 text-white shadow-xs'
+                                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                            }`}
+                          >
+                            <span>{tab.label}</span>
+                            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                              isActive ? 'bg-slate-800 text-teal-300' : 'bg-slate-100 text-slate-500'
+                            }`}>
+                              {tab.count}
+                            </span>
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </section>
+
+                  {filteredResources.length === 0 ? (
+                    <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500">
+                      <Layers className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                      <p className="font-semibold text-slate-700">No resources found in this category tab</p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {filteredResources.map(renderResourceCard)}
+                    </div>
+                  )}
+                </section>
+              )}
+            </>
+          )}
 
           {/* Section: Related Topics */}
           {relatedTopics.length > 0 && (

@@ -1,19 +1,19 @@
 {
   "app": "Digital Learning Hub",
   "schemaVersion": "1.0",
-  "generatedAt": "2026-11-18T15:48:28.912Z",
+  "generatedAt": "2026-11-23T11:13:54.050Z",
   "description": "Official published curriculum dataset containing verified educational categories, topics, and multi-format learning resources.",
   "summary": {
     "categoryCount": 6,
-    "topicCount": 17,
-    "publishedResourceCount": 47,
+    "topicCount": 18,
+    "publishedResourceCount": 6,
     "excludedDraftCount": 0,
-    "excludedHiddenCount": 0,
-    "videoCount": 14,
+    "excludedHiddenCount": 39,
+    "videoCount": 1,
     "clipCount": 0,
-    "infographicCount": 20,
-    "pdfCount": 7,
-    "tutorialCount": 6,
+    "infographicCount": 4,
+    "pdfCount": 0,
+    "tutorialCount": 1,
     "otherCount": 0
   },
   "categories": [
@@ -23,7 +23,7 @@
       "title": "Power BI",
       "description": "Transform raw datasets into interactive dashboards, data models, and business intelligence reports.",
       "iconName": "BarChart3",
-      "resourceCount": 25,
+      "resourceCount": 2,
       "color": "teal",
       "displayOrder": 1
     },
@@ -33,7 +33,7 @@
       "title": "n8n Automation",
       "description": "Build robust event-driven workflows, API orchestrations, and no-code/low-code business integrations.",
       "iconName": "Workflow",
-      "resourceCount": 6,
+      "resourceCount": 0,
       "color": "teal",
       "displayOrder": 2
     },
@@ -43,7 +43,7 @@
       "title": "Excel",
       "description": "Master advanced formulas, Power Query data cleaning, dynamic arrays, and analytical modeling.",
       "iconName": "TableProperties",
-      "resourceCount": 5,
+      "resourceCount": 0,
       "color": "teal",
       "displayOrder": 3
     },
@@ -53,7 +53,7 @@
       "title": "GitHub",
       "description": "Learn Git version control, collaborative team workflows, branch strategies, and CI/CD basics.",
       "iconName": "GitBranch",
-      "resourceCount": 4,
+      "resourceCount": 0,
       "color": "teal",
       "displayOrder": 4
     },
@@ -63,7 +63,7 @@
       "title": "Smart Work",
       "description": "Practical strategies, AI tools, keyboard mastery, and digital productivity frameworks for professionals.",
       "iconName": "Sparkles",
-      "resourceCount": 3,
+      "resourceCount": 0,
       "color": "teal",
       "displayOrder": 5
     },
@@ -103,7 +103,7 @@
           "durationOrPages": "14 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-info-1",
@@ -115,7 +115,7 @@
           "durationOrPages": "Visual Flowchart",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-tut-1",
@@ -127,7 +127,7 @@
           "durationOrPages": "25 min read / lab",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-vid-2",
@@ -139,7 +139,7 @@
           "durationOrPages": "18 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-info-2",
@@ -151,7 +151,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-vid-3",
@@ -163,7 +163,7 @@
           "durationOrPages": "11 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-pdf-1",
@@ -175,7 +175,7 @@
           "durationOrPages": "10-page PDF",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-info-3",
@@ -187,7 +187,7 @@
           "durationOrPages": "Architecture Diagram",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dt-res-pdf-2",
@@ -199,7 +199,7 @@
           "durationOrPages": "6-page PDF",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "title": "Drill Through Learn by Lalwani",
@@ -212,96 +212,6 @@
           "isDemo": true,
           "id": "res-mwlw11p7-3jikml",
           "displayOrder": 10
-        },
-        {
-          "title": "Bases50 Same Distance",
-          "url": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "originalSourceUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "type": "Infographic",
-          "durationOrPages": "Visual Infographic",
-          "difficulty": "Beginner",
-          "status": "Published",
-          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "isDemo": true,
-          "id": "res-mwm0szw6-kpzr07",
-          "displayOrder": 11
-        },
-        {
-          "title": "Bases50 Same Distance",
-          "url": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "originalSourceUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "type": "Infographic",
-          "durationOrPages": "Visual Infographic",
-          "difficulty": "Beginner",
-          "status": "Published",
-          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
-          "isDemo": true,
-          "id": "res-mwm0ufn7-c8nqjk",
-          "displayOrder": 12
-        },
-        {
-          "title": "Bases 100 or 1000 — Same Distance",
-          "type": "Infographic",
-          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
-          "directContentUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
-          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Bases100or1000_SameDistance.png",
-          "thumbnailUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Bases100or1000_SameDistance.png",
-          "creatorName": "vksinglakkr",
-          "creatorUrl": "https://github.com/vksinglakkr",
-          "status": "Published",
-          "durationOrPages": "Visual Infographic",
-          "id": "res-mwm2u18o-otyouh",
-          "displayOrder": 13,
-          "isDemo": true
-        },
-        {
-          "title": "Decimal Multiplication Math Magic",
-          "type": "Infographic",
-          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
-          "directContentUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
-          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
-          "thumbnailUrl": "https://raw.githubusercontent.com/vksinglakkr/math-magic-playground/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
-          "creatorName": "vksinglakkr",
-          "creatorUrl": "https://github.com/vksinglakkr",
-          "status": "Published",
-          "durationOrPages": "Visual Infographic",
-          "id": "res-mwm2u18o-dfcg27",
-          "displayOrder": 14,
-          "isDemo": true
-        },
-        {
-          "title": "Square Diff 4 — Trick",
-          "url": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Square/SquareDiff4_Trick.png",
-          "type": "Infographic",
-          "durationOrPages": "Visual Infographic",
-          "difficulty": "Beginner",
-          "status": "Published",
-          "creatorName": "vksinglakkr",
-          "creatorUrl": "https://github.com/vksinglakkr",
-          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "isDemo": true,
-          "id": "res-mwm6rovv-s3h4u5",
-          "displayOrder": 15
-        },
-        {
-          "title": "Square Diff 4 — Trick",
-          "url": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "directContentUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "originalSourceUrl": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Square/SquareDiff4_Trick.png",
-          "type": "Infographic",
-          "durationOrPages": "Visual Infographic",
-          "difficulty": "Beginner",
-          "status": "Published",
-          "creatorName": "vksinglakkr",
-          "creatorUrl": "https://github.com/vksinglakkr",
-          "thumbnailUrl": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
-          "isDemo": true,
-          "id": "res-mwm6tzih-n4mbi0",
-          "displayOrder": 16
         }
       ],
       "recommendedSequence": [
@@ -367,7 +277,7 @@
           "durationOrPages": "16 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "bm-res-2",
@@ -379,7 +289,7 @@
           "durationOrPages": "Architecture Diagram",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "bm-res-3",
@@ -391,7 +301,7 @@
           "durationOrPages": "18 min lab",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -439,7 +349,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dax-res-2",
@@ -451,7 +361,7 @@
           "durationOrPages": "22 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "dax-res-3",
@@ -463,7 +373,7 @@
           "durationOrPages": "15-page PDF",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -505,7 +415,7 @@
           "durationOrPages": "Architecture Diagram",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "pq-res-2",
@@ -517,7 +427,7 @@
           "durationOrPages": "10 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "pq-res-3",
@@ -529,7 +439,7 @@
           "durationOrPages": "20 min lab",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -547,6 +457,34 @@
         }
       ],
       "displayOrder": 4
+    },
+    {
+      "id": "power-bi-mwtdf445-pxb8gu",
+      "categoryId": "power-bi",
+      "slug": "slicer-basics",
+      "title": "Slicer Basics",
+      "difficulty": "Beginner",
+      "shortDescription": "Master interactive report filtering using Slicers in Power BI.",
+      "detailedDescription": "Learn essential Slicer types, styles, and configurations to build dynamic, interactive dashboards.",
+      "relatedTopicIds": [
+        "power-bi-bookmarks",
+        "power-bi-drill-through"
+      ],
+      "resources": [
+        {
+          "id": "res-slicer-dropdown-1",
+          "title": "Dropdown Slicer — Interactive Beginner Lesson",
+          "description": "Learn how Dropdown Slicers save report canvas space while maintaining full cross-filtering power through an interactive simulator and step-by-step walkthrough.",
+          "type": "Tutorial",
+          "url": "tutorials/power-bi/slicer-basics/dropdown-slicer/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "10 min lesson",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "displayOrder": 5
     },
     {
       "id": "n8n-webhooks",
@@ -571,7 +509,7 @@
           "durationOrPages": "15 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "n8n-res-2",
@@ -583,7 +521,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "n8n-res-3",
@@ -595,7 +533,7 @@
           "durationOrPages": "15 min read",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -637,7 +575,7 @@
           "durationOrPages": "Visual Blueprint",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "n8n-http-2",
@@ -649,7 +587,7 @@
           "durationOrPages": "18 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -691,7 +629,7 @@
           "durationOrPages": "8-page PDF",
           "difficulty": "Advanced",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -727,7 +665,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "ex-res-2",
@@ -739,7 +677,7 @@
           "durationOrPages": "14 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "ex-res-3",
@@ -751,7 +689,7 @@
           "durationOrPages": "12-page PDF",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -793,7 +731,7 @@
           "durationOrPages": "15 min read",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -829,7 +767,7 @@
           "durationOrPages": "21 min video",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -865,7 +803,7 @@
           "durationOrPages": "Visual Blueprint",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "gh-res-2",
@@ -877,7 +815,7 @@
           "durationOrPages": "12 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -919,7 +857,7 @@
           "durationOrPages": "4-page PDF",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -955,7 +893,7 @@
           "durationOrPages": "15 min read",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -990,7 +928,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "sw-res-2",
@@ -1002,7 +940,7 @@
           "durationOrPages": "14-page PDF",
           "difficulty": "Intermediate",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -1043,7 +981,7 @@
           "durationOrPages": "16 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [
@@ -1078,7 +1016,7 @@
           "durationOrPages": "Visual Blueprint",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "id": "math-res-2",
@@ -1090,7 +1028,7 @@
           "durationOrPages": "12 min video",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         },
         {
           "title": "Bases 100 or 1000 — Same Distance",
@@ -1107,6 +1045,39 @@
           "isDemo": true,
           "id": "res-mwmagzs0-vsbpxa",
           "displayOrder": 3
+        },
+        {
+          "id": "res-mwm0szw6-kpzr07",
+          "title": "Bases50 Same Distance",
+          "description": "Mental math multiplication trick for numbers near base 50 with equal distance.",
+          "type": "Infographic",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Multiplication/Bases50_SameDistance.png",
+          "displayOrder": 2,
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        },
+        {
+          "id": "res-mwm2u18o-dfcg27",
+          "title": "Decimal Multiplication Math Magic",
+          "description": "Fast mental decimal calculation without pen and paper.",
+          "type": "Infographic",
+          "url": "https://github.com/vksinglakkr/math-magic-playground/blob/main/Multiplication/Decimal%20Multiplication%20Math%20Magic.png",
+          "displayOrder": 3,
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        },
+        {
+          "id": "res-mwm6rovv-s3h4u5",
+          "title": "Square Diff 4 — Trick",
+          "description": "Mental arithmetic pattern for calculating differences between squares.",
+          "type": "Infographic",
+          "url": "https://vksinglakkr.github.io/math-magic-playground/Square/SquareDiff4_Trick.png",
+          "displayOrder": 4,
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
         }
       ],
       "recommendedSequence": [
@@ -1147,7 +1118,7 @@
           "durationOrPages": "Cheat Sheet Card",
           "difficulty": "Beginner",
           "isDemo": true,
-          "status": "Published"
+          "status": "Hidden"
         }
       ],
       "recommendedSequence": [

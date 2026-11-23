@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import { Hero } from '../components/Hero'
 import { CategoriesSection } from '../components/CategoriesSection'
-import { LearningPathsSection } from '../components/LearningPathsSection'
 import { ResourcesSection } from '../components/ResourcesSection'
 import { Footer } from '../components/Footer'
 import { NoticeModal } from '../components/NoticeModal'
@@ -55,10 +54,7 @@ export const HomePage: React.FC = () => {
             {/* 2. Core Knowledge Disciplines */}
             <CategoriesSection />
 
-            {/* 3. Featured Step-by-Step Learning Paths */}
-            <LearningPathsSection onNotifyComingSoon={handleNotifyComingSoon} />
-
-            {/* 4. Latest Multi-Format Resources */}
+            {/* 3. Latest Multi-Format Resources */}
             <ResourcesSection onNotifyComingSoon={handleNotifyComingSoon} />
           </>
         )}

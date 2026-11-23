@@ -46,6 +46,13 @@ export interface TopicResource {
   endSeconds?: number
 }
 
+export type TopicPresentationStyle = 
+  | 'gallery' 
+  | 'guided-sequence' 
+  | 'situation-based' 
+  | 'masterclass' 
+  | 'custom-mixed'
+
 export interface TopicSequenceStep {
   stepNumber: number
   resourceId: string
@@ -63,6 +70,7 @@ export interface TopicItem {
   iconName?: string
   difficulty?: 'Beginner' | 'Intermediate' | 'Advanced'
   displayOrder?: number
+  presentationStyle?: TopicPresentationStyle
   resources: TopicResource[]
   recommendedSequence?: TopicSequenceStep[]
   relatedTopicIds?: string[]

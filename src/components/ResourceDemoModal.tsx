@@ -17,6 +17,7 @@ import { GithubIcon } from './common/GithubIcon'
 import type { TopicResource } from '../types'
 import { buildYouTubeEmbedUrl, extractYouTubeVideoId } from '../utils/youtubeEmbed'
 import { formatClipDuration, formatSecondsToTime } from '../utils/timeFormat'
+import { buildTutorialUrl } from '../config/topicTutorials'
 
 interface ResourceDemoModalProps {
   resource: TopicResource | null
@@ -71,6 +72,13 @@ export const ResourceDemoModal: React.FC<ResourceDemoModalProps> = ({ resource, 
       return `https://www.youtube.com/watch?v=${videoId}&t=${Math.floor(resource.startSeconds)}s`
     }
     return resource.url
+  }
+
+  const getResourceActionUrl = () => {
+    if (resource.type === 'Tutorial' && !resource.url.startsWith('http') && !resource.url.startsWith('demo://')) {
+      return buildTutorialUrl(resource.url)
+    }
+    return resource.directContentUrl || resource.url
   }
 
   return (
@@ -266,6 +274,46 @@ export const ResourceDemoModal: React.FC<ResourceDemoModalProps> = ({ resource, 
           </div>
         )}
 
+        {/* Tutorial Interactive Lab Card */}
+        {resource.type === 'Tutorial' && (
+          <div className="mb-5 rounded-xl overflow-hidden border border-teal-500/30 bg-gradient-to-br from-slate-900 to-teal-950 p-5 text-white">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/30 shrink-0">
+                  <BookOpen className="w-7 h-7" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">
+                    {resource.title}
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-0.5">
+                    Interactive Standalone Lesson ({resource.durationOrPages || 'Tutorial'})
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <a
+                  href={getResourceActionUrl()}
+                  target={resource.url.startsWith('demo://') ? '_self' : '_blank'}
+                  rel="noreferrer"
+                  onClick={(e) => {
+                    if (resource.url.startsWith('demo://')) {
+                      e.preventDefault()
+                      alert('This is a simulated demo resource link.')
+                    }
+                  }}
+                  className="px-4 py-2 bg-teal-400 hover:bg-teal-300 text-slate-950 rounded-lg text-xs font-bold transition-colors shadow-xs flex items-center gap-1.5"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Launch Tutorial</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Prototype Demo Banner */}
         <div className="flex items-start gap-2.5 p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl mb-5 text-xs text-amber-900">
           <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
@@ -324,12 +372,12 @@ export const ResourceDemoModal: React.FC<ResourceDemoModalProps> = ({ resource, 
               </a>
             ) : (
               <a
-                href={resource.directContentUrl || resource.url}
+                href={getResourceActionUrl()}
                 target={resource.url.startsWith('demo://') ? '_self' : '_blank'}
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-900 hover:underline"
               >
-                <span>View Resource</span>
+                <span>{resource.type === 'Tutorial' ? 'Launch Tutorial' : 'View Resource'}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}

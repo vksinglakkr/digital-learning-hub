@@ -25,8 +25,8 @@ export const CategoriesSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="text-xs text-slate-600 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg shrink-0 self-start md:self-auto">
-            {categories.length} active topic libraries
+          <div className="text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg shrink-0 self-start md:self-auto">
+            {categories.length} Knowledge Disciplines
           </div>
         </div>
 

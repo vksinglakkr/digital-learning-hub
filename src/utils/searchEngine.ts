@@ -1,4 +1,5 @@
 import type { CategoryItem, TopicItem, TopicResource } from '../types'
+import { isTopicPublished } from '../config/topicTutorials'
 
 export interface MatchingTopic {
   topic: TopicItem
@@ -54,9 +55,13 @@ export function executeGlobalSearch(
     return terms.every((term) => searchable.includes(term))
   })
 
-  // 2. Search Topics
+  // 2. Search Topics (Only topics with verified published materials or tutorials)
   const matchingTopics: MatchingTopic[] = []
   topics.forEach((topic) => {
+    if (!isTopicPublished(topic)) {
+      return
+    }
+
     const parentCategory = categoryMap.get(topic.categoryId)
     const searchable = `
       ${topic.title} 

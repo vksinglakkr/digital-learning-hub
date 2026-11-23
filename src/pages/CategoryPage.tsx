@@ -7,6 +7,7 @@ import { NoticeModal } from '../components/NoticeModal'
 import { usePublicCurriculum } from '../context/PublicCurriculumContext'
 import { CurriculumLoadingState } from '../components/common/CurriculumLoadingState'
 import { CurriculumErrorState } from '../components/common/CurriculumErrorState'
+import { isTopicPublished } from '../config/topicTutorials'
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -42,7 +43,7 @@ export const CategoryPage: React.FC = () => {
   )
 
   const topics = allTopics
-    .filter((t) => t.categoryId === category?.id)
+    .filter((t) => t.categoryId === category?.id && isTopicPublished(t))
     .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0))
 
   const getCategoryIcon = (iconName?: string) => {
@@ -171,17 +172,17 @@ export const CategoryPage: React.FC = () => {
                 Select a topic below to inspect comprehensive learning guides, videos, cheat sheets, and hands-on tutorials.
               </p>
             </div>
-            <span className="text-xs font-medium text-slate-500 bg-white border border-slate-200 px-3 py-1 rounded-lg">
-              Demo Catalog
+            <span className="text-xs font-semibold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-lg">
+              {topics.length} Published Topic{topics.length === 1 ? '' : 's'}
             </span>
           </div>
 
           {topics.length === 0 ? (
             <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500">
               <FileCode2 className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-base font-semibold text-slate-700">No topics added yet</p>
+              <p className="text-base font-semibold text-slate-700">No completed tutorials yet</p>
               <p className="text-xs text-slate-400 mt-1">
-                Check back soon as new topics are indexed for {category.title}.
+                Tutorials and masterclasses for {category.title} are currently in active development. Check back soon!
               </p>
             </div>
           ) : (
