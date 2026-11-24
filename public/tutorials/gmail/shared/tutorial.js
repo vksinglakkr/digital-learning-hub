@@ -23,6 +23,36 @@
       .replace(/'/g, '&#039;');
   }
 
+  // Base path resolution for local Vite dev and GitHub Pages deployment
+  function getAppBasePath() {
+    const path = window.location.pathname || '';
+    const idx = path.toLowerCase().indexOf('/tutorials/');
+    if (idx !== -1) {
+      const base = path.substring(0, idx);
+      return base.endsWith('/') ? base : base + '/';
+    }
+    return '/';
+  }
+
+  function resolveTopicUrl(data) {
+    const rawPath = (data && data.topicPath) ? data.topicPath : '';
+    let cleanPath = rawPath.startsWith('/') ? rawPath.slice(1) : rawPath;
+
+    // Safe fallback derived from folder structure if topicPath is missing
+    if (!cleanPath) {
+      const pathParts = (window.location.pathname || '').split('/');
+      const tutIdx = pathParts.findIndex(p => p.toLowerCase() === 'tutorials');
+      if (tutIdx !== -1 && pathParts[tutIdx + 1] === 'gmail' && pathParts[tutIdx + 2]) {
+        cleanPath = 'category/gmail/topic/' + pathParts[tutIdx + 2];
+      } else {
+        cleanPath = 'category/gmail';
+      }
+    }
+
+    const base = getAppBasePath();
+    return base + cleanPath;
+  }
+
   // Render Summary Box helper
   function renderSummaryBox(summaryBox) {
     if (!summaryBox) return '';
@@ -189,7 +219,8 @@
       `;
     }).join('');
 
-    // 6. Footer
+    // 6. Footer & Topic Navigation
+    const topicUrl = resolveTopicUrl(data);
     const footerSeries = (data.footer && data.footer.series) ? data.footer.series : 'Digital Learning Hub • Gmail Mastery Series';
     const footerTopic = (data.footer && data.footer.topic) ? data.footer.topic : (data.title || '');
 
@@ -199,10 +230,17 @@
       <header class="site-header">
         <div class="container">
           <div class="header-inner">
-            <a href="#" class="brand-group">
-              <span class="brand-badge">${brandBadge}</span>
-              <span class="brand-title">${brandTitle}</span>
-            </a>
+            <div class="header-left">
+              <a href="${topicUrl}" class="back-to-topic-btn" title="Back to Topic Detail Page">
+                <span class="back-arrow">←</span>
+                <span class="back-text">Back to Topic</span>
+              </a>
+              <span class="header-divider"></span>
+              <a href="${topicUrl}" class="brand-group" title="Digital Learning Hub">
+                <span class="brand-badge">${brandBadge}</span>
+                <span class="brand-title">${brandTitle}</span>
+              </a>
+            </div>
             <nav class="nav-links">
               <a href="#section-1" class="nav-btn">1. समस्या समझें</a>
               <a href="#section-2" class="nav-btn">2. करना सीखें</a>
@@ -261,6 +299,14 @@
               />
             </div>
           </div>
+
+          <!-- Section 1 to Section 2 Navigation -->
+          <div class="section-nav-footer">
+            <a href="#section-2" class="btn-step-next">
+              <span>आगे बढ़ें: 2. करना सीखें (इन्फोग्राफिक निर्देश)</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+          </div>
         </section>
 
         <!-- SECTION 2: SOLUTION / HOW-TO -->
@@ -280,6 +326,14 @@
           ${solCardsHtml}
 
           ${summaryBoxHtml}
+
+          <!-- Section 2 to Section 3 Navigation -->
+          <div class="section-nav-footer">
+            <a href="#section-3" class="btn-step-next btn-step-practice">
+              <span>🎯 आगे बढ़ें: 3. खुद करके देखें (हाथों-हाथ Practice)</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+          </div>
         </section>
 
         <!-- SECTION 3: PRACTICE -->
@@ -319,6 +373,13 @@
               </button>
             </div>
           </div>
+
+          <!-- Section 3 back to Section 2 Reference Navigation -->
+          <div class="section-nav-footer" style="margin-top: 1rem;">
+            <a href="#section-2" class="btn-step-back">
+              <span>↑ 2. इन्फोग्राफिक निर्देश दोबारा देखें</span>
+            </a>
+          </div>
         </section>
 
       </main>
@@ -340,6 +401,11 @@
       <!-- FOOTER -->
       <footer class="site-footer">
         <div class="container">
+          <p style="margin-bottom: 0.75rem;">
+            <a href="${topicUrl}" class="btn-step-back" style="font-weight: 700;">
+              <span>← Back to Topic Page (विषय पर वापस जाएँ)</span>
+            </a>
+          </p>
           <p style="font-weight: 700; color: var(--slate-700); margin-bottom: 0.25rem;">
             ${footerSeries}
           </p>
@@ -440,7 +506,8 @@
     closeLightbox: closeLightbox,
     toggleStep: toggleStep,
     resetPractice: resetPractice,
-    showToast: showToast
+    showToast: showToast,
+    resolveTopicUrl: resolveTopicUrl
   };
 
   // Auto-init on page load if TUTORIAL_DATA exists

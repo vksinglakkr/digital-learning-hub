@@ -5,6 +5,7 @@
  */
 
 window.TUTORIAL_DATA = {
+  topicPath: "category/gmail/topic/inbox-categories",
   dayPill: "DAY 05",
   title: "Inbox Categories — Primary, Updates, Social को समझें",
   subtitle: "Gmail आपके जरूरी ईमेल को अलग-अलग श्रेणियों में क्यों बाँटता है, और कौन-से Tabs इनबॉक्स में दिखें यह कैसे कस्टमाइज़ करें।",

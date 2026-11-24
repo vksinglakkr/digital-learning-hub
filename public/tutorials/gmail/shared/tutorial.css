@@ -27,6 +27,10 @@
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Nirmala UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -62,6 +66,44 @@ header.site-header {
   align-items: center;
   justify-content: space-between;
   height: 60px;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.back-to-topic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--slate-100);
+  color: var(--slate-700);
+  border: 1px solid var(--slate-200);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.32rem 0.65rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.back-to-topic-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary-border);
+}
+.back-arrow {
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+.back-to-topic-btn:hover .back-arrow {
+  transform: translateX(-2px);
+}
+.header-divider {
+  width: 1px;
+  height: 22px;
+  background: var(--slate-200);
 }
 .brand-group {
   display: flex;
@@ -619,7 +661,102 @@ footer.site-footer {
   margin-top: 2rem;
 }
 
+/* Section Step Navigation */
+.section-nav-footer {
+  margin: 1.25rem 0 2rem;
+  display: flex;
+  justify-content: center;
+}
+.btn-step-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #ffffff;
+  color: var(--primary);
+  border: 1.5px solid var(--primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.08);
+}
+.btn-step-next:hover {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.2);
+  transform: translateY(-1px);
+}
+.btn-step-next.btn-step-practice {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  font-size: 0.92rem;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+}
+.btn-step-next.btn-step-practice:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+}
+.btn-step-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate-500);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: 1px dashed var(--slate-300);
+  background: #ffffff;
+  transition: all 0.15s;
+}
+.btn-step-back:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.btn-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
 @media (max-width: 640px) {
+  .header-inner {
+    height: auto;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+  .brand-title {
+    display: none;
+  }
+  .header-divider {
+    display: none;
+  }
+  .back-to-topic-btn {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.45rem;
+  }
+  .nav-links {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-btn {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.45rem;
+  }
+  .btn-step-next {
+    width: 100%;
+    text-align: center;
+  }
   .hero-title {
     font-size: 1.65rem;
   }

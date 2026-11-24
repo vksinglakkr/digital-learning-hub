@@ -5,6 +5,7 @@
  */
 
 window.TUTORIAL_DATA = {
+  topicPath: "category/gmail/topic/translate",
   dayPill: "DAY 01",
   title: "Translate — Email को अपनी भाषा में समझें",
   subtitle: "कठिन या अंग्रेज़ी भाषा के लंबे Email को बस 3 आसान Steps में अपनी पसंदीदा भाषा (जैसे Hindi) में अनुवादित करके पढ़ें।",

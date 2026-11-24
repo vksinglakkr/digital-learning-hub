@@ -5,6 +5,7 @@
  */
 
 window.TUTORIAL_DATA = {
+  topicPath: "category/gmail/topic/search-operators",
   dayPill: "DAY 08",
   title: "Advanced Search — Search Operators से तेज़ी से Email ढूँढें",
   subtitle: "Gmail के पावर सर्च कमांड्स का उपयोग करके जरूरी फाइल्स, बैंक अलर्ट और महीनों पुराने ईमेल 10 सेकंड में खोजें।",

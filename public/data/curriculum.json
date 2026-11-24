@@ -4,16 +4,16 @@
   "generatedAt": "2026-11-23T11:13:54.050Z",
   "description": "Official published curriculum dataset containing verified educational categories, topics, and multi-format learning resources.",
   "summary": {
-    "categoryCount": 6,
-    "topicCount": 18,
-    "publishedResourceCount": 6,
+    "categoryCount": 7,
+    "topicCount": 22,
+    "publishedResourceCount": 10,
     "excludedDraftCount": 0,
     "excludedHiddenCount": 39,
     "videoCount": 1,
     "clipCount": 0,
     "infographicCount": 4,
     "pdfCount": 0,
-    "tutorialCount": 1,
+    "tutorialCount": 5,
     "otherCount": 0
   },
   "categories": [
@@ -76,6 +76,16 @@
       "resourceCount": 4,
       "color": "teal",
       "displayOrder": 6
+    },
+    {
+      "id": "gmail",
+      "slug": "gmail",
+      "title": "Gmail",
+      "description": "Email को स्मार्ट तरीके से लिखें, शेड्यूल करें और समय बचाएँ।",
+      "iconName": "Mail",
+      "resourceCount": 4,
+      "color": "teal",
+      "displayOrder": 7
     }
   ],
   "topics": [
@@ -1130,6 +1140,142 @@
         }
       ],
       "displayOrder": 17
+    },
+    {
+      "id": "gmail-schedule-send",
+      "categoryId": "gmail",
+      "slug": "schedule-send",
+      "title": "Schedule Send",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।",
+      "detailedDescription": "Schedule Send सुविधा से आप अपने ईमेल को पहले से तैयार करके किसी भी निर्धारित समय या तारीख पर स्वचालित रूप से भेजने के लिए सेट कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-schedule-send-1",
+          "title": "Schedule Send — Email बाद में कैसे भेजें?",
+          "description": "Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/schedule-send/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning • Explanation Type",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-schedule-send-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand Schedule Send and practice scheduling an email."
+        }
+      ],
+      "displayOrder": 12
+    },
+    {
+      "id": "gmail-translate",
+      "categoryId": "gmail",
+      "slug": "translate",
+      "title": "Translate",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "कठिन या अंग्रेज़ी भाषा के लंबे Email को बस 3 आसान Steps में अपनी पसंदीदा भाषा (जैसे Hindi) में अनुवादित करके पढ़ें।",
+      "detailedDescription": "Gmail Translate फ़ीचर से आप किसी भी विदेशी या कठिन अंग्रेज़ी भाषा के ईमेल को बस कुछ क्लिक्स में हिंदी या अपनी मनपसंद भाषा में अनुवाद करके आसानी से समझ सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-translate-1",
+          "title": "Translate — Email को अपनी भाषा में समझें",
+          "description": "कठिन या अंग्रेज़ी भाषा के लंबे Email को बस 3 आसान Steps में अपनी पसंदीदा भाषा (जैसे Hindi) में अनुवादित करके पढ़ें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/translate/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning • Explanation Type",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-translate-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand how to translate emails into preferred language."
+        }
+      ],
+      "displayOrder": 1
+    },
+    {
+      "id": "gmail-inbox-categories",
+      "categoryId": "gmail",
+      "slug": "inbox-categories",
+      "title": "Inbox Categories",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail आपके जरूरी ईमेल को अलग-अलग श्रेणियों में क्यों बाँटता है, और कौन-से Tabs इनबॉक्स में दिखें यह कैसे कस्टमाइज़ करें।",
+      "detailedDescription": "Gmail का स्मार्ट कैटेगराइजेशन सिस्टम आपके इनबॉक्स को Primary, Updates, Promotions, Social और Forums में व्यवस्थित रखता है। जानें कौन-सी श्रेणी किस काम आती है और अपनी सुविधानुसार सेटिंग्स कैसे बदलें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-inbox-categories-1",
+          "title": "Inbox Categories — Primary, Updates, Social को समझें",
+          "description": "Gmail आपके जरूरी ईमेल को अलग-अलग श्रेणियों में क्यों बाँटता है, और कौन-से Tabs इनबॉक्स में दिखें यह कैसे कस्टमाइज़ करें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/inbox-categories/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning • Explanation Type",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-inbox-categories-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand Gmail categories and customize inbox tabs."
+        }
+      ],
+      "displayOrder": 5
+    },
+    {
+      "id": "gmail-search-operators",
+      "categoryId": "gmail",
+      "slug": "search-operators",
+      "title": "Advanced Search Operators",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail के पावर सर्च कमांड्स का उपयोग करके जरूरी फाइल्स, बैंक अलर्ट और महीनों पुराने ईमेल 10 सेकंड में खोजें।",
+      "detailedDescription": "Gmail Search Operators (जैसे has:attachment, from:, older_than:) की मदद से आप हज़ारों ईमेल के बीच से भी अपनी ज़रूरी फाइल या संदेश सेकंडों में ढूँढ सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-search-operators-1",
+          "title": "Advanced Search — Search Operators से तेज़ी से Email ढूँढें",
+          "description": "Gmail के पावर सर्च कमांड्स का उपयोग करके जरूरी फाइल्स, बैंक अलर्ट और महीनों पुराने ईमेल 10 सेकंड में खोजें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/search-operators/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning • Explanation Type",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-search-operators-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Learn advanced search operators and find emails rapidly."
+        }
+      ],
+      "displayOrder": 8
     }
   ]
 }

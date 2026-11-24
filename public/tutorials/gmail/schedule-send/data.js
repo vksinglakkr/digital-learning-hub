@@ -5,6 +5,7 @@
  */
 
 window.TUTORIAL_DATA = {
+  topicPath: "category/gmail/topic/schedule-send",
   dayPill: "DAY 12",
   title: "Schedule Send — Email बाद में कैसे भेजें?",
   subtitle: "Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें — जब आप सो रहे हों या छुट्टी पर हों तब भी समय पर पहुंचेगा।",

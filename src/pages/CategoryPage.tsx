@@ -72,6 +72,20 @@ export const CategoryPage: React.FC = () => {
       (t) => t.categoryId === category.id && isTopicPublished(t)
     )
 
+    if (category.id === 'gmail') {
+      const GMAIL_DAY_ORDER: Record<string, number> = {
+        'gmail-translate': 1,
+        'gmail-inbox-categories': 5,
+        'gmail-search-operators': 8,
+        'gmail-schedule-send': 12,
+      }
+      return [...list].sort((a, b) => {
+        const orderA = GMAIL_DAY_ORDER[a.id] ?? (a.displayOrder || 99)
+        const orderB = GMAIL_DAY_ORDER[b.id] ?? (b.displayOrder || 99)
+        return orderA - orderB
+      })
+    }
+
     return [...list].sort((a, b) => {
       const priorityA = (a.difficulty && LEVEL_PRIORITY[a.difficulty]) || 99
       const priorityB = (b.difficulty && LEVEL_PRIORITY[b.difficulty]) || 99
