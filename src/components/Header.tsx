@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { BookOpen, Menu, X, ArrowUpRight, Settings, Search } from 'lucide-react'
+import { BookOpen, Menu, X, Info } from 'lucide-react'
 
 interface HeaderProps {
-  onNotifyComingSoon: (featureName: string) => void
+  onNotifyComingSoon?: (featureName: string) => void
 }
 
 export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
@@ -11,25 +11,33 @@ export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Explore', href: '#categories' },
-    { name: 'Learning Paths', href: '#learning-paths' },
-    { name: 'Resources', href: '#resources' },
-    { name: 'About', href: '#about' },
-  ]
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleAboutClick = (e: React.MouseEvent) => {
     e.preventDefault()
     setMobileMenuOpen(false)
-
     if (location.pathname === '/') {
-      const element = document.querySelector(href)
+      const element = document.querySelector('#about')
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        navigate('/copyright')
       }
     } else {
-      navigate('/' + href)
+      navigate('/#about')
+    }
+  }
+
+  const handleInfoClick = () => {
+    if (onNotifyComingSoon) {
+      onNotifyComingSoon('Digital Learning Hub — Interactive Learning for Real Skills')
+    } else {
+      navigate('/copyright')
     }
   }
 
@@ -41,74 +49,65 @@ export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
           {/* Brand Logo & Name */}
           <Link 
             to="/" 
-            onClick={() => {
-              if (location.pathname === '/') {
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }
-            }}
+            onClick={handleHomeClick}
             className="flex items-center gap-3 group focus:outline-hidden"
           >
             <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center shadow-xs group-hover:bg-teal-700 transition-colors">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-slate-900 text-lg tracking-tight block">
+              <span className="font-bold text-slate-900 text-base sm:text-lg tracking-tight block">
                 Digital Learning Hub
               </span>
-              <span className="text-[11px] text-teal-700 font-medium tracking-wide uppercase block -mt-1">
-                Resource Library & Academy
+              <span className="text-[10px] sm:text-[11px] text-teal-700 font-bold tracking-wider uppercase block -mt-1">
+                INTERACTIVE LEARNING
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          <nav className="hidden sm:flex items-center gap-3">
+            <Link
+              to="/"
+              onClick={handleHomeClick}
+              className={`px-3.5 py-1.5 rounded-lg text-sm font-semibold transition-colors ${
+                location.pathname === '/' 
+                  ? 'bg-teal-50 text-teal-800' 
+                  : 'text-slate-600 hover:text-teal-700'
+              }`}
+            >
+              Home
+            </Link>
+            <a
+              href="#about"
+              onClick={handleAboutClick}
+              className="px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-teal-700 transition-colors"
+            >
+              About
+            </a>
+            <button
+              onClick={handleInfoClick}
+              className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
+              title="About Digital Learning Hub"
+              aria-label="About Digital Learning Hub"
+            >
+              <Info className="w-4 h-4" />
+            </button>
           </nav>
 
-          {/* Right Action / Prototype Indicator */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/search"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
-              title="Search all categories, topics and resources"
-            >
-              <Search className="w-3.5 h-3.5 text-slate-600" />
-              <span>Search</span>
-            </Link>
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-colors"
-            >
-              <Settings className="w-3.5 h-3.5 text-teal-700" />
-              <span>Admin Studio</span>
-            </Link>
-            <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">
-              v1.0 Preview
-            </span>
+          {/* Mobile Navigation Toggle */}
+          <div className="flex sm:hidden items-center gap-1.5">
             <button
-              onClick={() => onNotifyComingSoon('Full Academy Library Index')}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-xs transition-colors"
+              onClick={handleInfoClick}
+              className="p-2 text-slate-400 hover:text-slate-700 rounded-lg cursor-pointer"
+              title="About Digital Learning Hub"
+              aria-label="About Digital Learning Hub"
             >
-              <span>Explore Library</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <Info className="w-5 h-5" />
             </button>
-          </div>
-
-          {/* Mobile Menu Toggle Button */}
-          <div className="flex md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -119,46 +118,28 @@ export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg">
-          <nav className="flex flex-col space-y-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-700 transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-          <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
-            <Link
-              to="/search"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center px-4 py-2.5 text-sm font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors flex items-center justify-center gap-2"
-            >
-              <Search className="w-4 h-4 text-slate-600" />
-              <span>Search Knowledge Hub</span>
-            </Link>
-            <Link
-              to="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center px-4 py-2.5 text-sm font-semibold text-teal-800 bg-teal-50 border border-teal-200 rounded-lg transition-colors flex items-center justify-center gap-1.5"
-            >
-              <Settings className="w-4 h-4 text-teal-700" />
-              <span>Admin Studio (Local Demo)</span>
-            </Link>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false)
-                onNotifyComingSoon('Full Academy Library Index')
-              }}
-              className="w-full text-center px-4 py-2.5 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition-colors"
-            >
-              Explore Library (Coming Soon)
-            </button>
-          </div>
+        <div className="sm:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-4 space-y-2 shadow-lg">
+          <Link
+            to="/"
+            onClick={(e) => {
+              setMobileMenuOpen(false)
+              handleHomeClick(e)
+            }}
+            className={`block px-3 py-2 rounded-lg text-base font-semibold ${
+              location.pathname === '/' 
+                ? 'text-teal-800 bg-teal-50' 
+                : 'text-slate-700 hover:bg-slate-50 hover:text-teal-700'
+            }`}
+          >
+            Home
+          </Link>
+          <a
+            href="#about"
+            onClick={handleAboutClick}
+            className="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-teal-700"
+          >
+            About
+          </a>
         </div>
       )}
     </header>

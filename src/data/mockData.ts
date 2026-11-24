@@ -69,6 +69,16 @@ export const DEMO_CATEGORIES: CategoryItem[] = [
     resourceCount: 16,
     color: 'teal',
   },
+  {
+    id: 'gmail',
+    slug: 'gmail',
+    title: 'Gmail',
+    description: 'Email को स्मार्ट तरीके से लिखें, शेड्यूल करें और समय बचाएँ।',
+    iconName: 'Mail',
+    resourceCount: 1,
+    color: 'teal',
+    displayOrder: 7,
+  },
 ]
 
 export const DEMO_TOPICS: TopicItem[] = [
@@ -985,6 +995,32 @@ export const DEMO_TOPICS: TopicItem[] = [
         resourceId: 'math-pct-1',
         phaseTitle: 'Decomposition',
         objective: 'Break down percentages into 10% + 5% + 1% sums.',
+      },
+    ],
+  },
+  // ===================== GMAIL TOPICS =====================
+  {
+    id: 'gmail-schedule-send',
+    categoryId: 'gmail',
+    slug: 'schedule-send',
+    title: 'Schedule Send',
+    difficulty: 'Beginner',
+    shortDescription: 'Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।',
+    detailedDescription: 'Schedule Send सुविधा से आप अपने ईमेल को पहले से तैयार करके किसी भी निर्धारित समय या तारीख पर स्वचालित रूप से भेजने के लिए सेट कर सकते हैं।',
+    iconName: 'Mail',
+    presentationStyle: 'gallery',
+    resources: [
+      {
+        id: 'res-gmail-schedule-send-1',
+        title: 'Schedule Send — Email बाद में कैसे भेजें?',
+        description: 'Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।',
+        type: 'Tutorial',
+        url: 'tutorials/gmail/schedule-send/index.html',
+        displayOrder: 1,
+        durationOrPages: 'Infographic-based Learning • Explanation Type',
+        difficulty: 'Beginner',
+        status: 'Published',
+        isDemo: false,
       },
     ],
   },

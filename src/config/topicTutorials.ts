@@ -21,6 +21,15 @@ export const TOPIC_TUTORIAL_REGISTRY: Record<string, TopicTutorialConfig> = {
     hasChallenge: true,
     difficultyBadge: 'Beginner to Intermediate',
   },
+  'gmail-schedule-send': {
+    tutorialPath: 'tutorials/gmail/schedule-send/index.html',
+    title: 'Schedule Send — Email बाद में कैसे भेजें?',
+    subtitle: 'Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
 }
 
 /**

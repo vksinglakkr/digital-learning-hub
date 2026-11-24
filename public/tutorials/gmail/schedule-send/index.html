@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Send — Email बाद में कैसे भेजें? | Digital Learning Hub</title>
+  <style>
+    /* CSS Reset & Variables */
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #f0fdfa;
+      --primary-border: #99f6e4;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --emerald-600: #059669;
+      --emerald-500: #10b981;
+      --emerald-50: #ecfdf5;
+      --amber-600: #d97706;
+      --amber-50: #fffbeb;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Nirmala UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Container: Optimized width for portrait infographic status cards */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Top Sticky Header */
+    header.site-header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--slate-900);
+    }
+    .brand-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--primary-border);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+    }
+    .nav-btn {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-600);
+      text-decoration: none;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .nav-btn:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      padding: 2.5rem 0 2rem;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--slate-600);
+      max-width: 640px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.6;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--slate-500);
+    }
+    .meta-tag {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      color: var(--slate-700);
+    }
+
+    /* Explanation Section Card */
+    .lesson-section {
+      padding: 2.25rem 0;
+    }
+    .section-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .section-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .section-step-num {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+    .section-heading {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.3;
+    }
+
+    /* Visual Card Box */
+    .visual-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .visual-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+    .visual-topbar {
+      background: var(--slate-50);
+      border-bottom: 1px solid var(--slate-200);
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--slate-600);
+    }
+    .visual-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 700;
+      color: var(--slate-700);
+    }
+    .btn-zoom {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-700);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.15s;
+    }
+    .btn-zoom:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Image Display Container: Preserves 100% natural aspect ratio */
+    .visual-img-wrap {
+      background: #ffffff;
+      padding: 0.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-in;
+    }
+    .visual-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      max-width: 100%;
+    }
+
+    /* Section 3: Practice Action Card */
+    .practice-card {
+      background: #ffffff;
+      border: 2px solid var(--primary-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 20px rgba(15,118,110,0.06);
+    }
+    .practice-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .practice-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .practice-title-group h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--slate-900);
+      margin-bottom: 0.25rem;
+    }
+    .practice-title-group p {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+    }
+
+    .practice-mission-box {
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.5;
+    }
+
+    /* Interactive Checklist */
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+    .checklist-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--slate-200);
+      background: var(--slate-50);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .checklist-row:hover {
+      background: #ffffff;
+      border-color: var(--slate-300);
+    }
+    .checklist-row.checked {
+      background: var(--emerald-50);
+      border-color: #a7f3d0;
+    }
+    .check-box-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--slate-300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: transparent;
+      margin-top: 1px;
+      flex-shrink: 0;
+      transition: all 0.15s;
+      background: #ffffff;
+    }
+    .checklist-row.checked .check-box-icon {
+      background: var(--emerald-600);
+      border-color: var(--emerald-600);
+      color: #ffffff;
+    }
+    .check-text {
+      font-size: 0.9rem;
+      color: var(--slate-700);
+      line-height: 1.5;
+    }
+    .checklist-row.checked .check-text {
+      color: #065f46;
+      font-weight: 600;
+    }
+
+    .practice-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--slate-200);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .practice-progress {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--slate-600);
+    }
+    .btn-reset-practice {
+      background: transparent;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-600);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-reset-practice:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    /* Lightbox Modal for Full-Size Viewing */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-topbar {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+      z-index: 110;
+    }
+    .lightbox-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+    }
+    .lightbox-close {
+      background: #ffffff;
+      color: var(--slate-900);
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.15s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.08);
+    }
+    .lightbox-content {
+      max-width: 95vw;
+      max-height: 88vh;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 85vh;
+      height: auto;
+      width: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 120;
+    }
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--slate-200);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--slate-500);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 1.65rem;
+      }
+      .section-heading {
+        font-size: 1.25rem;
+      }
+      .visual-card {
+        border-radius: 12px;
+      }
+      .visual-img-wrap {
+        padding: 0.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP STICKY HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#" class="brand-group">
+          <span class="brand-badge">Explanation Type</span>
+          <span class="brand-title">Digital Learning Hub</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#section-1" class="nav-btn">1. समस्या समझें</a>
+          <a href="#section-2" class="nav-btn">2. करना सीखें</a>
+          <a href="#section-3" class="nav-btn">3. खुद करके देखें</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span>✉️ GMAIL MASTERY SERIES</span> &bull; <span>DAY 12</span>
+      </div>
+      <h1 class="hero-title">
+        Schedule Send — Email बाद में कैसे भेजें?
+      </h1>
+      <p class="hero-subtitle">
+        Email अभी लिखें और अपनी पसंद के समय पर अपने आप भेजें।
+      </p>
+      <div class="hero-meta">
+        <span class="meta-tag">📸 2 Visual Cards</span>
+        <span class="meta-tag">🎯 1 Hands-on Practice</span>
+        <span class="meta-tag">⏱️ ~3 मिनट में सीखें</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN LESSON CONTENT -->
+  <main class="container">
+
+    <!-- SECTION 1: PROBLEM -->
+    <section class="lesson-section" id="section-1">
+      <div class="section-header-bar">
+        <div class="section-title-wrap">
+          <span class="section-step-num">Section 1</span>
+          <h2 class="section-heading">पहले समस्या समझें</h2>
+        </div>
+        <button class="btn-zoom" onclick="openLightbox('assets/day-12-status-1.png', 'Day 12 Status 1: पहले समस्या समझें')">
+          <span>🔍 पूरा देखें (Full Size)</span>
+        </button>
+      </div>
+
+      <!-- Image 1 Card -->
+      <div class="visual-card">
+        <div class="visual-topbar">
+          <span class="visual-badge">
+            <span>📖 Day 12 • Status 1/2</span>
+          </span>
+          <span style="font-size: 0.72rem; color: var(--slate-400);">चित्र पर क्लिक करके बड़ा देखें</span>
+        </div>
+        <div class="visual-img-wrap" onclick="openLightbox('assets/day-12-status-1.png', 'Day 12 Status 1: पहले समस्या समझें')">
+          <img 
+            src="assets/day-12-status-1.png" 
+            alt="Gmail Day 12 Status 1: आज की कहानी और Schedule Send की आवश्यकता" 
+            class="visual-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SOLUTION / HOW-TO -->
+    <section class="lesson-section" id="section-2" style="padding-top: 0.5rem;">
+      <div class="section-header-bar">
+        <div class="section-title-wrap">
+          <span class="section-step-num">Section 2</span>
+          <h2 class="section-heading">अब करना सीखें</h2>
+        </div>
+        <button class="btn-zoom" onclick="openLightbox('assets/day-12-status-2.png', 'Day 12 Status 2: अब करना सीखें')">
+          <span>🔍 पूरा देखें (Full Size)</span>
+        </button>
+      </div>
+
+      <!-- Image 2 Card -->
+      <div class="visual-card">
+        <div class="visual-topbar">
+          <span class="visual-badge">
+            <span>🚀 Day 12 • Status 2/2</span>
+          </span>
+          <span style="font-size: 0.72rem; color: var(--slate-400);">चित्र पर क्लिक करके बड़ा देखें</span>
+        </div>
+        <div class="visual-img-wrap" onclick="openLightbox('assets/day-12-status-2.png', 'Day 12 Status 2: अब करना सीखें')">
+          <img 
+            src="assets/day-12-status-2.png" 
+            alt="Gmail Day 12 Status 2: Schedule Send कैसे करें और चरण-दर-चरण विधि" 
+            class="visual-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRACTICE -->
+    <section class="lesson-section" id="section-3" style="padding-top: 0.5rem;">
+      <div class="section-header-bar">
+        <div class="section-title-wrap">
+          <span class="section-step-num">Section 3</span>
+          <h2 class="section-heading">खुद करके देखें</h2>
+        </div>
+      </div>
+
+      <div class="practice-card">
+        <div class="practice-header">
+          <div class="practice-icon">🎯</div>
+          <div class="practice-title-group">
+            <h3>हाथों-हाथ Practice</h3>
+            <p>सीखने को पक्का करने के लिए अपने Gmail में यह छोटा कार्य करके देखें:</p>
+          </div>
+        </div>
+
+        <!-- Required Practice Statement -->
+        <div class="practice-mission-box">
+          👉 अपने Gmail से एक Test Email अगले दिन सुबह 8 बजे के लिए Schedule करें। फिर Scheduled Folder में उसे जाँचें।
+        </div>
+
+        <!-- Interactive Checklist Steps -->
+        <div class="checklist">
+          <div class="checklist-row" id="step-row-1" onclick="toggleStep(1)">
+            <div class="check-box-icon" id="check-icon-1">✓</div>
+            <div class="check-text">
+              <strong>चरण 1:</strong> अपने Gmail में 'Compose' पर क्लिक करें और एक नया Email लिखें (To में अपना ही ईमेल डाल सकते हैं)।
+            </div>
+          </div>
+
+          <div class="checklist-row" id="step-row-2" onclick="toggleStep(2)">
+            <div class="check-box-icon" id="check-icon-2">✓</div>
+            <div class="check-text">
+              <strong>चरण 2:</strong> नीले <strong>Send</strong> बटन पर सीधा क्लिक न करें; उसके बगल में बने <strong>छोटे तीर (▼)</strong> पर क्लिक करें।
+            </div>
+          </div>
+
+          <div class="checklist-row" id="step-row-3" onclick="toggleStep(3)">
+            <div class="check-box-icon" id="check-icon-3">✓</div>
+            <div class="check-text">
+              <strong>चरण 3:</strong> <strong>'Schedule send'</strong> चुनें और <strong>कल सुबह 8:00 AM</strong> (Tomorrow morning) सेट करें।
+            </div>
+          </div>
+
+          <div class="checklist-row" id="step-row-4" onclick="toggleStep(4)">
+            <div class="check-box-icon" id="check-icon-4">✓</div>
+            <div class="check-text">
+              <strong>चरण 4:</strong> Gmail के बाएँ मेनू में <strong>'Scheduled'</strong> फ़ोल्डर खोलकर जाँचें कि आपका ईमेल सही समय के साथ मौजूद है।
+            </div>
+          </div>
+        </div>
+
+        <div class="practice-footer">
+          <div class="practice-progress" id="progress-text">
+            प्रगति: <span id="progress-val" style="color: var(--primary);">0 / 4 चरण पूरे</span>
+          </div>
+          <button class="btn-reset-practice" onclick="resetPractice()">
+            🔄 Reset Checklist
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL-SIZE VIEW -->
+  <div class="lightbox-modal" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-topbar">
+      <span class="lightbox-title" id="lightbox-label">Full-Size Image View</span>
+      <button class="lightbox-close" onclick="closeLightbox()" title="बंद करें (Esc)">✕</button>
+    </div>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightbox-img" src="" alt="Full size preview" />
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast"></div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-weight: 700; color: var(--slate-700); margin-bottom: 0.25rem;">
+        Digital Learning Hub • Gmail Mastery Series
+      </p>
+      <p>Explanation Type Pilot 1 • Local Preview</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // --- 1. LIGHTBOX FULL-SIZE VIEW ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxLabel = document.getElementById('lightbox-label');
+
+    function openLightbox(src, label) {
+      lightboxImg.src = src;
+      lightboxLabel.innerText = label || 'Full-Size Image View';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target && e.target.id === 'lightbox-img') return;
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    // --- 2. PRACTICE CHECKLIST ---
+    const stepsState = { 1: false, 2: false, 3: false, 4: false };
+
+    function toggleStep(num) {
+      stepsState[num] = !stepsState[num];
+      const row = document.getElementById(`step-row-${num}`);
+      if (row) {
+        row.classList.toggle('checked', stepsState[num]);
+      }
+
+      const completed = Object.values(stepsState).filter(Boolean).length;
+      document.getElementById('progress-val').innerText = `${completed} / 4 चरण पूरे`;
+
+      if (completed === 4) {
+        showToast("🎉 बहुत बढ़िया! आपने Schedule Send का अभ्यास पूरा कर लिया!");
+      }
+    }
+
+    function resetPractice() {
+      for (let i = 1; i <= 4; i++) {
+        stepsState[i] = false;
+        const row = document.getElementById(`step-row-${i}`);
+        if (row) row.classList.remove('checked');
+      }
+      document.getElementById('progress-val').innerText = "0 / 4 चरण पूरे";
+      showToast("Checklist रीसेट हो गई है!");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+  </script>
+</body>
+</html>
