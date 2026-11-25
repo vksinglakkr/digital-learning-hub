@@ -1276,6 +1276,142 @@
         }
       ],
       "displayOrder": 8
+    },
+    {
+      "id": "gmail-email-summarize",
+      "categoryId": "gmail",
+      "slug": "email-summarize",
+      "title": "Email Summarize",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "लंबे या कई Replies वाले Group Emails को पूरा पढ़े बिना कुछ ही सेकंड में मुख्य सार (Summary) समझना सीखें।",
+      "detailedDescription": "Gmail का Summarize फीचर और Gemini ✦ (अकाउंट एक्सेस के अनुसार) आपको लंबे ईमेल और ग्रुप कन्वर्सेशन का मुख्य सारांश तुरंत समझने में मदद करते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-email-summarize-1",
+          "title": "Email Summarize — लंबे Email का सार पाना",
+          "description": "लंबे या कई Replies वाले Group Emails का मुख्य सार (Summary) समझना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/email-summarize/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-email-summarize-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Learn to summarize long emails and conversations in Gmail."
+        }
+      ],
+      "displayOrder": 2
+    },
+    {
+      "id": "gmail-preview-pane",
+      "categoryId": "gmail",
+      "slug": "preview-pane",
+      "title": "Preview Pane / Split View",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop (Web) Gmail में Split View चालू करके Inbox छोड़े बिना ही किसी भी Email का Content तुरंत देखना सीखें।",
+      "detailedDescription": "Desktop (Web) Gmail में Reading Pane (Split View) चालू करके आप बिना हर बार Email खोलकर Back आए, सीधे Inbox के बगल में ही पूरा संदेश पढ़ सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-preview-pane-1",
+          "title": "Preview Pane — बिना बार-बार Back किए Email पढ़ें",
+          "description": "Desktop (Web) Gmail में Split View चालू करके Inbox छोड़े बिना Email पढ़ें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/preview-pane/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-preview-pane-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Enable Preview Pane (Reading Pane) in Desktop Gmail."
+        }
+      ],
+      "displayOrder": 3
+    },
+    {
+      "id": "gmail-inbox-density",
+      "categoryId": "gmail",
+      "slug": "inbox-density",
+      "title": "Inbox Density",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "अपने Mobile App या Desktop Gmail में Density Setting बदलकर Default, Comfortable और Compact View में से सही विकल्प चुनें।",
+      "detailedDescription": "Gmail की Density Setting से आप तय कर सकते हैं कि Inbox में प्रत्येक Email कितनी जगह ले और बिना Email खोले Attachment व अन्य जानकारी कैसे दिखाई दे।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-inbox-density-1",
+          "title": "Inbox Density — Email खोले बिना अधिक जानकारी देखें",
+          "description": "Mobile App और Desktop Gmail में Default, Comfortable व Compact View चुनें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/inbox-density/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-inbox-density-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Customize Gmail Inbox Density (Default, Comfortable, Compact)."
+        }
+      ],
+      "displayOrder": 4
+    },
+    {
+      "id": "gmail-inbox-type",
+      "categoryId": "gmail",
+      "slug": "inbox-type",
+      "title": "Inbox Type & Star vs Important",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Star और Important का असली अंतर समझें और Inbox Type (Sorting) बदलकर अपने जरूरी Emails को सबसे ऊपर देखना सीखें।",
+      "detailedDescription": "Star और Important के बीच का सही अंतर जानें और Gmail के 6 Inbox Type विकल्पों की मदद से अपने महत्वपूर्ण व Starred ईमेल को सबसे ऊपर व्यवस्थित करें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-inbox-type-1",
+          "title": "Inbox Type व Star vs Important — जरूरी Email सबसे ऊपर रखें",
+          "description": "Star और Important का अंतर समझें और Inbox Type से Sorting बदलें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/inbox-type/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-inbox-type-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand Star vs Important and customize Gmail Inbox Type."
+        }
+      ],
+      "displayOrder": 6
     }
   ]
 }

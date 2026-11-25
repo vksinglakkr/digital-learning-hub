@@ -95,6 +95,46 @@ const GMAIL_TOPIC_METADATA: Record<string, GmailTopicMetadata> = {
     ],
     practiceTask: 'अपने Gmail से एक Test Email अगले दिन सुबह 8 बजे के लिए Schedule करें और Scheduled फ़ोल्डर में जाँचें।',
   },
+  'gmail-email-summarize': {
+    day: 'Day 02',
+    infographics: 2,
+    whatYouWillLearn: [
+      'लंबे Email या Group Conversation पर अपने-आप दिखने वाले Summarize फीचर को समझना',
+      'Summarize बटन न दिखने पर Gemini ✦ से सारांश लेना (अकाउंट व फीचर एक्सेस के अनुसार)',
+      'एक ही विषय के Emails को साथ देखने के लिए Conversation view को ON करना',
+    ],
+    practiceTask: 'अपने Gmail इनबॉक्स में कोई लंबा Email खोलें और Summarize या Gemini ✦ विकल्प से उसका सारांश देखें।',
+  },
+  'gmail-preview-pane': {
+    day: 'Day 03',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Desktop (Web) Gmail में बिना हर बार Back किए Inbox से ही Email पढ़ना',
+      'Toolbar आइकन, Quick Settings या General Settings से Reading Pane चालू करना',
+      'Mark as read after सेटिंग से 5s, 10s या Never विकल्प चुनना',
+    ],
+    practiceTask: 'कंप्यूटर के ब्राउज़र में Gmail खोलकर Reading pane में Right of inbox चुनें और सीधे Inbox से Email पढ़कर देखें।',
+  },
+  'gmail-inbox-density': {
+    day: 'Day 04',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Inbox में Email खोले बिना Sender, Subject और Attachment आइकन साफ देखना',
+      'Mobile App और Desktop Settings में Density (Default, Comfortable, Compact) बदलना',
+      'अपनी सुविधा के अनुसार सबसे उपयोगी View (जैसे Comfortable) चुनना',
+    ],
+    practiceTask: 'अपने Mobile App या Desktop Gmail में Density को Default से Comfortable और Compact में बदलकर देखें।',
+  },
+  'gmail-inbox-type': {
+    day: 'Day 06',
+    infographics: 2,
+    whatYouWillLearn: [
+      '⭐ Star (आपकी व्यक्तिगत पसंद) और ❗ Important (Email की अहमियत) के बीच का अंतर समझना',
+      'जरूरत के अनुसार एक ही Email पर Star और Important दोनों का साथ उपयोग करना',
+      'Settings → Inbox type से Starred first या Important first चुनकर जरूरी Emails ऊपर रखना',
+    ],
+    practiceTask: 'अपने Gmail में किसी जरूरी Email पर ⭐ Star लगाएँ और Settings में Inbox type बदलकर उसका क्रम देखें।',
+  },
 }
 
 export const TopicDetailPage: React.FC = () => {

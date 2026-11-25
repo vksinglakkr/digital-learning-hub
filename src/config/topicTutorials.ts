@@ -57,6 +57,42 @@ export const TOPIC_TUTORIAL_REGISTRY: Record<string, TopicTutorialConfig> = {
     hasChallenge: true,
     difficultyBadge: 'Beginner',
   },
+  'gmail-email-summarize': {
+    tutorialPath: 'tutorials/gmail/email-summarize/index.html',
+    title: 'Email Summarize — लंबे Email का सार पाना',
+    subtitle: 'लंबे या कई Replies वाले Group Emails को पूरा पढ़े बिना कुछ ही सेकंड में मुख्य सार (Summary) समझना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-preview-pane': {
+    tutorialPath: 'tutorials/gmail/preview-pane/index.html',
+    title: 'Preview Pane — बिना बार-बार Back किए Email पढ़ें',
+    subtitle: 'Desktop (Web) Gmail में Split View चालू करके Inbox छोड़े बिना ही किसी भी Email का Content तुरंत देखना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-inbox-density': {
+    tutorialPath: 'tutorials/gmail/inbox-density/index.html',
+    title: 'Inbox Density — Email खोले बिना अधिक जानकारी देखें',
+    subtitle: 'अपने Mobile App या Desktop Gmail में Density Setting बदलकर Default, Comfortable और Compact View में से सही विकल्प चुनें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-inbox-type': {
+    tutorialPath: 'tutorials/gmail/inbox-type/index.html',
+    title: 'Inbox Type व Star vs Important — जरूरी Email सबसे ऊपर रखें',
+    subtitle: 'Star और Important का असली अंतर समझें और Inbox Type (Sorting) बदलकर अपने जरूरी Emails को सबसे ऊपर देखना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
 }
 
 /**

@@ -75,7 +75,11 @@ export const CategoryPage: React.FC = () => {
     if (category.id === 'gmail') {
       const GMAIL_DAY_ORDER: Record<string, number> = {
         'gmail-translate': 1,
+        'gmail-email-summarize': 2,
+        'gmail-preview-pane': 3,
+        'gmail-inbox-density': 4,
         'gmail-inbox-categories': 5,
+        'gmail-inbox-type': 6,
         'gmail-search-operators': 8,
         'gmail-schedule-send': 12,
       }
