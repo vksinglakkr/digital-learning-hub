@@ -129,6 +129,42 @@ export const TOPIC_TUTORIAL_REGISTRY: Record<string, TopicTutorialConfig> = {
     hasChallenge: true,
     difficultyBadge: 'Beginner',
   },
+  'gmail-confidential-mode': {
+    tutorialPath: 'tutorials/gmail/confidential-mode/index.html',
+    title: 'Confidential Mode — गोपनीय Email सुरक्षित भेजें',
+    subtitle: 'Email पर Expiry Time और Passcode लगाकर Forward, Copy, Print व Download को सीमित करना और Access वापस लेना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Intermediate',
+  },
+  'gmail-undo-send': {
+    tutorialPath: 'tutorials/gmail/undo-send/index.html',
+    title: 'Undo Send — भेजी हुई Email को कुछ सेकंड में वापस लें',
+    subtitle: 'गलत Attachment या गलत Recipient पर Send दब जाने पर कुछ सेकंड के भीतर Email को वापस Draft में लाना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-archive-email': {
+    tutorialPath: 'tutorials/gmail/archive-email/index.html',
+    title: 'Archive Email — Inbox साफ और Emails सुरक्षित रखें',
+    subtitle: 'जानें कि Archive करने से Email Delete नहीं होती, और All Mail से वापस Inbox में कैसे लाएँ।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-email-suggestions-contacts': {
+    tutorialPath: 'tutorials/gmail/email-suggestions-contacts/index.html',
+    title: 'Email Suggestions व Contacts — सही व्यक्ति को Email भेजें',
+    subtitle: 'Google Contacts और Email Suggestions को सही तरह मैनेज करके गलत पते पर Email भेजने से बचें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
 }
 
 /**

@@ -86,6 +86,10 @@ export const CategoryPage: React.FC = () => {
         'gmail-block-spam-phishing': 10,
         'gmail-snooze-email': 11,
         'gmail-schedule-send': 12,
+        'gmail-confidential-mode': 13,
+        'gmail-undo-send': 14,
+        'gmail-archive-email': 15,
+        'gmail-email-suggestions-contacts': 16,
       }
       return [...list].sort((a, b) => {
         const orderA = GMAIL_DAY_ORDER[a.id] ?? (a.displayOrder || 99)

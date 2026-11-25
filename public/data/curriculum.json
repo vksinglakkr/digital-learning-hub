@@ -1548,6 +1548,142 @@
         }
       ],
       "displayOrder": 11
+    },
+    {
+      "id": "gmail-confidential-mode",
+      "categoryId": "gmail",
+      "slug": "confidential-mode",
+      "title": "Confidential Mode",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Email पर Expiry Time और Passcode लगाकर Forward, Copy, Print व Download को सीमित करना और Access वापस लेना सीखें।",
+      "detailedDescription": "Gmail Confidential Mode की मदद से आप संवेदनशील संदेशों पर समय-सीमा (Expiry) सेट कर सकते हैं और भेजने के बाद भी Remove access कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-confidential-mode-1",
+          "title": "Confidential Mode — गोपनीय Email सुरक्षित भेजें",
+          "description": "Expiry Time, SMS Passcode और Remove Access का उपयोग सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/confidential-mode/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-confidential-mode-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Use Confidential Mode with expiry, passcode, and Remove Access."
+        }
+      ],
+      "displayOrder": 13
+    },
+    {
+      "id": "gmail-undo-send",
+      "categoryId": "gmail",
+      "slug": "undo-send",
+      "title": "Undo Send",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "गलत Attachment या गलत Recipient पर Send दब जाने पर कुछ सेकंड के भीतर Email को वापस Draft में लाना सीखें।",
+      "detailedDescription": "Desktop Settings में Undo Send की समय-सीमा (5 से 30 सेकंड) सेट करके Send दबाने के तुरंत बाद गलती सुधारना सीखें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-undo-send-1",
+          "title": "Undo Send — भेजी हुई Email को कुछ सेकंड में वापस लें",
+          "description": "5 से 30 सेकंड की Cancellation Window सेट करना और Undo दबाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/undo-send/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-undo-send-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Configure Undo Send window and cancel mistaken sends."
+        }
+      ],
+      "displayOrder": 14
+    },
+    {
+      "id": "gmail-archive-email",
+      "categoryId": "gmail",
+      "slug": "archive-email",
+      "title": "Archive Email",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "जानें कि Archive करने से Email Delete नहीं होती, और All Mail से वापस Inbox में कैसे लाएँ।",
+      "detailedDescription": "Inbox को साफ-सुथरा रखने के लिए Archive फीचर का उपयोग करें और गलती से Archive हुई Email को More → All Mail से Move to Inbox द्वारा वापस लाएँ।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-archive-email-1",
+          "title": "Archive Email — Inbox साफ और Emails सुरक्षित रखें",
+          "description": "Archive बनाम Delete, All Mail और Move to Inbox करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/archive-email/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-archive-email-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Archive emails safely and restore them via All Mail."
+        }
+      ],
+      "displayOrder": 15
+    },
+    {
+      "id": "gmail-email-suggestions-contacts",
+      "categoryId": "gmail",
+      "slug": "email-suggestions-contacts",
+      "title": "Email Suggestions & Contacts",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Contacts और Email Suggestions को सही तरह मैनेज करके गलत पते पर Email भेजने से बचें।",
+      "detailedDescription": "Compose में To टाइप करते समय दिखने वाले पुराने Email Suggestions को Google Contacts की मदद से व्यवस्थित करना सीखें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-email-suggestions-contacts-1",
+          "title": "Email Suggestions व Contacts — सही व्यक्ति को Email भेजें",
+          "description": "Google Contacts और Auto-complete Suggestions को सुरक्षित मैनेज करें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/email-suggestions-contacts/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-email-suggestions-contacts-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Manage Google Contacts and recipient suggestions safely."
+        }
+      ],
+      "displayOrder": 16
     }
   ]
 }

@@ -175,6 +175,46 @@ const GMAIL_TOPIC_METADATA: Record<string, GmailTopicMetadata> = {
     ],
     practiceTask: 'अपने Gmail में किसी Test या कम-जरूरी Email को Tomorrow के लिए Snooze करें और Snoozed फ़ोल्डर में जाँचें।',
   },
+  'gmail-confidential-mode': {
+    day: 'Day 13',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Compose में 🔒 Confidential mode से Expiry Time व Passcode सेट करना',
+      'Sent फ़ोल्डर से Remove access क्लिक करके समय से पहले एक्सेस वापस लेना',
+      'सुरक्षा सीमा: Screenshot/फोटो नहीं रुकता और Workspace खातों में Admin नियंत्रण संभव है',
+    ],
+    practiceTask: 'अपने ही Email पते पर बिना संवेदनशील जानकारी के एक Test Email में 1 day Expiry सेट करके Sent में Remove access देखें।',
+  },
+  'gmail-undo-send': {
+    day: 'Day 14',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Send दबाने के तुरंत बाद दिखने वाले Undo बटन से Email वापस Draft में लाना',
+      'Desktop Settings → General → Undo Send से 5 से 30 सेकंड का समय चुनना',
+      'समझना कि यह कुछ सेकंड की रोक (Delay) है, डिलीवर हो चुकी Email का Recall नहीं',
+    ],
+    practiceTask: 'Desktop Settings में Undo Send समय (10s) जाँचें और स्वयं को Test Email भेजकर तुरंत Undo पर क्लिक करें।',
+  },
+  'gmail-archive-email': {
+    day: 'Day 15',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Archive (सुरक्षित सहेजना) और Delete (Bin/Trash) के बीच का अंतर समझना',
+      'Mobile App में गलती से Swipe होने पर हुई Archive को पहचानना',
+      'More → All Mail या Search से Email ढूँढकर Move to Inbox से वापस लाना',
+    ],
+    practiceTask: 'किसी एक पढ़ी हुई सामान्य Email को Archive करें, फिर More → All Mail से ढूँढकर Move to Inbox द्वारा वापस लाएँ।',
+  },
+  'gmail-email-suggestions-contacts': {
+    day: 'Day 16',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Gmail के Auto-complete Suggestions और आपके Google Contacts का अंतर समझना',
+      'contacts.google.com में जरूरी संपर्कों को सही नाम व Email के साथ सेव करना',
+      'आधुनिक Gmail में Other contacts / Contacts से अनचाहे सुझाव सुरक्षित रूप से हटाना',
+    ],
+    practiceTask: 'contacts.google.com में किसी नियमित संपर्क का नाम व Email जाँचें और Compose में To टाइप करके Suggestions देखें।',
+  },
 }
 
 export const TopicDetailPage: React.FC = () => {
