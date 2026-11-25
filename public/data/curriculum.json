@@ -1684,6 +1684,346 @@
         }
       ],
       "displayOrder": 16
+    },
+    {
+      "id": "gmail-conversation-view",
+      "categoryId": "gmail",
+      "slug": "conversation-view",
+      "title": "Conversation View",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "एक ही विषय के सभी Replies को एक Conversation (Thread) में देखना और Conversation View ON/OFF करना सीखें।",
+      "detailedDescription": "Gmail एक ही विषय पर भेजे गए और प्राप्त हुए सभी Replies को एक Conversation Thread में जोड़ देता है ताकि पूरा इतिहास एक साथ दिखे। जरूरत होने पर आप Settings → General से इसे ON या OFF कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-conversation-view-1",
+          "title": "Conversation View — पूरी Email बातचीत एक साथ देखें",
+          "description": "एक ही विषय के सभी Replies को एक Conversation (Thread) में देखना और Conversation View ON/OFF करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/conversation-view/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-conversation-view-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand Gmail Conversation View and toggle it in General settings."
+        }
+      ],
+      "displayOrder": 17
+    },
+    {
+      "id": "gmail-add-to-tasks",
+      "categoryId": "gmail",
+      "slug": "add-to-tasks",
+      "title": "Add to Tasks",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "किसी Email में दिए गए काम को सीधे Google Tasks में जोड़ना और Due Date सेट करना सीखें।",
+      "detailedDescription": "Email के अंदर ⋮ → Add to Tasks चुनकर आप उस Email के लिंक के साथ तुरंत Task बना सकते हैं, Due Date सेट कर सकते हैं और पूरा होने पर Mark complete कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-add-to-tasks-1",
+          "title": "Add to Tasks — Email को काम (Task) में बदलें",
+          "description": "किसी Email में दिए गए काम को सीधे Google Tasks में जोड़ना और Due Date सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/add-to-tasks/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-add-to-tasks-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Convert actionable emails into Google Tasks with due dates."
+        }
+      ],
+      "displayOrder": 18
+    },
+    {
+      "id": "gmail-signature",
+      "categoryId": "gmail",
+      "slug": "gmail-signature",
+      "title": "Gmail Signature",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop Gmail में Professional Signature बनाना और एक से अधिक Signatures को जरूरत के अनुसार बदलना सीखें।",
+      "detailedDescription": "Desktop (Web) Gmail की General Settings में आप Official, Personal या Short जैसे एक से अधिक Signatures बना सकते हैं और Compose विंडो से चुन सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-signature-1",
+          "title": "Gmail Signature — हर Email में अपना परिचय अपने-आप जोड़ें",
+          "description": "Desktop Gmail में Professional Signature बनाना और एक से अधिक Signatures को जरूरत के अनुसार बदलना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-signature/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-signature-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Create and switch professional email signatures in Desktop Gmail."
+        }
+      ],
+      "displayOrder": 19
+    },
+    {
+      "id": "gmail-templates",
+      "categoryId": "gmail",
+      "slug": "gmail-templates",
+      "title": "Gmail Templates",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop Gmail में Reusable Email Templates चालू करना, सेव करना और नई Email में Insert करना सीखें।",
+      "detailedDescription": "Desktop (Web) Gmail की Advanced Settings में Templates को Enable करके आप किसी भी सामान्य उत्तर को Template के रूप में सेव कर सकते हैं और बाद में ⋮ → Templates से तुरंत Insert कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-templates-1",
+          "title": "Gmail Templates — बार-बार भेजी जाने वाली Emails सेव करें",
+          "description": "Desktop Gmail में Reusable Email Templates चालू करना, सेव करना और नई Email में Insert करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-templates/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-templates-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Enable, save, and insert reusable Email Templates in Desktop Gmail."
+        }
+      ],
+      "displayOrder": 20
+    },
+    {
+      "id": "gmail-vacation-responder",
+      "categoryId": "gmail",
+      "slug": "vacation-responder",
+      "title": "Vacation Responder",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "छुट्टी या बाहर होने पर Gmail में Vacation Responder (Auto Reply) चालू करना और Contacts विकल्प सेट करना सीखें।",
+      "detailedDescription": "Gmail का Vacation Responder तय तारीखों (First day से Last day) के बीच आने वाली Emails का स्वतः उत्तर भेजता है, और निजता के लिए \"Only send a reply to my Contacts\" विकल्प देता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-vacation-responder-1",
+          "title": "Vacation Responder — अनुपस्थिति में Auto Reply सेट करें",
+          "description": "छुट्टी या बाहर होने पर Gmail में Vacation Responder (Auto Reply) चालू करना और Contacts विकल्प सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/vacation-responder/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-vacation-responder-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Configure Out of Office auto-replies safely using Vacation Responder."
+        }
+      ],
+      "displayOrder": 21
+    },
+    {
+      "id": "gmail-storage",
+      "categoryId": "gmail",
+      "slug": "gmail-storage",
+      "title": "Gmail Storage Management",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "अपनी Google Storage जाँचना, बड़ी Attachments ढूँढना और सुरक्षित तरीके से Space खाली करना सीखें।",
+      "detailedDescription": "हर Google खाते की 15 GB Free Storage Gmail, Google Drive और Google Photos में साझा होती है। आप one.google.com/storage और has:attachment larger:10M से Storage आसानी से साफ कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-storage-1",
+          "title": "Gmail Storage — 15 GB Space कैसे भरती है और खाली कैसे करें",
+          "description": "अपनी Google Storage जाँचना, बड़ी Attachments ढूँढना और सुरक्षित तरीके से Space खाली करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-storage/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-storage-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Check shared 15 GB Google Storage and locate large email attachments safely."
+        }
+      ],
+      "displayOrder": 22
+    },
+    {
+      "id": "gmail-large-files-drive",
+      "categoryId": "gmail",
+      "slug": "large-files-drive",
+      "title": "Send Large Files via Google Drive",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "25 MB की Attachment सीमा पार होने पर Google Drive की मदद से बड़ी Files सुरक्षित तरीके से Email में भेजना सीखें।",
+      "detailedDescription": "Gmail में सीधी Attachment की सीमा 25 MB है। उससे बड़ी Files के लिए Compose में Google Drive आइकन पर क्लिक करके File Insert करें और शेयरिंग Permissions जरूर जाँचें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-large-files-drive-1",
+          "title": "Google Drive से बड़ी Files भेजें (25 MB से ऊपर)",
+          "description": "25 MB की Attachment सीमा पार होने पर Google Drive की मदद से बड़ी Files सुरक्षित तरीके से Email में भेजना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/large-files-drive/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-large-files-drive-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Send files larger than 25 MB securely through Google Drive links in Gmail."
+        }
+      ],
+      "displayOrder": 23
+    },
+    {
+      "id": "gmail-contact-labels",
+      "categoryId": "gmail",
+      "slug": "contact-labels",
+      "title": "Contact Labels (Group Email)",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Contacts में Label (Group) बनाना, Members जोड़ना और Gmail Compose में एक साथ सभी को Email भेजना सीखें।",
+      "detailedDescription": "contacts.google.com में आप Office Team, Family या Students जैसे Labels बना सकते हैं और Gmail के To (या निजता के लिए Bcc) बॉक्स में Label का नाम टाइप करके पूरे Group को Email भेज सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-contact-labels-1",
+          "title": "Contact Labels — पूरे Group को 1-Click में Email भेजें",
+          "description": "Google Contacts में Label (Group) बनाना, Members जोड़ना और Gmail Compose में एक साथ सभी को Email भेजना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/contact-labels/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-contact-labels-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Create Contact Labels in Google Contacts to email groups effortlessly."
+        }
+      ],
+      "displayOrder": 24
+    },
+    {
+      "id": "gmail-mute-conversation",
+      "categoryId": "gmail",
+      "slug": "mute-conversation",
+      "title": "Mute Conversation",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "किसी लंबी या अनावश्यक Email Thread को Mute करना, All Mail में देखना और वापस Unmute करना सीखें।",
+      "detailedDescription": "Mute Conversation केवल उस विशेष Email Thread की आने वाली Replies को Inbox से बाहर (All Mail में) रखता है। इससे न तो Sender ब्लॉक होता है और न ही पुरानी Emails Delete होती हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-mute-conversation-1",
+          "title": "Mute Conversation — Reply All के शोर को शांत करें",
+          "description": "किसी लंबी या अनावश्यक Email Thread को Mute करना, All Mail में देखना और वापस Unmute करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/mute-conversation/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-mute-conversation-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Silence noisy Reply All threads using Mute without blocking senders."
+        }
+      ],
+      "displayOrder": 25
+    },
+    {
+      "id": "gmail-mobile-vs-desktop",
+      "categoryId": "gmail",
+      "slug": "mobile-vs-desktop",
+      "title": "Mobile App vs Desktop Gmail",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Mobile App और Desktop (Web) Gmail की सुविधाओं का पूरा अंतर समझें ताकि कोई फीचर ढूँढते समय उलझन न हो।",
+      "detailedDescription": "Mobile App रोज़मर्रा के त्वरित काम (पढ़ना, भेजना, Star, Mute, Snooze, Schedule Send, Confidential Mode) के लिए आसान है, जबकि Templates, Filters, Multiple Signatures और Full Settings Desktop/Web Gmail में मिलते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-mobile-vs-desktop-1",
+          "title": "Mobile vs Desktop Gmail — कौन-सा फीचर कहाँ मिलेगा?",
+          "description": "Mobile App और Desktop (Web) Gmail की सुविधाओं का पूरा अंतर समझें ताकि कोई फीचर ढूँढते समय उलझन न हो।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/mobile-vs-desktop/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-mobile-vs-desktop-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Understand which Gmail features work on Mobile vs Desktop/Web."
+        }
+      ],
+      "displayOrder": 26
     }
   ]
 }

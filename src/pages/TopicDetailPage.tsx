@@ -215,6 +215,106 @@ const GMAIL_TOPIC_METADATA: Record<string, GmailTopicMetadata> = {
     ],
     practiceTask: 'contacts.google.com में किसी नियमित संपर्क का नाम व Email जाँचें और Compose में To टाइप करके Suggestions देखें।',
   },
+  'gmail-conversation-view': {
+    day: 'Day 17',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Conversation View (एक ही विषय के सभी Replies को एक Thread में जोड़ना) का सही काम समझना',
+      'Settings → General → Conversation view (या Mobile App General settings) से इसे ON या OFF करना',
+      'Thread में Down/Up Arrow से पूरी बातचीत Expand/Collapse करना (सावधानी: Archive/Delete पूरी Thread पर लागू होते हैं)',
+    ],
+    practiceTask: 'Inbox में किसी multi-reply Conversation को खोलकर Expand/Collapse करें और General Settings में Conversation view विकल्प देखें।',
+  },
+  'gmail-add-to-tasks': {
+    day: 'Day 18',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Email खोलकर ⋮ (Three Dots) → Add to Tasks से तुरंत काम (Task) और Related email लिंक जोड़ना',
+      'Task में Due Date, Notes और Subtasks जोड़ना तथा Gmail Side Panel, tasks.google.com या Tasks App में देखना',
+      'सही चुनाव: Snooze (Email बाद में देखना), Tasks (काम पूरा करना), Keep (Notes), Calendar (Meeting/Event)',
+    ],
+    practiceTask: 'किसी सामान्य Email पर ⋮ → Add to Tasks दबाकर कल की Due Date सेट करें और फिर Test Task को Mark complete करें।',
+  },
+  'gmail-signature': {
+    day: 'Day 19',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Desktop (Web) Gmail में Settings → See all settings → General → Signature → + Create new से Signature बनाना',
+      'Official, Personal और Short जैसे एक से अधिक Signatures बनाकर Compose में Pen (✒️) आइकन से बदलना',
+      'प्लेटफ़ॉर्म अंतर समझना: Rich HTML और Multiple Signatures Desktop पर बनते हैं; Mobile App में अलग Mobile Signature सेटिंग होती है',
+    ],
+    practiceTask: 'Desktop Gmail की General Settings में एक संक्षिप्त Signature बनाएँ और Compose खोलकर उसकी जाँच करें।',
+  },
+  'gmail-templates': {
+    day: 'Day 20',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Desktop (Web) Gmail में पहले Settings → See all settings → Advanced → Templates: Enable करके Save Changes करना',
+      'Compose के ⋮ (More options) → Templates → Save draft as template से बार-बार उपयोग होने वाली Email सेव करना',
+      'नई Email में ⋮ → Templates → Insert template से संदेश डालना (यह सुविधा केवल Desktop/Web Gmail में उपलब्ध है)',
+    ],
+    practiceTask: 'Desktop Gmail में Templates Enable करके एक छोटा Test Template सेव करें और नए Compose में Insert करके देखें।',
+  },
+  'gmail-vacation-responder': {
+    day: 'Day 21',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Settings → See all settings → General (नीचे स्क्रॉल करें) से Vacation responder on करके First day व Last day सेट करना',
+      'स्पष्ट Subject व Auto Reply Message लिखकर Save Changes करना (Mobile App में भी Settings → Account में उपलब्ध)',
+      'निजता के लिए "Only send a reply to my Contacts" समझना (Spam व Mailing Lists को Auto Reply नहीं जाती)',
+    ],
+    practiceTask: 'Gmail Settings में Vacation responder विकल्प खोलकर तारीख व "Only send a reply to my Contacts" विकल्प देखें (छुट्टी न होने पर OFF रखें)।',
+  },
+  'gmail-storage': {
+    day: 'Day 22',
+    infographics: 2,
+    whatYouWillLearn: [
+      'यह समझना कि 15 GB Free Storage Gmail, Google Photos और Google Drive तीनों के बीच Share होती है',
+      'one.google.com/storage, Google Drive या Gmail Settings → Accounts and Import से Storage उपयोग जाँचना',
+      'has:attachment larger:10M से बड़ी Emails ढूँढना और ध्यान से जाँचने के बाद Trash/Spam खाली करना (सावधानी: Trash खाली करने पर डेटा स्थायी रूप से हट जाता है)',
+    ],
+    practiceTask: 'one.google.com/storage पर अपनी Storage स्थिति देखें और Gmail में has:attachment larger:10M सर्च चलाकर बड़ी Attachments देखें।',
+  },
+  'gmail-large-files-drive': {
+    day: 'Day 23',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Gmail की 25 MB Attachment सीमा समझने के बाद Compose में Google Drive (▲) आइकन से बड़ी फाइलें Insert करना',
+      'My Drive, Shared with me या Recent से फाइल चुनकर Drive Link के रूप में Email में जोड़ना',
+      'सुरक्षा व Storage नियम: भेजने से पहले Access (Restricted / Anyone with the link) सही चुनना और ध्यान रखना कि फाइल आपके Google Storage में रहती है',
+    ],
+    practiceTask: 'Gmail Compose में Google Drive (▲) आइकन से अपनी एक सामान्य फाइल Drive link के रूप में Insert करके देखें (बिना Send किए)।',
+  },
+  'gmail-contact-labels': {
+    day: 'Day 24',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Google Contacts (contacts.google.com) में "+ Create label" से Group Label बनाना और Members जोड़ना',
+      'Gmail Compose में Label का नाम टाइप करके 1-Click में सभी Members को जोड़ना',
+      'निजता सुझाव: बाहरी या बड़े Group को Email भेजते समय अन्य लोगों के पते छिपाने के लिए To के बजाय Bcc का उपयोग करना',
+    ],
+    practiceTask: 'contacts.google.com में एक Test Label बनाकर 1-2 संपर्क जोड़ें और Gmail Compose में उसका नाम टाइप करके देखें।',
+  },
+  'gmail-mute-conversation': {
+    day: 'Day 25',
+    infographics: 2,
+    whatYouWillLearn: [
+      'किसी Group Email Thread को खोलकर ⋮ (Three Dots) → Mute से अनावश्यक Replies को Inbox में आने से रोकना',
+      'अंतर समझना: Mute केवल उस विशेष Thread पर लागू होता है, Sender की नई अलग Emails सामान्य रूप से Inbox में आती रहेंगी',
+      'Mute की गई Thread को All Mail या Search से ढूँढना और जरूरत पड़ने पर ⋮ → Unmute करना',
+    ],
+    practiceTask: 'किसी पुरानी Email को ⋮ → Mute करके देखें, फिर More → All Mail से उसे खोजकर वापस Unmute करें।',
+  },
+  'gmail-mobile-vs-desktop': {
+    day: 'Day 26',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Mobile App व Desktop दोनों में मिलने वाले फीचर्स (Read/Send, Star, Mute, Snooze, Schedule Send, Confidential Mode) पहचानना',
+      'केवल Desktop/Web Gmail में मिलने वाले एडवांस फीचर्स (Templates, Filters, Multiple Signatures, Full Settings) को समझना',
+      'सही रणनीति: चलते-फिरते काम के लिए Mobile App और सेटिंग्स/नियंत्रण के लिए Desktop/Web Gmail का उपयोग करना',
+    ],
+    practiceTask: 'Mobile Gmail App और Desktop Web Gmail की Settings खोलकर दोनों में उपलब्ध विकल्पों की तुलना करें।',
+  },
 }
 
 export const TopicDetailPage: React.FC = () => {

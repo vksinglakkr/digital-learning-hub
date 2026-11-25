@@ -90,6 +90,16 @@ export const CategoryPage: React.FC = () => {
         'gmail-undo-send': 14,
         'gmail-archive-email': 15,
         'gmail-email-suggestions-contacts': 16,
+        'gmail-conversation-view': 17,
+        'gmail-add-to-tasks': 18,
+        'gmail-signature': 19,
+        'gmail-templates': 20,
+        'gmail-vacation-responder': 21,
+        'gmail-storage': 22,
+        'gmail-large-files-drive': 23,
+        'gmail-contact-labels': 24,
+        'gmail-mute-conversation': 25,
+        'gmail-mobile-vs-desktop': 26,
       }
       return [...list].sort((a, b) => {
         const orderA = GMAIL_DAY_ORDER[a.id] ?? (a.displayOrder || 99)
