@@ -100,6 +100,16 @@ export const CategoryPage: React.FC = () => {
         'gmail-contact-labels': 24,
         'gmail-mute-conversation': 25,
         'gmail-mobile-vs-desktop': 26,
+        'gmail-delegation': 27,
+        'gmail-forward-as-attachment': 28,
+        'gmail-alias': 29,
+        'gmail-offline': 30,
+        'gmail-nudges': 31,
+        'gmail-smart-reply-smart-compose': 32,
+        'gmail-multiple-stars': 33,
+        'gmail-send-and-archive': 34,
+        'gmail-swipe-actions': 35,
+        'gmail-keyboard-shortcuts': 36,
       }
       return [...list].sort((a, b) => {
         const orderA = GMAIL_DAY_ORDER[a.id] ?? (a.displayOrder || 99)

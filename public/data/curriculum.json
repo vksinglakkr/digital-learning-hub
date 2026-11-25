@@ -2024,6 +2024,346 @@
         }
       ],
       "displayOrder": 26
+    },
+    {
+      "id": "gmail-delegation",
+      "categoryId": "gmail",
+      "slug": "gmail-delegation",
+      "title": "Gmail Delegation",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "पासवर्ड शेयर किए बिना किसी दूसरे व्यक्ति को अपने Gmail का सुरक्षित एक्सेस (Delegation) देना और हटाना सीखें।",
+      "detailedDescription": "Gmail Delegation सुविधा से आप अपने पर्सनल पासवर्ड को सुरक्षित रखते हुए किसी अन्य व्यक्ति को अपने ईमेल पढ़ने और उत्तर देने का अधिकार दे सकते हैं। प्रतिनिधि द्वारा भेजे गए ईमेल में साफ दिखता है कि संदेश प्रतिनिधि द्वारा भेजा गया है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-delegation-1",
+          "title": "Gmail Delegation — पासवर्ड बताए बिना Gmail एक्सेस दें",
+          "description": "पासवर्ड शेयर किए बिना किसी दूसरे व्यक्ति को अपने Gmail का सुरक्षित एक्सेस (Delegation) देना और हटाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-delegation/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-delegation-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Grant secure email access to an assistant without sharing password using Gmail Delegation."
+        }
+      ],
+      "displayOrder": 27
+    },
+    {
+      "id": "gmail-forward-as-attachment",
+      "categoryId": "gmail",
+      "slug": "forward-as-attachment",
+      "title": "Forward as Attachment",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "कई चुनिंदा Emails को अलग-अलग फॉरवर्ड करने के बजाय एक साथ .eml फाइल अटैचमेंट के रूप में भेजना सीखें।",
+      "detailedDescription": "जब आपको किसी प्रोजेक्ट या ऑडिट के सिलसिले में कई पुरानी Emails किसी को भेजनी हों, तो इनबॉक्स में सभी को सेलेक्ट करके ⋮ → Forward as attachment चुनें। इससे सभी ओरिजिनल Emails अलग-अलग .eml अटैचमेंट बनकर एक ही ईमेल में जुड़ जाती हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-forward-as-attachment-1",
+          "title": "Forward as Attachment — कई Emails एक साथ अटैचमेंट बनाकर भेजें",
+          "description": "कई चुनिंदा Emails को अलग-अलग फॉरवर्ड करने के बजाय एक साथ .eml फाइल अटैचमेंट के रूप में भेजना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/forward-as-attachment/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-forward-as-attachment-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Forward multiple emails simultaneously as .eml attachments in Desktop Gmail."
+        }
+      ],
+      "displayOrder": 28
+    },
+    {
+      "id": "gmail-alias",
+      "categoryId": "gmail",
+      "slug": "gmail-alias",
+      "title": "Gmail Alias (+ Addressing)",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "अपने मौजूदा ईमेल में +tag जोड़कर असीमित Alias बनाना और उनके आधार पर ऑटोमैटिक फिल्टर लगाना सीखें।",
+      "detailedDescription": "Gmail में आपका ईमेल username@gmail.com है तो आप username+shopping@gmail.com या username+bank@gmail.com जैसे असीमित पते इस्तेमाल कर सकते हैं। सभी ईमेल आपके उसी मुख्य इनबॉक्स में आते हैं और आप उन पर आसानी से ऑटोमैटिक फिल्टर लगा सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-alias-1",
+          "title": "Gmail Alias (+ Addressing) — एक ही इनबॉक्स में कई पहचान बनाएँ",
+          "description": "अपने मौजूदा ईमेल में +tag जोड़कर असीमित Alias बनाना और उनके आधार पर ऑटोमैटिक फिल्टर लगाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-alias/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-alias-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Create dynamic email aliases using plus addressing (+tag) for smart filtering and spam tracking."
+        }
+      ],
+      "displayOrder": 29
+    },
+    {
+      "id": "gmail-offline",
+      "categoryId": "gmail",
+      "slug": "offline-gmail",
+      "title": "Offline Gmail",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop Chrome में Gmail Offline Mode सक्षम करना, ईमेल सिंक करना और बिना इंटरनेट काम करना सीखें।",
+      "detailedDescription": "Gmail Offline मोड आपके कंप्यूटर ब्राउज़र में पिछले 7, 30 या 90 दिनों के ईमेल का सुरक्षित स्थानीय डेटाबेस बना देता है। जब इंटरनेट नहीं होता, तब भी आप ईमेल पढ़ सकते हैं, सर्च कर सकते हैं और जवाब लिख सकते हैं; इंटरनेट आते ही सभी ईमेल अपने-आप चले जाते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-offline-1",
+          "title": "Offline Gmail — बिना इंटरनेट के भी ईमेल पढ़ें, खोजें और लिखें",
+          "description": "Desktop Chrome में Gmail Offline Mode सक्षम करना, ईमेल सिंक करना और बिना इंटरनेट काम करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/offline-gmail/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-offline-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Enable and configure Gmail Offline mode in Google Chrome for offline reading and composing."
+        }
+      ],
+      "displayOrder": 30
+    },
+    {
+      "id": "gmail-nudges",
+      "categoryId": "gmail",
+      "slug": "gmail-nudges",
+      "title": "Gmail Nudges",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail Nudges (रिप्लाई और फॉलो-अप रिमाइंडर) को समझना और अपनी जरूरत के अनुसार ON या OFF करना सीखें।",
+      "detailedDescription": "जब आपको कोई जरूरी ईमेल मिले और आप 4-5 दिन तक रिप्लाई न दें, या आपने किसी को जरूरी सवाल भेजा और जवाब न आया हो, तो Gmail Nudge उस ईमेल को \"Received 4 days ago. Reply?\" नोट के साथ इनबॉक्स के टॉप पर ले आता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-nudges-1",
+          "title": "Gmail Nudges — जरूरी ईमेल का जवाब देना कभी न भूलें",
+          "description": "Gmail Nudges (रिप्लाई और फॉलो-अप रिमाइंडर) को समझना और अपनी जरूरत के अनुसार ON या OFF करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/gmail-nudges/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-nudges-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Configure Gmail Nudges for automatic smart reminders on unreplied and follow-up emails."
+        }
+      ],
+      "displayOrder": 31
+    },
+    {
+      "id": "gmail-smart-reply-smart-compose",
+      "categoryId": "gmail",
+      "slug": "smart-reply-smart-compose",
+      "title": "Smart Reply & Smart Compose",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Smart Reply (तैयार जवाब) और Smart Compose (ऑटो-सजेशन) का उपयोग करके टाइपिंग स्पीड दोगुनी करना सीखें।",
+      "detailedDescription": "Smart Reply ईमेल के नीचे 3 तैयार प्रासंगिक उत्तर (जैसे \"Sure, will do\", \"Received, thanks\") सुझाता है। Smart Compose लिखते समय अगले शब्दों को हल्के ग्रे रंग में दिखाता है जिसे Tab की (या राइट स्वाइप) दबाते ही तुरंत पूरा वाक्य लिख जाता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-smart-reply-smart-compose-1",
+          "title": "Smart Reply व Smart Compose — AI से ईमेल टाइपिंग करें सुपरफास्ट",
+          "description": "Smart Reply (तैयार जवाब) और Smart Compose (ऑटो-सजेशन) का उपयोग करके टाइपिंग स्पीड दोगुनी करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/smart-reply-smart-compose/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-smart-reply-smart-compose-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Boost email typing productivity using Smart Reply and Smart Compose auto-completions."
+        }
+      ],
+      "displayOrder": 32
+    },
+    {
+      "id": "gmail-multiple-stars",
+      "categoryId": "gmail",
+      "slug": "multiple-stars",
+      "title": "Stars & Multiple Star Colors",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail में 1 स्टार, 4 स्टार या सभी 12 स्टार्स/चिह्न सक्षम करके ईमेल की अलग-अलग प्राथमिकता तय करना सीखें।",
+      "detailedDescription": "साधारण Gmail में केवल पीला स्टार होता है। General Settings में Multiple Stars चालू करने पर आप लाल (Urgent), हरा (Completed), नीला (Follow-up) या बैंगनी स्टार चुन सकते हैं। इनबॉक्स में स्टार आइकन पर बार-बार क्लिक करने से रंग बदलता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-multiple-stars-1",
+          "title": "Multiple Stars & Colors — ईमेल को रंग-बिरंगे स्टार्स से सजाएँ व प्राथमिकता दें",
+          "description": "Gmail में 1 स्टार, 4 स्टार या सभी 12 स्टार्स/चिह्न सक्षम करके ईमेल की अलग-अलग प्राथमिकता तय करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/multiple-stars/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-multiple-stars-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Organize and prioritize inbox emails using Gmail multiple stars and colored status icons."
+        }
+      ],
+      "displayOrder": 33
+    },
+    {
+      "id": "gmail-send-and-archive",
+      "categoryId": "gmail",
+      "slug": "send-and-archive",
+      "title": "Send & Archive",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop Gmail में \"Send & Archive\" बटन को सक्षम करना और Inbox Zero तेजी से हासिल करना सीखें।",
+      "detailedDescription": "जब आप किसी ईमेल का उत्तर देते हैं, तो वह आमतौर पर इनबॉक्स में ही पड़ा रहता है जब तक आप उसे मैन्युअल रूप से Archive न करें। Send & Archive ऑन करने पर कंपोज़ में एक नीला/विशेष बटन आ जाता है जो ईमेल भेजते ही उस बातचीत को इनबॉक्स से हटाकर All Mail में सुरक्षित कर देता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-send-and-archive-1",
+          "title": "Send & Archive — 1-क्लिक में रिप्लाई भी करें और इनबॉक्स भी साफ रखें",
+          "description": "Desktop Gmail में \"Send & Archive\" बटन को सक्षम करना और Inbox Zero तेजी से हासिल करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/send-and-archive/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-send-and-archive-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Streamline email processing by enabling the Send & Archive button in Desktop Gmail."
+        }
+      ],
+      "displayOrder": 34
+    },
+    {
+      "id": "gmail-swipe-actions",
+      "categoryId": "gmail",
+      "slug": "swipe-actions",
+      "title": "Mobile Swipe Actions",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail मोबाइल ऐप (Android/iOS) में Left और Right स्वाइप एक्शन को अपनी सुविधा अनुसार कस्टमाइज़ करना सीखें।",
+      "detailedDescription": "Gmail मोबाइल ऐप में जब आप किसी ईमेल को बाईं या दाईं ओर स्वाइप करते हैं, तो डिफ़ॉल्ट रूप से वह Archive हो जाती है। सेटिंग्स में जाकर आप चुन सकते हैं कि Right Swipe से Delete हो, Left Swipe से Snooze हो, या Mark as read हो जाए।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-swipe-actions-1",
+          "title": "Mobile Swipe Actions — अंगूठे से स्वाइप करें और इनबॉक्स साफ करें",
+          "description": "Gmail मोबाइल ऐप (Android/iOS) में Left और Right स्वाइप एक्शन को अपनी सुविधा अनुसार कस्टमाइज़ करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/swipe-actions/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-swipe-actions-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Customize left and right swipe gestures in the Gmail mobile app for rapid email triage."
+        }
+      ],
+      "displayOrder": 35
+    },
+    {
+      "id": "gmail-keyboard-shortcuts",
+      "categoryId": "gmail",
+      "slug": "keyboard-shortcuts",
+      "title": "Gmail Keyboard Shortcuts",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Desktop Gmail में कीबोर्ड शॉर्टकट चालू करना और सबसे महत्वपूर्ण शॉर्टकट्स (C, R, E, #, ?, G+I) का अभ्यास करना सीखें।",
+      "detailedDescription": "Gmail में सैकड़ों कीबोर्ड शॉर्टकट्स हैं जो बिना माउस छुए काम पूरा करते हैं। Settings में Shortcuts ON करने के बाद सिर्फ \"C\" दबाने से नया ईमेल खुलता है, \"R\" से Reply होता है, \"E\" से Archive होता है, \"#\" से Delete होता है और \"?\" दबाने से पूरी शॉर्टकट चीट-शीट स्क्रीन पर आ जाती है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-gmail-keyboard-shortcuts-1",
+          "title": "Keyboard Shortcuts — माउस छुए बिना रॉकेट की स्पीड से Gmail चलाएँ",
+          "description": "Desktop Gmail में कीबोर्ड शॉर्टकट चालू करना और सबसे महत्वपूर्ण शॉर्टकट्स (C, R, E, #, ?, G+I) का अभ्यास करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/gmail/keyboard-shortcuts/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-gmail-keyboard-shortcuts-1",
+          "phaseTitle": "Explanation Type",
+          "objective": "Enable and master essential Gmail keyboard shortcuts for rapid mouse-free inbox navigation."
+        }
+      ],
+      "displayOrder": 36
     }
   ]
 }

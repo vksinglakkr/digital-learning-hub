@@ -315,6 +315,106 @@ const GMAIL_TOPIC_METADATA: Record<string, GmailTopicMetadata> = {
     ],
     practiceTask: 'Mobile Gmail App और Desktop Web Gmail की Settings खोलकर दोनों में उपलब्ध विकल्पों की तुलना करें।',
   },
+  'gmail-delegation': {
+    day: 'Day 27',
+    infographics: 2,
+    whatYouWillLearn: [
+      'पासवर्ड शेयर किए बिना Accounts and Import से Delegate जोड़ना',
+      'Delegate के अधिकारों और सीमाओं को समझना',
+      'सुरक्षा सेटिंग्स और एक्सेस तुरंत हटाने की विधि',
+    ],
+    practiceTask: 'Settings → Accounts and Import में जाकर "Grant access to your account" विकल्प को देखें और इसके सुरक्षा नियमों को समझें।',
+  },
+  'gmail-forward-as-attachment': {
+    day: 'Day 28',
+    infographics: 2,
+    whatYouWillLearn: [
+      'एक से अधिक Emails को चेकबॉक्स से सेलेक्ट करना',
+      '⋮ मेनू से Forward as attachment चुनकर .eml रूप में जोड़ना',
+      'ओरिजिनल हेडर और प्रूफ के साथ कई ईमेल एक साथ भेजना',
+    ],
+    practiceTask: 'इनबॉक्स में 2 ईमेल सेलेक्ट करके ⋮ → Forward as attachment द्वारा नई कंपोज़ विंडो में अटैचमेंट के रूप में देखें।',
+  },
+  'gmail-alias': {
+    day: 'Day 29',
+    infographics: 2,
+    whatYouWillLearn: [
+      '+tag लगाकर असीमित स्मार्ट ईमेल पते बनाना',
+      'स्पैम स्रोत और डेटा लीक की तुरंत पहचान करना',
+      'Alias के आधार पर इनबॉक्स में स्वतः फिल्टर और लेबल लगाना',
+    ],
+    practiceTask: 'स्वयं को yourname+test@gmail.com पर ईमेल भेजकर देखें कि वह कैसे आपके मुख्य इनबॉक्स में प्राप्त होता है।',
+  },
+  'gmail-offline': {
+    day: 'Day 30',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Desktop Chrome में Offline Mail सक्षम और कॉन्फ़िगर करना',
+      'सिंक अवधि (7, 30, 90 दिन) और अटैचमेंट डाउनलोड सेटिंग्स चुनना',
+      'सार्वजनिक कंप्यूटरों पर ऑफलाइन डेटा सुरक्षा की सावधानियाँ',
+    ],
+    practiceTask: 'Chrome में Settings → Offline टैब खोलकर Offline Mail विकल्पों और सुरक्षा सेटिंग्स का अध्ययन करें।',
+  },
+  'gmail-nudges': {
+    day: 'Day 31',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Reply Nudge और Follow-up Nudge की कार्यप्रणाली को समझना',
+      'General Settings में जाकर Nudges को ON या OFF करना',
+      'महत्वपूर्ण ईमेल छूटने से बचाने के लिए AI आधारित रिमाइंडर्स का उपयोग',
+    ],
+    practiceTask: 'General Settings में Nudges सेक्शन खोलकर Reply और Follow up चेकबॉक्स की स्थिति जांचें।',
+  },
+  'gmail-smart-reply-smart-compose': {
+    day: 'Day 32',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Smart Reply से 1-क्लिक में तैयार रिप्लाई भेजना',
+      'Smart Compose के साथ Tab की से तेजी से ईमेल लिखना',
+      'General Settings में दोनों फीचर्स को ON या OFF करना',
+    ],
+    practiceTask: 'Compose में एक आम वाक्य टाइप करें और हल्के ग्रे सुझाव आने पर Tab की दबाकर वाक्य पूरा करें।',
+  },
+  'gmail-multiple-stars': {
+    day: 'Day 33',
+    infographics: 2,
+    whatYouWillLearn: [
+      'General Settings में Stars प्रीसेट (1 star, 4 stars, all stars) चुनना',
+      'लगातार क्लिक करके ईमेल पर मनचाहा स्टार रंग लगाना',
+      'has:red-star जैसे सर्च ऑपरेटर से रंगीन स्टार्स खोजना',
+    ],
+    practiceTask: 'General Settings में 4 stars चालू करें और इनबॉक्स में किसी ईमेल के स्टार पर बार-बार क्लिक करके अलग-अलग रंग देखें।',
+  },
+  'gmail-send-and-archive': {
+    day: 'Day 34',
+    infographics: 2,
+    whatYouWillLearn: [
+      'General Settings से Send & Archive बटन को चालू करना',
+      'उत्तर भेजते ही ईमेल को स्वतः इनबॉक्स से आर्काइव करना',
+      'Inbox Zero बनाए रखने और दोबारा रिप्लाई आने पर थ्रेड लौटने की प्रक्रिया',
+    ],
+    practiceTask: 'General Settings में "Show Send & Archive button in reply" सक्षम करें और Reply विंडो में नया बटन देखें।',
+  },
+  'gmail-swipe-actions': {
+    day: 'Day 35',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Gmail मोबाइल ऐप में Swipe Actions मेनू ढूँढना',
+      'Right और Left स्वाइप के लिए उपयोगी एक्शन (Delete, Snooze, Archive) सेट करना',
+      'गलत स्वाइप होने पर Undo विकल्प से ईमेल सुरक्षित वापस पाना',
+    ],
+    practiceTask: 'स्मार्टफोन के Gmail ऐप में Settings → General settings → Mail swipe actions खोलकर स्वाइप विकल्प चेक करें।',
+  },
+  'gmail-keyboard-shortcuts': {
+    day: 'Day 36',
+    infographics: 2,
+    whatYouWillLearn: [
+      'General Settings में Keyboard Shortcuts को सक्षम करना',
+      'C, R, E, #, /, G+I जैसे मुख्य शॉर्टकट्स से बिना माउस काम करना',
+      'Shift + / (?) दबाकर पूरी शॉर्टकट चीट-शीट देखना और इस्तेमाल करना',
+    ],
+    practiceTask: 'General Settings में Keyboard shortcuts on करें और इनबॉक्स में ? दबाकर शॉर्टकट विंडो खोलें।',
+  },
 }
 
 export const TopicDetailPage: React.FC = () => {
