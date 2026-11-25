@@ -93,6 +93,42 @@ export const TOPIC_TUTORIAL_REGISTRY: Record<string, TopicTutorialConfig> = {
     hasChallenge: true,
     difficultyBadge: 'Beginner',
   },
+  'gmail-multiple-inboxes': {
+    tutorialPath: 'tutorials/gmail/multiple-inboxes/index.html',
+    title: 'Multiple Inboxes — जरूरी Emails हमेशा सामने रखें',
+    subtitle: 'Desktop (Web) Gmail में एक ही स्क्रीन पर Drafts, Starred और Important जैसे अलग-अलग Sections बनाना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Intermediate',
+  },
+  'gmail-filters': {
+    tutorialPath: 'tutorials/gmail/gmail-filters/index.html',
+    title: 'Gmail Filters — Emails को अपने-आप व्यवस्थित करें',
+    subtitle: 'हर महीने आने वाले Bills और Bank Statements पर Filter बनाकर Gmail से अपने-आप Label लगवाना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Intermediate',
+  },
+  'gmail-block-spam-phishing': {
+    tutorialPath: 'tutorials/gmail/block-spam-phishing/index.html',
+    title: 'Block, Report Spam व Phishing — सही विकल्प चुनें',
+    subtitle: 'अनचाही या संदिग्ध Email आने पर Block, Report Spam और Report Phishing में से सही विकल्प चुनकर सुरक्षित रहना सीखें।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
+  'gmail-snooze-email': {
+    tutorialPath: 'tutorials/gmail/snooze-email/index.html',
+    title: 'Snooze Email — तय समय पर Email वापस पाएँ',
+    subtitle: 'जिस Email का काम कुछ दिन बाद करना हो, उसे Snooze करके सही समय पर फिर से Inbox में सबसे ऊपर पाएँ।',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: 'Beginner',
+  },
 }
 
 /**

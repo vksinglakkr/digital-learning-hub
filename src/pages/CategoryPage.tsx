@@ -80,7 +80,11 @@ export const CategoryPage: React.FC = () => {
         'gmail-inbox-density': 4,
         'gmail-inbox-categories': 5,
         'gmail-inbox-type': 6,
+        'gmail-multiple-inboxes': 7,
         'gmail-search-operators': 8,
+        'gmail-filters': 9,
+        'gmail-block-spam-phishing': 10,
+        'gmail-snooze-email': 11,
         'gmail-schedule-send': 12,
       }
       return [...list].sort((a, b) => {

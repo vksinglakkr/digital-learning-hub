@@ -135,6 +135,46 @@ const GMAIL_TOPIC_METADATA: Record<string, GmailTopicMetadata> = {
     ],
     practiceTask: 'अपने Gmail में किसी जरूरी Email पर ⭐ Star लगाएँ और Settings में Inbox type बदलकर उसका क्रम देखें।',
   },
+  'gmail-multiple-inboxes': {
+    day: 'Day 07',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Desktop (Web) Gmail की Settings → Inbox से Multiple Inboxes चालू करना',
+      'Starred (is:starred), Drafts (is:draft) और Important (is:important) जैसे पैनल एक स्क्रीन पर देखना',
+      'अधूरी Draft Emails को समय पर याद रखकर भेजना और जरूरी काम व्यवस्थित रखना',
+    ],
+    practiceTask: 'Desktop (Web) Gmail की Inbox Settings में Multiple Inboxes खोलकर is:draft व is:starred सेक्शन जाँचें।',
+  },
+  'gmail-filters': {
+    day: 'Day 09',
+    infographics: 3,
+    whatYouWillLearn: [
+      'Search (बाद में ढूँढना) और Filter (नई Email आते ही अपने-आप व्यवस्थित करना) का अंतर समझना',
+      'Desktop (Web) Gmail में Filter आइकन या ⋮ → Filter messages like these से Label लगाना',
+      'Filter बनाते समय Delete it और Skip the Inbox विकल्पों का उपयोग सावधानी से करना',
+    ],
+    practiceTask: 'Desktop Gmail में किसी नियमित बिल/स्टेटमेंट Email पर ⋮ → Filter messages like these खोलकर Apply the label विकल्प देखें।',
+  },
+  'gmail-block-spam-phishing': {
+    day: 'Day 10',
+    infographics: 2,
+    whatYouWillLearn: [
+      'Block (Sender रोकना), Report Spam (Junk/Ads) और Report Phishing (धोखाधड़ी) का अंतर समझना',
+      'संदिग्ध Email के किसी भी लिंक, बटन या Attachment को कभी न खोलने का नियम अपनाना',
+      'Email के तीन डॉट्स (⋮) मेनू में इन तीनों सुरक्षा विकल्पों की सही जगह पहचानना',
+    ],
+    practiceTask: 'किसी पुरानी Promotional Email के ⋮ (Three Dots) मेनू में Block, Report spam और Report phishing विकल्पों की स्थिति देखें।',
+  },
+  'gmail-snooze-email': {
+    day: 'Day 11',
+    infographics: 2,
+    whatYouWillLearn: [
+      'जरूरी Email को Inbox में दबाने के बजाय Snooze करके तय समय पर वापस ऊपर लाना',
+      'Desktop (🕒 Clock आइकन या ⋮ → Snooze) और Mobile App (⋮ → Snooze) से समय चुनना',
+      'Snooze की गई Emails को बाएँ मेनू के Snoozed फ़ोल्डर में देखना (Email Delete नहीं होती)',
+    ],
+    practiceTask: 'अपने Gmail में किसी Test या कम-जरूरी Email को Tomorrow के लिए Snooze करें और Snoozed फ़ोल्डर में जाँचें।',
+  },
 }
 
 export const TopicDetailPage: React.FC = () => {
