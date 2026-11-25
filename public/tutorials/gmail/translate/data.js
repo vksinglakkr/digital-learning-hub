@@ -14,6 +14,11 @@ window.TUTORIAL_DATA = {
     "🎯 1 Hands-on Practice",
     "⏱️ ~3 मिनट में सीखें"
   ],
+  learningOutcomes: [
+    "कठिन या लंबी अंग्रेज़ी ईमेल को 1-Click में अपनी पसंदीदा भाषा में बदलें",
+    "बिना किसी बाहरी Translation App के Gmail के अंदर ही अनुवाद देखें",
+    "अपने मोबाइल या कंप्यूटर पर तुरंत अभ्यास करके आत्मविश्वास पाएँ"
+  ],
   brandBadge: "Explanation Type",
   brandTitle: "Digital Learning Hub",
   sections: {
@@ -66,6 +71,6 @@ window.TUTORIAL_DATA = {
   },
   footer: {
     series: "Digital Learning Hub • Gmail Mastery Series",
-    topic: "Day 01: Translate • Local Preview Only"
+    topic: "Translate — Email को अपनी भाषा में समझें"
   }
 };

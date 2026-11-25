@@ -126,6 +126,148 @@
     return base + cleanPath;
   }
 
+  // Sanitize visible badges: remove Day numbers from UI badges
+  function formatBadgeText(rawBadge, fallback) {
+    if (!rawBadge) return fallback || '';
+    const cleaned = String(rawBadge).replace(/Day\s*\d+\s*[•·-]?\s*/gi, '').trim();
+    return cleaned || fallback || '';
+  }
+
+  // Canonical public URL resolver for Share feature
+  function getCanonicalShareUrl(data) {
+    let slug = 'translate';
+    if (data && data.topicPath) {
+      const parts = data.topicPath.split('/').filter(Boolean);
+      slug = parts[parts.length - 1];
+    } else {
+      const pathParts = (window.location.pathname || '').split('/').filter(Boolean);
+      slug = pathParts[pathParts.length - 1] || 'translate';
+      if (slug.endsWith('.html')) slug = pathParts[pathParts.length - 2] || 'translate';
+    }
+    return `https://vksinglakkr.github.io/digital-learning-hub/tutorials/gmail/${slug}/`;
+  }
+
+  // Print full tutorial via native browser dialog
+  function printTutorial() {
+    window.print();
+  }
+
+  // Print individual original infographic in isolated print frame
+  function printInfographic(imgSrc, title) {
+    if (!imgSrc) return;
+    const cleanTitle = title || 'Gmail Infographic Guide';
+
+    let printFrame = document.getElementById('dlh-print-frame');
+    if (!printFrame) {
+      printFrame = document.createElement('iframe');
+      printFrame.id = 'dlh-print-frame';
+      printFrame.style.position = 'fixed';
+      printFrame.style.right = '0';
+      printFrame.style.bottom = '0';
+      printFrame.style.width = '0';
+      printFrame.style.height = '0';
+      printFrame.style.border = '0';
+      document.body.appendChild(printFrame);
+    }
+
+    const frameDoc = printFrame.contentWindow.document;
+    frameDoc.open();
+    frameDoc.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${escapeHtml(cleanTitle)}</title>
+  <style>
+    @page { size: auto; margin: 1cm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+    .print-header { text-align: center; margin-bottom: 1rem; }
+    .print-brand { font-size: 10pt; font-weight: 700; color: #0f766e; text-transform: uppercase; letter-spacing: 0.05em; }
+    .print-title { font-size: 14pt; font-weight: 800; color: #0f172a; margin-top: 0.25rem; }
+    .img-wrap { width: 100%; display: flex; justify-content: center; align-items: center; }
+    img { max-width: 100%; max-height: 85vh; object-fit: contain; display: block; border-radius: 6px; }
+    .print-footer { margin-top: 0.75rem; font-size: 8pt; color: #64748b; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="print-header">
+    <div class="print-brand">Digital Learning Hub • Gmail Mastery</div>
+    <div class="print-title">${escapeHtml(cleanTitle)}</div>
+  </div>
+  <div class="img-wrap">
+    <img src="${imgSrc}" alt="${escapeHtml(cleanTitle)}" onload="window.focus(); window.print();" />
+  </div>
+  <div class="print-footer">
+    Digital Learning Hub — https://vksinglakkr.github.io/digital-learning-hub/
+  </div>
+</body>
+</html>`);
+    frameDoc.close();
+  }
+
+  // Share tutorial (Native Web Share with fallback to clipboard copy)
+  function shareTutorial() {
+    const data = currentData || {};
+    const publicUrl = getCanonicalShareUrl(data);
+    const shareTitle = `${data.title || 'Gmail Tutorial'} | Digital Learning Hub`;
+    const shareText = data.subtitle || 'अपनी भाषा में Gmail सीखें आसान विजुअल स्टेप्स में';
+
+    if (navigator.share) {
+      navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: publicUrl
+      }).then(() => {
+        showToast('✅ लिंक शेयर कर दिया गया!');
+      }).catch((err) => {
+        if (err.name !== 'AbortError') {
+          copyShareLink(publicUrl);
+        }
+      });
+    } else {
+      copyShareLink(publicUrl);
+    }
+  }
+
+  function copyShareLink(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('📋 लिंक कॉपी हो गया! अब आप इसे कहीं भी शेयर कर सकते हैं।');
+      }).catch(() => {
+        fallbackCopyText(url);
+      });
+    } else {
+      fallbackCopyText(url);
+    }
+  }
+
+  function fallbackCopyText(text) {
+    const input = document.createElement('input');
+    input.value = text;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.focus();
+    input.select();
+    try {
+      document.execCommand('copy');
+      showToast('📋 लिंक कॉपी हो गया!');
+    } catch {
+      showToast('URL: ' + text);
+    }
+    document.body.removeChild(input);
+  }
+
   // Render Summary Box helper
   function renderSummaryBox(summaryBox) {
     if (!summaryBox) return '';
@@ -212,21 +354,35 @@
     const root = document.getElementById('tutorial-root') || document.body;
 
     // 1. Header
-    const brandBadge = data.brandBadge || 'Explanation Type';
     const brandTitle = data.brandTitle || 'Digital Learning Hub';
 
-    // 2. Hero Meta Tags
-    const metaTagsHtml = (data.meta || []).map(tag => `<span class="meta-tag">${tag}</span>`).join('');
+    // 2. Learning Outcomes
+    const outcomesList = Array.isArray(data.learningOutcomes) ? data.learningOutcomes : [];
+    const outcomesHtml = (outcomesList.length > 0) ? `
+      <div class="learning-outcomes-card">
+        <div class="outcomes-header">
+          <span class="outcomes-badge-icon">🎯</span>
+          <h2 class="outcomes-heading">आप क्या सीखेंगे</h2>
+        </div>
+        <div class="outcomes-grid">
+          ${outcomesList.map(item => `
+            <div class="outcomes-item">
+              <span class="outcomes-check">✓</span>
+              <span class="outcomes-text">${item}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : '';
 
     // 3. Section 1 (Problem)
     const prob = (data.sections && data.sections.problem) ? data.sections.problem : {};
     const probStepNum = prob.stepNum || 'Section 1';
     const probHeading = prob.heading || 'पहले समस्या समझें';
-    const probBadge = prob.badge || 'Status 1';
-    const probHint = prob.hint || 'चित्र पर क्लिक करके बड़ा देखें';
+    const cleanProbBadge = formatBadgeText(prob.badge, 'Status 1');
     const probImg = prob.image || '';
     const probAlt = prob.alt || probHeading;
-    const probLightboxTitle = prob.lightboxTitle || `${probBadge}: ${probHeading}`;
+    const cleanProbLbTitle = formatBadgeText(prob.lightboxTitle, `${cleanProbBadge}: ${probHeading}`);
 
     // 4. Section 2 (Solution / How-To)
     const sol = (data.sections && data.sections.solution) ? data.sections.solution : {};
@@ -235,24 +391,27 @@
     const solCards = sol.cards || [];
 
     const solCardsHtml = solCards.map((card, idx) => {
-      const cardBadge = card.badge || `Status ${idx + 2}`;
-      const cardHint = card.hint || 'चित्र पर क्लिक करके बड़ा देखें';
+      const cleanCardBadge = formatBadgeText(card.badge, `Status ${idx + 2}`);
       const cardImg = card.image || '';
-      const cardAlt = card.alt || cardBadge;
-      const cardLbTitle = card.lightboxTitle || `${cardBadge}: ${solHeading}`;
-      const actionHtml = card.zoomBtn
-        ? `<button class="btn-zoom" onclick="window.TutorialEngine.openLightbox('${cardImg}', '${escapeHtml(cardLbTitle)}')"><span>🔍 पूरा देखें</span></button>`
-        : `<span style="font-size: 0.72rem; color: var(--slate-400);">${cardHint}</span>`;
+      const cardAlt = card.alt || cleanCardBadge;
+      const cleanCardLbTitle = formatBadgeText(card.lightboxTitle, `${cleanCardBadge}: ${solHeading}`);
 
       return `
         <div class="visual-card">
           <div class="visual-topbar">
             <span class="visual-badge">
-              <span>${cardBadge}</span>
+              <span>${cleanCardBadge}</span>
             </span>
-            ${actionHtml}
+            <div class="visual-tools">
+              <button class="btn-visual-tool" onclick="window.TutorialEngine.printInfographic('${cardImg}', '${escapeHtml(cleanCardLbTitle)}')" title="यह इन्फोग्राफिक प्रिंट करें">
+                <span class="tool-icon">🖨️</span> <span>Print</span>
+              </button>
+              <button class="btn-visual-tool btn-zoom" onclick="window.TutorialEngine.openLightbox('${cardImg}', '${escapeHtml(cleanCardLbTitle)}')">
+                <span>🔍 पूरा देखें</span>
+              </button>
+            </div>
           </div>
-          <div class="visual-img-wrap" onclick="window.TutorialEngine.openLightbox('${cardImg}', '${escapeHtml(cardLbTitle)}')">
+          <div class="visual-img-wrap" onclick="window.TutorialEngine.openLightbox('${cardImg}', '${escapeHtml(cleanCardLbTitle)}')">
             <img 
               src="${cardImg}" 
               alt="${escapeHtml(cardAlt)}" 
@@ -268,7 +427,7 @@
 
     // Zoom button target for Section 2 topbar
     const firstSolImg = (solCards.length > 0) ? solCards[0].image : '';
-    const firstSolLbTitle = (solCards.length > 0) ? (solCards[0].lightboxTitle || `${solCards[0].badge}: ${solHeading}`) : '';
+    const firstSolLbTitle = (solCards.length > 0) ? formatBadgeText(solCards[0].lightboxTitle, `${formatBadgeText(solCards[0].badge, 'Status 2')}: ${solHeading}`) : '';
 
     // 5. Optional Media (YouTube, Facebook, Instagram Reels)
     const mediaList = Array.isArray(data.media) ? data.media : [];
@@ -344,30 +503,49 @@
     // 6. Footer & Topic Navigation
     const topicUrl = resolveTopicUrl(data);
     const footerSeries = (data.footer && data.footer.series) ? data.footer.series : 'Digital Learning Hub • Gmail Mastery Series';
-    const footerTopic = (data.footer && data.footer.topic) ? data.footer.topic : (data.title || '');
+    const footerTopic = (data.footer && data.footer.topic) ? data.footer.topic.replace(/Day\s*\d+\s*[•:-]?\s*/gi, '') : (data.title || '');
 
     // Full Template Assembly
     root.innerHTML = `
-      <!-- TOP STICKY HEADER -->
+      <!-- TOP STICKY HEADER (TWO-ROW) -->
       <header class="site-header">
-        <div class="container">
-          <div class="header-inner">
-            <div class="header-left">
-              <a href="${topicUrl}" class="back-to-topic-btn" title="Back to Topic Detail Page">
-                <span class="back-arrow">←</span>
-                <span class="back-text">Back to Topic</span>
-              </a>
-              <span class="header-divider"></span>
-              <a href="${topicUrl}" class="brand-group" title="Digital Learning Hub">
-                <span class="brand-badge">${brandBadge}</span>
-                <span class="brand-title">${brandTitle}</span>
-              </a>
+        <!-- Row 1: Brand & Quick Actions -->
+        <div class="header-row-top">
+          <div class="container header-top-inner">
+            <a href="${topicUrl}" class="brand-group" title="Digital Learning Hub">
+              <span class="brand-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </span>
+              <span class="brand-title">${brandTitle}</span>
+            </a>
+            <div class="header-actions">
+              <button class="header-tool-btn" onclick="window.TutorialEngine.printTutorial()" title="पूरा Tutorial प्रिंट करें (PDF)">
+                <span class="tool-icon">🖨️</span>
+                <span class="tool-label">Print</span>
+              </button>
+              <button class="header-tool-btn" onclick="window.TutorialEngine.shareTutorial()" title="Tutorial लिंक शेयर करें">
+                <span class="tool-icon">🔗</span>
+                <span class="tool-label">Share</span>
+              </button>
             </div>
-            <nav class="nav-links">
-              <a href="#section-1" class="nav-btn">1. समस्या समझें</a>
-              <a href="#section-2" class="nav-btn">2. करना सीखें</a>
+          </div>
+        </div>
+
+        <!-- Row 2: Back to Topic & Learning Navigation -->
+        <div class="header-row-nav">
+          <div class="container header-nav-inner">
+            <a href="${topicUrl}" class="back-to-topic-btn" title="विषय पेज पर वापस जाएँ">
+              <span class="back-arrow">←</span>
+              <span class="back-text">वापस</span>
+            </a>
+            <nav class="nav-links" aria-label="Lesson Sections">
+              <a href="#section-1" class="nav-btn">समस्या समझें</a>
+              <a href="#section-2" class="nav-btn">करना सीखें</a>
               ${hasMedia ? '<a href="#section-video" class="nav-btn nav-btn-video">🎬 Video से समझें</a>' : ''}
-              <a href="#section-3" class="nav-btn">3. खुद करके देखें</a>
+              <a href="#section-3" class="nav-btn">अभ्यास करें</a>
             </nav>
           </div>
         </div>
@@ -377,7 +555,7 @@
       <section class="hero-section">
         <div class="container">
           <div class="hero-pill">
-            <span>✉️ GMAIL MASTERY SERIES</span> &bull; <span>${data.dayPill || 'DAY 01'}</span>
+            <span>✉️ GMAIL MASTERY</span>
           </div>
           <h1 class="hero-title">
             ${data.title || ''}
@@ -385,9 +563,9 @@
           <p class="hero-subtitle">
             ${data.subtitle || ''}
           </p>
-          <div class="hero-meta">
-            ${metaTagsHtml}
-          </div>
+
+          <!-- Learning Outcomes Card: आप क्या सीखेंगे -->
+          ${outcomesHtml}
         </div>
       </section>
 
@@ -401,19 +579,28 @@
               <span class="section-step-num">${probStepNum}</span>
               <h2 class="section-heading">${probHeading}</h2>
             </div>
-            <button class="btn-zoom" onclick="window.TutorialEngine.openLightbox('${probImg}', '${escapeHtml(probLightboxTitle)}')">
-              <span>🔍 पूरा देखें (Full Size)</span>
-            </button>
+            <div class="section-header-tools">
+              <button class="btn-zoom" onclick="window.TutorialEngine.openLightbox('${probImg}', '${escapeHtml(cleanProbLbTitle)}')">
+                <span>🔍 पूरा देखें (Full Size)</span>
+              </button>
+            </div>
           </div>
 
           <div class="visual-card">
             <div class="visual-topbar">
               <span class="visual-badge">
-                <span>${probBadge}</span>
+                <span>${cleanProbBadge}</span>
               </span>
-              <span style="font-size: 0.72rem; color: var(--slate-400);">${probHint}</span>
+              <div class="visual-tools">
+                <button class="btn-visual-tool" onclick="window.TutorialEngine.printInfographic('${probImg}', '${escapeHtml(cleanProbLbTitle)}')" title="यह इन्फोग्राफिक प्रिंट करें">
+                  <span class="tool-icon">🖨️</span> <span>Print</span>
+                </button>
+                <button class="btn-visual-tool btn-zoom" onclick="window.TutorialEngine.openLightbox('${probImg}', '${escapeHtml(cleanProbLbTitle)}')">
+                  <span>🔍 पूरा देखें</span>
+                </button>
+              </div>
             </div>
-            <div class="visual-img-wrap" onclick="window.TutorialEngine.openLightbox('${probImg}', '${escapeHtml(probLightboxTitle)}')">
+            <div class="visual-img-wrap" onclick="window.TutorialEngine.openLightbox('${probImg}', '${escapeHtml(cleanProbLbTitle)}')">
               <img 
                 src="${probImg}" 
                 alt="${escapeHtml(probAlt)}" 
@@ -542,7 +729,12 @@
       <div class="lightbox-modal" id="lightbox" onclick="window.TutorialEngine.closeLightbox(event)">
         <div class="lightbox-topbar">
           <span class="lightbox-title" id="lightbox-label">Full-Size Image View</span>
-          <button class="lightbox-close" onclick="window.TutorialEngine.closeLightbox()" title="बंद करें (Esc)">✕</button>
+          <div class="lightbox-actions">
+            <button class="btn-lightbox-tool" onclick="window.TutorialEngine.printInfographic(document.getElementById('lightbox-img').src, document.getElementById('lightbox-label').innerText)" title="यह चित्र प्रिंट करें">
+              <span>🖨️ Print</span>
+            </button>
+            <button class="lightbox-close" onclick="window.TutorialEngine.closeLightbox()" title="बंद करें (Esc)">✕</button>
+          </div>
         </div>
         <div class="lightbox-content" onclick="event.stopPropagation()">
           <img id="lightbox-img" src="" alt="Full size preview" />
@@ -662,7 +854,10 @@
     resetPractice: resetPractice,
     showToast: showToast,
     resolveTopicUrl: resolveTopicUrl,
-    loadMedia: loadMedia
+    loadMedia: loadMedia,
+    printTutorial: printTutorial,
+    printInfographic: printInfographic,
+    shareTutorial: shareTutorial
   };
 
   // Auto-init on page load if TUTORIAL_DATA exists

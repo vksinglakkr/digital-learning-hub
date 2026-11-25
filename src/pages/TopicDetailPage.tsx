@@ -415,6 +415,7 @@ export const TopicDetailPage: React.FC = () => {
         {/* Working Breadcrumbs */}
         <div className="bg-white border-b border-slate-200">
           <Breadcrumbs
+            hideHome={isGmailCategory}
             items={[
               { label: category.title, to: `/category/${category.slug}` },
               { label: topic.title },
@@ -423,75 +424,50 @@ export const TopicDetailPage: React.FC = () => {
         </div>
 
         {/* Topic Header */}
-        <section className="bg-white border-b border-slate-200 py-10 sm:py-14">
+        <section className={`bg-white border-b border-slate-200 ${isGmailCategory ? 'py-7 sm:py-9' : 'py-10 sm:py-14'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button
-              onClick={() => navigate(`/category/${category.slug}`)}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-teal-700 transition-colors mb-6"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to {category.title}</span>
-            </button>
+            {!isGmailCategory && (
+              <button
+                onClick={() => navigate(`/category/${category.slug}`)}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-teal-700 transition-colors mb-6"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Back to {category.title}</span>
+              </button>
+            )}
 
             <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-              <div className="space-y-3 max-w-3xl">
+              <div className="space-y-3.5 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-100 uppercase tracking-wider">
                     {category.title}
                   </span>
-                  {gmailMeta && (
-                    <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
-                      {gmailMeta.day}
-                    </span>
-                  )}
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
                     Level: {topic.difficulty}
                   </span>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1">
-                    {React.createElement(PRESENTATION_CONFIG[presentationStyle].icon, { className: 'w-3 h-3 text-teal-600' })}
-                    <span>{isGmailCategory ? 'Explanation Type' : PRESENTATION_CONFIG[presentationStyle].badge}</span>
-                  </span>
+                  {!isGmailCategory && (
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1">
+                      {React.createElement(PRESENTATION_CONFIG[presentationStyle].icon, { className: 'w-3 h-3 text-teal-600' })}
+                      <span>{PRESENTATION_CONFIG[presentationStyle].badge}</span>
+                    </span>
+                  )}
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
                   {topic.title}
                 </h1>
 
-                <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal">
                   {topic.shortDescription || topic.detailedDescription}
                 </p>
               </div>
 
-              {/* Topic Resource Summary Box */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 shrink-0 w-full lg:w-72">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
-                  {isGmailCategory ? 'पाठ सारांश (Lesson Overview)' : 'Resource Inventory'}
-                </span>
-                {isGmailCategory && gmailMeta ? (
-                  <div className="space-y-2.5 text-xs">
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span className="flex items-center gap-1.5">
-                        <ImageIcon className="w-3.5 h-3.5 text-emerald-600" />
-                        <span>Infographics</span>
-                      </span>
-                      <span className="font-semibold text-slate-900">{gmailMeta.infographics}</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span className="flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-teal-600" />
-                        <span>Hands-on Task</span>
-                      </span>
-                      <span className="font-semibold text-slate-900">1</span>
-                    </div>
-                    <div className="flex items-center justify-between text-slate-600">
-                      <span className="flex items-center gap-1.5">
-                        <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-                        <span>Format</span>
-                      </span>
-                      <span className="font-semibold text-slate-900">Explanation Type</span>
-                    </div>
-                  </div>
-                ) : (
+              {/* Topic Resource Summary Box (omitted for simplified Gmail layout) */}
+              {!isGmailCategory && (
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 shrink-0 w-full lg:w-72">
+                  <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
+                    Resource Inventory
+                  </span>
                   <div className="space-y-2 text-xs">
                     <div className="flex items-center justify-between text-slate-600">
                       <span className="flex items-center gap-1.5">
@@ -539,8 +515,8 @@ export const TopicDetailPage: React.FC = () => {
                       <span className="text-teal-800 font-semibold">{PRESENTATION_CONFIG[presentationStyle].title}</span>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -683,39 +659,25 @@ export const TopicDetailPage: React.FC = () => {
                 </section>
               )}
 
-              {/* ARCHETYPE 2: Situation-Based / Explanation Type Tutorial */}
+              {/* ARCHETYPE 2: Situation-Based / Gmail Tutorial */}
               {presentationStyle === 'situation-based' && (
                 isGmailCategory && gmailMeta ? (
                   <section className="space-y-8">
-                    {/* Hero Action Card */}
-                    <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 text-white rounded-3xl p-7 sm:p-9 shadow-xl border border-teal-500/30">
-                      <div className="absolute -right-20 -top-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
-                      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                        <div className="space-y-3 max-w-2xl">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold border border-teal-500/30">
-                            <Sparkles className="w-3.5 h-3.5" />
-                            <span>{gmailMeta.day} • Explanation Type Lesson</span>
-                          </div>
-                          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                            {topic.title}
+                    {/* Simplified Hero Action Card */}
+                    <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-500/30">
+                      <div className="absolute -right-20 -top-20 w-72 h-72 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+                      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div className="space-y-2 max-w-2xl">
+                          <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                            चरण-दर-चरण विज़ुअल गाइड और अभ्यास
                           </h2>
-                          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                            {topic.detailedDescription || topic.shortDescription}
+                          <p className="text-base text-slate-200 leading-relaxed">
+                            आसान चित्रों और व्यावहारिक उदाहरणों के साथ इस विषय को अपने Gmail में तुरंत लागू करना सीखें।
                           </p>
-                          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-                            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-teal-300 font-semibold">
-                              <ImageIcon className="w-4 h-4" />
-                              <span>{gmailMeta.infographics} Original Infographics</span>
-                            </div>
-                            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-emerald-300 font-semibold">
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span>1 Hands-on Practice Task</span>
-                            </div>
-                          </div>
                         </div>
 
                         {tutorial && (
-                          <div className="shrink-0 flex flex-col gap-2.5 w-full sm:w-auto">
+                          <div className="shrink-0 flex flex-col gap-2 w-full sm:w-auto">
                             <a
                               href={buildTutorialUrl(tutorial.tutorialPath)}
                               target="_blank"
@@ -725,9 +687,6 @@ export const TopicDetailPage: React.FC = () => {
                               <span>पूरा Tutorial खोलें</span>
                               <ExternalLink className="w-5 h-5" />
                             </a>
-                            <span className="text-[11px] text-center text-slate-400">
-                              Opens full interactive guide with zoom & checklist
-                            </span>
                           </div>
                         )}
                       </div>
@@ -739,26 +698,21 @@ export const TopicDetailPage: React.FC = () => {
                         <div className="p-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-100">
                           <CheckCircle2 className="w-5 h-5" />
                         </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-slate-900 tracking-tight">
-                            आप क्या सीखेंगे (What You Will Learn)
-                          </h3>
-                          <p className="text-xs sm:text-sm text-slate-500">
-                            इस पाठ में कवर किए गए मुख्य बिंदु और व्यावहारिक ज्ञान
-                          </p>
-                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                          आप क्या सीखेंगे
+                        </h3>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                         {gmailMeta.whatYouWillLearn.map((item, idx) => (
                           <div
                             key={idx}
-                            className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 flex items-start gap-3"
+                            className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 flex items-start gap-3.5"
                           >
-                            <span className="w-6 h-6 rounded-full bg-teal-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                            <span className="w-7 h-7 rounded-full bg-teal-600 text-white font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
                               {idx + 1}
                             </span>
-                            <p className="text-sm text-slate-700 font-medium leading-relaxed">
+                            <p className="text-base sm:text-[17px] text-slate-800 font-medium leading-relaxed">
                               {item}
                             </p>
                           </div>
@@ -767,26 +721,22 @@ export const TopicDetailPage: React.FC = () => {
                     </div>
 
                     {/* Hands-on Practice Info */}
-                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
+                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-xs">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <div className="space-y-1 max-w-2xl">
-                          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 uppercase tracking-wider">
-                            <Sparkles className="w-3.5 h-3.5" />
-                            <span>हाथों-हाथ Practice (Self Practice)</span>
-                          </div>
+                        <div className="space-y-1.5 max-w-2xl">
                           <h3 className="text-lg font-bold text-slate-900">
-                            सुरक्षित और व्यावहारिक अभ्यास
+                            हाथों-हाथ अभ्यास (Self Practice)
                           </h3>
-                          <p className="text-sm text-slate-600 leading-relaxed">
+                          <p className="text-base text-slate-700 leading-relaxed">
                             {gmailMeta.practiceTask}
                           </p>
                         </div>
                         {tutorial && (
                           <a
-                            href={buildTutorialUrl(tutorial.tutorialPath, '#section-2')}
+                            href={buildTutorialUrl(tutorial.tutorialPath, '#section-3')}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition-colors shrink-0"
+                            className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-bold transition-colors shrink-0"
                           >
                             <span>अभ्यास शुरू करें</span>
                             <ExternalLink className="w-4 h-4" />
