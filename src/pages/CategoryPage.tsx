@@ -9,6 +9,8 @@ import { CurriculumLoadingState } from '../components/common/CurriculumLoadingSt
 import { CurriculumErrorState } from '../components/common/CurriculumErrorState'
 import { isTopicPublished, getTopicTutorial } from '../config/topicTutorials'
 import { GMAIL_NEEDS } from '../data/gmailNeedsData'
+import { CuriosityBanner } from '../components/CuriosityBanner'
+import { GMAIL_CURIOSITY_CARDS } from '../data/gmailCuriosityData'
 import type { TopicItem } from '../types'
 import { 
   ArrowLeft, 
@@ -357,6 +359,19 @@ export const CategoryPage: React.FC = () => {
         {/* Main Content Area */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
           
+          {/* Gmail Curiosity Banner — Near the top of the Gmail Category Page */}
+          {isGmailCategory && !isSearching && (
+            <div className="mb-6">
+              <CuriosityBanner
+                title="अरे वाह! Gmail में ये भी होता है?"
+                badgeText="Gmail ट्रिक"
+                cards={GMAIL_CURIOSITY_CARDS}
+                ariaLabel="Gmail रोचक और उपयोगी ट्रिक्स"
+                containerClassName=""
+              />
+            </div>
+          )}
+
           {/* Search Box always visible and friendly */}
           <div className="mb-8">
             <div className="relative max-w-2xl">
