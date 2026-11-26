@@ -9,7 +9,8 @@ import {
   Binary, 
   ArrowRight,
   Layers,
-  Mail
+  Mail,
+  Calendar
 } from 'lucide-react'
 import type { CategoryItem } from '../types'
 
@@ -40,6 +41,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
           iconBg: 'bg-rose-50 border-rose-200/80',
           cardHover: 'hover:border-rose-300',
           desc: 'Email को स्मार्ट तरीके से लिखें और Schedule करें।'
+        }
+      case 'calendar':
+        return {
+          icon: <Calendar className="w-8 h-8 text-blue-600" />,
+          iconBg: 'bg-blue-50 border-blue-200/80',
+          cardHover: 'hover:border-blue-300',
+          desc: 'समय की कद्र, जीवन में शांति — दिन को बेहतर प्लान करें।'
         }
       default: {
         let iconElem = <Layers className="w-8 h-8 text-teal-600" />

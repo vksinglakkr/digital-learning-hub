@@ -4,16 +4,16 @@
   "generatedAt": "2026-11-23T11:13:54.050Z",
   "description": "Official published curriculum dataset containing verified educational categories, topics, and multi-format learning resources.",
   "summary": {
-    "categoryCount": 7,
-    "topicCount": 22,
-    "publishedResourceCount": 10,
+    "categoryCount": 8,
+    "topicCount": 84,
+    "publishedResourceCount": 72,
     "excludedDraftCount": 0,
     "excludedHiddenCount": 39,
     "videoCount": 1,
     "clipCount": 0,
     "infographicCount": 4,
     "pdfCount": 0,
-    "tutorialCount": 5,
+    "tutorialCount": 67,
     "otherCount": 0
   },
   "categories": [
@@ -86,6 +86,16 @@
       "resourceCount": 4,
       "color": "teal",
       "displayOrder": 7
+    },
+    {
+      "id": "calendar",
+      "slug": "calendar",
+      "title": "Google Calendar",
+      "description": "समय की कद्र, जीवन में शांति — Google Calendar से दिन को बेहतर प्लान करें।",
+      "iconName": "Calendar",
+      "resourceCount": 30,
+      "color": "teal",
+      "displayOrder": 8
     }
   ],
   "topics": [
@@ -2364,6 +2374,1026 @@
         }
       ],
       "displayOrder": 36
+    },
+    {
+      "id": "calendar-create-event",
+      "categoryId": "calendar",
+      "slug": "create-event",
+      "title": "Create Your First Event — अपना पहला Event बनाएँ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में अपना पहला Event बनाएँ — बस 1 मिनट का काम!",
+      "detailedDescription": "सीखें कि कैसे किसी भी मीटिंग, डॉक्टर अपॉइंटमेंट या जन्मदिन को कैलेंडर में जोड़ें ताकि सही समय पर याद आ सके।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-create-event-1",
+          "title": "Create Your First Event — अपना पहला Event बनाएँ",
+          "description": "1 मिनट में Google Calendar में नया इवेंट बनाना और रिमाइंडर पाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/create-event/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-create-event-1",
+          "phaseTitle": "Getting Started",
+          "objective": "Create your first Google Calendar event with title, time, and reminder."
+        }
+      ],
+      "displayOrder": 1
+    },
+    {
+      "id": "calendar-recurring-events",
+      "categoryId": "calendar",
+      "slug": "recurring-events",
+      "title": "Recurring Events — रोज़ या हर महीने के काम बार-बार क्यों टाइप करें?",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Recurring Events (दोहराए जाने वाले काम) सेट करना सीखें।",
+      "detailedDescription": "रोज़ाना की क्लास, हर हफ़्ते की टीम मीटिंग या हर महीने का बिजली/किराया बिल — Recurring Events फीचर से एक बार सेट करें और यह अपने आप हर तय दिन पर दोहराएगा।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-recurring-events-1",
+          "title": "Day 02: Recurring Events — रोज़ या हर महीने के काम बार-बार क्यों टाइप करें?",
+          "description": "Google Calendar में Recurring Events (दोहराए जाने वाले काम) सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/recurring-events/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-recurring-events-1",
+          "phaseTitle": "खंड 1: शुरुआत (Getting Started)",
+          "objective": "Google Calendar में Recurring Events (दोहराए जाने वाले काम) सेट करना सीखें।"
+        }
+      ],
+      "displayOrder": 2
+    },
+    {
+      "id": "calendar-edit-delete-events",
+      "categoryId": "calendar",
+      "slug": "edit-delete-events",
+      "title": "Edit, Reschedule & Delete — समय बदलना या मीटिंग हटाना",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में किसी भी इवेंट का समय बदलना, एडिट करना और डिलीट करना सीखें।",
+      "detailedDescription": "ज़िंदगी में प्लान बदलते रहते हैं। Google Calendar में किसी भी इवेंट पर टैप करके पेंसिल (Edit) आइकन से नया समय, तारीख या विवरण बदलें, या ट्रैश कैन (Delete) से उसे हटाएँ।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-edit-delete-events-1",
+          "title": "Day 03: Edit, Reschedule & Delete — समय बदलना या मीटिंग हटाना",
+          "description": "Google Calendar में किसी भी इवेंट का समय बदलना, एडिट करना और डिलीट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/edit-delete-events/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-edit-delete-events-1",
+          "phaseTitle": "खंड 1: शुरुआत (Getting Started)",
+          "objective": "Google Calendar में किसी भी इवेंट का समय बदलना, एडिट करना और डिलीट करना सीखें।"
+        }
+      ],
+      "displayOrder": 3
+    },
+    {
+      "id": "calendar-notifications-reminders",
+      "categoryId": "calendar",
+      "slug": "notifications-reminders",
+      "title": "Event Notifications & Reminders — सही समय पर Alert पाएँ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में कस्टम नोटिफिकेशन और मल्टीपल रिमाइंडर्स सेट करना सीखें।",
+      "detailedDescription": "सिर्फ इवेंट बनाना काफी नहीं, सही समय पर सूचना मिलना जरूरी है। सीखें कि कैसे किसी इवेंट में 1 से ज्यादा रिमाइंडर्स (जैसे 1 दिन पहले और 15 मिनट पहले) जोड़ें और फोन या ईमेल पर अलर्ट पाएँ।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-notifications-reminders-1",
+          "title": "Day 04: Event Notifications & Reminders — सही समय पर Alert पाएँ",
+          "description": "Google Calendar में कस्टम नोटिफिकेशन और मल्टीपल रिमाइंडर्स सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/notifications-reminders/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-notifications-reminders-1",
+          "phaseTitle": "खंड 2: समय पर याद रखें (Smarter Events)",
+          "objective": "Google Calendar में कस्टम नोटिफिकेशन और मल्टीपल रिमाइंडर्स सेट करना सीखें।"
+        }
+      ],
+      "displayOrder": 4
+    },
+    {
+      "id": "calendar-event-location",
+      "categoryId": "calendar",
+      "slug": "event-location",
+      "title": "Add Location to Events — लोकेशन जोड़ें और मैप का रास्ता पाएँ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar इवेंट में Google Maps लोकेशन जोड़ना और नेविगेशन पाना सीखें।",
+      "detailedDescription": "मीटिंग या शादी का पता ढूँढने में देर न हो! इवेंट में \"Add location\" से सटीक पता या लैंडमार्क जोड़ें। इवेंट का समय आते ही 1 टैप में Google Maps का नेविगेशन खुल जाएगा।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-event-location-1",
+          "title": "Day 05: Add Location to Events — लोकेशन जोड़ें और मैप का रास्ता पाएँ",
+          "description": "Google Calendar इवेंट में Google Maps लोकेशन जोड़ना और नेविगेशन पाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/event-location/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-event-location-1",
+          "phaseTitle": "खंड 2: समय पर याद रखें (Smarter Events)",
+          "objective": "Google Calendar इवेंट में Google Maps लोकेशन जोड़ना और नेविगेशन पाना सीखें।"
+        }
+      ],
+      "displayOrder": 5
+    },
+    {
+      "id": "calendar-share-calendar",
+      "categoryId": "calendar",
+      "slug": "share-calendar",
+      "title": "Share Your Calendar — टीम या परिवार के साथ कैलेंडर साझा करें",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar को टीम के सदस्यों या परिवार के साथ शेयर करना और परमिशन सेट करना सीखें।",
+      "detailedDescription": "बार-बार फोन करके \"क्या आप फ्री हैं?\" पूछने की ज़रूरत नहीं। अपने Google Calendar को दोस्तों, कलीग्स या परिवार के साथ शेयर करें और यह भी तय करें कि वे केवल फ्री/बिज़ी देख सकते हैं या इवेंट बदल भी सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-share-calendar-1",
+          "title": "Day 06: Share Your Calendar — टीम या परिवार के साथ कैलेंडर साझा करें",
+          "description": "Google Calendar को टीम के सदस्यों या परिवार के साथ शेयर करना और परमिशन सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/share-calendar/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-share-calendar-1",
+          "phaseTitle": "खंड 3: मिलकर काम करें (Collaboration)",
+          "objective": "Google Calendar को टीम के सदस्यों या परिवार के साथ शेयर करना और परमिशन सेट करना सीखें।"
+        }
+      ],
+      "displayOrder": 6
+    },
+    {
+      "id": "calendar-alarm-vs-calendar",
+      "categoryId": "calendar",
+      "slug": "alarm-vs-calendar",
+      "title": "Alarm vs Google Calendar — कब क्या इस्तेमाल करें?",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Alarm और Google Calendar के बीच का अंतर समझें और दोनों का सही उपयोग करना सीखें।",
+      "detailedDescription": "अलार्म सिर्फ आवाज़ करता है, लेकिन कैलेंडर संदर्भ (Context), स्थान और भविष्य का रिकॉर्ड देता है। सुबह जागने या चाय के लिए अलार्म सही है, लेकिन मीटिंग्स, फीस भुगतान और अपॉइंटमेंट्स के लिए कैलेंडर ही सबसे बेहतर है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-alarm-vs-calendar-1",
+          "title": "Day 07: Alarm vs Google Calendar — कब क्या इस्तेमाल करें?",
+          "description": "Alarm और Google Calendar के बीच का अंतर समझें और दोनों का सही उपयोग करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/alarm-vs-calendar/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-alarm-vs-calendar-1",
+          "phaseTitle": "खंड 4: व्यवस्थित रहें (Organization)",
+          "objective": "Alarm और Google Calendar के बीच का अंतर समझें और दोनों का सही उपयोग करना सीखें।"
+        }
+      ],
+      "displayOrder": 7
+    },
+    {
+      "id": "calendar-departure-time",
+      "categoryId": "calendar",
+      "slug": "departure-time",
+      "title": "Departure Time Reminder — घर से निकलने का सही समय जानें",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Time to Leave (घर से निकलने का अलर्ट) सेट करना सीखें।",
+      "detailedDescription": "मीटिंग के समय पर पहुँचने के लिए केवल मीटिंग का समय जानना काफी नहीं, रास्ते का ट्रैफिक जानना भी जरूरी है। इवेंट में लोकेशन जोड़ने पर Google Calendar आपको ट्रैफिक के आधार पर घर से निकलने का अलर्ट भेजता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-departure-time-1",
+          "title": "Day 08: Departure Time Reminder — घर से निकलने का सही समय जानें",
+          "description": "Google Calendar में Time to Leave (घर से निकलने का अलर्ट) सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/departure-time/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-departure-time-1",
+          "phaseTitle": "खंड 2: समय पर याद रखें (Smarter Events)",
+          "objective": "Google Calendar में Time to Leave (घर से निकलने का अलर्ट) सेट करना सीखें।"
+        }
+      ],
+      "displayOrder": 8
+    },
+    {
+      "id": "calendar-all-day-events",
+      "categoryId": "calendar",
+      "slug": "all-day-events",
+      "title": "All-Day Events — जन्मदिन, सालगिरह और पूरे दिन की छुट्टियाँ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में All-day (पूरे दिन के) इवेंट्स बनाना और व्यवस्थित करना सीखें।",
+      "detailedDescription": "जन्मदिन, एनिवर्सरी, पब्लिक हॉलीडे या कोई डेडलाइन — ये किसी 1 घंटे के नहीं, पूरे दिन के होते हैं। All-day इवेंट्स समय स्लॉट नहीं घेरते बल्कि कैलेंडर ग्रिड के शीर्ष पर बैनर के रूप में दिखते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-all-day-events-1",
+          "title": "Day 09: All-Day Events — जन्मदिन, सालगिरह और पूरे दिन की छुट्टियाँ",
+          "description": "Google Calendar में All-day (पूरे दिन के) इवेंट्स बनाना और व्यवस्थित करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/all-day-events/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-all-day-events-1",
+          "phaseTitle": "खंड 2: समय पर याद रखें (Smarter Events)",
+          "objective": "Google Calendar में All-day (पूरे दिन के) इवेंट्स बनाना और व्यवस्थित करना सीखें।"
+        }
+      ],
+      "displayOrder": 9
+    },
+    {
+      "id": "calendar-color-coding",
+      "categoryId": "calendar",
+      "slug": "color-coding",
+      "title": "Color Coding for Better Planning — रंगों से पहचानें अपने काम",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में इवेंट्स को अलग-अलग रंगों (Color Codes) से व्यवस्थित करना सीखें।",
+      "detailedDescription": "अगर कैलेंडर के सारे इवेंट एक ही रंग के हों तो दिमाग उलझ जाता है। Google Calendar में 11 सुंदर रंग हैं। काम की प्रकृति के अनुसार रंग तय करें ताकि सिर्फ कैलेंडर देखकर पता चल जाए कि दिन में ऑफिस का कितना काम है और पर्सनल कितना।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-color-coding-1",
+          "title": "Day 10: Color Coding for Better Planning — रंगों से पहचानें अपने काम",
+          "description": "Google Calendar में इवेंट्स को अलग-अलग रंगों (Color Codes) से व्यवस्थित करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/color-coding/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-color-coding-1",
+          "phaseTitle": "खंड 4: व्यवस्थित रहें (Organization)",
+          "objective": "Google Calendar में इवेंट्स को अलग-अलग रंगों (Color Codes) से व्यवस्थित करना सीखें।"
+        }
+      ],
+      "displayOrder": 10
+    },
+    {
+      "id": "calendar-multiple-calendars",
+      "categoryId": "calendar",
+      "slug": "multiple-calendars",
+      "title": "Multiple Calendars — काम, घर और शौक के लिए अलग-अलग लेयर्स",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Multiple Calendars (अनेक कैलेंडर लेयर्स) बनाना और प्रबंधित करना सीखें।",
+      "detailedDescription": "सब कुछ एक ही कैलेंडर में डालने से खिचड़ी बन जाती है। Google Calendar में आप अपने शौक, ऑफिस, जिम या साइड प्रोजेक्ट के लिए अलग कैलेंडर बना सकते हैं। जब चाहें चेकबॉक्स अनचेक करके उस लेयर को छुपा सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-multiple-calendars-1",
+          "title": "Day 11: Multiple Calendars — काम, घर और शौक के लिए अलग-अलग लेयर्स",
+          "description": "Google Calendar में Multiple Calendars (अनेक कैलेंडर लेयर्स) बनाना और प्रबंधित करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/multiple-calendars/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-multiple-calendars-1",
+          "phaseTitle": "खंड 4: व्यवस्थित रहें (Organization)",
+          "objective": "Google Calendar में Multiple Calendars (अनेक कैलेंडर लेयर्स) बनाना और प्रबंधित करना सीखें।"
+        }
+      ],
+      "displayOrder": 11
+    },
+    {
+      "id": "calendar-search-events",
+      "categoryId": "calendar",
+      "slug": "search-events",
+      "title": "Search Old Events — पुरानी मीटिंग या डॉक्टर विजिट 5 सेकंड में ढूँढें",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में सर्च बार और सर्च फिल्टर्स से पुराने इवेंट्स को खोजना सीखें।",
+      "detailedDescription": "कैलेंडर सिर्फ भविष्य के लिए नहीं, अतीत का सबसे सटीक डिजिटल रिकॉर्ड भी है। शीर्ष पर बने मैग्निफाइंग ग्लास (Search) में कीवर्ड टाइप करके आप सालों पुराने इवेंट्स, मीटिंग नोट्स और अपॉइंटमेंट्स 5 सेकंड में ढूँढ सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-search-events-1",
+          "title": "Day 12: Search Old Events — पुरानी मीटिंग या डॉक्टर विजिट 5 सेकंड में ढूँढें",
+          "description": "Google Calendar में सर्च बार और सर्च फिल्टर्स से पुराने इवेंट्स को खोजना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/search-events/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-search-events-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar में सर्च बार और सर्च फिल्टर्स से पुराने इवेंट्स को खोजना सीखें।"
+        }
+      ],
+      "displayOrder": 12
+    },
+    {
+      "id": "calendar-invite-guests",
+      "categoryId": "calendar",
+      "slug": "invite-guests",
+      "title": "Invite Guests and Plan — दूसरों को मीटिंग में आमंत्रित करें",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में मेहमानों (Guests) को इनवाइट करना और RSVP ट्रैक करना सीखें।",
+      "detailedDescription": "मीटिंग या ग्रुप कॉल के लिए सबको अलग-अलग मैसेज करने की ज़रूरत नहीं। \"Add guests\" में ईमेल दर्ज करें। Google Calendar खुद सभी को सुंदर इनविटेशन भेजता है और Yes / Maybe / No (RSVP) का जवाब ट्रैक करता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-invite-guests-1",
+          "title": "Day 13: Invite Guests and Plan — दूसरों को मीटिंग में आमंत्रित करें",
+          "description": "Google Calendar में मेहमानों (Guests) को इनवाइट करना और RSVP ट्रैक करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/invite-guests/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-invite-guests-1",
+          "phaseTitle": "खंड 3: मिलकर काम करें (Collaboration)",
+          "objective": "Google Calendar में मेहमानों (Guests) को इनवाइट करना और RSVP ट्रैक करना सीखें।"
+        }
+      ],
+      "displayOrder": 13
+    },
+    {
+      "id": "calendar-google-meet",
+      "categoryId": "calendar",
+      "slug": "google-meet",
+      "title": "Google Meet Link — 1 क्लिक में वीडियो कॉल लिंक जोड़ें",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar इवेंट में 1 क्लिक में सुरक्षित Google Meet वीडियो कॉन्फ्रेंसिंग जोड़ना सीखें।",
+      "detailedDescription": "ऑनलाइन मीटिंग के लिए अलग से लिंक बनाकर व्हाट्सएप पर शेयर करने का झंझट खत्म। \"Add Google Meet video conferencing\" पर टैप करें — 1 सेकंड में 100 लोगों तक के लिए सुरक्षित एचडी वीडियो मीटिंग लिंक तैयार हो जाता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-google-meet-1",
+          "title": "Day 14: Google Meet Link — 1 क्लिक में वीडियो कॉल लिंक जोड़ें",
+          "description": "Google Calendar इवेंट में 1 क्लिक में सुरक्षित Google Meet वीडियो कॉन्फ्रेंसिंग जोड़ना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/google-meet/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-google-meet-1",
+          "phaseTitle": "खंड 3: मिलकर काम करें (Collaboration)",
+          "objective": "Google Calendar इवेंट में 1 क्लिक में सुरक्षित Google Meet वीडियो कॉन्फ्रेंसिंग जोड़ना सीखें।"
+        }
+      ],
+      "displayOrder": 14
+    },
+    {
+      "id": "calendar-working-hours",
+      "categoryId": "calendar",
+      "slug": "working-hours",
+      "title": "Working Hours & Location — काम के घंटे और ऑफिस/घर का स्थान",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Working Hours (काम के घंटे) और Work Location सेट करना सीखें।",
+      "detailedDescription": "अगर कोई आपको रात 9 बजे या छुट्टी के दिन मीटिंग इनवाइट भेजता है, तो कैलेंडर उसे अपने आप चेतावनी देगा कि \"यह व्यक्ति इस समय काम के घंटों से बाहर है\"। साथ ही आप बता सकते हैं कि आज आप ऑफिस से काम कर रहे हैं या वर्क फ्रॉम होम।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-working-hours-1",
+          "title": "Day 15: Working Hours & Location — काम के घंटे और ऑफिस/घर का स्थान",
+          "description": "Google Calendar में Working Hours (काम के घंटे) और Work Location सेट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/working-hours/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-working-hours-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar में Working Hours (काम के घंटे) और Work Location सेट करना सीखें।"
+        }
+      ],
+      "displayOrder": 15
+    },
+    {
+      "id": "calendar-appointment-schedule",
+      "categoryId": "calendar",
+      "slug": "appointment-schedule",
+      "title": "Appointment Schedule — अपना पर्सनल बुकिंग पेज बनाएँ",
+      "difficulty": "Advanced",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Professional Appointment Schedule (बुकिंग पेज) बनाना सीखें।",
+      "detailedDescription": "डॉक्टर, टीचर, कंसल्टेंट या फ्रीलांसर — बार-बार कॉल पर समय तय करने की जगह अपना एक पेशेवर बुकिंग लिंक भेजें। सामने वाला आपकी खाली स्लॉट्स देखकर अपनी पसंद का समय चुनकर खुद मीटिंग बुक कर लेता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-appointment-schedule-1",
+          "title": "Day 16: Appointment Schedule — अपना पर्सनल बुकिंग पेज बनाएँ",
+          "description": "Google Calendar में Professional Appointment Schedule (बुकिंग पेज) बनाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/appointment-schedule/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Advanced",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-appointment-schedule-1",
+          "phaseTitle": "खंड 3: मिलकर काम करें (Collaboration)",
+          "objective": "Google Calendar में Professional Appointment Schedule (बुकिंग पेज) बनाना सीखें।"
+        }
+      ],
+      "displayOrder": 16
+    },
+    {
+      "id": "calendar-tasks-in-calendar",
+      "categoryId": "calendar",
+      "slug": "tasks-in-calendar",
+      "title": "Tasks in Google Calendar — टू-डू लिस्ट और कैलेंडर एक साथ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Google Tasks को जोड़ना, टिक करना और ट्रैक करना सीखें।",
+      "detailedDescription": "मीटिंग (इवेंट) में समय तय होता है, लेकिन टास्क (कार्य) वह है जिसे पूरा करके टिक (✓) करना होता है। Google Calendar में Tasks बनाकर आप अपनी दैनिक टू-डू लिस्ट सीधे कैलेंडर पर देख सकते हैं और काम पूरा होते ही मार्क डन कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-tasks-in-calendar-1",
+          "title": "Day 17: Tasks in Google Calendar — टू-डू लिस्ट और कैलेंडर एक साथ",
+          "description": "Google Calendar में Google Tasks को जोड़ना, टिक करना और ट्रैक करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/tasks-in-calendar/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-tasks-in-calendar-1",
+          "phaseTitle": "खंड 4: व्यवस्थित रहें (Organization)",
+          "objective": "Google Calendar में Google Tasks को जोड़ना, टिक करना और ट्रैक करना सीखें।"
+        }
+      ],
+      "displayOrder": 17
+    },
+    {
+      "id": "calendar-public-holidays",
+      "categoryId": "calendar",
+      "slug": "public-holidays",
+      "title": "Public Holidays Calendar — सरकारी व क्षेत्रीय छुट्टियों की लिस्ट",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Holidays in India (सार्वजनिक अवकाश) चालू करना और देखना सीखें।",
+      "detailedDescription": "दिवाली, ईद, क्रिसमस या गणतंत्र दिवस — कब कौन-सी छुट्टी है, इसके लिए अलग से कैलेंडर ढूँढने की ज़रूरत नहीं। Google Calendar में \"Holidays in India\" अपने आप उपलब्ध होता है। इसे ऑन या ऑफ करना और रीजनल छुट्टियां चुनना सीखें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-public-holidays-1",
+          "title": "Day 18: Public Holidays Calendar — सरकारी व क्षेत्रीय छुट्टियों की लिस्ट",
+          "description": "Google Calendar में Holidays in India (सार्वजनिक अवकाश) चालू करना और देखना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/public-holidays/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-public-holidays-1",
+          "phaseTitle": "खंड 4: व्यवस्थित रहें (Organization)",
+          "objective": "Google Calendar में Holidays in India (सार्वजनिक अवकाश) चालू करना और देखना सीखें।"
+        }
+      ],
+      "displayOrder": 18
+    },
+    {
+      "id": "calendar-common-mistakes",
+      "categoryId": "calendar",
+      "slug": "common-mistakes",
+      "title": "Common 10 Mistakes in Calendar — कैलेंडर इस्तेमाल की 10 बड़ी गलतियाँ",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में होने वाली 10 आम गलतियों और उनके आसान सुधारों को समझें।",
+      "detailedDescription": "ज़्यादातर लोग कैलेंडर इसलिए छोड़ देते हैं क्योंकि वे कुछ बुनियादी गलतियाँ करते हैं: अस्पष्ट टाइटल लिखना, गलत AM/PM चुनना, पुराना रिकॉर्ड साफ न रखना या फोन का सिंक बंद रखना। इस गाइड में 10 गलतियों और उनके समाधान सीखें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-common-mistakes-1",
+          "title": "Day 19: Common 10 Mistakes in Calendar — कैलेंडर इस्तेमाल की 10 बड़ी गलतियाँ",
+          "description": "Google Calendar में होने वाली 10 आम गलतियों और उनके आसान सुधारों को समझें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/common-mistakes/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-common-mistakes-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar में होने वाली 10 आम गलतियों और उनके आसान सुधारों को समझें।"
+        }
+      ],
+      "displayOrder": 19
+    },
+    {
+      "id": "calendar-views-navigation",
+      "categoryId": "calendar",
+      "slug": "views-navigation",
+      "title": "Calendar Views — Day, Week, Month व Schedule View",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Day, Week, Month, Year और Schedule View के बीच स्विच करना और कीबोर्ड शॉर्टकट्स सीखना।",
+      "detailedDescription": "Google Calendar में अलग-अलग समय पर अलग-अलग नज़रिया चाहिए होता है। आज के घंटों के लिए Day View, इस हफ्ते की प्लानिंग के लिए Week View, पूरे महीने के लिए Month View और मोबाइल पर एजेंडा देखने के लिए Schedule View सबसे उपयोगी है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-views-navigation-1",
+          "title": "Day 20: Calendar Views — Day, Week, Month व Schedule View",
+          "description": "Day, Week, Month, Year और Schedule View के बीच स्विच करना और कीबोर्ड शॉर्टकट्स सीखना।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/views-navigation/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-views-navigation-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Day, Week, Month, Year और Schedule View के बीच स्विच करना और कीबोर्ड शॉर्टकट्स सीखना।"
+        }
+      ],
+      "displayOrder": 20
+    },
+    {
+      "id": "calendar-import-export",
+      "categoryId": "calendar",
+      "slug": "import-export",
+      "title": "Import & Export Calendar — बैकअप लें और डेटा सुरक्षित रखें",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar से .ics फाइल एक्सपोर्ट करना और दूसरे अकाउंट में इंपोर्ट करना सीखें।",
+      "detailedDescription": "सालों की मेहनत से दर्ज किए गए जन्मदिन, मीटिंग्स और यादें कहीं खो न जाएँ! Google Calendar में 1 क्लिक से आप अपने पूरे कैलेंडर का बैकअप (.ics फ़ॉर्मेट) अपने कंप्यूटर में डाउनलोड कर सकते हैं या किसी पुरानी फ़ाइल से नए खाते में इंपोर्ट कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-import-export-1",
+          "title": "Day 21: Import & Export Calendar — बैकअप लें और डेटा सुरक्षित रखें",
+          "description": "Google Calendar से .ics फाइल एक्सपोर्ट करना और दूसरे अकाउंट में इंपोर्ट करना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/import-export/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-import-export-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar से .ics फाइल एक्सपोर्ट करना और दूसरे अकाउंट में इंपोर्ट करना सीखें।"
+        }
+      ],
+      "displayOrder": 21
+    },
+    {
+      "id": "calendar-print-calendar",
+      "categoryId": "calendar",
+      "slug": "print-calendar",
+      "title": "Print Calendar — दीवार या डेस्क के लिए कैलेंडर प्रिंट करें",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में किसी भी दिन, हफ्ते या महीने का प्रिंटआउट या PDF बनाना सीखें।",
+      "detailedDescription": "भले ही सब कुछ डिजिटल है, लेकिन कई बार दीवार पर या स्टडी टेबल के सामने कागज़ का प्रिंट बहुत काम आता है। Google Calendar में आप पूरे महीने या हफ्ते का ब्लैक-एंड-व्हाइट या रंगीन प्रिंट निकाल सकते हैं या PDF के रूप में सेव कर सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-print-calendar-1",
+          "title": "Day 22: Print Calendar — दीवार या डेस्क के लिए कैलेंडर प्रिंट करें",
+          "description": "Google Calendar में किसी भी दिन, हफ्ते या महीने का प्रिंटआउट या PDF बनाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/print-calendar/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-print-calendar-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar में किसी भी दिन, हफ्ते या महीने का प्रिंटआउट या PDF बनाना सीखें।"
+        }
+      ],
+      "displayOrder": 22
+    },
+    {
+      "id": "calendar-settings-preferences",
+      "categoryId": "calendar",
+      "slug": "settings-preferences",
+      "title": "Calendar Settings — भाषा, हफ़्ते की शुरुआत और डिफ़ॉल्ट समय",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar की जनरल सेटिंग्स: Start of week, Default duration और View options कॉन्फ़िगर करना।",
+      "detailedDescription": "Google Calendar आपकी ज़रूरतों के हिसाब से खुद को ढाल सकता है। Settings में जाकर आप तय कर सकते हैं कि नया इवेंट हमेशा 30 मिनट का बने या 45 मिनट का, हफ्ता सोमवार से शुरू हो और डार्क मोड चालू रहे।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-settings-preferences-1",
+          "title": "Day 23: Calendar Settings — भाषा, हफ़्ते की शुरुआत और डिफ़ॉल्ट समय",
+          "description": "Google Calendar की जनरल सेटिंग्स: Start of week, Default duration और View options कॉन्फ़िगर करना।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/settings-preferences/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-settings-preferences-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar की जनरल सेटिंग्स: Start of week, Default duration और View options कॉन्फ़िगर करना।"
+        }
+      ],
+      "displayOrder": 23
+    },
+    {
+      "id": "calendar-time-zones",
+      "categoryId": "calendar",
+      "slug": "time-zones",
+      "title": "Time Zone Settings — विदेश में काम या ट्रैवल के समय कोई भ्रम नहीं",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Primary और Secondary Time Zone सेट करना और अंतरराष्ट्रीय मीटिंग्स मैनेज करना।",
+      "detailedDescription": "अगर आप विदेश में बैठे क्लाइंट्स, रिश्तेदारों या रिमोट टीम के साथ काम करते हैं तो टाइमज़ोन का भ्रम बहुत परेशान करता है। Google Calendar में आप एक साथ दो टाइमज़ोन (जैसे IST और EST) ग्रिड पर दिखा सकते हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-time-zones-1",
+          "title": "Day 24: Time Zone Settings — विदेश में काम या ट्रैवल के समय कोई भ्रम नहीं",
+          "description": "Google Calendar में Primary और Secondary Time Zone सेट करना और अंतरराष्ट्रीय मीटिंग्स मैनेज करना।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/time-zones/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-time-zones-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar में Primary और Secondary Time Zone सेट करना और अंतरराष्ट्रीय मीटिंग्स मैनेज करना।"
+        }
+      ],
+      "displayOrder": 24
+    },
+    {
+      "id": "calendar-trash-restore",
+      "categoryId": "calendar",
+      "slug": "trash-restore",
+      "title": "Trash & Restore Deleted Events — गलती से डिलीट हुआ इवेंट वापस पाएँ",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Trash (कचरा पेटी) से हटाए गए इवेंट्स को वापस पाना सीखें।",
+      "detailedDescription": "घबराने की कोई बात नहीं! अगर आपने या किसी शेयर किए गए यूज़र ने कोई महत्वपूर्ण मीटिंग या जन्मदिन गलती से डिलीट कर दिया है, तो Google Calendar उसे 30 दिनों तक Trash में सुरक्षित रखता है। 1 क्लिक में उसे मूल तारीख और समय पर वापस लाया जा सकता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-trash-restore-1",
+          "title": "Day 25: Trash & Restore Deleted Events — गलती से डिलीट हुआ इवेंट वापस पाएँ",
+          "description": "Google Calendar में Trash (कचरा पेटी) से हटाए गए इवेंट्स को वापस पाना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/trash-restore/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-trash-restore-1",
+          "phaseTitle": "खंड 5: एडवांस सेटिंग्स (Advanced Control)",
+          "objective": "Google Calendar में Trash (कचरा पेटी) से हटाए गए इवेंट्स को वापस पाना सीखें।"
+        }
+      ],
+      "displayOrder": 25
+    },
+    {
+      "id": "calendar-events-from-gmail",
+      "categoryId": "calendar",
+      "slug": "events-from-gmail",
+      "title": "Events from Gmail — टिकट और बुकिंग का ऑटोमैटिक कैलेंडर एंट्री",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Gmail से आने वाले बुकिंग और टिकट ईमेल्स को कैलेंडर में स्वतः जोड़ना सीखें।",
+      "detailedDescription": "Google का सबसे जादुई और समय बचाने वाला फीचर! जब भी आपके Gmail पर आईआरसीटीसी ट्रेन टिकट, मेकमाईट्रिप फ्लाइट या बुकमाईशो मूवी का पुष्टिकरण ईमेल आता है, Google Calendar बिना कुछ टाइप किए अपने आप तारीख, समय और PNR के साथ इवेंट तैयार कर देता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-events-from-gmail-1",
+          "title": "Day 26: Events from Gmail — टिकट और बुकिंग का ऑटोमैटिक कैलेंडर एंट्री",
+          "description": "Gmail से आने वाले बुकिंग और टिकट ईमेल्स को कैलेंडर में स्वतः जोड़ना सीखें।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/events-from-gmail/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-events-from-gmail-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Gmail से आने वाले बुकिंग और टिकट ईमेल्स को कैलेंडर में स्वतः जोड़ना सीखें।"
+        }
+      ],
+      "displayOrder": 26
+    },
+    {
+      "id": "calendar-notification-settings",
+      "categoryId": "calendar",
+      "slug": "notification-settings",
+      "title": "Notification Settings — मोबाइल व डेस्कटॉप अलर्ट्स पर पूरा नियंत्रण",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar की संपूर्ण नोटिफिकेशन सेटिंग्स और फोन बैटरी ऑप्टिमाइज़ेशन समझना।",
+      "detailedDescription": "कई बार फोन की बैटरी सेवर सेटिंग्स या साइलेंट मोड की वजह से कैलेंडर के अलर्ट समय पर नहीं मिलते। इस ट्यूटोरियल में सीखें कि कैसे Android/iOS और Desktop Chrome में नोटिफिकेशन की अनुमति, साउंड और फुल-स्क्रीन अलर्ट्स को सही तरीके से चालू रखें।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-notification-settings-1",
+          "title": "Day 27: Notification Settings — मोबाइल व डेस्कटॉप अलर्ट्स पर पूरा नियंत्रण",
+          "description": "Google Calendar की संपूर्ण नोटिफिकेशन सेटिंग्स और फोन बैटरी ऑप्टिमाइज़ेशन समझना।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/notification-settings/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-notification-settings-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar की संपूर्ण नोटिफिकेशन सेटिंग्स और फोन बैटरी ऑप्टिमाइज़ेशन समझना।"
+        }
+      ],
+      "displayOrder": 27
+    },
+    {
+      "id": "calendar-offline-sync",
+      "categoryId": "calendar",
+      "slug": "offline-sync",
+      "title": "Offline Access & Sync — बिना इंटरनेट के भी कैलेंडर देखें",
+      "difficulty": "Intermediate",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar में Offline Access सक्षम करना और इंटरनेट आते ही ऑटोमैटिक सिंक समझना।",
+      "detailedDescription": "अगर आप यात्रा कर रहे हैं या इंटरनेट बंद है, तब भी आपका शेड्यूल बंद नहीं होना चाहिए। Chrome ब्राउज़र में Offline Access चालू करने पर आप बिना इंटरनेट के भी पिछले और आने वाले 2 महीनों के सारे इवेंट्स देख सकते हैं और नए इवेंट बना सकते हैं। इंटरनेट आते ही सब कुछ अपने आप सिंक हो जाता है।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-offline-sync-1",
+          "title": "Day 28: Offline Access & Sync — बिना इंटरनेट के भी कैलेंडर देखें",
+          "description": "Google Calendar में Offline Access सक्षम करना और इंटरनेट आते ही ऑटोमैटिक सिंक समझना।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/offline-sync/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Intermediate",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-offline-sync-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar में Offline Access सक्षम करना और इंटरनेट आते ही ऑटोमैटिक सिंक समझना।"
+        }
+      ],
+      "displayOrder": 28
+    },
+    {
+      "id": "calendar-smart-habits",
+      "categoryId": "calendar",
+      "slug": "smart-habits",
+      "title": "20 Smart Calendar Habits — समय के पक्के और तनावमुक्त बनने के 20 नियम",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar के 20 सबसे शक्तिशाली नियम और दैनिक आदतें जो आपकी प्रोडक्टिविटी दोगुनी कर देंगी।",
+      "detailedDescription": "टूल्स सिर्फ साधन हैं, आदतें ही परिणाम लाती हैं। इस मास्टरक्लास में सीखें 20 स्वर्णिम आदतें: जैसे \"इवेंट का समय तय होते ही 10 सेकंड में कैलेंडर में दर्ज करना\", \"मीटिंग्स के बीच 10 मिनट का बफर रखना\", \"वीकेंड पर अगले हफ्ते का 10 मिनट रिव्यू करना\" और \"रंगों से बैलेंस देखना\"।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-smart-habits-1",
+          "title": "Day 29: 20 Smart Calendar Habits — समय के पक्के और तनावमुक्त बनने के 20 नियम",
+          "description": "Google Calendar के 20 सबसे शक्तिशाली नियम और दैनिक आदतें जो आपकी प्रोडक्टिविटी दोगुनी कर देंगी।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/smart-habits/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-smart-habits-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar के 20 सबसे शक्तिशाली नियम और दैनिक आदतें जो आपकी प्रोडक्टिविटी दोगुनी कर देंगी।"
+        }
+      ],
+      "displayOrder": 29
+    },
+    {
+      "id": "calendar-mobile-vs-desktop",
+      "categoryId": "calendar",
+      "slug": "mobile-vs-desktop",
+      "title": "Mobile vs Desktop — कौन-सा फीचर कहाँ सबसे बेहतर चलता है?",
+      "difficulty": "Beginner",
+      "presentationStyle": "situation-based",
+      "shortDescription": "Google Calendar Mobile App और Desktop Web की तुलना और दोनों का सही उपयोग।",
+      "detailedDescription": "Google Calendar आपके फोन और कंप्यूटर दोनों पर चलता है, लेकिन कुछ काम फोन पर आसान हैं और कुछ कंप्यूटर पर। फोन पर विजेट, वॉयस इनपुट और ऑन-द-गो नोटिफिकेशन सबसे बढ़िया हैं, जबकि कंप्यूटर पर कलर कोडिंग, ड्रैग-एंड-ड्रॉप, प्रिंट और शेयरिंग सेटिंग्स सुपरफास्ट होती हैं।",
+      "relatedTopicIds": [],
+      "resources": [
+        {
+          "id": "res-calendar-mobile-vs-desktop-1",
+          "title": "Day 30: Mobile vs Desktop — कौन-सा फीचर कहाँ सबसे बेहतर चलता है?",
+          "description": "Google Calendar Mobile App और Desktop Web की तुलना और दोनों का सही उपयोग।",
+          "type": "Tutorial",
+          "url": "tutorials/calendar/mobile-vs-desktop/index.html",
+          "displayOrder": 1,
+          "durationOrPages": "Infographic-based Learning",
+          "difficulty": "Beginner",
+          "status": "Published",
+          "isDemo": false
+        }
+      ],
+      "recommendedSequence": [
+        {
+          "stepNumber": 1,
+          "resourceId": "res-calendar-mobile-vs-desktop-1",
+          "phaseTitle": "खंड 6: स्मार्ट आदतें (Smart Habits)",
+          "objective": "Google Calendar Mobile App और Desktop Web की तुलना और दोनों का सही उपयोग।"
+        }
+      ],
+      "displayOrder": 30
     }
   ]
 }

@@ -36,6 +36,7 @@ import {
 import { getTopicTutorial, buildTutorialUrl } from '../config/topicTutorials'
 import { formatSecondsToTime, formatClipDuration } from '../utils/timeFormat'
 import { extractYouTubeVideoId } from '../utils/youtubeEmbed'
+import { CALENDAR_TOPIC_METADATA } from '../data/calendarTopicMetadata'
 
 type ResourceTabKey = 'All' | 'Infographics' | 'Videos' | 'PDFs' | 'Tutorials' | 'External Links'
 
@@ -499,15 +500,39 @@ export const TopicDetailPage: React.FC = () => {
     .filter((r) => r.status === 'Published')
     .sort((a, b) => a.displayOrder - b.displayOrder)
 
-  // Check if topic has a registered dedicated interactive tutorial (e.g. Power BI Bookmarks)
-  const tutorial = getTopicTutorial(topic.id)
-
-  // Determine active presentation style (default to situation-based for gmail, masterclass if tutorial registered and not gmail, otherwise gallery)
+  // Check if topic has a registered dedicated interactive tutorial (e.g. Power BI Bookmarks or Calendar/Gmail)
   const isGmailCategory = category?.id === 'gmail'
+  const isCalendarCategory = category?.id === 'calendar'
+  const isVisualMasteryCategory = isGmailCategory || isCalendarCategory
+
+  const tutorial = getTopicTutorial(topic.id) || (isCalendarCategory ? {
+    tutorialPath: `tutorials/calendar/${topic.slug}/index.html`,
+    title: topic.title,
+    subtitle: topic.shortDescription || 'Google Calendar चरण-दर-चरण विज़ुअल गाइड',
+    hasSimulator: false,
+    hasQuiz: false,
+    hasChallenge: true,
+    difficultyBadge: topic.difficulty || 'Beginner',
+  } : null)
+
+  // Determine active presentation style (strictly situation-based for gmail & calendar visual mastery)
   const gmailMeta = isGmailCategory ? GMAIL_TOPIC_METADATA[topic.id] : undefined
+  const calendarMeta = isCalendarCategory
+    ? (CALENDAR_TOPIC_METADATA[topic.id] || {
+        day: 'Day 01',
+        infographics: 2,
+        whatYouWillLearn: [
+          'Google Calendar में इस फीचर का सही उपयोग समझना',
+          'स्टेप-बाय-स्टेप विज़ुअल गाइड का पालन करना',
+          'वास्तविक जीवन के उदाहरणों के साथ तुरंत अभ्यास करना',
+        ],
+        practiceTask: 'अपने Google Calendar में इस फीचर को आज़माकर देखें और अभ्यास करें।',
+      })
+    : undefined
+  const activeMeta = gmailMeta || calendarMeta
 
   const presentationStyle: TopicPresentationStyle =
-    topic.presentationStyle || (isGmailCategory ? 'situation-based' : (tutorial ? 'masterclass' : 'gallery'))
+    isVisualMasteryCategory ? 'situation-based' : (topic.presentationStyle || (tutorial ? 'masterclass' : 'gallery'))
 
   // Count resources by format
   const videoCount = visibleResources.filter((r) => r.type === 'YouTube Video' || r.type === 'Facebook Video' || (r.type as any) === 'Video').length
@@ -735,7 +760,7 @@ export const TopicDetailPage: React.FC = () => {
         {/* Working Breadcrumbs */}
         <div className="bg-white border-b border-slate-200">
           <Breadcrumbs
-            hideHome={isGmailCategory}
+            hideHome={isVisualMasteryCategory}
             items={[
               { label: category.title, to: `/category/${category.slug}` },
               { label: topic.title },
@@ -744,9 +769,9 @@ export const TopicDetailPage: React.FC = () => {
         </div>
 
         {/* Topic Header */}
-        <section className={`bg-white border-b border-slate-200 ${isGmailCategory ? 'py-7 sm:py-9' : 'py-10 sm:py-14'}`}>
+        <section className={`bg-white border-b border-slate-200 ${isVisualMasteryCategory ? 'py-7 sm:py-9' : 'py-10 sm:py-14'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {!isGmailCategory && (
+            {!isVisualMasteryCategory && (
               <button
                 onClick={() => navigate(`/category/${category.slug}`)}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-teal-700 transition-colors mb-6"
@@ -762,10 +787,20 @@ export const TopicDetailPage: React.FC = () => {
                   <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-100 uppercase tracking-wider">
                     {category.title}
                   </span>
+                  {calendarMeta && (
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                      {calendarMeta.day} of 30
+                    </span>
+                  )}
+                  {gmailMeta && (
+                    <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+                      {gmailMeta.day}
+                    </span>
+                  )}
                   <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200">
-                    Level: {topic.difficulty}
+                    {topic.difficulty}
                   </span>
-                  {!isGmailCategory && (
+                  {!isVisualMasteryCategory && (
                     <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200 flex items-center gap-1">
                       {React.createElement(PRESENTATION_CONFIG[presentationStyle].icon, { className: 'w-3 h-3 text-teal-600' })}
                       <span>{PRESENTATION_CONFIG[presentationStyle].badge}</span>
@@ -782,8 +817,8 @@ export const TopicDetailPage: React.FC = () => {
                 </p>
               </div>
 
-              {/* Topic Resource Summary Box (omitted for simplified Gmail layout) */}
-              {!isGmailCategory && (
+              {/* Topic Resource Summary Box (omitted for simplified Gmail & Calendar layout) */}
+              {!isVisualMasteryCategory && (
                 <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 shrink-0 w-full lg:w-72">
                   <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
                     Resource Inventory
@@ -979,9 +1014,9 @@ export const TopicDetailPage: React.FC = () => {
                 </section>
               )}
 
-              {/* ARCHETYPE 2: Situation-Based / Gmail Tutorial */}
+              {/* ARCHETYPE 2: Situation-Based / Visual Mastery (Gmail & Calendar) */}
               {presentationStyle === 'situation-based' && (
-                isGmailCategory && gmailMeta ? (
+                isVisualMasteryCategory && activeMeta ? (
                   <section className="space-y-8">
                     {/* Simplified Hero Action Card */}
                     <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-teal-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-teal-500/30">
@@ -992,7 +1027,9 @@ export const TopicDetailPage: React.FC = () => {
                             चरण-दर-चरण विज़ुअल गाइड और अभ्यास
                           </h2>
                           <p className="text-base text-slate-200 leading-relaxed">
-                            आसान चित्रों और व्यावहारिक उदाहरणों के साथ इस विषय को अपने Gmail में तुरंत लागू करना सीखें।
+                            {isCalendarCategory
+                              ? 'आसान चित्रों और वास्तविक जीवन के उदाहरणों के साथ इस विषय को अपने Google Calendar में तुरंत लागू करना सीखें।'
+                              : 'आसान चित्रों और व्यावहारिक उदाहरणों के साथ इस विषय को अपने Gmail में तुरंत लागू करना सीखें।'}
                           </p>
                         </div>
 
@@ -1024,7 +1061,7 @@ export const TopicDetailPage: React.FC = () => {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        {gmailMeta.whatYouWillLearn.map((item, idx) => (
+                        {activeMeta.whatYouWillLearn.map((item, idx) => (
                           <div
                             key={idx}
                             className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 flex items-start gap-3.5"
@@ -1048,7 +1085,7 @@ export const TopicDetailPage: React.FC = () => {
                             हाथों-हाथ अभ्यास (Self Practice)
                           </h3>
                           <p className="text-base text-slate-700 leading-relaxed">
-                            {gmailMeta.practiceTask}
+                            {activeMeta.practiceTask}
                           </p>
                         </div>
                         {tutorial && (
@@ -1528,7 +1565,7 @@ export const TopicDetailPage: React.FC = () => {
           )}
 
           {/* Section: Related Topics */}
-          {relatedTopics.length > 0 && (
+          {!isVisualMasteryCategory && relatedTopics.length > 0 && (
             <section className="pt-8 border-t border-slate-200">
               <div className="mb-6">
                 <div className="flex items-center gap-2 text-teal-700 text-xs font-bold tracking-wider uppercase mb-1">

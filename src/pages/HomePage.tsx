@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import { Hero } from '../components/Hero'
+import { CuriosityBanner } from '../components/CuriosityBanner'
 import { CategoriesSection } from '../components/CategoriesSection'
 import { RecentlyAddedLessonsSection } from '../components/RecentlyAddedLessonsSection'
 import { Footer } from '../components/Footer'
@@ -48,6 +49,9 @@ export const HomePage: React.FC = () => {
         <main>
           {/* 1. Hero with Prominent Search */}
           <Hero onNotifyComingSoon={handleNotifyComingSoon} />
+
+          {/* Curiosity Banner: अरे वाह! ये भी हो सकता है? */}
+          <CuriosityBanner />
 
           {/* Dynamic Content or Loading/Error States */}
           {isLoading ? (
