@@ -12,6 +12,7 @@ import { GMAIL_NEEDS } from '../data/gmailNeedsData'
 import { CALENDAR_NEEDS } from '../data/calendarNeedsData'
 import { CALENDAR_PRACTICE_CARDS } from '../data/calendarPracticeData'
 import { CALENDAR_PROJECT_CARDS } from '../data/calendarProjectsData'
+import { GMAIL_PROJECT_CARDS } from '../data/gmailProjectsData'
 import { CALENDAR_REFERENCE_POSTERS, type CalendarReferencePoster } from '../data/calendarReferencePostersData'
 import { CuriosityBanner } from '../components/CuriosityBanner'
 import { GMAIL_CURIOSITY_CARDS } from '../data/gmailCuriosityData'
@@ -114,6 +115,9 @@ export const CategoryPage: React.FC = () => {
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false)
   const [isPostersExpanded, setIsPostersExpanded] = useState(false)
 
+  // Gmail collapsible projects state (default open for easy discovery)
+  const [isGmailProjectsExpanded, setIsGmailProjectsExpanded] = useState(true)
+
   const handleQuickNav = (
     sectionId: string,
     expandStateSetter?: React.Dispatch<React.SetStateAction<boolean>>
@@ -141,6 +145,7 @@ export const CategoryPage: React.FC = () => {
     setIsPracticeExpanded(false)
     setIsProjectsExpanded(false)
     setIsPostersExpanded(false)
+    setIsGmailProjectsExpanded(true)
   }
 
   const { categories, topics: allTopics, isLoading, error, retry } = usePublicCurriculum()
@@ -630,6 +635,97 @@ export const CategoryPage: React.FC = () => {
             </div>
           )}
 
+          {/* QUICK NAVIGATION: Gmail (आप क्या करना चाहते हैं?) */}
+          {isGmailCategory && !isSearching && !showAllTopics && (
+            <div className="mb-8 p-4 sm:p-5 bg-white border border-teal-200/80 rounded-2xl shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3.5 pb-2.5 border-b border-slate-100">
+                <div className="flex items-center gap-2">
+                  <Sparkle className="w-4 h-4 text-teal-600" />
+                  <h2 className="text-sm sm:text-base font-extrabold text-slate-900">
+                    आप क्या करना चाहते हैं?
+                  </h2>
+                </div>
+                <p className="text-xs text-slate-500">
+                  सीधे अपने पसंदीदा सेक्शन पर जाएँ
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+                {/* 1. सीखना शुरू करें — Need-Based Learning */}
+                <button
+                  type="button"
+                  onClick={() => handleQuickNav('section-gmail-need-based')}
+                  className="p-3 bg-slate-50 hover:bg-teal-50/70 border border-slate-200 hover:border-teal-300 rounded-xl text-left transition-all group cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="p-1.5 rounded-lg bg-teal-100/60 text-teal-700 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                      <BookOpen className="w-4 h-4" />
+                    </div>
+                    <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-1.5 py-0.5 rounded border border-teal-200">
+                      जरूरत
+                    </span>
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-teal-900 transition-colors">
+                      सीखना शुरू करें
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-medium">
+                      Need-Based Learning (6 श्रेणियां)
+                    </div>
+                  </div>
+                </button>
+
+                {/* 2. Practical Projects — 4 Projects */}
+                <button
+                  type="button"
+                  onClick={() => handleQuickNav('section-gmail-projects', setIsGmailProjectsExpanded)}
+                  className="p-3 bg-slate-50 hover:bg-teal-50/70 border border-slate-200 hover:border-teal-300 rounded-xl text-left transition-all group cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="p-1.5 rounded-lg bg-indigo-100/60 text-indigo-700 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                      <Workflow className="w-4 h-4" />
+                    </div>
+                    <span className="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200">
+                      4 Projects
+                    </span>
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-teal-900 transition-colors">
+                      Practical Projects
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-medium">
+                      4 गाइडेड प्रोजेक्ट्स
+                    </div>
+                  </div>
+                </button>
+
+                {/* 3. 36-Day Series — 36 Tutorials */}
+                <button
+                  type="button"
+                  onClick={() => setShowAllTopics(true)}
+                  className="p-3 bg-slate-50 hover:bg-teal-50/70 border border-slate-200 hover:border-teal-300 rounded-xl text-left transition-all group cursor-pointer flex flex-col justify-between"
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <div className="p-1.5 rounded-lg bg-blue-100/60 text-blue-700 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">
+                      36 Topics
+                    </span>
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-teal-900 transition-colors">
+                      36-Day Series
+                    </div>
+                    <div className="text-[11px] text-slate-500 font-medium">
+                      सभी 36 ट्यूटोरियल्स
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Search Box always visible and friendly */}
           <div className="mb-8">
             <div className="relative max-w-2xl">
@@ -663,7 +759,7 @@ export const CategoryPage: React.FC = () => {
 
           {/* NEED-BASED FINDER (Gmail & Calendar) */}
           {isNeedBasedCategory && !isSearching && !showAllTopics && (
-            <div id="section-calendar-need-based" className="space-y-8 mb-10 scroll-mt-24">
+            <div id={isCalendarCategory ? "section-calendar-need-based" : "section-gmail-need-based"} className="space-y-8 mb-10 scroll-mt-24">
               
               {/* Heading: आप क्या करना चाहते हैं? for Gmail / सीखना शुरू करें for Calendar */}
               <div>
@@ -838,6 +934,125 @@ export const CategoryPage: React.FC = () => {
                     </div>
                   </div>
 
+                </div>
+              )}
+
+              {/* SECTION (GMAIL): Real-Life Practical Projects - Collapsible */}
+              {isGmailCategory && (
+                <div id="section-gmail-projects" className="bg-gradient-to-br from-teal-50/70 via-slate-50 to-indigo-50/40 border border-teal-200/80 rounded-2xl p-5 sm:p-6 shadow-xs scroll-mt-24 transition-all">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-teal-700 text-white tracking-wide">
+                          Real-Life Practical Projects
+                        </span>
+                        <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                          खुद बनाकर सीखें — वास्तविक जीवन के गाइडेड प्रोजेक्ट्स
+                        </h3>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                        Smart Inbox, Heavy File Sharing, Office Communication व Gmail Security पर आधारित 4 संपूर्ण प्रैक्टिकल प्रोजेक्ट्स।
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto">
+                      <span className="text-xs font-bold text-teal-800 bg-white px-3 py-1.5 rounded-lg border border-teal-200 shadow-2xs">
+                        कुल {GMAIL_PROJECT_CARDS.length} गाइडेड प्रोजेक्ट्स
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setIsGmailProjectsExpanded(!isGmailProjectsExpanded)}
+                        className={`inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                          isGmailProjectsExpanded
+                            ? 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-300'
+                            : 'bg-teal-700 hover:bg-teal-800 text-white shadow-2xs'
+                        }`}
+                      >
+                        <span>{isGmailProjectsExpanded ? 'बंद करें' : 'सभी देखें'}</span>
+                        {isGmailProjectsExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
+                  </div>
+
+                  {isGmailProjectsExpanded && (
+                    <div className="mt-6 pt-5 border-t border-teal-100 space-y-5 animate-in fade-in duration-200">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
+                        {GMAIL_PROJECT_CARDS.map((project) => (
+                          <div
+                            key={project.id}
+                            className="bg-white border border-slate-200 hover:border-teal-400 rounded-xl p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between"
+                          >
+                            <div>
+                              <div className="flex items-center justify-between gap-2 mb-3">
+                                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${project.badgeColor}`}>
+                                  {project.typeLabel}
+                                </span>
+                                <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                                  {project.stepsCount}
+                                </span>
+                              </div>
+
+                              <h4 className="text-sm sm:text-base font-bold text-slate-900 mb-1 leading-snug">
+                                {project.title}
+                              </h4>
+                              <p className="text-[11px] font-medium text-teal-700 mb-2">
+                                {project.subtitle}
+                              </p>
+
+                              <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                                {project.description}
+                              </p>
+
+                              <div className="mb-4 bg-slate-50 border border-slate-100 rounded-lg p-2.5">
+                                <p className="text-[11px] font-bold text-slate-700 mb-1.5">मुख्य सीख (Key Highlights):</p>
+                                <ul className="text-[11px] text-slate-600 space-y-1">
+                                  {project.keyLearnings.map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-1.5">
+                                      <span className="text-teal-600 font-bold shrink-0">✓</span>
+                                      <span>{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                              <a
+                                href={buildTutorialUrl(project.projectUrl)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-1.5 w-full py-2 bg-teal-700 hover:bg-teal-800 text-white rounded-lg text-xs font-bold transition-colors shadow-2xs"
+                              >
+                                <span>प्रोजेक्ट गाइड खोलें</span>
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                              <Link
+                                to={`/category/${category.slug}/topic/${project.primaryTopicSlug}`}
+                                className="inline-flex items-center justify-between text-[11px] font-medium text-slate-500 hover:text-slate-800 transition-colors pt-1"
+                              >
+                                <span>संबंधित मुख्य ट्यूटोरियल</span>
+                                <ArrowRight className="w-3 h-3" />
+                              </Link>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="pt-2 flex justify-center">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsGmailProjectsExpanded(false)
+                            handleQuickNav('section-gmail-projects')
+                          }}
+                          className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-2xs"
+                        >
+                          <span>कम दिखाएं / बंद करें</span>
+                          <ChevronUp className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 

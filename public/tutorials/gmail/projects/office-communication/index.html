@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Office Communication & Follow-up Workflow | Digital Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ea4335;
+      --primary-dark: #c5221f;
+      --primary-light: #fce8e6;
+      --teal-600: #0d9488;
+      --teal-50: #f0fdfa;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+    }
+
+    /* Top Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.625rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-back { background: var(--slate-100); color: var(--slate-700); border-color: var(--border); }
+    .btn-back:hover { background: #e2e8f0; color: var(--slate-900); }
+    .btn-action { background: var(--slate-900); color: #fff; }
+    .btn-action:hover { background: var(--slate-800); }
+    .btn-primary { background: #ea4335; color: #fff; }
+    .btn-primary:hover { background: #d93025; }
+
+    .container { max-width: 1050px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff;
+      border-radius: 1.5rem;
+      padding: 2.25rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(234, 67, 53, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(234, 67, 53, 0.4);
+      margin-bottom: 1rem;
+    }
+    .hero-title { font-size: 1.875rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+    .hero-subtitle { font-size: 1rem; color: #cbd5e1; max-width: 840px; line-height: 1.6; }
+
+    /* Teaching Philosophy Bar */
+    .philosophy-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.875rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      overflow-x: auto;
+      gap: 0.75rem;
+    }
+    .philosophy-step { display: flex; align-items: center; gap: 0.375rem; white-space: nowrap; }
+    .phil-arrow { color: #94a3b8; font-weight: 400; }
+
+    /* Real-Life Story Banner */
+    .story-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #2563eb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1rem;
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .story-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .story-title { font-size: 0.9375rem; font-weight: 800; color: #1e40af; margin-bottom: 0.25rem; }
+    .story-quote { font-size: 0.9375rem; font-style: italic; color: #1e3a8a; line-height: 1.5; }
+
+    /* Before / After Box */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+    @media (max-width: 768px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .compare-card.before { border-left: 4px solid #ef4444; }
+    .compare-card.after { border-left: 4px solid #10b981; }
+    .compare-title {
+      font-size: 0.9375rem;
+      font-weight: 800;
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .compare-list {
+      list-style: none;
+      font-size: 0.8125rem;
+      color: var(--slate-600);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .compare-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.45; }
+
+    /* Safety Alert Banner */
+    .safety-banner {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      color: #92400e;
+      font-size: 0.8125rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    /* Five-Step Progress Bar / Track */
+    .step-nav-bar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.625rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 900px) {
+      .step-nav-bar {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    .step-tab {
+      background: var(--slate-50);
+      border: 1px solid var(--border);
+      padding: 0.625rem 0.5rem;
+      border-radius: 0.625rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-width: 130px;
+    }
+    .step-tab:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .step-tab.active {
+      background: #ea4335;
+      border-color: #d93025;
+      color: #fff;
+      box-shadow: 0 4px 6px -1px rgba(234, 67, 53, 0.2);
+    }
+    .step-tab-num { font-size: 0.6875rem; font-weight: 800; opacity: 0.85; text-transform: uppercase; }
+    .step-tab-title { font-size: 0.75rem; font-weight: 700; margin-top: 0.125rem; line-height: 1.25; }
+
+    /* Step Card Content */
+    .step-container { display: none; }
+    .step-container.active { display: block; animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-main-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    .step-header {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .step-badge {
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.5rem;
+      border: 1px solid #fecaca;
+    }
+    .step-title { font-size: 1.125rem; font-weight: 800; color: var(--slate-900); flex: 1; }
+    
+    .step-body { padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .concept-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .concept-heading { font-size: 0.875rem; font-weight: 800; color: var(--slate-800); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .concept-text { font-size: 0.875rem; color: var(--slate-600); line-height: 1.6; }
+
+    .task-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .task-heading { font-size: 0.875rem; font-weight: 800; color: #1e40af; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; font-size: 0.875rem; color: #1e3a8a; }
+    .task-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .task-list li strong { color: #172554; }
+
+    .result-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .result-heading { font-size: 0.875rem; font-weight: 800; color: #065f46; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .result-text { font-size: 0.875rem; color: #047857; line-height: 1.5; }
+
+    /* Situation Card (Inside Step 3) */
+    .situation-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .situation-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: #e0f2fe;
+      color: #0369a1;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Optional Learning Box */
+    .optional-box {
+      background: #fdf4ff;
+      border: 1px solid #f5d0fe;
+      border-left: 4px solid #a855f7;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .optional-heading { font-size: 0.875rem; font-weight: 800; color: #7e22ce; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .optional-text { font-size: 0.875rem; color: #6b21a8; line-height: 1.6; }
+
+    /* Infographic Preview in Step */
+    .img-preview-box {
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background: #0f172a;
+      position: relative;
+      cursor: zoom-in;
+      text-align: center;
+    }
+    .img-preview-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      max-height: 520px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .img-preview-box:hover img { transform: scale(1.01); }
+    .zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .img-caption {
+      padding: 0.625rem 1rem;
+      background: #f1f5f9;
+      font-size: 0.75rem;
+      color: var(--slate-600);
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+      text-align: left;
+    }
+
+    /* Step Footer & Action Buttons */
+    .step-footer {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .related-tutorial-link {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #0d9488;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .related-tutorial-link:hover { text-decoration: underline; color: #0f766e; }
+
+    .step-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 100;
+      padding: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: #fff;
+      border: none;
+      color: #0f172a;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Print View */
+    @media print {
+      body { background: #fff; color: #000; }
+      .top-nav, .step-nav-bar, .step-footer, .zoom-hint, .btn-action, .safety-banner { display: none !important; }
+      .container { padding: 0; max-width: 100%; }
+      .hero-card { background: #f8fafc !important; color: #000 !important; border: 1px solid #ccc !important; box-shadow: none !important; padding: 1rem !important; }
+      .hero-title { color: #000 !important; font-size: 1.5rem !important; }
+      .hero-subtitle { color: #333 !important; }
+      .step-container { display: block !important; page-break-inside: avoid; margin-bottom: 2rem; border-bottom: 2px dashed #999; padding-bottom: 2rem; }
+      .step-main-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+      .img-preview-box img { max-height: 380px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="../../../../#/category/gmail" id="categoryBackLink" class="btn btn-back">
+        ← Gmail Category पर वापस जाएँ
+      </a>
+      <span style="font-size: 0.75rem; font-weight: 800; background: #fee2e2; color: #991b1b; padding: 0.2rem 0.5rem; border-radius: 0.375rem;">
+        Pilot Project 3
+      </span>
+    </div>
+    <div class="nav-right">
+      <button onclick="window.print()" class="btn btn-action" title="पूरा गाइड प्रिंट या PDF सेव करें">
+        🖨️ पूरा गाइड प्रिंट करें
+      </button>
+      <button onclick="copyShareLink()" class="btn btn-back" id="shareBtn">
+        🔗 शेयर करें
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Card -->
+    <div class="hero-card">
+      <div class="badge-pill">Hands-on Practical Project • Gmail Mastery V2.0</div>
+      <h1 class="hero-title">Professional Office Communication & Follow-up Workflow — दफ्तर का संपूर्ण ईमेल कार्यप्रवाह</h1>
+      <p class="hero-subtitle">
+        प्रोफेशनल Signature और 1-क्लिक Templates से ईमेल तैयार करें, Schedule Send और Undo Send से सुरक्षित समय पर भेजें, और Add to Tasks तथा Nudges से डेडलाइन और फॉलो-अप कभी न भूलें।
+      </p>
+    </div>
+
+    <!-- Teaching Philosophy Bar -->
+    <div class="philosophy-bar">
+      <div class="philosophy-step"><span>1. Original Story</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल समस्या)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>2. Original Infographics</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल चित्र)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>3. Hands-on Practice</span> <span style="font-size: 0.75rem; color:#64748b;">(हाथों-हाथ अभ्यास)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>4. Real-life Application</span> <span style="font-size: 0.75rem; color:#64748b;">(दैनिक जीवन में उपयोग)</span></div>
+    </div>
+
+    <!-- Real-Life Unified Project Story -->
+    <div class="story-banner">
+      <div class="story-icon">💼📋</div>
+      <div>
+        <div class="story-title">प्रोजेक्ट की मूल कहानी (Our Real-Life Project Story):</div>
+        <p class="story-quote">
+          "दफ्तर में काम करते हुए मुझे रोज़ाना कई अधिकारियों और सहकर्मियों को औपचारिक ईमेल्स भेजनी होती हैं। बार-बार अपना नाम, पद और संपर्क टाइप करना पड़ता है, और एक जैसे सवालों के लिए बार-बार वही लंबा ईमेल लिखना पड़ता है। कभी शाम को तैयार रिपोर्ट रात या सुबह तय समय पर भेजनी होती है, कभी जल्दबाजी में सेंड दबने पर गलती का डर रहता है। सबसे बड़ी चिंता यह रहती है कि बॉस द्वारा दिए गए जरूरी काम इनबॉक्स में दब न जाएँ और भेजे गए प्रस्तावों पर समय रहते फॉलो-अप लेना न छूट जाए।"
+        </p>
+      </div>
+    </div>
+
+    <!-- Before / After Expected Outcome -->
+    <div class="comparison-grid">
+      <div class="compare-card before">
+        <h3 class="compare-title" style="color: #b91c1c;">
+          <span>❌ पहले: अव्यवस्थित व तनावपूर्ण दफ्तर संचार (Before)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> हर ईमेल के अंत में नाम, पद और फोन नंबर हाथ से टाइप करना या भूल जाना।</li>
+          <li><strong>•</strong> नियमित पावती व उत्तर बार-बार टाइप करने में रोज़ 30-40 मिनट बर्बाद होना।</li>
+          <li><strong>•</strong> रात या गैर-दफ्तरी समय पर ईमेल भेजकर व्यावसायिक शिष्टाचार खराब करना।</li>
+          <li><strong>•</strong> गलत अटैचमेंट जाने पर घबराना; बॉस की दी हुई डेडलाइन इनबॉक्स की भीड़ में भूल जाना।</li>
+        </ul>
+      </div>
+
+      <div class="compare-card after">
+        <h3 class="compare-title" style="color: #047857;">
+          <span>✅ बाद में: पेशेवर, समयबद्ध व तनाव-मुक्त कार्यप्रवाह (After)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> हर नई ईमेल के नीचे औपचारिक Professional Signature खुद-ब-खुद जुड़ना।</li>
+          <li><strong>•</strong> पूर्व-लिखित Templates से नियमित उत्तर 1-क्लिक में 5 सेकंड के भीतर भेजना।</li>
+          <li><strong>•</strong> Schedule Send से रिपोर्ट ठीक 9:00 AM पर पहुँचना और Undo Send से 30s की सुरक्षा।</li>
+          <li><strong>•</strong> ईमेल को Google Tasks में Due Date के साथ जोड़ना और Nudges से फॉलो-अप याद रहना।</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Practical Safety Notice -->
+    <div class="safety-banner">
+      <span style="font-size: 1.25rem;">🛡️</span>
+      <div>
+        <strong>व्यावहारिक सुरक्षा नियम (Practical Safety Rules):</strong>
+        <br>1. <strong>गैर-संवेदनशील अभ्यास:</strong> इस प्रोजेक्ट का अभ्यास करते समय हमेशा किसी सामान्य या अपने ही दूसरे ईमेल पते का उपयोग करें।
+        <br>2. <strong>Undo Send की वास्तविकता:</strong> ध्यान रखें कि Undo Send गलतियों को रोकने की कोई पूर्ण गारंटी नहीं है, बल्कि अधिकतम 30 सेकंड तक का एक सीमित रद्दीकरण समय (Limited Cancellation Window) है—समय बीतने के बाद प्राप्तकर्ता तक पहुँची ईमेल को वापस नहीं लाया जा सकता।
+        <br>3. <strong>Nudges बनाम Google Tasks:</strong> Gmail Nudges केवल सहायक फॉलो-अप सुझाव (Helpful Follow-up Suggestions) हैं, गारंटीशुदा रिमाइंडर नहीं। किसी भी अनिवार्य कार्यालयी कार्य या गंभीर डेडलाइन के लिए हमेशा निश्चित तारीख (Due Date) वाला Google Task ही अनुशंसित तरीका है।
+      </div>
+    </div>
+
+    <!-- Five-Step Navigation Track -->
+    <div class="step-nav-bar" id="stepNavBar">
+      <div class="step-tab active" onclick="showStep(1)" id="tab-1">
+        <div class="step-tab-num">Step 1</div>
+        <div class="step-tab-title">Gmail Signature</div>
+      </div>
+      <div class="step-tab" onclick="showStep(2)" id="tab-2">
+        <div class="step-tab-num">Step 2</div>
+        <div class="step-tab-title">Reusable Templates</div>
+      </div>
+      <div class="step-tab" onclick="showStep(3)" id="tab-3">
+        <div class="step-tab-num">Step 3</div>
+        <div class="step-tab-title">Schedule & Undo Send</div>
+      </div>
+      <div class="step-tab" onclick="showStep(4)" id="tab-4">
+        <div class="step-tab-num">Step 4</div>
+        <div class="step-tab-title">Add to Tasks</div>
+      </div>
+      <div class="step-tab" onclick="showStep(5)" id="tab-5">
+        <div class="step-tab-num">Step 5</div>
+        <div class="step-tab-title">Nudges व Follow-up</div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 1: Professional Gmail Signature -->
+    <!-- ========================================================================= -->
+    <div class="step-container active" id="step-1">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 1 / 5 • Step 1 of 5</span>
+          <h2 class="step-title">पेशेवर पहचान — स्वचालित Professional Signature सेट करें</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और सिग्नेचर का महत्व (The Day 19 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 19 Status 1) में देखें:
+              <em>"एक दिन मेरे एक मित्र ने मुझे ईमेल भेजी। मैंने पूछा: क्या आप हर ईमेल में अपना नाम, पद और मोबाइल नंबर हर बार टाइप करते हैं? मित्र मुस्कुराए और बोले: नहीं... मैंने यह जानकारी केवल एक बार सेट की थी। अब Gmail हर नई ईमेल के अंत में इसे अपने-आप जोड़ देता है!"</em>
+              <br><br>
+              दफ्तर के पत्राचार में आपकी पहचान (Name, Designation, Department, Phone) स्पष्ट होनी चाहिए। एक बार सिग्नेचर सेट करने के बाद हर नई ईमेल अपने-आप आधिकारिक और पेशेवर दिखती है।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 19: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-signature/assets/day-19-status-1.png')">
+            <img src="../../gmail-signature/assets/day-19-status-1.png" alt="Day 19 Status 1: Original Problem - Manually typing details vs Signature" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 19 Status 1):</strong> हर ईमेल के अंत में नाम, पद और मोबाइल नंबर हाथ से टाइप करने की समस्या और सिग्नेचर का समाधान।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ सिग्नेचर बनाने और बदलने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 19 Status 2) में देखें: Desktop पर Settings $\rightarrow$ General $\rightarrow$ Signature में जाकर '+ Create new' दबाएँ और विवरण लिखें। कंपोज़ विंडो में नीचे बने ✒️ (पेन) आइकन से आवश्यकतानुसार सिग्नेचर बदला भी जा सकता है।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 19: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-signature/assets/day-19-status-2.png')">
+            <img src="../../gmail-signature/assets/day-19-status-2.png" alt="Day 19 Status 2: How to create and manage Gmail Signatures" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 19 Status 2):</strong> General Settings में Signature बनाना और Compose में ✒️ आइकन से बदलना।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. सेटिंग्स खोलें:</strong> Gmail में ऊपर दाईं ओर गियर आइकन (⚙️) पर क्लिक करके <strong>'See all settings'</strong> चुनें।</li>
+              <li><strong>2. Signature सेक्शन में जाएँ:</strong> <strong>General</strong> टैब में नीचे स्क्रॉल करें और Signature के सामने <strong>'+ Create new'</strong> दबाएँ।</li>
+              <li><strong>3. विवरण भरें:</strong> सिग्नेचर का नाम <code>Official</code> रखें और एडिटर में अपना नाम, पद, विभाग और फोन नंबर लिखें (उदा. <em>राजेश कुमार | सहायक अभियंता | जल विभाग</em>)।</li>
+              <li><strong>4. सेव करें:</strong> सबसे नीचे जाकर <strong>'Save Changes'</strong> पर क्लिक करें।</li>
+              <li><strong>5. जाँचें:</strong> <strong>+ Compose</strong> पर क्लिक करके देखें कि आपकी जानकारी ईमेल में अपने-आप जुड़ गई है या नहीं।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              अब आपको कभी भी हर ईमेल में नाम और पद टाइप नहीं करना पड़ेगा; हर नया संदेश औपचारिक पहचान के साथ शुरू होगा।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../gmail-signature/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 19 — Gmail Signature खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-primary">अगला स्टेप (Step 2: Reusable Templates) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 2: Reusable Gmail Templates -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-2">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 2 / 5 • Step 2 of 5</span>
+          <h2 class="step-title">बार-बार भेजे जाने वाले उत्तरों के लिए Reusable Templates बनाएँ</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और 1-क्लिक टेम्प्लेट्स (The Day 20 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 20 Status 1) में देखें:
+              <em>"आज सुबह मुझे 10 Emails मिलीं, लगभग सभी का सवाल एक जैसा था... मैंने पहली का जवाब लिखा, फिर दूसरी, फिर तीसरी... कुछ देर बाद एहसास हुआ कि मैं वही ईमेल बार-बार टाइप कर रहा हूँ! मैंने सोचा: क्या कोई ऐसा तरीका नहीं कि एक बार लिखूँ और जब ज़रूरत हो, 1-क्लिक में इस्तेमाल कर लूँ? हाँ, इसे कहते हैं Gmail Template!"</em>
+              <br><br>
+              दफ्तर में आवेदन प्राप्ति की पावती (Acknowledgement), मीटिंग का निमंत्रण, या सामान्य स्थिति रिपोर्ट जैसे संदेश रोज़ दर्जनों बार भेजने पड़ते हैं। <strong>Templates</strong> सुविधा से आप इन संदेशों को सुरक्षित रख सकते हैं और केवल 2 क्लिक में लोड कर सकते हैं।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 20: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-templates/assets/day-20-status-1.png')">
+            <img src="../../gmail-templates/assets/day-20-status-1.png" alt="Day 20 Status 1: Original Problem - 10 similar emails and typing repeatedly" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 20 Status 1):</strong> एक जैसे सवालों के जवाब बार-बार टाइप करने में समय बर्बाद होना और टेम्प्लेट्स का स्मार्ट समाधान।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ Templates चालू करने और सहेजने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 20 Status 2) में देखें: पहले <em>Settings $\rightarrow$ Advanced</em> में जाकर Templates को <strong>Enable</strong> करें। फिर Compose में संदेश लिखकर नीचे तीन डॉट्स (⋮) $\rightarrow$ Templates $\rightarrow$ <em>'Save draft as template'</em> करें।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 20: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-templates/assets/day-20-status-2.png')">
+            <img src="../../gmail-templates/assets/day-20-status-2.png" alt="Day 20 Status 2: How to enable, create, and insert Gmail Templates" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 20 Status 2):</strong> Compose मेनू से 'Save draft as template' और नई ईमेल में 'Insert template' का 1-क्लिक उपयोग।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — पावती ईमेल Template बनाएँ):</h4>
+            <ul class="task-list">
+              <li><strong>1. फ़ीचर चालू करें (Enable):</strong> ⚙️ Settings $\rightarrow$ <strong>See all settings</strong> $\rightarrow$ <strong>Advanced</strong> टैब में जाएँ। <strong>Templates</strong> के सामने <strong>'Enable'</strong> चुनें और नीचे <strong>Save Changes</strong> दबाएँ।</li>
+              <li><strong>2. मानक पावती संदेश लिखें:</strong> + Compose खोलें और ईमेल के मुख्य भाग में यह उदाहरण संदेश लिखें:<br>
+                <code style="background:#fff; padding:0.35rem 0.6rem; border:1px solid #cbd5e1; border-radius:0.375rem; display:block; margin-top:0.25rem; font-size:0.8125rem; color:#0f172a;">
+                  आदरणीय महोदय / महोदया,<br>
+                  आपकी रिपोर्ट / आवेदन प्राप्त हो गया है। हमारी टीम इसकी समीक्षा कर रही है और 2 कार्यदिवसों के भीतर आपसे संपर्क किया जाएगा।<br>
+                  धन्यवाद।
+                </code>
+              </li>
+              <li><strong>3. Template के रूप में सहेजें:</strong> कंपोज़ विंडो में नीचे दाईं ओर बने <strong>तीन डॉट्स (⋮)</strong> पर क्लिक करें $\rightarrow$ <strong>Templates</strong> $\rightarrow$ <strong>Save draft as template</strong> $\rightarrow$ <strong>Save as new template</strong> चुनें।</li>
+              <li><strong>4. नाम दें:</strong> नाम रखें: <code>Office Acknowledgement</code> और Save दबाएँ।</li>
+              <li><strong>5. परीक्षण करें:</strong> ड्राफ्ट बंद करें, नया Compose खोलें, ⋮ $\rightarrow$ Templates $\rightarrow$ <em>Insert template</em> से 'Office Acknowledgement' चुनकर देखें!</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              पूरा आधिकारिक पावती संदेश 1 सेकंड में लोड हो जाएगा; रोज़ाना के दर्जनों नियमित ईमेल्स बिना समय गँवाए भेजे जा सकेंगे।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../gmail-templates/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 20 — Gmail Templates खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(1)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(3)" class="btn btn-primary">अगला स्टेप (Step 3: Schedule & Undo Send) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 3: Schedule Send and Undo Send -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-3">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 3 / 5 • Step 3 of 5</span>
+          <h2 class="step-title">सही समय पर ईमेल भेजें (Schedule Send) और गलती पर तुरंत वापस लें (Undo Send)</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 दो वास्तविक दफ्तरी स्थितियाँ (Two Real-Life Office Situations):</h4>
+            <p class="concept-text">
+              दफ्तर में समयबद्धता और सतर्कता दोनों आवश्यक हैं। इस चरण में हम दो महत्वपूर्ण सुविधाओं को उनके मूल संदर्भ में समझेंगे:
+            </p>
+          </div>
+
+          <!-- Situation A: Schedule Send -->
+          <div class="situation-card">
+            <span class="situation-badge">स्थिति 1: समय प्रबंधन • Schedule Send</span>
+            <h4 style="font-size:0.9375rem; font-weight:800; color:#0f172a; margin-bottom:0.375rem;">
+              शाम को तैयार रिपोर्ट को दफ्तर के सही समय पर भेजना
+            </h4>
+            <p class="concept-text">
+              मूल इन्फोग्राफिक (Day 12 Status 1) में देखें: बॉस ने कहा: <em>"मुझे रोज़ रात 8:00 बजे रिपोर्ट चाहिए!"</em> कर्मचारी की रिपोर्ट 6:30 बजे ही तैयार हो जाती है, लेकिन उसे 8:00 बजे तक इंतज़ार करना पड़ता था।
+              <br>
+              <strong>Schedule Send</strong> की मदद से आप ईमेल अभी लिखकर <strong>रात 8:00 बजे</strong> या <strong>अगले दिन सुबह 9:00 बजे</strong> के लिए शेड्यूल कर सकते हैं। भले ही आपका कंप्यूटर बंद हो या इंटरनेट बंद हो, ईमेल ठीक तय समय पर गूगल सर्वर द्वारा प्रेषित हो जाएगी!
+            </p>
+
+            <div class="img-preview-box" onclick="openLightbox('../../schedule-send/assets/day-12-status-1.png')" style="margin-top:0.75rem;">
+              <img src="../../schedule-send/assets/day-12-status-1.png" alt="Day 12 Status 1: Original Problem - Boss wants report at 8 PM" loading="lazy">
+              <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+            </div>
+            <div class="img-caption">
+              📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 12 Status 1):</strong> रिपोर्ट तैयार होने के बावजूद 8:00 बजे तक इंतज़ार करने की समस्या और Schedule Send के फायदे।
+            </div>
+
+            <div class="img-preview-box" onclick="openLightbox('../../schedule-send/assets/day-12-status-2.png')" style="margin-top:0.75rem;">
+              <img src="../../schedule-send/assets/day-12-status-2.png" alt="Day 12 Status 2: How to Schedule Send step-by-step" loading="lazy">
+              <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+            </div>
+            <div class="img-caption">
+              📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 12 Status 2):</strong> Send बटन के पास बने तीर (▼) से तारीख व समय चुनना और Scheduled फ़ोल्डर में देखना।
+            </div>
+          </div>
+
+          <!-- Situation B: Undo Send -->
+          <div class="situation-card" style="margin-top: 1.25rem;">
+            <span class="situation-badge" style="background:#fee2e2; color:#991b1b;">स्थिति 2: डिजिटल सुरक्षा जाल • Undo Send</span>
+            <h4 style="font-size:0.9375rem; font-weight:800; color:#0f172a; margin-bottom:0.375rem;">
+              जल्दबाजी में गलत अटैचमेंट या गलत व्यक्ति को सेंड होने पर रोकना
+            </h4>
+            <p class="concept-text">
+              मूल इन्फोग्राफिक (Day 14 Status 1) में देखें: बॉस ने कहा: <em>"यह ईमेल अभी तुरंत भेजो!"</em> जल्दबाजी में गलत अटैचमेंट लग गई और Send दब गया!
+              <br><br>
+              <strong>Undo Send की वास्तविकता (Limited Cancellation Window):</strong>
+              यह किसी भेजी जा चुकी ईमेल को पूरी तरह रोकने की कोई पूर्ण गारंटी नहीं है, बल्कि केवल <strong>अधिकतम 30 सेकंड तक का एक सीमित रद्दीकरण समय (Limited Cancellation Window)</strong> है। जब आप Send दबाते हैं, तो Gmail ईमेल को तुरंत डिलीवर करने के बजाय आपके चुने हुए समय (5 से 30 सेकंड) तक सर्वर पर रोककर रखता है। इस दौरान नीचे <strong>'Undo'</strong> का बटन दिखता है। Undo दबाते ही ईमेल वापस ड्राफ्ट में खुल जाती है। एक बार यह निर्धारित समय बीत गया, तो ईमेल प्रेषित हो जाती है और उसे किसी भी प्रकार से वापस नहीं बुलाया जा सकता।
+            </p>
+
+            <div class="img-preview-box" onclick="openLightbox('../../undo-send/assets/day-14-status-1.png')" style="margin-top:0.75rem;">
+              <img src="../../undo-send/assets/day-14-status-1.png" alt="Day 14 Status 1: Original Problem - Wrong attachment sent in a hurry" loading="lazy">
+              <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+            </div>
+            <div class="img-caption">
+              📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 14 Status 1):</strong> गलत अटैचमेंट जाने पर नीचे दिखे 'Undo' बटन से ईमेल को तुरंत बचाने की वास्तविक कहानी।
+            </div>
+
+            <div class="img-preview-box" onclick="openLightbox('../../undo-send/assets/day-14-status-2.png')" style="margin-top:0.75rem;">
+              <img src="../../undo-send/assets/day-14-status-2.png" alt="Day 14 Status 2: How Undo Send works and setting 30 seconds delay" loading="lazy">
+              <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+            </div>
+            <div class="img-caption">
+              📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 14 Status 2):</strong> General Settings में जाकर 'Send cancellation period' को 30 seconds पर सेट करना।
+            </div>
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — सुरक्षित टेस्ट ईमेल):</h4>
+            <ul class="task-list">
+              <li><strong>1. Undo Send समय 30 सेकंड करें:</strong> ⚙️ Settings $\rightarrow$ <strong>See all settings</strong> $\rightarrow$ <strong>General</strong> टैब में जाएँ। <strong>Undo Send</strong> के सामने ड्रॉपडाउन में <strong>'30 seconds'</strong> चुनें और नीचे <strong>Save Changes</strong> करें।</li>
+              <li><strong>2. Undo का अभ्यास करें:</strong> एक टेस्ट ईमेल लिखें (To में अपना ही ईमेल पता डालें), Send दबाएँ। स्क्रीन के नीचे बाईं ओर दिखने वाले <strong>'Undo'</strong> बटन को 10 सेकंड के भीतर दबाएँ और देखें कि ईमेल वापस ड्राफ्ट में आ गई।</li>
+              <li><strong>3. Schedule Send का अभ्यास करें:</strong> उसी टेस्ट ईमेल को दोबारा खोलें। नीले <strong>Send</strong> बटन पर सीधा क्लिक न करें; उसके पास बने <strong>छोटे तीर (▼)</strong> पर क्लिक करें $\rightarrow$ <strong>'Schedule send'</strong> चुनें $\rightarrow$ <strong>कल सुबह 8:00 AM</strong> सेट करें।</li>
+              <li><strong>4. Scheduled फ़ोल्डर जाँचें:</strong> बाएँ मेनू में <strong>'Scheduled'</strong> फ़ोल्डर खोलकर देखें कि आपकी ईमेल सही समय के साथ मौजूद है और आप कभी भी उसका समय बदल या रद्द कर सकते हैं।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              गलत समय पर जाने वाली ईमेल को Schedule Send से नियंत्रित किया जा सकेगा, और जल्दबाजी में हुई किसी मानवीय भूल को अधिकतम 30 सेकंड की सीमित समय-सीमा (Cancellation Window) के भीतर सुधारने का व्यावहारिक अवसर मिलेगा।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="../../schedule-send/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+              📖 Day 12 — Schedule Send खोलें →
+            </a>
+            <a href="../../undo-send/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+              📖 Day 14 — Undo Send खोलें →
+            </a>
+          </div>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(4)" class="btn btn-primary">अगला स्टेप (Step 4: Add to Tasks) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 4: Add to Tasks -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-4">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 4 / 5 • Step 4 of 5</span>
+          <h2 class="step-title">ईमेल में आए कार्य को सीधे Google Tasks में बदलें (Add to Tasks)</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और डेडलाइन प्रबंधन (The Day 18 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 18 Status 1) में देखें:
+              <em>"एक दिन बॉस ने मुझे ईमेल भेजी: 'इस काम को शुक्रवार तक हर हाल में पूरा करना है!' मैंने ईमेल पढ़ ली और सोचा: 'याद रहेगा...' लेकिन दफ्तर के दूसरे कामों में इतना व्यस्त हो गया कि वह ईमेल इनबॉक्स में दब गई और मैं उस पर एक्शन लेना ही भूल गया!"</em>
+              <br><br>
+              <strong>ईमेल पढ़ना काफी नहीं है; काम को ट्रैक करना ज़रूरी है!</strong> इनबॉक्स में ईमेल छोड़ने या अनरीड रखने के बजाय, Gmail का फीचर <strong>Add to Tasks</strong> उस ईमेल को सीधे एक कार्य (Actionable Task) में बदल देता है जिसमें आप <strong>Due Date (अंतिम तिथि)</strong> और समय जोड़ सकते हैं।
+              <br><br>
+              <strong>Tasks बनाम Snooze (स्पष्ट अंतर):</strong>
+              <br>• <strong>Snooze:</strong> जब केवल ईमेल को बाद में देखना हो (उदा. कोई बिल जिसे 5 दिन बाद देखना है)।
+              <br>• <strong>Add to Tasks:</strong> जब ईमेल में दिए गए <em>काम को पूरा करना हो</em> (उदा. कोई रिपोर्ट तैयार करना, जिस पर टिक लगाकर पूरा करना है)।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 18: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../add-to-tasks/assets/day-18-status-1.png')">
+            <img src="../../add-to-tasks/assets/day-18-status-1.png" alt="Day 18 Status 1: Original Problem - Boss Friday deadline forgotten in inbox" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 18 Status 1):</strong> बॉस की शुक्रवार की डेडलाइन इनबॉक्स में दबने की समस्या और 'Add to Tasks' का समाधान।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ ईमेल से Task बनाने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 18 Status 2) में देखें: ईमेल खोलें $\rightarrow$ ऊपर तीन डॉट्स (⋮) से <strong>'Add to Tasks'</strong> चुनें $\rightarrow$ दाईं ओर Tasks साइड पैनल में <strong>Due Date</strong> और <strong>Notes</strong> जोड़ें।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 18: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../add-to-tasks/assets/day-18-status-2.png')">
+            <img src="../../add-to-tasks/assets/day-18-status-2.png" alt="Day 18 Status 2: How to Add to Tasks and set due dates" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 18 Status 2):</strong> ईमेल से टास्क बनाना, ड्यू डेट लगाना और Snooze vs Tasks vs Keep vs Calendar की विस्तृत तुलना।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. कार्य संबंधी ईमेल खोलें:</strong> अपने इनबॉक्स में किसी भी ऐसी ईमेल को खोलें जिसमें कोई काम पूरा करने का निर्देश हो।</li>
+              <li><strong>2. Add to Tasks चुनें:</strong> ऊपर एक्शन बार में बने <strong>तीन डॉट्स (⋮)</strong> पर क्लिक करें और <strong>"Add to Tasks"</strong> चुनें।</li>
+              <li><strong>3. साइड पैनल में तारीख तय करें:</strong> दाईं ओर Gmail Tasks पट्टी खुलेगी। उस टास्क पर क्लिक करके <strong>Due date (जैसे आगामी शुक्रवार)</strong> और समय जोड़ें।</li>
+              <li><strong>4. लिंक का जादू देखें:</strong> टास्क के नीचे उस ईमेल का डायरेक्ट लिंक बन जाता है—जब भी टास्क पर क्लिक करेंगे, वह संबंधित ईमेल तुरंत खुल जाएगी!</li>
+              <li><strong>5. काम पूरा होने पर टिक करें:</strong> जब काम पूरा हो जाए, तो टास्क के बाईं ओर बने गोले पर टिक करें—टास्क 'Complete' हो जाएगा।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              बॉस या क्लाइंट द्वारा दिया गया कोई भी निर्देश इनबॉक्स में कभी नहीं दबेगा; आपकी दैनिक कार्यसूची (To-do List) में डेडलाइन के साथ सुरक्षित रहेगा।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../add-to-tasks/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 18 — Add to Tasks खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(3)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(5)" class="btn btn-primary">अगला स्टेप (Step 5: Nudges व Follow-up) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 5: Gmail Nudges and Follow-up -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-5">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 5 / 5 • Step 5 of 5</span>
+          <h2 class="step-title">लंबित उत्तरों और फॉलो-अप के लिए Gmail Nudges का उपयोग करें</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और स्मार्ट फॉलो-अप (The Day 31 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 31 Status 1) में देखें:
+              <em>"दफ्तर में दो आम समस्याएँ होती हैं:
+              1. कोई महत्वपूर्ण ईमेल आई... हम व्यस्त थे और रिप्लाई देना भूल गए...
+              2. हमने किसी को जरूरी सवाल या प्रस्ताव भेजा... लेकिन 5-7 दिन तक कोई जवाब नहीं आया!
+              Gmail का <strong>NUDGES</strong> फीचर एक निजी असिस्टेंट की तरह काम करता है जो पुरानी लेकिन जरूरी ईमेल्स को इनबॉक्स के सबसे ऊपर लाकर याद दिलाता है!"</em>
+              <br><br>
+              <strong>Nudges के दो प्रकार:</strong>
+              <br>• <strong>Reply Nudge:</strong> <em>"Received 5 days ago. Reply?"</em> (जब आप उत्तर देना भूल गए हों)।
+              <br>• <strong>Follow-up Nudge:</strong> <em>"Sent 7 days ago. Follow up?"</em> (जब भेजे गए संदेश पर कोई उत्तर न आया हो)।
+              <br><br>
+              <strong>⚠️ Nudges की प्रकृति समझें — उपयोगी सुझाव, गारंटीशुदा रिमाइंडर नहीं:</strong>
+              Gmail Nudges वास्तव में <strong>सहायक फॉलो-अप सुझाव (Helpful Follow-up Suggestions)</strong> हैं, न कि कोई गारंटीशुदा रिमाइंडर (Not Guaranteed Reminders)। Gmail का AI केवल कुछ विशिष्ट ईमेल्स का विश्लेषण करके सुझाव देता है; यह हर महत्वपूर्ण ईमेल पर लागू होने की गारंटी नहीं देता। इसलिए, किसी भी अनिवार्य कार्यालयी कार्य, क्लाइंट फॉलो-अप या गंभीर कानूनी डेडलाइन के लिए हमेशा <strong>निश्चित तारीख वाला Google Task (Due Date के साथ)</strong> ही अनुशंसित और सबसे भरोसेमंद तरीका है।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 31: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-nudges/assets/day-31-status-1.png')">
+            <img src="../../gmail-nudges/assets/day-31-status-1.png" alt="Day 31 Status 1: Original Problem - Forgotten replies and follow-ups" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 31 Status 1):</strong> NUDGES — आपका पर्सनल Gmail असिस्टेंट जो भूली हुई ईमेल्स की याद दिलाता है।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ Nudges चालू करने और रिमाइंडर देखने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 31 Status 2) में देखें: <em>Settings $\rightarrow$ General $\rightarrow$ Nudges</em> में दोनों विकल्प (Suggest emails to reply to & Suggest emails to follow up on) चालू करें।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 31: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-nudges/assets/day-31-status-2.png')">
+            <img src="../../gmail-nudges/assets/day-31-status-2.png" alt="Day 31 Status 2: How to enable Nudges and difference between Nudges vs Snooze" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 31 Status 2):</strong> General Settings से Nudges चालू करना और Nudges vs Snooze का अंतर।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. Nudges सेटिंग खोलें:</strong> ⚙️ Settings $\rightarrow$ <strong>See all settings</strong> $\rightarrow$ <strong>General</strong> टैब में नीचे स्क्रॉल करें।</li>
+              <li><strong>2. दोनों विकल्प चालू करें:</strong> <strong>Nudges</strong> सेक्शन में इन दोनों चेकबॉक्स को टिक करें:<br>
+                • ☑️ <strong>Suggest emails to reply to</strong> (मुझे Reply की याद दिलाएँ)<br>
+                • ☑️ <strong>Suggest emails to follow up on</strong> (मुझे Follow-up की याद दिलाएँ)
+              </li>
+              <li><strong>3. सेव करें:</strong> सबसे नीचे जाकर <strong>Save Changes</strong> पर क्लिक करें।</li>
+              <li><strong>4. इनबॉक्स में रिमाइंडर पहचानें:</strong> अब जब भी कोई ईमेल 4-5 दिन से अनुत्तरित होगी, वह इनबॉक्स के शीर्ष पर ऑरेंज रिमाइंडर टैग के साथ दिखेगी।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              🎉 <strong>बधाई हो!</strong> आपका <strong>Professional Office Communication & Follow-up Workflow</strong> पूरी तरह तैयार है। अब आपके संदेश औपचारिक होंगे, नियमित उत्तर तेजी से जाएँगे, 30 सेकंड की सीमित विंडो में मानवीय भूलों को सुधारा जा सकेगा, अनिवार्य कार्य Google Tasks में डेडलाइन के साथ सुरक्षित रहेंगे, और Nudges से उपयोगी फॉलो-अप सुझाव मिलते रहेंगे।
+            </p>
+          </div>
+
+          <!-- Optional Learning Box for Snooze and Vacation Responder -->
+          <div class="optional-box">
+            <h4 class="optional-heading">💡 अतिरिक्त उपयोगी टूल्स (Optional Office Learning):</h4>
+            <p class="optional-text">
+              <strong>1. Snooze Email (Day 11):</strong> यदि कोई ईमेल आज नहीं बल्कि अगले सोमवार को देखनी हो, तो ईमेल पर माउस ले जाकर 🕒 (Clock) आइकन से <strong>Snooze</strong> कर सकते हैं।<br>
+              <a href="../../snooze-email/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer" style="color:#7e22ce; margin-top:0.25rem; display:inline-block;">
+                📖 Day 11 — Snooze Email ट्यूटोरियल देखें →
+              </a>
+              <br><br>
+              <strong>2. Vacation Responder (Day 21):</strong> जब आप छुट्टी या प्रशिक्षण पर हों, तो <em>Settings $\rightarrow$ General</em> में <strong>Vacation responder</strong> चालू करके 'Out of Office' ऑटो-रिप्लाई सेट कर सकते हैं।<br>
+              <a href="../../vacation-responder/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer" style="color:#7e22ce; margin-top:0.25rem; display:inline-block;">
+                📖 Day 21 — Vacation Responder ट्यूटोरियल देखें →
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../gmail-nudges/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 31 — Gmail Nudges खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(4)" class="btn btn-back">← पिछला स्टेप</button>
+            <a href="../../../../#/category/gmail" class="btn btn-primary" id="finishBtn">✓ प्रोजेक्ट पूरा हुआ (Complete!)</a>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">✕</button>
+    <img id="lightboxImg" src="" alt="Infographic full view" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Step switcher logic
+    function showStep(stepNum) {
+      for (let i = 1; i <= 5; i++) {
+        const stepEl = document.getElementById('step-' + i);
+        const tabEl = document.getElementById('tab-' + i);
+        if (stepEl) stepEl.classList.remove('active');
+        if (tabEl) tabEl.classList.remove('active');
+      }
+
+      const targetStep = document.getElementById('step-' + stepNum);
+      const targetTab = document.getElementById('tab-' + stepNum);
+      if (targetStep) targetStep.classList.add('active');
+      if (targetTab) targetTab.classList.add('active');
+
+      const navEl = document.getElementById('stepNavBar');
+      if (navEl) {
+        navEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Lightbox modal logic
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      if (modal && img) {
+        img.src = src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Share link copy
+    function copyShareLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        const btn = document.getElementById('shareBtn');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ लिंक कॉपी हो गया!';
+          setTimeout(function() { btn.textContent = original; }, 2000);
+        }
+      });
+    }
+
+    // Adapt Back button dynamically for GitHub Pages vs Localhost
+    (function() {
+      const isGHPages = window.location.pathname.includes('/digital-learning-hub/');
+      const targetHref = isGHPages ? '/digital-learning-hub/#/category/gmail' : '/#/category/gmail';
+      const backLink = document.getElementById('categoryBackLink');
+      const finishBtn = document.getElementById('finishBtn');
+      if (backLink) backLink.setAttribute('href', targetHref);
+      if (finishBtn) finishBtn.setAttribute('href', targetHref);
+    })();
+  </script>
+
+</body>
+</html>

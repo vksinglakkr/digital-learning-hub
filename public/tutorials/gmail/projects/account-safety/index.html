@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gmail Safety, Anti-Phishing & Recovery Readiness | Digital Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ea4335;
+      --primary-dark: #c5221f;
+      --primary-light: #fce8e6;
+      --teal-600: #0d9488;
+      --teal-50: #f0fdfa;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+    }
+
+    /* Top Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.625rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-back { background: var(--slate-100); color: var(--slate-700); border-color: var(--border); }
+    .btn-back:hover { background: #e2e8f0; color: var(--slate-900); }
+    .btn-action { background: var(--slate-900); color: #fff; }
+    .btn-action:hover { background: var(--slate-800); }
+    .btn-primary { background: #ea4335; color: #fff; }
+    .btn-primary:hover { background: #d93025; }
+
+    .container { max-width: 1050px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff;
+      border-radius: 1.5rem;
+      padding: 2.25rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(234, 67, 53, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(234, 67, 53, 0.4);
+      margin-bottom: 1rem;
+    }
+    .hero-title { font-size: 1.875rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+    .hero-subtitle { font-size: 1rem; color: #cbd5e1; max-width: 840px; line-height: 1.6; }
+
+    /* Teaching Philosophy Bar */
+    .philosophy-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.875rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      overflow-x: auto;
+      gap: 0.75rem;
+    }
+    .philosophy-step { display: flex; align-items: center; gap: 0.375rem; white-space: nowrap; }
+    .phil-arrow { color: #94a3b8; font-weight: 400; }
+
+    /* Real-Life Story Banner */
+    .story-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #2563eb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1rem;
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .story-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .story-title { font-size: 0.9375rem; font-weight: 800; color: #1e40af; margin-bottom: 0.25rem; }
+    .story-quote { font-size: 0.9375rem; font-style: italic; color: #1e3a8a; line-height: 1.5; }
+
+    /* Before / After Box */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+    @media (max-width: 768px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .compare-card.before { border-left: 4px solid #ef4444; }
+    .compare-card.after { border-left: 4px solid #10b981; }
+    .compare-title {
+      font-size: 0.9375rem;
+      font-weight: 800;
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .compare-list {
+      list-style: none;
+      font-size: 0.8125rem;
+      color: var(--slate-600);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .compare-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.45; }
+
+    /* Safety Alert Banner */
+    .safety-banner {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0.75rem;
+      color: #92400e;
+      font-size: 0.8125rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    /* Five-Step Progress Bar / Track */
+    .step-nav-bar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.625rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 900px) {
+      .step-nav-bar {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    .step-tab {
+      background: var(--slate-50);
+      border: 1px solid var(--border);
+      padding: 0.625rem 0.5rem;
+      border-radius: 0.625rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-width: 130px;
+    }
+    .step-tab:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .step-tab.active {
+      background: #ea4335;
+      border-color: #d93025;
+      color: #fff;
+      box-shadow: 0 4px 6px -1px rgba(234, 67, 53, 0.2);
+    }
+    .step-tab-num { font-size: 0.6875rem; font-weight: 800; opacity: 0.85; text-transform: uppercase; }
+    .step-tab-title { font-size: 0.75rem; font-weight: 700; margin-top: 0.125rem; line-height: 1.25; }
+
+    /* Step Card Content */
+    .step-container { display: none; }
+    .step-container.active { display: block; animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-main-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    .step-header {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .step-badge {
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.5rem;
+      border: 1px solid #fecaca;
+    }
+    .step-title { font-size: 1.125rem; font-weight: 800; color: var(--slate-900); flex: 1; }
+    
+    .step-body { padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .concept-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .concept-heading { font-size: 0.875rem; font-weight: 800; color: var(--slate-800); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .concept-text { font-size: 0.875rem; color: var(--slate-600); line-height: 1.6; }
+
+    .task-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .task-heading { font-size: 0.875rem; font-weight: 800; color: #1e40af; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; font-size: 0.875rem; color: #1e3a8a; }
+    .task-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .task-list li strong { color: #172554; }
+
+    .result-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .result-heading { font-size: 0.875rem; font-weight: 800; color: #065f46; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .result-text { font-size: 0.875rem; color: #047857; line-height: 1.5; }
+
+    /* Google Account Checkup Box */
+    .google-security-card {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .google-security-badge {
+      display: inline-block;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: #dcfce7;
+      color: #15803d;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Optional Learning Box */
+    .optional-box {
+      background: #fdf4ff;
+      border: 1px solid #f5d0fe;
+      border-left: 4px solid #a855f7;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .optional-heading { font-size: 0.875rem; font-weight: 800; color: #7e22ce; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .optional-text { font-size: 0.875rem; color: #6b21a8; line-height: 1.6; }
+
+    /* Infographic Preview in Step */
+    .img-preview-box {
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background: #0f172a;
+      position: relative;
+      cursor: zoom-in;
+      text-align: center;
+    }
+    .img-preview-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      max-height: 520px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .img-preview-box:hover img { transform: scale(1.01); }
+    .zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .img-caption {
+      padding: 0.625rem 1rem;
+      background: #f1f5f9;
+      font-size: 0.75rem;
+      color: var(--slate-600);
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+      text-align: left;
+    }
+
+    /* Step Footer & Action Buttons */
+    .step-footer {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .related-tutorial-link {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #0d9488;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .related-tutorial-link:hover { text-decoration: underline; color: #0f766e; }
+
+    .step-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 100;
+      padding: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: #fff;
+      border: none;
+      color: #0f172a;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Print View */
+    @media print {
+      body { background: #fff; color: #000; }
+      .top-nav, .step-nav-bar, .step-footer, .zoom-hint, .btn-action, .safety-banner { display: none !important; }
+      .container { padding: 0; max-width: 100%; }
+      .hero-card { background: #f8fafc !important; color: #000 !important; border: 1px solid #ccc !important; box-shadow: none !important; padding: 1rem !important; }
+      .hero-title { color: #000 !important; font-size: 1.5rem !important; }
+      .hero-subtitle { color: #333 !important; }
+      .step-container { display: block !important; page-break-inside: avoid; margin-bottom: 2rem; border-bottom: 2px dashed #999; padding-bottom: 2rem; }
+      .step-main-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+      .img-preview-box img { max-height: 380px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="../../../../#/category/gmail" id="categoryBackLink" class="btn btn-back">
+        ← Gmail Category पर वापस जाएँ
+      </a>
+      <span style="font-size: 0.75rem; font-weight: 800; background: #fee2e2; color: #991b1b; padding: 0.2rem 0.5rem; border-radius: 0.375rem;">
+        Pilot Project 4
+      </span>
+    </div>
+    <div class="nav-right">
+      <button onclick="window.print()" class="btn btn-action" title="पूरा गाइड प्रिंट या PDF सेव करें">
+        🖨️ पूरा गाइड प्रिंट करें
+      </button>
+      <button onclick="copyShareLink()" class="btn btn-back" id="shareBtn">
+        🔗 शेयर करें
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Card -->
+    <div class="hero-card">
+      <div class="badge-pill">Hands-on Practical Project • Gmail Mastery V2.0</div>
+      <h1 class="hero-title">Gmail Safety, Anti-Phishing & Recovery Readiness — जीमेल सुरक्षा, फ़िशिंग से बचाव और सुरक्षित एक्सेस</h1>
+      <p class="hero-subtitle">
+        फर्जी बैंक व केवाईसी ईमेल्स पहचानें, Block बनाम Spam बनाम Phishing का सही चुनाव करें, Confidential Mode और Delegation से सुरक्षित रहें, और अपने Google Account की सुरक्षा तत्परता जाँचें।
+      </p>
+    </div>
+
+    <!-- Teaching Philosophy Bar -->
+    <div class="philosophy-bar">
+      <div class="philosophy-step"><span>1. Original Story</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल समस्या)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>2. Original Infographics</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल चित्र)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>3. Hands-on Practice</span> <span style="font-size: 0.75rem; color:#64748b;">(हाथों-हाथ अभ्यास)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>4. Real-life Application</span> <span style="font-size: 0.75rem; color:#64748b;">(दैनिक जीवन में उपयोग)</span></div>
+    </div>
+
+    <!-- Real-Life Unified Project Story -->
+    <div class="story-banner">
+      <div class="story-icon">🛡️⚠️</div>
+      <div>
+        <div class="story-title">प्रोजेक्ट की मूल कहानी (Our Real-Life Project Story):</div>
+        <p class="story-quote">
+          "आज सुबह मेरे इनबॉक्स में बैंक के नाम से एक आपातकालीन ईमेल आई: 'Important: Update Your SBI Account Details - KYC Expiring in 24 Hours'। ऊपर से देखने पर वह असली लगी, लेकिन प्रेषक का पता देखते ही मुझे संदेह हुआ। दफ्तर में हमें अक्सर गोपनीय दस्तावेज़ भी साझा करने होते हैं, और जब अधिकारी छुट्टी पर होते हैं तो सहायक को ईमेल संभालनी होती है। मेरे सामने तीन बड़ी चुनौतियाँ थीं: नकली बैंक ईमेल को पहचानकर सही तरीके से रिपोर्ट कैसे करें, बिना पासवर्ड बताए सहायक को इनबॉक्स एक्सेस कैसे दें, और गोपनीय दस्तावेज़ों को बिना लीक के डर के कैसे भेजें।"
+        </p>
+      </div>
+    </div>
+
+    <!-- Before / After Expected Outcome -->
+    <div class="comparison-grid">
+      <div class="compare-card before">
+        <h3 class="compare-title" style="color: #b91c1c;">
+          <span>❌ पहले: असुरक्षित व जोखिम भरा इनबॉक्स (Before)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> फर्जी बैंक/KYC ईमेल्स के लिंक पर घबराकर क्लिक कर बैठना और ठगी का शिकार होना।</li>
+          <li><strong>•</strong> धोखाधड़ी (Phishing) वाली ईमेल्स को साधारण स्पैम समझकर नज़रअंदाज़ कर देना।</li>
+          <li><strong>•</strong> गोपनीय दस्तावेज़ सामान्य ईमेल से भेजकर फॉरवर्ड या लीक होने का निरंतर डर।</li>
+          <li><strong>•</strong> दफ्तर में सहायक को ईमेल देखने के लिए अपना निजी पासवर्ड बता देना।</li>
+        </ul>
+      </div>
+
+      <div class="compare-card after">
+        <h3 class="compare-title" style="color: #047857;">
+          <span>✅ बाद में: सशक्त, जागरूक व सुरक्षित खाता (After)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> प्रेषक का असली डोमेन देखकर फर्जी ईमेल्स को तुरंत पहचानना और लिंक से दूर रहना।</li>
+          <li><strong>•</strong> Block, Report Spam और Report Phishing में से सही विकल्प चुनकर Google को सूचित करना।</li>
+          <li><strong>•</strong> 🔒 Confidential Mode से Expiry Time लगाकर गोपनीय पत्राचार पर नियंत्रण रखना।</li>
+          <li><strong>•</strong> Gmail Delegation से पासवर्ड साझा किए बिना सहायक को अधिकृत एक्सेस देना।</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Practical Safety Notice -->
+    <div class="safety-banner">
+      <span style="font-size: 1.5rem;">🛡️</span>
+      <div>
+        <strong>सर्वोच्च सुरक्षा निर्देश (Strict Safety Directives):</strong>
+        <br>1. <strong>संदिग्ध लिंक कभी न खोलें:</strong> किसी भी संदिग्ध या अनजानी ईमेल के लिंक, नीले बटन (जैसे Update KYC) या अटैचमेंट पर कभी क्लिक न करें।
+        <br>2. <strong>क्रेडेंशियल्स की गोपनीयता:</strong> अपना पासवर्ड, ओटीपी, या रिकवरी कोड कभी किसी के साथ साझा न करें।
+        <br>3. <strong>सुरक्षित अभ्यास:</strong> अभ्यास के दौरान किसी वास्तविक प्रेषक पर फ़िशिंग या स्पैम रिपोर्ट सबमिट न करें; केवल मेनू में इन विकल्पों की स्थिति पहचानना सीखें।
+      </div>
+    </div>
+
+    <!-- Five-Step Navigation Track -->
+    <div class="step-nav-bar" id="stepNavBar">
+      <div class="step-tab active" onclick="showStep(1)" id="tab-1">
+        <div class="step-tab-num">Step 1</div>
+        <div class="step-tab-title">नकली Bank Email पहचानें</div>
+      </div>
+      <div class="step-tab" onclick="showStep(2)" id="tab-2">
+        <div class="step-tab-num">Step 2</div>
+        <div class="step-tab-title">Block vs Spam vs Phishing</div>
+      </div>
+      <div class="step-tab" onclick="showStep(3)" id="tab-3">
+        <div class="step-tab-num">Step 3</div>
+        <div class="step-tab-title">Confidential Mode</div>
+      </div>
+      <div class="step-tab" onclick="showStep(4)" id="tab-4">
+        <div class="step-tab-num">Step 4</div>
+        <div class="step-tab-title">Gmail Delegation</div>
+      </div>
+      <div class="step-tab" onclick="showStep(5)" id="tab-5">
+        <div class="step-tab-num">Step 5</div>
+        <div class="step-tab-title">Undo व Account Checkup</div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 1: Recognize a Fake Bank Email -->
+    <!-- ========================================================================= -->
+    <div class="step-container active" id="step-1">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 1 / 5 • Step 1 of 5</span>
+          <h2 class="step-title">फर्जी बैंक व KYC ईमेल्स को पहचानें — Phishing के ख़तरे</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और फ़िशिंग के लक्षण (The Day 10 Phishing Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 10 Status 1) में देखें:
+              <em>"आज मुझे SBI Bank के नाम से एक ईमेल आई। ऊपर से देखने पर वह बिल्कुल असली लग रही थी... लेकिन Sender Address देखकर मुझे शक हुआ। सौभाग्य से मैंने उसे ओपन नहीं किया और अपने मित्र राम को दिखाई!"</em>
+              <br><br>
+              <strong>फर्जी ईमेल के तीन बड़े ख़तरे (Red Flags):</strong>
+              <br>1. <strong>फर्जी प्रेषक पता (Fake Domain):</strong> प्रेषक का नाम तो 'SBI Online' दिख रहा था, लेकिन ईमेल पता था: <code>alerts@sbionlineupdate.com</code> (असली बैंक डोमेन जैसे sbi.co.in नहीं!)।
+              <br>2. <strong>तात्कालिकता का डर (Urgency Trigger):</strong> ईमेल में लिखा था: <em>'This link will expire in 24 hours'</em> ताकि घबराकर व्यक्ति तुरंत क्लिक कर दे।
+              <br>3. <strong>संदिग्ध लिंक या बटन:</strong> <em>'UPDATE KYC NOW'</em> जैसा बटन जो फर्जी लॉगिन पेज पर ले जाता है।
+              <br><br>
+              <strong>⚠️ महत्वपूर्ण सुरक्षा नियम:</strong> केवल प्रेषक का पता देखकर भी 100% प्रामाणिकता सिद्ध नहीं होती (क्योंकि कभी-कभी प्रेषक का नाम स्पूफ़ भी हो सकता है)। कभी भी किसी बैंक या सरकारी ईमेल में आए लिंक पर क्लिक करके पासवर्ड या ओटीपी दर्ज न करें!
+            </p>
+          </div>
+
+          <!-- Infographic from Day 10 Status 1 -->
+          <div class="img-preview-box" onclick="openLightbox('../../block-spam-phishing/assets/day-10-status-1.png')">
+            <img src="../../block-spam-phishing/assets/day-10-status-1.png" alt="Day 10 Status 1: Fake SBI KYC Phishing email story" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 10 Status 1):</strong> SBI के नाम से आई फर्जी KYC ईमेल, फर्जी डोमेन की पहचान, और मित्र राम की सीख।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — सुरक्षित अवलोकन अभ्यास):</h4>
+            <ul class="task-list">
+              <li><strong>1. सुरक्षित अवलोकन:</strong> अपने इनबॉक्स या Promotions टैब में किसी पुरानी सामान्य प्रमोशनल ईमेल को खोलें।</li>
+              <li><strong>2. पूरा प्रेषक पता देखें:</strong> प्रेषक के नाम के बगल में बने छोटे तीर (▼) पर क्लिक करके देखें कि उसका वास्तविक ईमेल पता (जैसे <code>newsletter@company.com</code>) क्या है।</li>
+              <li><strong>3. सुनहरा सुरक्षा नियम:</strong> <em>किसी भी अज्ञात या संदिग्ध ईमेल के लिंक या अटैचमेंट पर कभी क्लिक न करें।</em> यदि बैंक से कोई संदेश आए, तो हमेशा बैंक की आधिकारिक ऐप या वेबसाइट को अलग से ब्राउज़र में खोलकर ही लॉगिन करें।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आप प्रेषक के डिस्प्ले नाम के भ्रम से बचकर उसका वास्तविक डोमेन पहचानना सीख जाएँगे और फ़िशिंग के किसी भी झांसे में नहीं फँसेंगे।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../block-spam-phishing/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 10 — Block, Spam & Phishing खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-primary">अगला स्टेप (Step 2: Block vs Spam vs Phishing) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 2: Block vs Spam vs Report Phishing -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-2">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 2 / 5 • Step 2 of 5</span>
+          <h2 class="step-title">सही सुरक्षा विकल्प चुनें — Block बनाम Report Spam बनाम Report Phishing</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 तीनों विकल्पों में अंतर (When to Use Each Option):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 10 Status 2) में देखें: हर अवांछित ईमेल एक जैसी नहीं होती। सही विकल्प का चुनाव बहुत आवश्यक है:
+              <br><br>
+              • <strong>🚫 BLOCK (प्रेषक को रोकना):</strong> जब कोई व्यक्ति या कंपनी बार-बार ईमेल भेज रही हो और आप भविष्य में उसकी ईमेल्स नहीं चाहते (उदा. अनचाहे न्यूज़लेटर्स)। ब्लॉक करने पर उस प्रेषक की भविष्य की सभी ईमेल्स सीधे Spam में चली जाती हैं।
+              <br><br>
+              • <strong>🗑️ REPORT SPAM (कचरा व अनचाहे विज्ञापन):</strong> जब कोई ईमेल केवल अवांछित विज्ञापन, प्रमोशनल ऑफर या बल्क मार्केटिंग हो। Spam रिपोर्ट करने से Gmail का AI सीखता है और ऐसी ईमेल्स को भविष्य में इनबॉक्स से बाहर रखता है।
+              <br><br>
+              • <strong>⚠️ REPORT PHISHING (धोखाधड़ी व वित्तीय जालसाजी):</strong> जब कोई ईमेल बैंक, यूपीआई, केवाईसी, पासवर्ड या ओटीपी चुराने वाली नकली जालसाजी हो। Phishing रिपोर्ट करने से Google की सुरक्षा टीम उस अपराधी खाते के विरुद्ध कड़ी कार्रवाई करती है और अन्य इंटरनेट उपयोगकर्ताओं को भी बचाती है।
+            </p>
+          </div>
+
+          <!-- Infographic from Day 10 Status 2 -->
+          <div class="img-preview-box" onclick="openLightbox('../../block-spam-phishing/assets/day-10-status-2.png')">
+            <img src="../../block-spam-phishing/assets/day-10-status-2.png" alt="Day 10 Status 2: Block vs Report Spam vs Report Phishing comparison" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 10 Status 2):</strong> Block, Report Spam और Report Phishing की विस्तृत तुलना एवं तीन डॉट्स (⋮) मेनू में इनकी जगह।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — मेनू विकल्पों की पहचान):</h4>
+            <ul class="task-list">
+              <li><strong>1. सुरक्षित अवलोकन:</strong> अपने Gmail में किसी सामान्य प्रमोशनल या न्यूज़लेटर ईमेल को खोलें।</li>
+              <li><strong>2. तीन डॉट्स (⋮) मेनू खोलें:</strong> ईमेल के अंदर ऊपर दाईं ओर बने <strong>⋮ (Three Dots)</strong> मेनू पर क्लिक करें।</li>
+              <li><strong>3. तीनों विकल्पों की जगह देखें:</strong> मेनू में देखें कि <strong>Block</strong>, <strong>Report spam</strong> और <strong>Report phishing</strong> कहाँ स्थित हैं।</li>
+              <li><strong>4. ⚠️ ध्यान रहे:</strong> अभ्यास के दौरान किसी वैध ईमेल पर गलती से रिपोर्ट न दबाएँ; केवल यह पहचानें कि असली धोखाधड़ी आने पर आपको कहाँ जाना है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आप किसी भी अवांछित ईमेल की गंभीरता को तुरंत पहचानकर सही कार्रवाई (Block, Spam या Phishing) करने में सक्षम होंगे।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../block-spam-phishing/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 10 — Block, Spam & Phishing खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(1)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(3)" class="btn btn-primary">अगला स्टेप (Step 3: Confidential Mode) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 3: Confidential Mode -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-3">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 3 / 5 • Step 3 of 5</span>
+          <h2 class="step-title">संवेदनशील संचार की सुरक्षा — 🔒 Confidential Mode का सही उपयोग</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और Confidential Mode (The Day 13 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 13 Status 1) में देखें:
+              <em>"बॉस ने कहा: 'यह गोपनीय जानकारी तुरंत ईमेल कर दो... लेकिन सामने वाला इसे केवल पढ़ सके, Forward न कर सके, Print भी न कर सके, और 1 दिन बाद यह ईमेल अपने-आप गायब हो जाए!'"</em>
+              <br><br>
+              Gmail का <strong>Confidential Mode</strong> आपको यह सुविधा देता है कि आप अपनी भेजी गई ईमेल पर <strong>Expiry Time (समय-सीमा)</strong> सेट कर सकते हैं और प्राप्तकर्ता द्वारा फॉरवर्ड, कॉपी, डाउनलोड या प्रिंट करने के विकल्पों को सीमित कर सकते हैं।
+              <br><br>
+              <strong>⚠️ महत्वपूर्ण सुरक्षा सीमाएँ (Crucial Limitations):</strong>
+              <br>• Confidential Mode सुरक्षा को बढ़ाता है, लेकिन यह 100% अभेद्य नहीं है।
+              <br>• यह सामने वाले व्यक्ति को स्क्रीनशॉट लेने, स्क्रीन रिकॉर्ड करने, या बाहरी कैमरे/मोबाइल से स्क्रीन की फोटो खींचने से नहीं रोक सकता।
+              <br>• इसलिए, पासवर्ड या अत्यंत गोपनीय वित्तीय क्रेडेंशियल्स ईमेल पर कभी न भेजें।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 13: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../confidential-mode/assets/day-13-status-1.png')">
+            <img src="../../confidential-mode/assets/day-13-status-1.png" alt="Day 13 Status 1: Boss confidential email requirements" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 13 Status 1):</strong> गोपनीय ईमेल भेजने की शर्तें और Gmail Confidential Mode का समाधान।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ सेटअप विधि और एक्सेस वापस लेना (Remove Access):</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 13 Status 2) में देखें: Compose में 🔒 आइकन से Expiry (उदा. 1 Day) सेट करें। ईमेल भेजने के बाद भी, आप <strong>Sent</strong> फ़ोल्डर में जाकर <strong>'Remove access'</strong> पर क्लिक करके प्राप्तकर्ता से ईमेल पढ़ने का अधिकार समय से पहले छीन सकते हैं!
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 13: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../confidential-mode/assets/day-13-status-2.png')">
+            <img src="../../confidential-mode/assets/day-13-status-2.png" alt="Day 13 Status 2: How to setup Confidential Mode and Remove Access" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 13 Status 2):</strong> 🔒 Confidential Mode सेटअप और Sent फ़ोल्डर से 'Remove access' का उपयोग।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — केवल डमी जानकारी से अभ्यास):</h4>
+            <ul class="task-list">
+              <li><strong>1. डमी ईमेल लिखें:</strong> + Compose खोलें और To में अपना ही दूसरा ईमेल पता डालें (कोई भी असली गोपनीय डेटा न लिखें)।</li>
+              <li><strong>2. 🔒 Confidential Mode चालू करें:</strong> नीचे टूलबार में बने <strong>लॉक आइकन (🔒)</strong> पर क्लिक करें।</li>
+              <li><strong>3. Expiry चुनें:</strong> <strong>Set Expiry</strong> में <strong>'1 day'</strong> चुनें और <strong>Save</strong> पर क्लिक करें।</li>
+              <li><strong>4. Send करें और Sent फ़ोल्डर देखें:</strong> ईमेल भेजने के बाद बाएँ मेनू में <strong>Sent</strong> फ़ोल्डर खोलें। उस ईमेल पर क्लिक करें और देखें कि नीचे <strong>'Remove access'</strong> बटन दिखाई दे रहा है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आप संवेदनशील सूचनाओं को समय-सीमा और फॉरवर्ड/प्रिंट प्रतिबंधों के साथ सुरक्षित भेजना और आवश्यकता पड़ने पर एक्सेस वापस लेना सीख जाएँगे।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../confidential-mode/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 13 — Confidential Mode खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(4)" class="btn btn-primary">अगला स्टेप (Step 4: Gmail Delegation) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 4: Gmail Delegation -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-4">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 4 / 5 • Step 4 of 5</span>
+          <h2 class="step-title">पासवर्ड बताए बिना सुरक्षित एक्सेस — Gmail Delegation</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और पासवर्ड शेयरिंग का जोखिम (The Day 27 Story):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 27 Status 1) में देखें:
+              <em>"एक अधिकारी को 5 दिनों के प्रशिक्षण के लिए बाहर जाना था। उनकी जीमेल पर रोज़ महत्वपूर्ण पत्र और अप्रूवल आते थे। क्या अपना Gmail पासवर्ड किसी सहायक (Assistant) को दे दूँ? नहीं! पासवर्ड देना कभी सुरक्षित नहीं है!"</em>
+              <br><br>
+              <strong>पासवर्ड कभी साझा न करें!</strong> Gmail का <strong>Delegation</strong> फीचर आपको अपने किसी विश्वसनीय सहायक या टीम मेंबर को अपना पासवर्ड बताए बिना इनबॉक्स का सुरक्षित एक्सेस देने की अनुमति देता है।
+              <br><br>
+              <strong>डेलिगेट के अधिकार व सुरक्षा सीमाएँ (Rights & Limits):</strong>
+              <br>• <strong>क्या कर सकता है:</strong> ईमेल्स पढ़ सकता है, उत्तर दे सकता है, और नए संदेश भेज सकता है (भेजी गई ईमेल पर लिखा दिखता है: <em>Sent by assistant on behalf of officer</em>)।
+              <br>• <strong>क्या नहीं कर सकता:</strong> आपका पासवर्ड नहीं बदल सकता, सुरक्षा सेटिंग्स या रिकवरी फोन नंबर नहीं बदल सकता, और Google Chat नहीं संभाल सकता।
+              <br>• <strong>एक्सेस हटाना (Revoke):</strong> काम पूरा होने पर आप 1-क्लिक में सहायक का एक्सेस तुरंत हटा सकते हैं।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 27: Problem Story -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-delegation/assets/day-27-status-1.png')">
+            <img src="../../gmail-delegation/assets/day-27-status-1.png" alt="Day 27 Status 1: Officer 5-day training password sharing dilemma" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 27 Status 1):</strong> प्रशिक्षण पर जाने पर पासवर्ड शेयर करने का जोखिम और Delegation का सुरक्षित विकल्प।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ Delegation सेटिंग्स कहाँ मिलती हैं:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 27 Status 2) में देखें: <em>Settings $\rightarrow$ See all settings $\rightarrow$ Accounts and Import</em> में <strong>'Grant access to your account'</strong> सेक्शन मिलता है जहाँ से डेलिगेट जोड़ा और हटाया जाता है।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 27: Step by Step Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-delegation/assets/day-27-status-2.png')">
+            <img src="../../gmail-delegation/assets/day-27-status-2.png" alt="Day 27 Status 2: How Gmail Delegation works, permissions, and setup" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 27 Status 2):</strong> डेलिगेट क्या कर सकता है और क्या नहीं, एवं Accounts and Import सेटिंग्स से जोड़ने की प्रक्रिया।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — केवल सेटिंग्स का अवलोकन):</h4>
+            <ul class="task-list">
+              <li><strong>1. सेटिंग्स खोलें:</strong> Gmail में ऊपर दाईं ओर गियर आइकन (⚙️) $\rightarrow$ <strong>'See all settings'</strong> पर क्लिक करें।</li>
+              <li><strong>2. Accounts and Import टैब में जाएँ:</strong> ऊपर दिए गए टैब्स में से <strong>'Accounts and Import'</strong> (या Accounts) चुनें।</li>
+              <li><strong>3. डेलिगेशन सेक्शन खोजें:</strong> नीचे स्क्रॉल करें और <strong>'Grant access to your account'</strong> विकल्प देखें।</li>
+              <li><strong>4. ⚠️ सुरक्षा निर्देश:</strong> अभ्यास के लिए किसी को वास्तविक एक्सेस न दें; केवल यह समझें कि यहाँ 'Add another account' से पासवर्ड दिए बिना एक्सेस दिया जा सकता है और कभी भी हटाया जा सकता है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आप समझ जाएँगे कि छुट्टी या व्यस्तता में काम चालू रखने के लिए पासवर्ड देने की कोई ज़रूरत नहीं होती; डेलिगेशन से खाता 100% सुरक्षित रहता है।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../gmail-delegation/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 27 — Gmail Delegation खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(3)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(5)" class="btn btn-primary">अगला स्टेप (Step 5: Undo व Account Checkup) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 5: Undo Send and Account Security Readiness -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-5">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 5 / 5 • Step 5 of 5</span>
+          <h2 class="step-title">गलत सेंड पर 30s सुरक्षा जाल (Undo Send) और Google Account सुरक्षा चेकअप</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 आकस्मिक भूलों का सुरक्षा जाल — Undo Send (Day 14):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 14 Status 1) में देखें: जब हम जल्दबाजी में होते हैं, तो कभी-कभी गलत व्यक्ति को ईमेल सेंड हो जाती है या संवेदनशील अटैचमेंट गलत चला जाता है।
+              <br><br>
+              <strong>सीमित रद्दीकरण विंडो (Up to 30 Seconds Delay):</strong>
+              Undo Send कोई संपूर्ण सुरक्षा की गारंटी नहीं है, बल्कि यह केवल <strong>अधिकतम 30 सेकंड तक का एक सीमित रद्दीकरण समय (Cancellation Window)</strong> है। इस दौरान Gmail ईमेल को सर्वर पर रोककर रखता है ताकि आप 'Undo' दबाकर ईमेल को ड्राफ्ट में वापस ला सकें।
+            </p>
+          </div>
+
+          <!-- Infographics from Day 14 -->
+          <div class="img-preview-box" onclick="openLightbox('../../undo-send/assets/day-14-status-1.png')">
+            <img src="../../undo-send/assets/day-14-status-1.png" alt="Day 14 Status 1: Original Problem - Wrong attachment sent in a hurry" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 14 Status 1):</strong> गलत अटैचमेंट जाने पर नीचे दिखे 'Undo' बटन से ईमेल बचाने की मूल कहानी।
+          </div>
+
+          <div class="img-preview-box" onclick="openLightbox('../../undo-send/assets/day-14-status-2.png')" style="margin-top:0.75rem;">
+            <img src="../../undo-send/assets/day-14-status-2.png" alt="Day 14 Status 2: How Undo Send works and setting 30 seconds delay" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 14 Status 2):</strong> General Settings में जाकर 'Send cancellation period' को 30 seconds पर सेट करना।
+          </div>
+
+          <!-- Clearly Separated Mini-Section: Google Account Security Checkup -->
+          <div class="google-security-card">
+            <span class="google-security-badge">Google Account Security Checkup</span>
+            <h4 style="font-size: 1rem; font-weight: 800; color: #166534; margin-bottom: 0.5rem;">
+              खाता सुरक्षा तत्परता — मुख्य Google Account सुरक्षा चेकअप
+            </h4>
+            <p class="concept-text" style="color: #14532d;">
+              <em>(स्पष्टीकरण: यह Gmail का इन-ऐप ट्यूटोरियल नहीं है, बल्कि आपके संपूर्ण Google खाते का आधिकारिक सुरक्षा केंद्र है।)</em>
+              <br><br>
+              Gmail इनबॉक्स की सुरक्षा के साथ-साथ आपके Google खाते का सुरक्षित रहना अनिवार्य है। आधिकारिक सुरक्षा पृष्ठ पर जाकर निम्नलिखित तीन बातों की जाँच करें:
+              <br><br>
+              <strong>1. 2-Step Verification (2FA):</strong> सुनिश्चित करें कि 2-Step Verification चालू (ON) है ताकि पासवर्ड पता होने पर भी कोई दूसरा व्यक्ति आपके खाते में लॉगिन न कर सके।
+              <br>
+              <strong>2. Recovery Phone (रिकवरी फोन):</strong> सुनिश्चित करें कि आपका वर्तमान सक्रिय मोबाइल नंबर दर्ज है ताकि पासवर्ड भूलने पर तुरंत एसएमएस से कोड मिल सके।
+              <br>
+              <strong>3. Recovery Email (रिकवरी ईमेल):</strong> एक सुरक्षित वैकल्पिक ईमेल दर्ज रखें जो आपात स्थिति में खाता पुनः प्राप्त करने में काम आए।
+              <br><br>
+              <strong>आधिकारिक सुरक्षा पृष्ठ लिंक:</strong><br>
+              <a href="https://myaccount.google.com/security" target="_blank" rel="noopener noreferrer" style="font-weight: 800; color: #15803d; text-decoration: underline; display: inline-flex; align-items: center; gap: 0.375rem; margin-top: 0.25rem;">
+                🔗 myaccount.google.com/security खोलें (Google Security Hub) ↗
+              </a>
+              <br><br>
+              <strong>⚠️ सख्त सुरक्षा चेतावनी:</strong> किसी भी वेबसाइट, फोन कॉल या ईमेल पर अपना पासवर्ड, ओटीपी (OTP), बैकअप कोड या रिकवरी विवरण कभी भी किसी को न बताएँ!
+            </p>
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. Undo Send समय 30 सेकंड करें:</strong> ⚙️ Settings $\rightarrow$ General में जाकर Undo Send अवधि को <strong>'30 seconds'</strong> पर सेट करें और Save Changes करें।</li>
+              <li><strong>2. आधिकारिक सुरक्षा हब देखें:</strong> नए टैब में <strong>myaccount.google.com/security</strong> खोलें।</li>
+              <li><strong>3. सुरक्षा तत्परता जाँचें:</strong> देखें कि 2-Step Verification, Recovery Phone और Recovery Email सही ढंग से जुड़े हुए हैं या नहीं।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              🎉 <strong>बधाई हो!</strong> आपका <strong>Gmail Safety, Anti-Phishing & Recovery Readiness System</strong> पूरी तरह से जाँचा और समझा जा चुका है। अब आप फ़िशिंग से सुरक्षित हैं, पासवर्ड साझा किए बिना कार्य कर सकते हैं, और आपका खाता हर दृष्टि से सुरक्षित है।
+            </p>
+          </div>
+
+          <!-- Optional Learning Box for Storage Management -->
+          <div class="optional-box">
+            <h4 class="optional-heading">💾 अतिरिक्त सुरक्षा ज्ञान (Optional Learning: Day 22 — Gmail Storage):</h4>
+            <p class="optional-text">
+              यदि आपका 15 GB स्टोरेज फुल हो जाता है, तो बैंक अलर्ट्स और महत्वपूर्ण सुरक्षा ईमेल्स आना बंद हो सकती हैं। समय-समय पर <code>has:attachment larger:10M</code> से अनावश्यक भारी फाइल्स की समीक्षा करें।<br>
+              <a href="../../gmail-storage/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer" style="color:#7e22ce; margin-top:0.25rem; display:inline-block;">
+                📖 Day 22 — Gmail Storage ट्यूटोरियल देखें →
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="../../undo-send/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+              📖 Day 14 — Undo Send खोलें →
+            </a>
+            <a href="../../block-spam-phishing/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+              📖 Day 10 — Block & Phishing खोलें →
+            </a>
+          </div>
+          <div class="step-actions">
+            <button onclick="showStep(4)" class="btn btn-back">← पिछला स्टेप</button>
+            <a href="../../../../#/category/gmail" class="btn btn-primary" id="finishBtn">✓ प्रोजेक्ट पूरा हुआ (Complete!)</a>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">✕</button>
+    <img id="lightboxImg" src="" alt="Infographic full view" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Step switcher logic
+    function showStep(stepNum) {
+      for (let i = 1; i <= 5; i++) {
+        const stepEl = document.getElementById('step-' + i);
+        const tabEl = document.getElementById('tab-' + i);
+        if (stepEl) stepEl.classList.remove('active');
+        if (tabEl) tabEl.classList.remove('active');
+      }
+
+      const targetStep = document.getElementById('step-' + stepNum);
+      const targetTab = document.getElementById('tab-' + stepNum);
+      if (targetStep) targetStep.classList.add('active');
+      if (targetTab) targetTab.classList.add('active');
+
+      const navEl = document.getElementById('stepNavBar');
+      if (navEl) {
+        navEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Lightbox modal logic
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      if (modal && img) {
+        img.src = src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Share link copy
+    function copyShareLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        const btn = document.getElementById('shareBtn');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ लिंक कॉपी हो गया!';
+          setTimeout(function() { btn.textContent = original; }, 2000);
+        }
+      });
+    }
+
+    // Adapt Back button dynamically for GitHub Pages vs Localhost
+    (function() {
+      const isGHPages = window.location.pathname.includes('/digital-learning-hub/');
+      const targetHref = isGHPages ? '/digital-learning-hub/#/category/gmail' : '/#/category/gmail';
+      const backLink = document.getElementById('categoryBackLink');
+      const finishBtn = document.getElementById('finishBtn');
+      if (backLink) backLink.setAttribute('href', targetHref);
+      if (finishBtn) finishBtn.setAttribute('href', targetHref);
+    })();
+  </script>
+
+</body>
+</html>

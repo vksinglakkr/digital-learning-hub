@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Document & Heavy File Sharing System | Digital Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ea4335;
+      --primary-dark: #c5221f;
+      --primary-light: #fce8e6;
+      --teal-600: #0d9488;
+      --teal-50: #f0fdfa;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: var(--slate-900);
+      line-height: 1.6;
+    }
+
+    /* Top Sticky Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.875rem;
+      border-radius: 0.625rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-back { background: var(--slate-100); color: var(--slate-700); border-color: var(--border); }
+    .btn-back:hover { background: #e2e8f0; color: var(--slate-900); }
+    .btn-action { background: var(--slate-900); color: #fff; }
+    .btn-action:hover { background: var(--slate-800); }
+    .btn-primary { background: #ea4335; color: #fff; }
+    .btn-primary:hover { background: #d93025; }
+
+    .container { max-width: 1050px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+
+    /* Hero Banner */
+    .hero-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff;
+      border-radius: 1.5rem;
+      padding: 2.25rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(234, 67, 53, 0.2);
+      color: #fca5a5;
+      border: 1px solid rgba(234, 67, 53, 0.4);
+      margin-bottom: 1rem;
+    }
+    .hero-title { font-size: 1.875rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+    .hero-subtitle { font-size: 1rem; color: #cbd5e1; max-width: 820px; line-height: 1.6; }
+
+    /* Teaching Philosophy Bar */
+    .philosophy-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.875rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--slate-700);
+      overflow-x: auto;
+      gap: 0.75rem;
+    }
+    .philosophy-step { display: flex; align-items: center; gap: 0.375rem; white-space: nowrap; }
+    .phil-arrow { color: #94a3b8; font-weight: 400; }
+
+    /* Real-Life Story Banner */
+    .story-banner {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #2563eb;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1rem;
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .story-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .story-title { font-size: 0.9375rem; font-weight: 800; color: #1e40af; margin-bottom: 0.25rem; }
+    .story-quote { font-size: 0.9375rem; font-style: italic; color: #1e3a8a; line-height: 1.5; }
+
+    /* Before / After Box */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+    @media (max-width: 768px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .compare-card.before { border-left: 4px solid #ef4444; }
+    .compare-card.after { border-left: 4px solid #10b981; }
+    .compare-title {
+      font-size: 0.9375rem;
+      font-weight: 800;
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .compare-list {
+      list-style: none;
+      font-size: 0.8125rem;
+      color: var(--slate-600);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .compare-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.45; }
+
+    /* Safety Alert Banner */
+    .safety-banner {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      color: #92400e;
+      font-size: 0.8125rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    /* Five-Step Progress Bar / Track */
+    .step-nav-bar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 0.625rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    @media (max-width: 900px) {
+      .step-nav-bar {
+        display: flex;
+        overflow-x: auto;
+        padding: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    .step-tab {
+      background: var(--slate-50);
+      border: 1px solid var(--border);
+      padding: 0.625rem 0.5rem;
+      border-radius: 0.625rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-width: 130px;
+    }
+    .step-tab:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .step-tab.active {
+      background: #ea4335;
+      border-color: #d93025;
+      color: #fff;
+      box-shadow: 0 4px 6px -1px rgba(234, 67, 53, 0.2);
+    }
+    .step-tab-num { font-size: 0.6875rem; font-weight: 800; opacity: 0.85; text-transform: uppercase; }
+    .step-tab-title { font-size: 0.75rem; font-weight: 700; margin-top: 0.125rem; line-height: 1.25; }
+
+    /* Step Card Content */
+    .step-container { display: none; }
+    .step-container.active { display: block; animation: fadeIn 0.2s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-main-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    .step-header {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .step-badge {
+      background: #fee2e2;
+      color: #991b1b;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 0.5rem;
+      border: 1px solid #fecaca;
+    }
+    .step-title { font-size: 1.125rem; font-weight: 800; color: var(--slate-900); flex: 1; }
+    
+    .step-body { padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .concept-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .concept-heading { font-size: 0.875rem; font-weight: 800; color: var(--slate-800); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .concept-text { font-size: 0.875rem; color: var(--slate-600); line-height: 1.6; }
+
+    .task-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .task-heading { font-size: 0.875rem; font-weight: 800; color: #1e40af; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; font-size: 0.875rem; color: #1e3a8a; }
+    .task-list li { display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .task-list li strong { color: #172554; }
+
+    .result-box {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+    }
+    .result-heading { font-size: 0.875rem; font-weight: 800; color: #065f46; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .result-text { font-size: 0.875rem; color: #047857; line-height: 1.5; }
+
+    /* Optional Learning Box */
+    .optional-box {
+      background: #fdf4ff;
+      border: 1px solid #f5d0fe;
+      border-left: 4px solid #a855f7;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .optional-heading { font-size: 0.875rem; font-weight: 800; color: #7e22ce; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .optional-text { font-size: 0.875rem; color: #6b21a8; line-height: 1.6; }
+
+    /* Infographic Preview in Step */
+    .img-preview-box {
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      overflow: hidden;
+      background: #0f172a;
+      position: relative;
+      cursor: zoom-in;
+      text-align: center;
+    }
+    .img-preview-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      max-height: 520px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+    }
+    .img-preview-box:hover img { transform: scale(1.01); }
+    .zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .img-caption {
+      padding: 0.625rem 1rem;
+      background: #f1f5f9;
+      font-size: 0.75rem;
+      color: var(--slate-600);
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+      text-align: left;
+    }
+
+    /* Step Footer & Action Buttons */
+    .step-footer {
+      padding: 1.25rem 1.5rem;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .related-tutorial-link {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #0d9488;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .related-tutorial-link:hover { text-decoration: underline; color: #0f766e; }
+
+    .step-actions { display: flex; align-items: center; gap: 0.75rem; }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 100;
+      padding: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: #fff;
+      border: none;
+      color: #0f172a;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Print View */
+    @media print {
+      body { background: #fff; color: #000; }
+      .top-nav, .step-nav-bar, .step-footer, .zoom-hint, .btn-action, .safety-banner { display: none !important; }
+      .container { padding: 0; max-width: 100%; }
+      .hero-card { background: #f8fafc !important; color: #000 !important; border: 1px solid #ccc !important; box-shadow: none !important; padding: 1rem !important; }
+      .hero-title { color: #000 !important; font-size: 1.5rem !important; }
+      .hero-subtitle { color: #333 !important; }
+      .step-container { display: block !important; page-break-inside: avoid; margin-bottom: 2rem; border-bottom: 2px dashed #999; padding-bottom: 2rem; }
+      .step-main-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+      .img-preview-box img { max-height: 380px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <a href="../../../../#/category/gmail" id="categoryBackLink" class="btn btn-back">
+        ← Gmail Category पर वापस जाएँ
+      </a>
+      <span style="font-size: 0.75rem; font-weight: 800; background: #fee2e2; color: #991b1b; padding: 0.2rem 0.5rem; border-radius: 0.375rem;">
+        Pilot Project 2
+      </span>
+    </div>
+    <div class="nav-right">
+      <button onclick="window.print()" class="btn btn-action" title="पूरा गाइड प्रिंट या PDF सेव करें">
+        🖨️ पूरा गाइड प्रिंट करें
+      </button>
+      <button onclick="copyShareLink()" class="btn btn-back" id="shareBtn">
+        🔗 शेयर करें
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Card -->
+    <div class="hero-card">
+      <div class="badge-pill">Hands-on Practical Project • Gmail Mastery V2.0</div>
+      <h1 class="hero-title">Digital Document & Heavy File Sharing System — बड़ी फाइल्स और कई दस्तावेज़ सुरक्षित साझा करना</h1>
+      <p class="hero-subtitle">
+        25 MB से बड़ी Presentation, Video या रिपोर्ट ईमेल से भेजें, कई संदर्भ ईमेल्स को एक साथ .eml फाइल्स बनाकर साझा करें, और अपनी 15 GB Google स्टोरेज को हमेशा व्यवस्थित रखें।
+      </p>
+    </div>
+
+    <!-- Teaching Philosophy Bar -->
+    <div class="philosophy-bar">
+      <div class="philosophy-step"><span>1. Original Story</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल समस्या)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>2. Original Infographics</span> <span style="font-size: 0.75rem; color:#64748b;">(मूल चित्र)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>3. Hands-on Practice</span> <span style="font-size: 0.75rem; color:#64748b;">(हाथों-हाथ अभ्यास)</span></div>
+      <span class="phil-arrow">→</span>
+      <div class="philosophy-step"><span>4. Real-life Application</span> <span style="font-size: 0.75rem; color:#64748b;">(दैनिक जीवन में उपयोग)</span></div>
+    </div>
+
+    <!-- Real-Life Unified Project Story -->
+    <div class="story-banner">
+      <div class="story-icon">📁⚡</div>
+      <div>
+        <div class="story-title">प्रोजेक्ट की मूल कहानी (Our Real-Life Project Story):</div>
+        <p class="story-quote">
+          "मुझे अपने ऑफिस के अधिकारी / कॉलेज के प्रोजेक्ट हेड को 50 MB की बड़ी Presentation और प्रोजेक्ट रिपोर्ट भेजनी है, साथ ही पिछले 1 महीने के 3 पुराने संदर्भ ईमेल्स (Approvals & Feedback) भी एक साथ जमा करने हैं। जब मैंने सीधे 50 MB की फाइल Attach (📎) की, तो Gmail ने एरर दे दिया: 'File size exceeds the limit'। मुझे यह भी सुनिश्चित करना है कि केवल सही व्यक्ति ही फाइल खोल सके और मेरा 15 GB स्टोरेज सुरक्षित रहे।"
+        </p>
+      </div>
+    </div>
+
+    <!-- Before / After Expected Outcome -->
+    <div class="comparison-grid">
+      <div class="compare-card before">
+        <h3 class="compare-title" style="color: #b91c1c;">
+          <span>❌ पहले: अव्यवस्थित व असुरक्षित शेयरिंग (Before)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> 25 MB से बड़ी फाइल न भेज पाने पर काम अटक जाना या WhatsApp पर भेजकर क्वालिटी खराब होना।</li>
+          <li><strong>•</strong> 3-4 संदर्भ ईमेल्स को अलग-अलग फॉरवर्ड करके प्राप्तकर्ता का इनबॉक्स भरना।</li>
+          <li><strong>•</strong> बिना परमिशन जाँचे फाइल शेयर करना, जिससे कोई भी व्यक्ति लिंक से डेटा खोल ले।</li>
+          <li><strong>•</strong> बड़ी फाइलों से Gmail और Drive का 15 GB स्टोरेज अचानक फुल हो जाना।</li>
+        </ul>
+      </div>
+
+      <div class="compare-card after">
+        <h3 class="compare-title" style="color: #047857;">
+          <span>✅ बाद में: पेशेवर व सुरक्षित शेयरिंग सिस्टम (After)</span>
+        </h3>
+        <ul class="compare-list">
+          <li><strong>•</strong> 25 MB से बड़ी फाइलें Google Drive लिंक से सीधे कंपोज़ में प्रोफेशनल कार्ड के रूप में जोड़ना।</li>
+          <li><strong>•</strong> सभी पुराने संदर्भ ईमेल्स को एक ही ईमेल में <code>.eml</code> अटैचमेंट बनाकर साफ-सुथरा भेजना।</li>
+          <li><strong>•</strong> 'Restricted' परमिशन लगाकर केवल अधिकृत प्राप्तकर्ता को सुरक्षित एक्सेस देना।</li>
+          <li><strong>•</strong> <code>has:attachment larger:10M</code> से स्टोरेज को हमेशा 15 GB सीमा के अंदर हल्का रखना।</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Practical Safety Notice -->
+    <div class="safety-banner">
+      <span style="font-size: 1.25rem;">🛡️</span>
+      <div>
+        <strong>व्यावहारिक सुरक्षा नियम (Practical Safety Rules):</strong>
+        <br>1. <strong>Restricted vs Anyone with the link:</strong> व्यक्तिगत और गोपनीय फाइलों के लिए हमेशा <strong>'Restricted'</strong> चुनें। जब तक कोई सार्वजनिक सर्कुलर न हो, कभी भी 'Anyone with the link' न रखें।
+        <br>2. <strong>ईमेल भेजने का अर्थ परमिशन मिलना नहीं:</strong> केवल 'To' में ईमेल लिखने से अपने-आप Google Drive फाइल की परमिशन नहीं मिलती—सेंड करते समय Gmail परमिशन डायलॉग में सही अधिकार तय करें।
+        <br>3. <strong>सावधानीपूर्वक स्टोरेज प्रबंधन:</strong> 15 GB स्टोरेज खाली करते समय किसी भी फाइल को स्थायी रूप से डिलीट करने से पहले सुनिश्चित करें कि उसका बैकअप सुरक्षित है।
+      </div>
+    </div>
+
+    <!-- Five-Step Navigation Track -->
+    <div class="step-nav-bar" id="stepNavBar">
+      <div class="step-tab active" onclick="showStep(1)" id="tab-1">
+        <div class="step-tab-num">Step 1</div>
+        <div class="step-tab-title">25 MB सीमा की सच्चाई</div>
+      </div>
+      <div class="step-tab" onclick="showStep(2)" id="tab-2">
+        <div class="step-tab-num">Step 2</div>
+        <div class="step-tab-title">Google Drive से भेजें</div>
+      </div>
+      <div class="step-tab" onclick="showStep(3)" id="tab-3">
+        <div class="step-tab-num">Step 3</div>
+        <div class="step-tab-title">Access Permissions</div>
+      </div>
+      <div class="step-tab" onclick="showStep(4)" id="tab-4">
+        <div class="step-tab-num">Step 4</div>
+        <div class="step-tab-title">Forward as Attachment</div>
+      </div>
+      <div class="step-tab" onclick="showStep(5)" id="tab-5">
+        <div class="step-tab-num">Step 5</div>
+        <div class="step-tab-title">स्टोरेज व सत्यापन</div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 1: Why a large file cannot be attached normally -->
+    <!-- ========================================================================= -->
+    <div class="step-container active" id="step-1">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 1 / 5 • Step 1 of 5</span>
+          <h2 class="step-title">समझें कि 25 MB से बड़ी फाइल सामान्य रूप से अटैच क्यों नहीं होती</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 25 MB अटैचमेंट सीमा का नियम (Gmail's ~25 MB Limit):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 23 Status 1) की कहानी देखें:
+              <em>"एक दिन मुझे 50 MB की Presentation Email करनी थी। मैंने File Attach की... और Send दबाया। तुरंत एरर आया: <strong>'File size exceeds the limit.'</strong>"</em>
+              <br><br>
+              <strong>ऐसा क्यों होता है?</strong> Gmail में ईमेल प्रोटोकॉल के तकनीकी नियमों के कारण सामान्य अटैचमेंट (📎) की अधिकतम सीमा <strong>लगभग 25 MB</strong> निर्धारित है। जब कोई फाइल अटैच होती है, तो एनकोडिंग के कारण उसका आकार लगभग 33% बढ़ जाता है। इसलिए 25 MB से बड़ी किसी भी फाइल (जैसे बड़ी PPT, वीडियो या ZIP फोल्डर) को सीधे अटैच नहीं किया जा सकता।
+            </p>
+          </div>
+
+          <!-- Infographic from Day 23 Status 1 -->
+          <div class="img-preview-box" onclick="openLightbox('../../large-files-drive/assets/day-23-status-1.png')">
+            <img src="../../large-files-drive/assets/day-23-status-1.png" alt="Day 23 Status 1: 50 MB Presentation attachment limit error" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 23 Status 1):</strong> 50 MB की Presentation ईमेल करते समय <em>'File size exceeds the limit'</em> आने की मूल समस्या।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. Gmail Compose खोलें:</strong> Gmail में <strong>+ Compose</strong> पर क्लिक करें।</li>
+              <li><strong>2. सामान्य अटैचमेंट आइकन देखें:</strong> नीचे टूलबार में बने पेपरक्लिप (📎 <em>Attach files</em>) आइकन को देखें।</li>
+              <li><strong>3. सीमा का नियम याद रखें:</strong> अभ्यास के लिए आपको कोई भारी फाइल बनाने की आवश्यकता नहीं है—बस यह सिद्धांत याद रखें कि 25 MB से छोटी फाइलें ही सीधे 📎 से जुड़ती हैं, और 25 MB से बड़ी फाइलों के लिए हमें Google Drive की मदद लेनी होती है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आपको स्पष्ट समझ आ जाएगी कि भारी फाइलों के लिए सामान्य 📎 अटैचमेंट क्यों विफल होता है और इसके समाधान के लिए Google Drive क्यों आवश्यक है।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../large-files-drive/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 23 — Large Files via Google Drive खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-primary">अगला स्टेप (Step 2: Google Drive से भेजें) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 2: Share a large file using Google Drive -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-2">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 2 / 5 • Step 2 of 5</span>
+          <h2 class="step-title">Google Drive (▲) की मदद से 25 MB से बड़ी फाइल्स आसानी से जोड़ें</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 Drive Link की कार्यप्रणाली (How Drive Link Works):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 23 Status 2) में देखें: जब फाइल 25 MB से बड़ी होती है, तो उसे ईमेल के अंदर ठूँसने के बजाय <strong>Google Drive</strong> में रखा जाता है।
+              <br><br>
+              Gmail Compose में <strong>Google Drive (▲)</strong> आइकन पर क्लिक करके जब आप फाइल चुनते हैं, तो ईमेल में उस भारी फाइल का एक सुरक्षित <strong>Drive Link कार्ड</strong> जुड़ जाता है। प्राप्तकर्ता को ईमेल में साफ दिखता है: <code>Project Presentation.pptx — Open in Drive</code>। इससे फाइल की मूल क्वालिटी (Original Quality) 100% बनी रहती है और ईमेल तुरंत सेंड हो जाती है।
+            </p>
+          </div>
+
+          <!-- Infographic from Day 23 Status 2 -->
+          <div class="img-preview-box" onclick="openLightbox('../../large-files-drive/assets/day-23-status-2.png')">
+            <img src="../../large-files-drive/assets/day-23-status-2.png" alt="Day 23 Status 2: Step-by-Step Guide - Send Large Files using Google Drive" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 23 Status 2):</strong> Compose में Drive (▲) आइकन से Drive Link जोड़ना और प्राप्तकर्ता को 'Open in Drive' कार्ड दिखना।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. Drive आइकन पर क्लिक करें:</strong> कंपोज़ विंडो में नीचे टूलबार में बने <strong>Google Drive (▲)</strong> आइकन पर क्लिक करें।</li>
+              <li><strong>2. फाइल चुनें:</strong> खुली हुई विंडो में <strong>'My Drive'</strong> या <strong>'Upload'</strong> टैब में से अपनी कोई भी एक सामान्य फाइल चुनें।</li>
+              <li><strong>3. 'Drive link' विकल्प सुनिश्चित करें:</strong> नीचे दाईं ओर देखें कि <strong>'Drive link'</strong> चुना हुआ है, फिर नीले रंग के <strong>'Insert'</strong> बटन पर क्लिक करें।</li>
+              <li><strong>4. कार्ड का अवलोकन करें:</strong> देखें कि ईमेल के अंदर एक आकर्षक 'Open in Drive' चिप जुड़ गई है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              भारी फाइल बिना ईमेल का साइज बढ़ाए एक पेशेवर Drive Link के रूप में ईमेल में जुड़ जाएगी।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../large-files-drive/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 23 — Large Files via Google Drive खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(1)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(3)" class="btn btn-primary">अगला स्टेप (Step 3: Access Permissions) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 3: Check recipient permissions -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-3">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 3 / 5 • Step 3 of 5</span>
+          <h2 class="step-title">फाइल एक्सेस परमिशन (Permissions) जाँचें — Restricted बनाम Anyone with the link</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 महत्वपूर्ण सुरक्षा सिद्धांत (Permissions Are Not Automatic):</h4>
+            <p class="concept-text">
+              <strong>एक आम गलतफहमी:</strong> लोग सोचते हैं कि यदि उन्होंने किसी का ईमेल 'To' में लिख दिया, तो सामने वाले को फाइल खोलने की परमिशन अपने-आप मिल गई। ऐसा नहीं है!
+              <br><br>
+              नीचे इन्फोग्राफिक (Day 23 Status 2) के <strong>IMPORTANT</strong> बॉक्स में देखें:
+              जब आप Send दबाते हैं, तो Gmail पूछता है कि फाइल का एक्सेस किसे देना है:
+              <br><br>
+              • <strong>Restricted (अनुशंसित व सुरक्षित):</strong> केवल वही विशिष्ट व्यक्ति फाइल खोल सकेगा जिसे आपने ईमेल भेजा है। कोई तीसरा व्यक्ति लिंक मिलने पर भी फाइल नहीं देख सकता।
+              <br>
+              • <strong>Anyone with the link:</strong> इंटरनेट पर जिसके पास भी वह लिंक होगा, वह फाइल खोल और डाउनलोड कर सकेगा। इसे केवल सार्वजनिक ब्रोशर या ओपन प्रोजेक्ट्स के लिए ही उपयोग करें।
+              <br><br>
+              आप यह भी तय कर सकते हैं कि प्राप्तकर्ता केवल <strong>View (देख सके)</strong> या <strong>Edit (बदलाव कर सके)</strong>। व्यावसायिक रिपोर्ट के लिए हमेशा <em>'View only'</em> रखना सुरक्षित होता है।
+            </p>
+          </div>
+
+          <!-- Infographic from Day 23 Status 2 (Permissions focus) -->
+          <div class="img-preview-box" onclick="openLightbox('../../large-files-drive/assets/day-23-status-2.png')">
+            <img src="../../large-files-drive/assets/day-23-status-2.png" alt="Day 23 Status 2: Permissions Check - Restricted vs Anyone with the link" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 23 Status 2):</strong> दाईं ओर का बॉक्स देखें — <em>'Receiver को क्या दिखेगा?'</em> एवं नीचे <em>'IMPORTANT: File Share करने से पहले Permissions चेक करें (Restricted vs Anyone with the link)'</em>।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task):</h4>
+            <ul class="task-list">
+              <li><strong>1. परमिशन डायलॉग का अवलोकन:</strong> Drive लिंक वाली ईमेल में 'Send' दबाने पर आने वाले <em>"Someone needs access to the file"</em> पॉपअप को ध्यान से देखें।</li>
+              <li><strong>2. Restricted चुनें:</strong> रेडियो बटन में <strong>'Share with this person'</strong> (Restricted) का चयन करें।</li>
+              <li><strong>3. View अधिकार रखें:</strong> अधिकार में <strong>'Can view'</strong> चुनें ताकि सामने वाला केवल रिपोर्ट देख या डाउनलोड कर सके, उसमें फेरबदल न कर सके।</li>
+              <li><strong>4. 'Send' पर क्लिक करें:</strong> अब आपकी फाइल सुरक्षित रूप से अधिकृत प्राप्तकर्ता तक पहुँच जाएगी।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              अनधिकृत डाउनलोड या लिंक लीक होने का डर खत्म हो जाएगा; फाइल केवल वही व्यक्ति देख सकेगा जिसे आपने अधिकृत किया है।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../large-files-drive/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 23 — Large Files via Google Drive खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(2)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(4)" class="btn btn-primary">अगला स्टेप (Step 4: Forward as Attachment) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 4: Forward multiple emails as attachments -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-4">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 4 / 5 • Step 4 of 5</span>
+          <h2 class="step-title">कई संदर्भ ईमेल्स को एक साथ .eml अटैचमेंट बनाकर भेजें (Forward as Attachment)</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 मूल कहानी और .eml फॉर्मेट का लाभ:</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 28 Status 1) की कहानी देखें:
+              <em>"एक दिन मुझे अपने अधिकारी को 10 पुरानी ईमेल्स भेजनी थीं... एक-एक खोलकर 10 बार फॉरवर्ड करने में बहुत समय बर्बाद हो रहा था।"</em>
+              <br><br>
+              अगर आप प्रोजेक्ट की रिपोर्ट के साथ पिछले 3-4 संदर्भ संदेश (जैसे क्लाइंट का फीडबैक या अधिकारी का अप्रूवल) अलग-अलग फॉरवर्ड करेंगे, तो प्राप्तकर्ता का इनबॉक्स भर जाएगा और बातचीत का संदर्भ टूट जाएगा।
+              <br><br>
+              <strong>Forward as Attachment</strong> से वे सभी ईमेल्स <code>.eml</code> फाइल्स के रूप में एक ही नई ईमेल में अटैच हो जाती हैं। इससे उनके मूल टाइमस्टैम्प, सेंडर का पता और पुरानी अटैचमेंट्स 100% सुरक्षित रहते हैं।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 28: Problem story -->
+          <div class="img-preview-box" onclick="openLightbox('../../forward-as-attachment/assets/day-28-status-1.png')">
+            <img src="../../forward-as-attachment/assets/day-28-status-1.png" alt="Day 28 Status 1: Original Problem - Forwarding 10 emails separately" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 28 Status 1):</strong> कई ईमेल्स को अलग-अलग फॉरवर्ड करने की समस्या और 'Forward as Attachment' का समय बचाने वाला समाधान।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">⚙️ कई ईमेल्स एक साथ अटैच करने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 28 Status 2) में देखें: इनबॉक्स में चेकबॉक्स टिक करें, ऊपर तीन डॉट्स (⋮) से 'Forward as attachment' चुनें, और एक ही ईमेल में सभी .eml अटैचमेंट्स भेजें।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 28: Step by Step Guide & Comparison -->
+          <div class="img-preview-box" onclick="openLightbox('../../forward-as-attachment/assets/day-28-status-2.png')">
+            <img src="../../forward-as-attachment/assets/day-28-status-2.png" alt="Day 28 Status 2: How to Forward as Attachment step-by-step" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 28 Status 2):</strong> चरण 1 से 4 और सामान्य Forward बनाम Forward as Attachment की विस्तृत तुलना।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — गैर-संवेदनशील अभ्यास):</h4>
+            <ul class="task-list">
+              <li><strong>1. इनबॉक्स में जाएँ:</strong> अपने इनबॉक्स में किन्हीं 2 सामान्य, पुरानी या गैर-संवेदनशील ईमेल्स के बाईं ओर बने <strong>चेकबॉक्स (Tick box)</strong> को टिक करें।</li>
+              <li><strong>2. More मेनू खोलें:</strong> ऊपर टूलबार में बने <strong>तीन डॉट्स (⋮)</strong> आइकन पर क्लिक करें।</li>
+              <li><strong>3. 'Forward as attachment' चुनें:</strong> मेनू में से <strong>"Forward as attachment"</strong> विकल्प पर क्लिक करें।</li>
+              <li><strong>4. नई कंपोज़ विंडो देखें:</strong> देखें कि एक नई ईमेल खुल गई है जिसमें आपकी चुनी हुई दोनों ईमेल्स <code>.eml</code> फाइलों के रूप में जुड़ी हुई हैं! (संतुष्ट होने पर ड्राफ्ट बंद कर दें)।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              आप कई संदर्भ संदेशों और उनके इतिहास को एक ही साफ-सुथरे पैकेज में भेजना सीख जाएँगे, जिससे समय और प्रोफेशनल विश्वसनीयता दोनों बढ़ेंगे।
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../forward-as-attachment/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 28 — Forward as Attachment खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(3)" class="btn btn-back">← पिछला स्टेप</button>
+            <button onclick="showStep(5)" class="btn btn-primary">अगला स्टेप (Step 5: स्टोरेज व सत्यापन) →</button>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- STEP 5: Verify sharing and understand storage -->
+    <!-- ========================================================================= -->
+    <div class="step-container" id="step-5">
+      <article class="step-main-card">
+        <div class="step-header">
+          <span class="step-badge">चरण 5 / 5 • Step 5 of 5</span>
+          <h2 class="step-title">शेयरिंग का सत्यापन करें और 15 GB स्टोरेज को सुरक्षित रखें</h2>
+        </div>
+
+        <div class="step-body">
+          <div class="concept-box">
+            <h4 class="concept-heading">💡 15 GB साझा स्टोरेज की सच्चाई (The 15 GB Shared Pool):</h4>
+            <p class="concept-text">
+              नीचे दिए गए मूल इन्फोग्राफिक (Day 22 Status 1) में देखें: Google हर खाते को 15 GB फ्री स्टोरेज देता है। लेकिन यह केवल Gmail के लिए नहीं है—<strong>Gmail, Google Drive और Google Photos तीनों एक ही 15 GB साझा करते हैं!</strong>
+              <br><br>
+              जब आप Google Drive से बड़ी फाइलें शेयर करते हैं, तो वे फाइलें आपकी ही Drive में रहती हैं और आपकी स्टोरेज का हिस्सा होती हैं। यदि आप पुरानी बेकार फाइल्स नहीं हटाएँगे, तो अचानक <em>'You are out of storage'</em> की चेतावनी आ सकती है और नई ईमेल्स आना बंद हो सकती हैं।
+              <br><br>
+              <strong>स्टोरेज स्वच्छता का नियम:</strong> किसी भी फाइल को ऑटो-डिलीट न करें। सर्च ऑपरेटर <code>has:attachment larger:10M</code> की मदद से केवल उन पुरानी भारी फाइल्स को पहचानें जिनकी अब ज़रूरत नहीं है।
+            </p>
+          </div>
+
+          <!-- Infographic 1 of Day 22: Shared Storage Reality -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-storage/assets/day-22-status-1.png')">
+            <img src="../../gmail-storage/assets/day-22-status-1.png" alt="Day 22 Status 1: 15 GB Shared Storage between Gmail, Photos, and Drive" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 22 Status 1):</strong> Gmail + Photos + Drive का 15 GB साझा पूल और 'You are out of storage' चेतावनी।
+          </div>
+
+          <div class="concept-box" style="margin-top: 0.5rem;">
+            <h4 class="concept-heading">🔍 स्टोरेज जाँचने और बड़ी Attachments ढूँढने की विधि:</h4>
+            <p class="concept-text">
+              नीचे इन्फोग्राफिक (Day 22 Status 2) में देखें: <code>one.google.com/storage</code> पर लॉगिन करके कुल स्पेस देखें और Gmail सर्च बार में <code>has:attachment larger:10M</code> चलाकर 10 MB से बड़ी ईमेल्स की सूची देखें।
+            </p>
+          </div>
+
+          <!-- Infographic 2 of Day 22: Storage Management Guide -->
+          <div class="img-preview-box" onclick="openLightbox('../../gmail-storage/assets/day-22-status-2.png')">
+            <img src="../../gmail-storage/assets/day-22-status-2.png" alt="Day 22 Status 2: How to check and clean storage safely" loading="lazy">
+            <span class="zoom-hint">🔍 पूरा बड़ा देखने के लिए क्लिक करें</span>
+          </div>
+          <div class="img-caption">
+            📌 <strong>मूल इन्फोग्राफिक संदर्भ (Day 22 Status 2):</strong> स्टोरेज जाँचने के 3 तरीके और `has:attachment larger:10M` का उपयोग।
+          </div>
+
+          <div class="task-box">
+            <h4 class="task-heading">🎯 आपका प्रैक्टिकल कार्य (Hands-on Task — सुरक्षित सत्यापन):</h4>
+            <ul class="task-list">
+              <li><strong>1. स्टोरेज की स्थिति देखें:</strong> ब्राउज़र में <strong>one.google.com/storage</strong> खोलकर देखें कि Gmail और Drive ने कितने GB जगह ली है।</li>
+              <li><strong>2. भारी ईमेल्स खोजें:</strong> Gmail सर्च बॉक्स में <code>has:attachment larger:10M</code> टाइप करके Enter दबाएँ और देखें कि कौन-सी पुरानी ईमेल्स सबसे भारी हैं। <em>(सावधानी: कुछ भी डिलीट करने की ज़रूरत नहीं है—केवल पहचानना सीखें)</em>।</li>
+              <li><strong>3. शेयरिंग का सुरक्षित सत्यापन:</strong> किसी भी भेजी गई Drive लिंक वाली ईमेल को अपने ही किसी दूसरे ईमेल पर भेजकर या गुप्त विंडो (Incognito window) में लिंक खोलकर देखें कि क्या फाइल केवल अधिकृत खाते से ही खुलती है।</li>
+            </ul>
+          </div>
+
+          <div class="result-box">
+            <h4 class="result-heading">✅ अपेक्षित परिणाम (Expected Result):</h4>
+            <p class="result-text">
+              🎉 <strong>बधाई हो!</strong> आपका <strong>Digital Document & Heavy File Sharing System</strong> पूरी तरह से तैयार है। अब आप बिना अटके भारी फाइल्स, संगठित संदर्भ ईमेल्स और सुरक्षित परमिशन के साथ डिजिटल दस्तावेज़ साझा कर सकते हैं।
+            </p>
+          </div>
+
+          <!-- Optional Learning Box for Confidential Mode -->
+          <div class="optional-box">
+            <h4 class="optional-heading">🔒 अतिरिक्त सुरक्षा ज्ञान (Optional Learning: Day 13 — Confidential Mode):</h4>
+            <p class="optional-text">
+              यदि आप अत्यंत संवेदनशील व्यक्तिगत दस्तावेज़ (जैसे कोई कानूनी अनुबंध या वित्तीय दस्तावेज) भेज रहे हैं, तो आप कंपोज़ में <strong>🔒 Confidential Mode</strong> चालू करके <strong>Expiry Time</strong> (उदा. 1 दिन या 1 हफ्ता) सेट कर सकते हैं।
+              <br><br>
+              <strong>ध्यान रखें:</strong> Confidential Mode Google Drive की फाइल परमिशन के समान नहीं है। यह केवल ईमेल बॉडी को फॉरवर्ड, कॉपी या प्रिंट होने से रोकता है, लेकिन सामने वाले को स्क्रीनशॉट या फोटो लेने से नहीं रोक सकता।
+              <br><br>
+              <a href="../../confidential-mode/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer" style="color: #7e22ce;">
+                📖 Day 13 — Confidential Mode ट्यूटोरियल देखें →
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <footer class="step-footer">
+          <a href="../../gmail-storage/index.html" class="related-tutorial-link" target="_blank" rel="noopener noreferrer">
+            📖 संबंधित ट्यूटोरियल: Day 22 — Gmail Storage Management खोलें →
+          </a>
+          <div class="step-actions">
+            <button onclick="showStep(4)" class="btn btn-back">← पिछला स्टेप</button>
+            <a href="../../../../#/category/gmail" class="btn btn-primary" id="finishBtn">✓ प्रोजेक्ट पूरा हुआ (Complete!)</a>
+          </div>
+        </footer>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">✕</button>
+    <img id="lightboxImg" src="" alt="Infographic full view" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Step switcher logic
+    function showStep(stepNum) {
+      for (let i = 1; i <= 5; i++) {
+        const stepEl = document.getElementById('step-' + i);
+        const tabEl = document.getElementById('tab-' + i);
+        if (stepEl) stepEl.classList.remove('active');
+        if (tabEl) tabEl.classList.remove('active');
+      }
+
+      const targetStep = document.getElementById('step-' + stepNum);
+      const targetTab = document.getElementById('tab-' + stepNum);
+      if (targetStep) targetStep.classList.add('active');
+      if (targetTab) targetTab.classList.add('active');
+
+      const navEl = document.getElementById('stepNavBar');
+      if (navEl) {
+        navEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Lightbox modal logic
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      if (modal && img) {
+        img.src = src;
+        modal.classList.add('active');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Share link copy
+    function copyShareLink() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        const btn = document.getElementById('shareBtn');
+        if (btn) {
+          const original = btn.textContent;
+          btn.textContent = '✓ लिंक कॉपी हो गया!';
+          setTimeout(function() { btn.textContent = original; }, 2000);
+        }
+      });
+    }
+
+    // Adapt Back button dynamically for GitHub Pages vs Localhost
+    (function() {
+      const isGHPages = window.location.pathname.includes('/digital-learning-hub/');
+      const targetHref = isGHPages ? '/digital-learning-hub/#/category/gmail' : '/#/category/gmail';
+      const backLink = document.getElementById('categoryBackLink');
+      const finishBtn = document.getElementById('finishBtn');
+      if (backLink) backLink.setAttribute('href', targetHref);
+      if (finishBtn) finishBtn.setAttribute('href', targetHref);
+    })();
+  </script>
+
+</body>
+</html>
