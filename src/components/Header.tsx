@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { BookOpen, Menu, X, Info, ChevronDown, ShieldCheck, Mail, Calendar, BarChart3 } from 'lucide-react'
+import { BookOpen, Menu, X, Info, ChevronDown, ShieldCheck, Mail, Calendar, BarChart3, Binary } from 'lucide-react'
 
 interface HeaderProps {
   onNotifyComingSoon?: (featureName: string) => void
@@ -170,6 +170,20 @@ export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
                       <div className="text-[11px] text-slate-500">डेटा विज़ुअलाइज़ेशन व स्लाइसर्स</div>
                     </div>
                   </Link>
+
+                  <Link
+                    to="/category/math-magic"
+                    onClick={() => setToolsDropdownOpen(false)}
+                    className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-blue-50 text-slate-800 hover:text-blue-950 transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                      <Binary className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-xs sm:text-sm text-slate-900">Math Magic</div>
+                      <div className="text-[11px] text-slate-500">दैनिक ट्रिक्स, प्रैक्टिस व चैलेंज</div>
+                    </div>
+                  </Link>
                 </div>
               )}
             </div>
@@ -278,6 +292,17 @@ export const Header: React.FC<HeaderProps> = ({ onNotifyComingSoon }) => {
                   <BarChart3 className="w-4 h-4" />
                 </div>
                 <span>Power BI Mastery</span>
+              </Link>
+
+              <Link
+                to="/category/math-magic"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-blue-950 hover:bg-blue-50 transition-colors"
+              >
+                <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+                  <Binary className="w-4 h-4" />
+                </div>
+                <span>Math Magic</span>
               </Link>
             </div>
           </div>

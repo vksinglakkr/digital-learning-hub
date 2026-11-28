@@ -59,6 +59,15 @@ export const CURIOSITY_CARDS: CuriosityCard[] = [
     iconType: 'task'
   },
   {
+    id: 'math-magic-speed',
+    problem: 'बड़ी संख्या की गणना में समय लगता है?',
+    solution: 'Math Magic से 5 सेकंड में मानसिक गणना सीखें।',
+    tag: 'Math Magic',
+    targetUrl: '/category/math-magic',
+    actionLabel: 'शुरू करें',
+    iconType: 'task'
+  },
+  {
     id: 'ppt-slides',
     problem: '100 Slides की PPT! इतनी कौन पढ़े?',
     solution: 'AI से उसकी जरूरी बातें समझें।',

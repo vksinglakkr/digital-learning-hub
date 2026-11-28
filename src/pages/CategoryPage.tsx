@@ -18,6 +18,7 @@ import { CuriosityBanner } from '../components/CuriosityBanner'
 import { GMAIL_CURIOSITY_CARDS } from '../data/gmailCuriosityData'
 import { CALENDAR_CURIOSITY_CARDS } from '../data/calendarCuriosityData'
 import { DigitalBankingView } from '../components/digital-banking/DigitalBankingView'
+import { MathMagicGatewayView } from '../components/math-magic/MathMagicGatewayView'
 import type { TopicItem } from '../types'
 import { 
   ArrowLeft, 
@@ -158,6 +159,7 @@ export const CategoryPage: React.FC = () => {
   const isGmailCategory = category?.id === 'gmail' || category?.slug === 'gmail'
   const isCalendarCategory = category?.id === 'calendar' || category?.slug === 'calendar'
   const isDigitalBankingCategory = category?.id === 'digital-banking' || category?.slug === 'digital-banking' || categorySlug === 'digital-banking'
+  const isMathMagicCategory = category?.id === 'math-magic' || category?.slug === 'math-magic' || categorySlug === 'math-magic'
   const isNeedBasedCategory = isGmailCategory || isCalendarCategory
 
   // 1. Filter only published topics for this category, ordered: Beginner -> Intermediate -> Advanced -> curriculum displayOrder
@@ -451,6 +453,26 @@ export const CategoryPage: React.FC = () => {
           <Header onNotifyComingSoon={handleNotifyComingSoon} />
           <Breadcrumbs items={[{ label: 'Digital Banking & Security' }]} />
           <DigitalBankingView />
+        </div>
+        <Footer onNotifyComingSoon={handleNotifyComingSoon} />
+        <NoticeModal
+          isOpen={modalState.isOpen}
+          title={modalState.title}
+          message={modalState.message}
+          onClose={() => setModalState((prev) => ({ ...prev, isOpen: false }))}
+        />
+      </div>
+    )
+  }
+
+  // Dedicated Gateway View for Math Magic Helping Tool
+  if (isMathMagicCategory) {
+    return (
+      <div className="min-h-screen bg-slate-50/50 text-slate-900 flex flex-col justify-between font-sans">
+        <div>
+          <Header onNotifyComingSoon={handleNotifyComingSoon} />
+          <Breadcrumbs items={[{ label: 'Math Magic' }]} />
+          <MathMagicGatewayView />
         </div>
         <Footer onNotifyComingSoon={handleNotifyComingSoon} />
         <NoticeModal
