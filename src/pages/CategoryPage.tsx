@@ -17,6 +17,7 @@ import { CALENDAR_REFERENCE_POSTERS, type CalendarReferencePoster } from '../dat
 import { CuriosityBanner } from '../components/CuriosityBanner'
 import { GMAIL_CURIOSITY_CARDS } from '../data/gmailCuriosityData'
 import { CALENDAR_CURIOSITY_CARDS } from '../data/calendarCuriosityData'
+import { DigitalBankingView } from '../components/digital-banking/DigitalBankingView'
 import type { TopicItem } from '../types'
 import { 
   ArrowLeft, 
@@ -156,6 +157,7 @@ export const CategoryPage: React.FC = () => {
 
   const isGmailCategory = category?.id === 'gmail' || category?.slug === 'gmail'
   const isCalendarCategory = category?.id === 'calendar' || category?.slug === 'calendar'
+  const isDigitalBankingCategory = category?.id === 'digital-banking' || category?.slug === 'digital-banking' || categorySlug === 'digital-banking'
   const isNeedBasedCategory = isGmailCategory || isCalendarCategory
 
   // 1. Filter only published topics for this category, ordered: Beginner -> Intermediate -> Advanced -> curriculum displayOrder
@@ -437,6 +439,26 @@ export const CategoryPage: React.FC = () => {
           </Link>
         </div>
         <Footer onNotifyComingSoon={handleNotifyComingSoon} />
+      </div>
+    )
+  }
+
+  // Dedicated View for Digital Banking & Security Category
+  if (isDigitalBankingCategory) {
+    return (
+      <div className="min-h-screen bg-slate-50/50 text-slate-900 flex flex-col justify-between font-sans">
+        <div>
+          <Header onNotifyComingSoon={handleNotifyComingSoon} />
+          <Breadcrumbs items={[{ label: 'Digital Banking & Security' }]} />
+          <DigitalBankingView />
+        </div>
+        <Footer onNotifyComingSoon={handleNotifyComingSoon} />
+        <NoticeModal
+          isOpen={modalState.isOpen}
+          title={modalState.title}
+          message={modalState.message}
+          onClose={() => setModalState((prev) => ({ ...prev, isOpen: false }))}
+        />
       </div>
     )
   }

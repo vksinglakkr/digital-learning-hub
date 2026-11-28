@@ -1,0 +1,666 @@
+[
+  {
+    "source": "Question 1 (q1_mobile) Option: swipe",
+    "linkTitle": "सलाह: फोन पर स्क्रीन लॉक लगाना क्यों ज़रूरी है?",
+    "expected": "आदत 07: फोन को हमेशा लॉक रखें व स्क्रीन टाइमआउट सेट करें",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 1 (q1_mobile) Option: pin_pattern",
+    "linkTitle": "शानदार! आपका फोन लॉक से सुरक्षित है",
+    "expected": "आदत 07: फोन स्क्रीन लॉक व गोपनीयता",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 1 (q1_mobile) Option: biometric",
+    "linkTitle": "बहुत बढ़िया! आधुनिक और सबसे सुरक्षित तरीका",
+    "expected": "आदत 07: फोन सुरक्षा व बैकअप पिन",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 1 (q1_mobile) Option: unknown",
+    "linkTitle": "आइए मिलकर देखें कि आपके फोन में कौन सा लॉक है",
+    "expected": "आदत 07: स्क्रीन लॉक की पहचान",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 2 (q2_qr) Option: yes_self",
+    "linkTitle": "सलाह: स्वतंत्र QR Payment व उन्नत सुरक्षा",
+    "expected": "प्रोजेक्ट 02: अनचाहा ऑटो-पे (AutoPay) ढूंढना व बंद करना",
+    "targetTab": "projects",
+    "targetRef": "project-autopay-management",
+    "actual": "[PROJECT] प्रोजेक्ट 2: AutoPay और अनचाहे सब्सक्रिप्शन ढूंढें व बंद करें (GPay व Paytm)",
+    "infographicPreview": "/tutorials/digital-banking/assets/69-auto-deduct-paytm.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 2 (q2_qr) Option: with_help",
+    "linkTitle": "सलाह: थोड़े से अभ्यास से आत्मनिर्भर बनें",
+    "expected": "पाठ 09: फिक्स QR कोड व डायनामिक QR कोड की समझ",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 2 (q2_qr) Option: cannot_pay",
+    "linkTitle": "सलाह: QR Payment सीखने की आसान शुरुआत",
+    "expected": "पाठ 09: UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 2 (q2_qr) Option: unknown",
+    "linkTitle": "सलाह: QR कोड की पहचान व सरल समझ",
+    "expected": "पाठ 09: QR कोड की पहचान व समझ",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 3 (q3_balance) Option: yes_self",
+    "linkTitle": "बहुत अच्छा! आप बैलेंस स्वयं देखना जानते हैं",
+    "expected": "पाठ 08: नेट बैंकिंग — ई-स्टेटमेंट व सुरक्षित उपयोग",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/16-net-banking.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 3 (q3_balance) Option: with_help",
+    "linkTitle": "सलाह: थोड़े से अभ्यास से आप खुद बैलेंस देख सकते हैं",
+    "expected": "मिस्ड कॉल बैंकिंग: बिना इंटरनेट बैलेंस जांचें",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 3 (q3_balance) Option: no",
+    "linkTitle": "सलाह: बैंक शाखा की लाइन में लगे बिना बैलेंस देखने के 3 आसान तरीके",
+    "expected": "मिस्ड कॉल बैंकिंग: घर बैठे बैलेंस पाना",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 3 (q3_balance) Option: unknown",
+    "linkTitle": "सलाह: बिना बैंक जाए बैलेंस जानने के 4 सुरक्षित तरीके",
+    "expected": "बैलेंस जानने के 4 सरल तरीके",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 4 (q4_atm) Option: yes_self",
+    "linkTitle": "बहुत अच्छा! आप ATM से Cash निकालना जानते हैं। अब चाहें तो ATM की कुछ और सुविधाएँ जान सकते हैं।",
+    "expected": "स्कैम 13: ATM फ्रॉड — शोल्डर सर्फिंग व आधुनिक सुविधाएं",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 4 (q4_atm) Option: with_help",
+    "linkTitle": "आप ATM की प्रक्रिया से परिचित हैं। अब थोड़ा अभ्यास करके स्वयं Cash निकालना सीख सकते हैं।",
+    "expected": "स्कैम 13: ATM पिन गोपनीयता व सुरक्षित आदतें",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 4 (q4_atm) Option: no",
+    "linkTitle": "कोई बात नहीं। पहले ATM Card, PIN और Cash Withdrawal की प्रक्रिया समझेंगे।",
+    "expected": "ATM से कैश निकासी के 4 चरण",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 4 (q4_atm) Option: decline",
+    "linkTitle": "बिल्कुल ठीक। ATM का इस्तेमाल करना अनिवार्य नहीं है। आप Bank Branch या अपनी सुविधा के अनुसार उपलब्ध दूसरे तरीकों का उपयोग कर सकते हैं।",
+    "expected": "पोस्टर 02: चेक के प्रकार व शाखा से नकद निकासी",
+    "targetTab": "posters",
+    "targetRef": "index 1",
+    "actual": "[POSTER] चेक (Cheque) के प्रकार और सुरक्षित चेक भरने का पोस्टर",
+    "infographicPreview": "/tutorials/digital-banking/assets/20-types-of-cheques.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Question 4 (q4_atm) Option: not_interested",
+    "linkTitle": "बिल्कुल ठीक। ATM का इस्तेमाल करना अनिवार्य नहीं है। आप Bank Branch या अपनी सुविधा के अनुसार उपलब्ध दूसरे तरीकों का उपयोग कर सकते हैं।",
+    "expected": "पोस्टर 02: चेक के प्रकार व शाखा से नकद निकासी",
+    "targetTab": "posters",
+    "targetRef": "index 1",
+    "actual": "[POSTER] चेक (Cheque) के प्रकार और सुरक्षित चेक भरने का पोस्टर",
+    "infographicPreview": "/tutorials/digital-banking/assets/20-types-of-cheques.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q2 Activities (yes_self)",
+    "linkTitle": "Payment History व UTR नंबर देखना (History गाइड खोलें)",
+    "expected": "Micro-lesson: qr_history",
+    "targetTab": "projects",
+    "targetRef": "microlesson:qr_history",
+    "actual": "[MICRO_LESSON] qr_history",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q2 Activities (yes_self)",
+    "linkTitle": "सुरक्षित UPI आदतें व AutoPay रिव्यू (AutoPay प्रोजेक्ट खोलें)",
+    "expected": "सुरक्षित UPI आदतें व AutoPay रिव्यू",
+    "targetTab": "projects",
+    "targetRef": "project-02",
+    "actual": "[PROJECT] प्रोजेक्ट 2: AutoPay और अनचाहे सब्सक्रिप्शन ढूंढें व बंद करें (GPay व Paytm)",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q2 Activities (with_help)",
+    "linkTitle": "QR Payment सचित्र अभ्यास (स्टेप-बाय-स्टेप) (सचित्र पाठ खोलें (पाठ 09))",
+    "expected": "QR Payment सचित्र अभ्यास (स्टेप-बाय-स्टेप)",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q2 Activities (with_help)",
+    "linkTitle": "बिना पैसे भेजे QR स्कैन का सुरक्षित अभ्यास (अभ्यास गाइड खोलें)",
+    "expected": "Micro-lesson: qr_safe_practice",
+    "targetTab": "upi-payments",
+    "targetRef": "microlesson:qr_safe_practice",
+    "actual": "[MICRO_LESSON] qr_safe_practice",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q2 Activities (cannot_pay)",
+    "linkTitle": "QR Payment की चरण-दर-चरण प्रक्रिया (सचित्र पाठ खोलें (पाठ 09))",
+    "expected": "QR Payment की चरण-दर-चरण प्रक्रिया",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q2 Activities (cannot_pay)",
+    "linkTitle": "फोन में असली UPI App पहचानना (पहचान गाइड खोलें)",
+    "expected": "Micro-lesson: upi_app_recognition",
+    "targetTab": "upi-payments",
+    "targetRef": "microlesson:upi_app_recognition",
+    "actual": "[MICRO_LESSON] upi_app_recognition",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q2 Activities (unknown)",
+    "linkTitle": "दुकानों पर QR Code की पहचान व समझ (QR परिचय गाइड खोलें)",
+    "expected": "Micro-lesson: qr_visual_intro",
+    "targetTab": "upi-payments",
+    "targetRef": "microlesson:qr_visual_intro",
+    "actual": "[MICRO_LESSON] qr_visual_intro",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q2 Activities (unknown)",
+    "linkTitle": "UPI क्या है? शुरुआती सचित्र पाठ (सचित्र पाठ खोलें (पाठ 09))",
+    "expected": "UPI क्या है? शुरुआती सचित्र पाठ",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q3 Activities (yes_self)",
+    "linkTitle": "Bank Statement (PDF) डाउनलोड करना (सचित्र पाठ खोलें (पाठ 08))",
+    "expected": "Bank Statement (PDF) डाउनलोड करना",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q3 Activities (yes_self)",
+    "linkTitle": "NEFT, RTGS, IMPS व UPI में अंतर (तुलना गाइड खोलें)",
+    "expected": "Micro-lesson: transfer_comparison",
+    "targetTab": "upi-payments",
+    "targetRef": "microlesson:transfer_comparison",
+    "actual": "[MICRO_LESSON] transfer_comparison",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (with_help)",
+    "linkTitle": "मिस्ड कॉल से स्वतंत्र बैलेंस देखना (मिस्ड कॉल गाइड खोलें)",
+    "expected": "Micro-lesson: missed_call_balance",
+    "targetTab": "banking-savings",
+    "targetRef": "microlesson:missed_call_balance",
+    "actual": "[MICRO_LESSON] missed_call_balance",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (with_help)",
+    "linkTitle": "ATM पर सुरक्षित Balance Enquiry (ATM बैलेंस अभ्यास खोलें)",
+    "expected": "Micro-lesson: atm_simulated_practice",
+    "targetTab": "scams",
+    "targetRef": "microlesson:atm_simulated_practice",
+    "actual": "[MICRO_LESSON] atm_simulated_practice",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (no)",
+    "linkTitle": "घर बैठे मिस्ड कॉल सेवा चालू करना (मिस्ड कॉल गाइड खोलें)",
+    "expected": "Micro-lesson: missed_call_balance",
+    "targetTab": "banking-savings",
+    "targetRef": "microlesson:missed_call_balance",
+    "actual": "[MICRO_LESSON] missed_call_balance",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (no)",
+    "linkTitle": "बैलेंस खत्म होने का डर व SMS अलर्ट (बैलेंस गाइड खोलें)",
+    "expected": "Micro-lesson: missed_call_balance",
+    "targetTab": "banking-savings",
+    "targetRef": "microlesson:missed_call_balance",
+    "actual": "[MICRO_LESSON] missed_call_balance",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (unknown)",
+    "linkTitle": "बैलेंस जानने के 4 सरल तरीके (4 तरीके गाइड खोलें)",
+    "expected": "Micro-lesson: balance_methods_overview",
+    "targetTab": "banking-savings",
+    "targetRef": "microlesson:balance_methods_overview",
+    "actual": "[MICRO_LESSON] balance_methods_overview",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q3 Activities (unknown)",
+    "linkTitle": "मिस्ड कॉल बैंकिंग का पहला परिचय (मिस्ड कॉल गाइड खोलें)",
+    "expected": "Micro-lesson: missed_call_balance",
+    "targetTab": "banking-savings",
+    "targetRef": "microlesson:missed_call_balance",
+    "actual": "[MICRO_LESSON] missed_call_balance",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (yes_self)",
+    "linkTitle": "ATM PIN बदलना व कार्ड सुरक्षा (सुरक्षा आदतें खोलें (आदत 08))",
+    "expected": "ATM PIN बदलना व कार्ड सुरक्षा",
+    "targetTab": "habits",
+    "targetRef": "index 7",
+    "actual": "[HABIT] आठवीं आदत — दैनिक UPI के लिए अलग छोटा बैंक खाता रखें",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q4 Activities (yes_self)",
+    "linkTitle": "Cash Deposit व Cardless कैश निकासी (डिस्कवरी गाइड खोलें)",
+    "expected": "Micro-lesson: cdm_cardless_discovery",
+    "targetTab": "scams",
+    "targetRef": "microlesson:cdm_cardless_discovery",
+    "actual": "[MICRO_LESSON] cdm_cardless_discovery",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (with_help)",
+    "linkTitle": "ATM से कैश निकासी के 4 चरण (स्टेप-बाय-स्टेप गाइड खोलें)",
+    "expected": "Micro-lesson: atm_step_by_step",
+    "targetTab": "scams",
+    "targetRef": "microlesson:atm_step_by_step",
+    "actual": "[MICRO_LESSON] atm_step_by_step",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (with_help)",
+    "linkTitle": "ATM PIN गोपनीयता व सुरक्षित आदतें (स्कैम अलर्ट खोलें (स्कैम 13))",
+    "expected": "ATM PIN गोपनीयता व सुरक्षित आदतें",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q4 Activities (no)",
+    "linkTitle": "ATM कार्ड और मशीन का सरल परिचय (ATM मशीन गाइड खोलें)",
+    "expected": "Micro-lesson: atm_step_by_step",
+    "targetTab": "scams",
+    "targetRef": "microlesson:atm_step_by_step",
+    "actual": "[MICRO_LESSON] atm_step_by_step",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (no)",
+    "linkTitle": "बिना पैसे निकाले ATM का सुरक्षित अभ्यास (सिमुलेशन गाइड खोलें)",
+    "expected": "Micro-lesson: atm_simulated_practice",
+    "targetTab": "scams",
+    "targetRef": "microlesson:atm_simulated_practice",
+    "actual": "[MICRO_LESSON] atm_simulated_practice",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (decline)",
+    "linkTitle": "बैंक शाखा से चेक व फॉर्म द्वारा नकद निकासी (शाखा गाइड खोलें)",
+    "expected": "Micro-lesson: branch_withdrawal_basics",
+    "targetTab": "posters",
+    "targetRef": "microlesson:branch_withdrawal_basics",
+    "actual": "[MICRO_LESSON] branch_withdrawal_basics",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (decline)",
+    "linkTitle": "अनचाहे डेबिट कार्ड की सुरक्षा व सीमाएं (सुरक्षा आदतें खोलें (आदत 09))",
+    "expected": "अनचाहे डेबिट कार्ड की सुरक्षा व सीमाएं",
+    "targetTab": "habits",
+    "targetRef": "habit-09",
+    "actual": "[HABIT] नौवीं आदत — ऐप परमिशन को सीमित रखें",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Q4 Activities (not_interested)",
+    "linkTitle": "बैंक शाखा से चेक व फॉर्म द्वारा नकद निकासी (शाखा गाइड खोलें)",
+    "expected": "Micro-lesson: branch_withdrawal_basics",
+    "targetTab": "posters",
+    "targetRef": "microlesson:branch_withdrawal_basics",
+    "actual": "[MICRO_LESSON] branch_withdrawal_basics",
+    "isMicroLesson": true
+  },
+  {
+    "source": "Q4 Activities (not_interested)",
+    "linkTitle": "अनचाहे डेबिट कार्ड की सुरक्षा व सीमाएं (सुरक्षा आदतें खोलें (आदत 09))",
+    "expected": "अनचाहे डेबिट कार्ड की सुरक्षा व सीमाएं",
+    "targetTab": "habits",
+    "targetRef": "habit-09",
+    "actual": "[HABIT] नौवीं आदत — ऐप परमिशन को सीमित रखें",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_mobile_security",
+    "linkTitle": "Mobile Lock लगाना सीखें (PIN, Pattern, Fingerprint)",
+    "expected": "आदत 07: फोन को हमेशा लॉक रखें व स्क्रीन टाइमआउट सेट करें",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_mobile_lock_identify",
+    "linkTitle": "फोन लॉक है या नहीं, ऐसे जांचें",
+    "expected": "आदत 07: फोन लॉक की पहचान",
+    "targetTab": "habits",
+    "targetRef": "habit-07",
+    "actual": "[HABIT] सातवीं आदत — फोन हमेशा सुरक्षित लॉक रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/39-habit-07-keep-your-phone-locked.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_lost_phone_readiness",
+    "linkTitle": "फोन खो जाए तो क्या करें? पहले से तैयारी रखें",
+    "expected": "प्रोजेक्ट 03: खोए हुए फोन की सुरक्षा का 5-चरणीय वर्कफ़्लो",
+    "targetTab": "projects",
+    "targetRef": "project-lost-phone-lockdown",
+    "actual": "[PROJECT] प्रोजेक्ट 3: फोन गुम या चोरी होने पर सुरक्षा व रिकवरी वर्कफ़्लो",
+    "infographicPreview": "/tutorials/digital-banking/assets/61-scam-16-phone-misplace.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_qr_history",
+    "linkTitle": "Payment History व 12-अंकों का UTR नंबर देखना",
+    "expected": "प्रोजेक्ट 01: सुरक्षित UPI व पेमेंट हिस्ट्री",
+    "targetTab": "projects",
+    "targetRef": "project-safe-upi-setup",
+    "actual": "[PROJECT] प्रोजेक्ट 1: अपना सुरक्षित UPI सिस्टम बनाएं (छोटा खाता व दैनिक सीमा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_qr_safe_practice",
+    "linkTitle": "बिना पैसे भेजे QR स्कैन का सुरक्षित अभ्यास",
+    "expected": "पाठ 09: फिक्स QR कोड व डायनामिक QR कोड",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_qr_visual_intro",
+    "linkTitle": "दुकानों पर QR Code की पहचान व साउंडबॉक्स",
+    "expected": "पाठ 09: QR कोड की पहचान",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/19-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_upi_basics",
+    "linkTitle": "UPI क्या है? शुरुआती सचिप्ट पाठ",
+    "expected": "पाठ 09: UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/18-upi.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_qr_payment",
+    "linkTitle": "QR Payment सचित्र अभ्यास (स्टेप-बाय-स्टेप)",
+    "expected": "पाठ 09: QR कोड व सुरक्षित भुगतान",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/28-fix-amount-qr-code.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_upi_app_recognition",
+    "linkTitle": "फोन में असली UPI App पहचानना",
+    "expected": "पाठ 09: UPI क्या है और ऐप पहचानना",
+    "targetTab": "upi-payments",
+    "targetRef": "index 8",
+    "actual": "[LESSON] UPI सीखें — शुरुआत से सुरक्षित भुगतान तक",
+    "infographicPreview": "/tutorials/digital-banking/assets/18-upi.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_balance_checking",
+    "linkTitle": "बिना बैंक जाए बैलेंस देखना (मिस्ड कॉल व SMS)",
+    "expected": "मिस्ड कॉल बैंकिंग: बिना इंटरनेट बैलेंस जांचें",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_bank_statement_download",
+    "linkTitle": "Bank Statement (PDF) डाउनलोड करना",
+    "expected": "पाठ 08: नेट बैंकिंग — ई-स्टेटमेंट व सुरक्षित उपयोग",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/16-net-banking.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_transfer_methods_comparison",
+    "linkTitle": "NEFT, RTGS, IMPS व UPI में अंतर",
+    "expected": "पोस्टर 03: RTGS, NEFT, IMPS व UPI तुलना",
+    "targetTab": "posters",
+    "targetRef": "index 2",
+    "actual": "[POSTER] RTGS, NEFT और IMPS — विस्तृत तुलना चार्ट",
+    "infographicPreview": "/tutorials/digital-banking/assets/22-difference-between-rtgs-neft-imps.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_missed_call_balance",
+    "linkTitle": "मिस्ड कॉल से स्वतंत्र बैलेंस देखना",
+    "expected": "मिस्ड कॉल बैंकिंग: बिना इंटरनेट बैलेंस जांचें",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_balance_practice",
+    "linkTitle": "ATM पर सुरक्षित Balance Enquiry",
+    "expected": "स्कैम 13: ATM बैलेंस इन्क्वायरी व अभ्यास",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_balance_methods_overview",
+    "linkTitle": "बैलेंस जानने के 4 सरल तरीके",
+    "expected": "बैलेंस जानने के 4 सरल तरीके",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/06-savings-account-guide.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_internet_banking_discovery",
+    "linkTitle": "Internet Banking से क्या-क्या कर सकते हैं?",
+    "expected": "पाठ 08: नेट बैंकिंग — घर बैठे सुरक्षित उपयोग",
+    "targetTab": "banking-savings",
+    "targetRef": "index 7",
+    "actual": "[LESSON] नेट बैंकिंग — घर बैठे सुरक्षित उपयोग (पंजीकरण, लॉगिन और सुरक्षा)",
+    "infographicPreview": "/tutorials/digital-banking/assets/16-net-banking.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_safety",
+    "linkTitle": "ATM मशीन पर कार्ड व PIN की गोपनीयता",
+    "expected": "स्कैम 13: ATM फ्रॉड से बचाव",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_autopay_audit",
+    "linkTitle": "अनचाहा AutoPay व सब्सक्रिप्शन ढूंढना व बंद करना",
+    "expected": "प्रोजेक्ट 02: अनचाहा ऑटो-पे (AutoPay) रोकना",
+    "targetTab": "projects",
+    "targetRef": "project-autopay-management",
+    "actual": "[PROJECT] प्रोजेक्ट 2: AutoPay और अनचाहे सब्सक्रिप्शन ढूंढें व बंद करें (GPay व Paytm)",
+    "infographicPreview": "/tutorials/digital-banking/assets/69-auto-deduct-paytm.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_lost_phone",
+    "linkTitle": "फोन गुम होने पर 15-मिनट सुरक्षा व रिकवरी वर्कफ़्लो",
+    "expected": "प्रोजेक्ट 03: खोए हुए फोन की सुरक्षा का 5-चरणीय वर्कफ़्लो",
+    "targetTab": "projects",
+    "targetRef": "project-lost-phone-lockdown",
+    "actual": "[PROJECT] प्रोजेक्ट 3: फोन गुम या चोरी होने पर सुरक्षा व रिकवरी वर्कफ़्लो",
+    "infographicPreview": "/tutorials/digital-banking/assets/61-scam-16-phone-misplace.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_pin_change_safety",
+    "linkTitle": "ATM PIN बदलना व कार्ड सुरक्षा",
+    "expected": "आदत 08: ATM कीपैड हमेशा ढंकें",
+    "targetTab": "habits",
+    "targetRef": "habit-08",
+    "actual": "[HABIT] आठवीं आदत — दैनिक UPI के लिए अलग छोटा बैंक खाता रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/40-habit-08-shield-atm-keypad.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_cdm_cardless_discovery",
+    "linkTitle": "Cash Deposit (CDM) व Cardless कैश निकासी",
+    "expected": "स्कैम 13: ATM फ्रॉड व आधुनिक सुविधाएं",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_step_by_step",
+    "linkTitle": "ATM से कैश निकासी के 4 चरण",
+    "expected": "ATM से कैश निकासी के 4 चरण",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_machine_intro",
+    "linkTitle": "ATM कार्ड और मशीन का सरल परिचय",
+    "expected": "ATM कार्ड और मशीन का सरल परिचय",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_atm_simulated_practice",
+    "linkTitle": "बिना पैसे निकाले ATM का सुरक्षित अभ्यास",
+    "expected": "ATM का सुरक्षित अभ्यास",
+    "targetTab": "scams",
+    "targetRef": "scam-13",
+    "actual": "[SCAM] Scam 13: ATM पर मदद के बहाने कार्ड बदलना और PIN देखना",
+    "infographicPreview": "/tutorials/digital-banking/assets/58-scam-13-atm-frauds.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_branch_withdrawal_basics",
+    "linkTitle": "बैंक शाखा से चेक व फॉर्म द्वारा नकद निकासी",
+    "expected": "पोस्टर 02: चेक के प्रकार व शाखा से नकद निकासी",
+    "targetTab": "posters",
+    "targetRef": "index 1",
+    "actual": "[POSTER] चेक (Cheque) के प्रकार और सुरक्षित चेक भरने का पोस्टर",
+    "infographicPreview": "/tutorials/digital-banking/assets/20-types-of-cheques.png",
+    "isMicroLesson": false
+  },
+  {
+    "source": "Catalog Topic: topic_debit_card_safety_alternatives",
+    "linkTitle": "अनचाहे डेबिट कार्ड की सुरक्षा व सीमाएं",
+    "expected": "आदत 09: कार्ड व पिन की गोपनीयता",
+    "targetTab": "habits",
+    "targetRef": "habit-09",
+    "actual": "[HABIT] नौवीं आदत — ऐप परमिशन को सीमित रखें",
+    "infographicPreview": "/tutorials/digital-banking/assets/41-habit-09-never-share-otp-pin.png",
+    "isMicroLesson": false
+  }
+]

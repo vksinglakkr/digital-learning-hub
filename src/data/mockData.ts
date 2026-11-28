@@ -89,6 +89,16 @@ export const DEMO_CATEGORIES: CategoryItem[] = [
     color: 'teal',
     displayOrder: 8,
   },
+  {
+    id: 'digital-banking',
+    slug: 'digital-banking',
+    title: 'Digital Banking & Security',
+    description: 'सीखें • समझें • सुरक्षित रहें — वरिष्ठ नागरिकों और नए उपयोगकर्ताओं के लिए डिजिटल बैंकिंग और सुरक्षा की संपूर्ण सचित्र गाइड।',
+    iconName: 'ShieldCheck',
+    resourceCount: 72,
+    color: 'emerald',
+    displayOrder: 9,
+  },
 ]
 
 export const DEMO_TOPICS: TopicItem[] = [
