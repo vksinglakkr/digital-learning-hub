@@ -10,7 +10,8 @@ import {
   ArrowRight,
   Layers,
   Mail,
-  Calendar
+  Calendar,
+  ShieldCheck
 } from 'lucide-react'
 import type { CategoryItem } from '../types'
 
@@ -48,6 +49,13 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ category }) => {
           iconBg: 'bg-blue-50 border-blue-200/80',
           cardHover: 'hover:border-blue-300',
           desc: 'समय की कद्र, जीवन में शांति — दिन को बेहतर प्लान करें।'
+        }
+      case 'digital-banking':
+        return {
+          icon: <ShieldCheck className="w-8 h-8 text-emerald-600" />,
+          iconBg: 'bg-emerald-50 border-emerald-200/80',
+          cardHover: 'hover:border-emerald-300',
+          desc: 'सीखें • समझें • सुरक्षित रहें — डिजिटल साथी व 72 सचित्र गाइड्स।'
         }
       default: {
         let iconElem = <Layers className="w-8 h-8 text-teal-600" />

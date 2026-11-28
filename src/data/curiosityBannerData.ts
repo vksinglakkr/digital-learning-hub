@@ -41,6 +41,24 @@ export const CURIOSITY_CARDS: CuriosityCard[] = [
     iconType: 'bar-chart'
   },
   {
+    id: 'calendar-schedule',
+    problem: 'तारीखें और जरूरी काम भूल जाते हैं?',
+    solution: 'Google Calendar से दिन को बेहतर प्लान करें।',
+    tag: 'Calendar',
+    targetUrl: '/category/calendar',
+    actionLabel: 'कैसे करें? सीखें',
+    iconType: 'clock'
+  },
+  {
+    id: 'banking-safety',
+    problem: 'अंजान लिंक या ऑनलाइन फ्रॉड का डर?',
+    solution: 'डिजिटल साथी से 4 आसान सवालों में सुरक्षा जांचें।',
+    tag: 'Digital Banking',
+    targetUrl: '/category/digital-banking?tab=capability',
+    actionLabel: 'शुरू करें',
+    iconType: 'task'
+  },
+  {
     id: 'ppt-slides',
     problem: '100 Slides की PPT! इतनी कौन पढ़े?',
     solution: 'AI से उसकी जरूरी बातें समझें।',

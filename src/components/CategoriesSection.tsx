@@ -11,6 +11,10 @@ export const CategoriesSection: React.FC = () => {
   // Do not show categories that contain only empty or unpublished topics.
   const activeCategories = React.useMemo(() => {
     return categories.filter((category) => {
+      // Digital Banking has 72 published resources bundled directly in its dedicated view
+      if (category.id === 'digital-banking') {
+        return (category.resourceCount ?? 0) > 0
+      }
       const catTopics = topics.filter((t) => t.categoryId === category.id)
       return catTopics.some((topic) => isTopicPublished(topic))
     })

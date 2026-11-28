@@ -760,7 +760,6 @@ export const TopicDetailPage: React.FC = () => {
         {/* Working Breadcrumbs */}
         <div className="bg-white border-b border-slate-200">
           <Breadcrumbs
-            hideHome={isVisualMasteryCategory}
             items={[
               { label: category.title, to: `/category/${category.slug}` },
               { label: topic.title },
